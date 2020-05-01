@@ -34,7 +34,8 @@
 </template>
 <script>
     export default {
-        components: {  },
+
+
         created() {
         },
         data() {
