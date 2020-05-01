@@ -1,0 +1,427 @@
+@font-face {
+    font-family: "Exo Black";
+    src: url("../fonts/Exo-Black.ttf");
+}
+
+@font-face {
+    font-family: "Exo Medium";
+    src: url("../fonts/Exo-Medium.ttf");
+}
+
+@font-face {
+    font-family: "Exo Light";
+    src: url("../fonts/Exo-Light.ttf");
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #F2EEE2;
+}
+
+/* Auxiliares */
+
+.justfy-around, .justfy-center, .align-items-center, .align-items-end {
+    display: flex;
+    flex-direction: row;
+}
+
+.justfy-center {
+    justify-content: center;
+}
+
+.justfy-around {
+    justify-content: space-around;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.align-items-end {
+    align-items: flex-end;
+}
+
+.relative {
+    position: relative;
+}
+
+.mx-auto {
+    margin: 0 auto;
+}
+
+.mt-1 {
+    margin-top: 1rem;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.mt-3 {
+    margin-top: 3rem;
+}
+
+.mt-4 {
+    margin-top: 4rem;
+}
+
+.mt-5 {
+    margin-top: 5rem;
+}
+
+.mt-0 {
+    margin-top: 0;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+/* Personalizado */
+
+span, p {
+    font-family: "Nunito", sans-serif;
+}
+
+.geral-header {
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 60vh;
+    width: 100%;
+}
+
+.header-1 {
+    background-image: url("../images/bg-header-1.png");
+}
+
+.header-2 {
+    background-image: url("../images/bg-header-2.png");
+}
+
+.menu {
+    margin: 7rem 0 2rem;
+    background-color: rgba(97, 125, 185, 0.68);
+    border-radius: 25px;
+    list-style: none;
+    padding: 0.8rem 1.5rem;
+    box-shadow: 0 6px 6px #0000002e;
+}
+
+.menu ul {
+    margin: 0;
+}
+
+.menu ul li {
+    display: inline;
+    color: white;
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0 .5rem;
+}
+
+.area-cadastrar {
+    text-align: right;
+}
+
+.area-cadastrar span {
+    color: white;
+}
+
+.area-cadastrar a {
+    font-family: "Nunito", sans-serif;
+    color: #78C7C9;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.titulo {
+    font-family: "Exo Medium", sans-serif;
+    color: white;
+    font-size: 4.2rem;
+    margin: 0 0 2rem;
+}
+
+.titulo strong {
+    font-family: "Exo Black", sans-serif;
+}
+
+.proposta {
+    color: white;
+    font-size: 1.8rem;
+    line-height: 1.2;
+}
+
+h2 {
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    color: #1C205C;
+    line-height: 1.5;
+    padding: 0 4rem;
+}
+
+.sobre {
+    font-size: 1.4rem;
+    padding: 0 2rem 0 0;
+    color: #1C205C;
+}
+
+.btn-saibamais {
+    padding: 0 2rem;
+}
+
+.divisor {
+    color: #6783c182;
+    width: 100%;
+    margin: 4rem 0;
+    border-bottom: 2px solid;
+    border-radius: 20px;
+}
+
+.span-pesquise {
+    font-size: 2rem;
+    color: #1C205C;
+    font-weight: 800;
+}
+
+.numero {
+    color: #78C7C9;
+    font-size: 5rem;
+    font-weight: 800;
+}
+
+select {
+    color: white;
+    font-family: "Nunito", sans-serif;
+    font-size: 1.3rem;
+    padding: 0.7rem 0 0.7rem 2rem;
+    height: auto;
+    border-radius: 4px;
+    background-color: #78C7C9;
+    border: unset;
+    outline: unset;
+}
+
+select:focus {
+    outline: none;
+}
+
+label {
+    font-size: 1.3rem;
+    color: #1C205C;
+    margin-bottom: 1rem;
+}
+
+option {
+    background: white;
+    color: black;
+}
+
+.dropdown-button {
+    position: absolute;
+    right: 0;
+    height: 95%;
+    font-size: 2rem;
+    font-weight: 700;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+    background-color: #1C205C;
+    transition-duration: .3s;
+}
+
+.row-resultado {
+    border-bottom: 1px solid #6784C1;
+    margin-bottom: 5rem;
+}
+
+.span-resultado {
+    color: #6784C1;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-left: 8%;
+    border-bottom: 4px solid #6784C1;
+}
+
+.nome-cooperativa {
+    font-weight: 800;
+    color: #6784C1;
+    margin: 0 0 0.7rem;
+    font-size: 1.2rem;
+}
+
+.area {
+    margin-top: 0;
+    font-weight: 800;
+    color: #1C205C;
+}
+
+.btn-add {
+    color: #6784C1;
+}
+
+.div-produto {
+    border-bottom: 2px solid #6784c17d;
+    border-right: 2px solid #6784c17d;
+    border-radius: 8px;
+}
+
+.div-checkbox {
+    font-family: "Nunito", sans-serif;
+    color: #6784C1;
+    font-size: 1rem;
+}
+
+.div-checkbox label {
+    margin-right: 1rem;
+}
+
+.collapsible {
+    box-shadow: unset;
+    border-top: unset;
+    border-left: unset;
+}
+
+.collapsible-header, .collapsible-body {
+    background: transparent;
+    box-shadow: unset !important;
+    border-top: unset;
+    border-left: unset;
+    border-bottom: unset;
+}
+
+.collapsible-body {
+    padding: 1rem;
+}
+
+.corpo {
+    background-color: #6784c142;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.btn-share {
+    background-color: #6784C1;
+    color: white;
+    border-radius: 30px;
+    padding: 0.3rem;
+    margin-left: 5%;
+}
+
+
+/* Mapa */
+
+#map {
+    display: none;
+}
+
+#map .state {
+    cursor: pointer;
+}
+
+#map .state .shape {
+    cursor: pointer;
+    -width: 0;
+}
+
+#map .state .label_icon_state {
+    fill: #fff;
+    font-family: Arial;
+    font-size: 11px;
+    line-height: 12px;
+    font-weight: normal;
+}
+
+#map .state .label_state {
+    display: none;
+    font-family: Arial;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: bold;
+}
+
+#map .state:hover .label_state,
+#map .state.hover .label_state {
+    display: block;
+}
+
+#map .model-green .state .shape {
+    fill: #6cb361;
+}
+
+#map .model-green .state .icon_state {
+    fill: #10592f;
+}
+
+#map .model-green .state .label_icon_state {
+    fill: #fff;
+}
+
+#map .model-green .state .label_state {
+    fill: #666;
+}
+
+#map .model-green .state:hover .shape,
+#map .model-green .state.hover .shape {
+    fill: #2d68b2;
+}
+
+#map .model-green .state:hover .icon_state,
+#map .model-green .state.hover .icon_state {
+    fill: #5a95ce;
+}
+
+#map .model-orange .state .shape {
+    fill: #fd7132;
+}
+
+#map .model-orange .state .icon_state {
+    fill: #6cb361;
+}
+
+#map .model-orange .state .label_icon_state {
+    fill: #fff;
+}
+
+#map .model-orange .state .label_state {
+    fill: #666;
+}
+
+#map .model-orange .state:hover .shape,
+#map .model-orange .state.hover .shape {
+    fill: #c93f04;
+}
+
+#map .model-orange .state:hover .icon_state,
+#map .model-orange .state.hover .icon_state {
+    fill: #10592f;
+}
+
+#map .model-darkgreen .state .shape {
+    fill: #366823;
+}
+
+#map .model-darkgreen .state .icon_state {
+    fill: #2779c6;
+}
+
+#map .model-darkgreen .state .label_icon_state {
+    fill: #fff;
+}
+
+#map .model-darkgreen .state .label_state {
+    fill: #666;
+}
+
+#map .model-darkgreen .state:hover .shape,
+#map .model-darkgreen .state.hover .shape {
+    fill: #4a8c31;
+}
+
+#map .model-darkgreen .state:hover .icon_state,
+#map .model-darkgreen .state.hover .icon_state {
+    fill: #5a95ce;
+}
