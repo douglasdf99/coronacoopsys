@@ -203,7 +203,56 @@ select {
     background-color: #78C7C9;
     border: unset;
     outline: unset;
+    position: relative;
+    appearance: none;
+    -moz-appearance: window;
+    -webkit-appearance: none;
 }
+
+select.browser-default {
+    background-image: url(../images/seta-select.png);
+    background-position: 100%;
+    cursor: pointer;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition-duration: .3s;
+}
+
+select.browser-default:focus {
+    background-image: url(../images/seta-select-2.png);
+    transition-duration: .3s;
+}
+
+select.browser-default option {
+    padding: 1rem;
+    font-size: 1rem;
+    color: #1C205C;
+}
+
+select.browser-default option:focus {
+    background-color: white;
+    padding: 1rem;
+    font-size: 1rem;
+    color: #1C205C;
+}
+
+.div-select {
+    margin-left: 5%;
+    width: 100%;
+    position: relative;
+}
+
+/*.div-select:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url("../images/seta-select.png");
+    background-repeat: no-repeat;
+    -webkit-background-size: contain;
+    background-size: contain;: ;
+}*/
 
 select:focus {
     outline: none;
@@ -311,6 +360,12 @@ option {
     margin-left: 5%;
 }
 
+.row-footer {
+    color: #6783c182;
+    width: 100%;
+    padding: 2rem 0 0;
+    border-top: 2px solid #6783c182;
+}
 
 /* Mapa */
 

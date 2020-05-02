@@ -1,37 +1,6 @@
 @include('front.head')
 <div class="geral-header header-2">
-    <div class="container py-2">
-        <div class="row">
-            <div class="col l10 m8 s12 offset-l1">
-                <div class="menu nav-wrapper">
-                    <div class="row mb-0 align-items-center">
-                        <div class="col l8">
-                            <ul class="left-align">
-                                <li>Início</li>
-                                <li>Sobre</li>
-                                <li>Pesquisar</li>
-                                <li>Contato</li>
-                            </ul>
-                        </div>
-                        <div class="col l4">
-                            <div class="area-cadastrar">
-                                <span>É uma Cooperativa?</span>
-                                <a href="#">Cadastre-se</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col l5 m5 s12">
-                <h1 class="titulo">Coopera<strong>Brasil</strong></h1>
-                <p class="proposta">
-                    Promovendo negócios entre cooperativas brasileiras neste novo cenário.
-                </p>
-            </div>
-        </div>
-    </div>
+    <menu-front></menu-front>
 </div>
 <div class="div-geral-1">
     <div class="container">
