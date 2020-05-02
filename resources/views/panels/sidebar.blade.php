@@ -14,6 +14,22 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+          <li class="navigation-header">
+            <span>Confgurações</span>
+          </li>
+
+          <li class="nav-item {{ Request::is('admin/usuarios*') ? 'active' : '' }}">
+            <a href="{!! route('usuarios.index') !!}">
+              <i class="feather icon-user"></i>
+              <span class="menu-title" data-i18n="nav.page_user_profile">Usuários</span>
+            </a>
+          </li>
+          <li class="nav-item {{ Request::is('admin/ramos*') ? 'active' : '' }}">
+            <a href="{!! route('ramos.index') !!}">
+              <i class="feather icon-grid"></i>
+              <span class="menu-title" data-i18n="nav.page_user_profile">Ramos</span>
+            </a>
+          </li>
             {{-- Foreach menu item starts --}}
             @foreach($menuData[0]->menu as $menu)
                 @if(isset($menu->navheader))

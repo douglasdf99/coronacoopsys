@@ -32,3 +32,8 @@ Route::group([
 
 });
 
+
+
+Route::resource('users', 'UserAPIController');
+
+Route::resource('ramos', 'RamoAPIController');

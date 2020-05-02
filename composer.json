@@ -8,11 +8,10 @@
     ],
     "license": "MIT",
     "require": {
-       
-        "guzzlehttp/guzzle": "^6.3",
         "php": "^7.2",
         "doctrine/dbal": "^2.10",
         "fideloper/proxy": "^4.0",
+        "guzzlehttp/guzzle": "^6.3",
         "infyomlabs/adminlte-templates": "6.0.x-dev",
         "infyomlabs/laravel-generator": "6.0.x-dev",
         "laravel/framework": "^6.2",

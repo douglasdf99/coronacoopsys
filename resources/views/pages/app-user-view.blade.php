@@ -13,54 +13,7 @@
   <div class="row">
     <!-- account start -->
     <div class="col-12">
-      <div class="card">
-        <div class="card-body">
-          <div class="card-title">Account</div>
-          <div class="row">
-            <div class="col-2 users-view-image">
-              <img src="{{ asset('images/portrait/small/avatar-s-12.jpg') }}" class="w-100 rounded mb-2"
-                alt="avatar">
-              <!-- height="150" width="150" -->
-            </div>
-            <div class="col-sm-4 col-12">
-              <table>
-                <tr>
-                  <td class="font-weight-bold">Username</td>
-                  <td>adoptionism744</td>
-                </tr>
-                <tr>
-                  <td class="font-weight-bold">Name</td>
-                  <td>Angelo Sashington</td>
-                </tr>
-                <tr>
-                  <td class="font-weight-bold">Email</td>
-                  <td>angelo@sashington.com</td>
-                </tr>
-              </table>
-            </div>
-            <div class="col-md-6 col-12 ">
-              <table class="ml-0 ml-sm-0 ml-lg-0">
-                <tr>
-                  <td class="font-weight-bold">Status</td>
-                  <td>active</td>
-                </tr>
-                <tr>
-                  <td class="font-weight-bold">Role</td>
-                  <td>admin</td>
-                </tr>
-                <tr>
-                  <td class="font-weight-bold">Company</td>
-                  <td>WinDon Technologies Pvt Ltd</td>
-                </tr>
-              </table>
-            </div>
-            <div class="col-12">
-              <a href="app-user-edit" class="btn btn-primary mr-1"><i class="feather icon-edit-1"></i> Edit</a>
-              <button class="btn btn-outline-danger"><i class="feather icon-trash-2"></i> Delete</button>
-            </div>
-          </div>
-        </div>
-      </div>
+
     </div>
     <!-- account end -->
     <!-- information start -->

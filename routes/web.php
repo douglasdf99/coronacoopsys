@@ -19,6 +19,10 @@ Route::middleware([ 'middleware' => 'auth'])->prefix('admin')->group(function ()
 
   // Route Dashboards
   Route::get('/dashboard-analytics', 'DashboardController@dashboardAnalytics');
+
+
+  Route::resource('usuarios', 'UserController');
+  Route::resource('ramos', 'RamoController');
 });
 
 
@@ -160,3 +164,5 @@ Route::get('/ext-component-i18n', 'ExtensionController@i18n');
 Auth::routes();
 
 Route::post('/login/validate', 'Auth\LoginController@validate_api');
+
+

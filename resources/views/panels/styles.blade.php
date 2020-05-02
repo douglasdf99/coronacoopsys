@@ -1,6 +1,8 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600">
         <link rel="stylesheet" href="{{ asset(mix('vendors/css/vendors.min.css')) }}">
         <link rel="stylesheet" href="{{ asset(mix('vendors/css/ui/prism.min.css')) }}">
+        <link rel="stylesheet" href="https://unpkg.com/placeholder-loading/dist/css/placeholder-loading.min.css">
+
         {{-- Vendor Styles --}}
         @yield('vendor-style')
         {{-- Theme Styles --}}
@@ -10,6 +12,9 @@
         <link rel="stylesheet" href="{{ asset(mix('css/components.css')) }}">
         <link rel="stylesheet" href="{{ asset(mix('css/themes/dark-layout.css')) }}">
         <link rel="stylesheet" href="{{ asset(mix('css/themes/semi-dark-layout.css')) }}">
+        <!-- vendor css files -->
+        <link rel="stylesheet" href="{{ asset(mix('vendors/css/animate/animate.css')) }}">
+        <link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/sweetalert2.min.css')) }}">
 {{-- {!! Helper::applClasses() !!} --}}
 @php
 $configData = Helper::applClasses();
