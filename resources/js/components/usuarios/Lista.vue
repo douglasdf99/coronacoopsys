@@ -237,6 +237,14 @@
                 this.$modal.hide('demo-login');
             },
             getProjects(url = '/api/users') {
+              Swal.fire({
+                title: 'Carregando...',
+                html: '',
+                showConfirmButton: false,
+                onBeforeOpen: () => {
+                  Swal.showLoading()
+                },
+              });
                 this.preloader = true;
                 this.tableData.draw++;
                 this.tableData.page= this.pagination.current_page;
@@ -256,7 +264,7 @@
                     .catch(errors => {
                         console.log(errors);
                     })
-                    .finally(() => this.showpreloader = false);
+                    .finally(() => Swal.close());
             },
             getUsuario(usu) {
                 this.usuario = usu;

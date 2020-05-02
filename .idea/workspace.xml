@@ -1,49 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c3cdbd0-b40c-4f8a-b442-2f1aa704db63" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/pagination/Datatable.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/pagination/Pagination.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/pagination/PreloaderComponent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/ramos/Lista.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/ramos/Listabackup.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/ramos/ModalCreate.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/ramos/ModalEditar.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/ramos/ModalExcluir.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/usuarios/Lista.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/usuarios/Listabackup.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/usuarios/ModalCreate.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/usuarios/ModalEditar.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/usuarios/ModalExcluir.vue" afterDir="false" />
+    <list default="true" id="2c3cdbd0-b40c-4f8a-b442-2f1aa704db63" name="Default Changelist" comment="crud usuario e ramos ok 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Products.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/verticalLayoutMaster.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/verticalLayoutMaster.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/app-user-view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/app-user-view.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/panels/breadcrumb.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/panels/breadcrumb.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/panels/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/panels/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/panels/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/panels/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/RamoRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/RamoRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/ramos/Lista.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ramos/Lista.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/usuarios/Lista.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/usuarios/Lista.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/panels/scripts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/panels/scripts.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/panels/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/panels/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/panels/styles.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/panels/styles.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ramos/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ramos/index.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,10 +23,41 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/ramos/Lista.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3408">
-              <caret line="198" column="17" selection-start-line="191" selection-start-column="14" selection-end-line="198" selection-end-column="17" />
+            <state relative-caret-position="193">
+              <caret line="166" column="14" selection-start-line="166" selection-start-column="14" selection-end-line="173" selection-end-column="17" />
               <folding>
-                <element signature="e#10536#11373#0" />
+                <element signature="e#8784#9727#0" />
+                <element signature="e#10778#11187#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/panels/scripts.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="48">
+              <caret line="2" column="81" selection-start-line="2" selection-start-column="81" selection-end-line="2" selection-end-column="81" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/API/RamoAPIController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="211">
+              <caret line="36" column="27" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Repositories/RamoRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+              <folding>
+                <element signature="e#36#56#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -89,11 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="432">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="e#277#298#0" expanded="true" />
               </folding>
@@ -102,35 +97,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/ramos/index.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-276">
+              <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/usuarios/Lista.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="792">
-              <caret line="111" selection-start-line="111" selection-end-line="111" />
+            <state relative-caret-position="293">
+              <caret line="266" column="47" selection-start-line="266" selection-start-column="47" selection-end-line="266" selection-end-column="47" />
               <folding>
                 <element signature="e#7829#7867#0" expanded="true" />
                 <element signature="e#10024#10131#0" />
-                <element signature="e#10536#11373#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/ramos/ModalEditar.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="134" column="17" selection-start-line="127" selection-start-column="14" selection-end-line="134" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="68" column="100" selection-start-line="68" selection-start-column="100" selection-end-line="68" selection-end-column="100" />
-              <folding>
-                <element signature="e#2252#3125#0#HTML" />
               </folding>
             </state>
           </provider>
@@ -177,8 +159,8 @@
       <find>formatDate</find>
       <find>mome</find>
       <find>mom</find>
-      <find>users</find>
       <find>moment</find>
+      <find>users</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -211,28 +193,28 @@
         <option value="$PROJECT_DIR$/app/Models/User.php" />
         <option value="$PROJECT_DIR$/resources/views/panels/navbar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/panels/styles.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/panels/scripts.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/components/usuarios/ModalCreate.vue" />
         <option value="$PROJECT_DIR$/resources/views/panels/footer.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/verticalLayoutMaster.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/panels/breadcrumb.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/users/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/ramos/index.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/panels/sidebar.blade.php" />
-        <option value="$PROJECT_DIR$/app/Repositories/RamoRepository.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/API/RamoAPIController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/ramos/ModalCreate.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/ramos/ModalEditar.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/ramos/Lista.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/usuarios/ModalEditar.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/usuarios/ModalExcluir.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/ramos/ModalExcluir.vue" />
         <option value="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/usuarios/Lista.vue" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/resources/js/app.js" />
+        <option value="$PROJECT_DIR$/resources/views/ramos/index.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/API/RamoAPIController.php" />
+        <option value="$PROJECT_DIR$/app/Repositories/RamoRepository.php" />
+        <option value="$PROJECT_DIR$/resources/views/panels/scripts.blade.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/ramos/Lista.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/usuarios/Lista.vue" />
       </list>
     </option>
   </component>
@@ -371,6 +353,65 @@
               <item name="coop" type="b2602c69:ProjectViewProjectNode" />
               <item name="coop" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="coop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="coop" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="coop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="coop" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="coop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="coop" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="coop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="coop" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="coop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="coop" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="ramos" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="coop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="coop" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="usuarios" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="coop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="coop" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="coop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="coop" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="panels" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="coop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="coop" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="ramos" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -432,7 +473,7 @@
       <updated>1588121847649</updated>
       <workItem from="1588121848770" duration="4103000" />
       <workItem from="1588337421528" duration="4663000" />
-      <workItem from="1588343397049" duration="32689000" />
+      <workItem from="1588343397049" duration="34197000" />
     </task>
     <task id="LOCAL-00001" summary="primeiro commit login meio e rotas ok e banco setado">
       <created>1588344232855</created>
@@ -448,17 +489,31 @@
       <option name="project" value="LOCAL" />
       <updated>1588355786827</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="crud usuario e ramos ok">
+      <created>1588383660591</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1588383660591</updated>
+    </task>
+    <task id="LOCAL-00004" summary="crud usuario e ramos ok 2">
+      <created>1588384285207</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1588384285207</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41455000" />
+    <option name="totallyTimeSpent" value="42963000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2553305" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2553305" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -474,7 +529,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5021322" side_tool="true" weight="0.32998884" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.4978678" visible="true" weight="0.32998884" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4978678" visible="true" weight="0.32998884" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -510,7 +565,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="primeiro commit login meio e rotas ok e banco setado" />
     <MESSAGE value="vue js implementado no front" />
-    <option name="LAST_COMMIT_MESSAGE" value="vue js implementado no front" />
+    <MESSAGE value="crud usuario e ramos ok" />
+    <MESSAGE value="crud usuario e ramos ok 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="crud usuario e ramos ok 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -639,13 +696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/panels/scripts.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="3" column="81" selection-start-line="3" selection-start-column="81" selection-end-line="3" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/usuarios/ModalCreate.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="552">
@@ -716,13 +766,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/ramos/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/panels/submenu.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -758,16 +801,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Repositories/RamoRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="7" column="50" selection-start-line="7" selection-start-column="50" selection-end-line="7" selection-end-column="50" />
-          <folding>
-            <element signature="e#36#56#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/API/UserAPIController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="283">
@@ -775,13 +808,6 @@
           <folding>
             <element signature="e#44#91#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/API/RamoAPIController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="852">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
         </state>
       </provider>
     </entry>
@@ -839,16 +865,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/ramos/Lista.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3408">
-          <caret line="198" column="17" selection-start-line="191" selection-start-column="14" selection-end-line="198" selection-end-column="17" />
-          <folding>
-            <element signature="e#10536#11373#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/ramos/ModalExcluir.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -893,24 +909,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/usuarios/Lista.vue">
+    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="111" selection-start-line="111" selection-end-line="111" />
+        <state relative-caret-position="432">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
           <folding>
-            <element signature="e#7829#7867#0" expanded="true" />
-            <element signature="e#10024#10131#0" />
-            <element signature="e#10536#11373#0" />
+            <element signature="e#277#298#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
+    <entry file="file://$PROJECT_DIR$/resources/views/ramos/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-276">
+          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/API/RamoAPIController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="36" column="27" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Repositories/RamoRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+          <folding>
+            <element signature="e#36#56#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/panels/scripts.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="81" selection-start-line="2" selection-start-column="81" selection-end-line="2" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/ramos/Lista.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <caret line="166" column="14" selection-start-line="166" selection-start-column="14" selection-end-line="173" selection-end-column="17" />
           <folding>
-            <element signature="e#277#298#0" expanded="true" />
+            <element signature="e#8784#9727#0" />
+            <element signature="e#10778#11187#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/usuarios/Lista.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="266" column="47" selection-start-line="266" selection-start-column="47" selection-end-line="266" selection-end-column="47" />
+          <folding>
+            <element signature="e#7829#7867#0" expanded="true" />
+            <element signature="e#10024#10131#0" />
           </folding>
         </state>
       </provider>

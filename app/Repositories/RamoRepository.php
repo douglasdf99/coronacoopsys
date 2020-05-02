@@ -20,7 +20,7 @@ class RamoRepository extends BaseRepository implements CacheableInterface {
      * @var array
      */
     protected $fieldSearchable = [
-        'descricao'
+        'descricao'=> 'like'
     ];
 
     /**
