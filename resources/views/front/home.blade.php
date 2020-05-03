@@ -5,9 +5,15 @@
     </div>
     <home></home>
 </div>
+<script src="{{asset('front/assets/js/materialize.min.js')}}"></script>
 @include('front.footer')
 <script>
-    $('.dropdown-trigger').dropdown();
+    $(document).ready(function () {
+        $('.dropdown-trigger').dropdown();
+        $('input.autocomplete').autocomplete({
+            data: self.produtos,
+        });
+    });
 
     function highlight_map_states() {
         if ($(".states_section").length > 0) {
