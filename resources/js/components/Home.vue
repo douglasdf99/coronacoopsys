@@ -54,12 +54,13 @@
                             <div class="div-select">
                                 <label for="ramo" class="label">Qual o ramo?</label>
                                 <select name="ramo" id="ramo" class="browser-default" v-model="pesquisa.ramo">
-                                    <option v-for="ramo in ramos" v-bind:value="ramo.id">{{ramo.descricao}}</option>
+                                    <option selected="selected" value="">...</option>
+                                    <option v-for="ramo in ramos" v-bind:value="ramo.descricao">{{ramo.descricao}}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col l12 align-items-center">
-                            <span class="numero">3</span>
+                            <span class="numero">4</span>
                             <div class="div-select input-field">
                                 <!--<label for="ramo" class="label">De qual produto/serviço você precisa??</label>
                                 <select name="ramo" id="ramo" class="browser-default" v-model="pesquisa.produto">
@@ -68,6 +69,11 @@
                                 <input type="text" id="autocomplete-input" v-model="pesquisa.produto" class="autocomplete">
                                 <label for="autocomplete-input">De qual produto/serviço você precisa?</label>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <button class="btn btn-success btn-buscar" @click="buscar">Buscar</button>
                         </div>
                     </div>
                 </div>
@@ -89,16 +95,16 @@
                 estados: estados,
                 cidades: cidades,
                 ramos: [],
-                produtos: [],
                 cidadesFiltradas: [],
                 pesquisa: {
                     estado: '',
                     cidade: '',
-                    ramo: {},
-                    produto: {}
+                    ramo: '',
+                    produto: ''
                 }
             }
         },
+        props: ['produtos'],
         created() {
             this.getRamos();
             let self = this;
@@ -123,7 +129,29 @@
                     console.log(response)
                     this.ramos = response.data.data;
                 })
+            },
+            buscar(){
+                let dados = {
+                    search: {...this.pesquisa}
+                };
+                axios.get('/api/coops', {params: dados}).then(response => {
+                    console.log('pesquisa', response)
+                    //this.ramos = response.data.data;
+                })
             }
+        },
+        updated() {
+            let self = this;
+            let data = [];
+            this.produtos.forEach((item, key) => {
+                data[item.descricao] = null
+            });
+            const dados = {...data}
+            $(document).ready(function () {
+                $('input.autocomplete').autocomplete({
+                    data: dados
+                });
+            });
         }
     }
 </script>

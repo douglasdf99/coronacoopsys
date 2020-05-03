@@ -34,8 +34,6 @@
 </template>
 <script>
     export default {
-
-
         created() {
         },
         data() {
@@ -44,12 +42,16 @@
             }
         },
         methods: {
-
         },
         computed: {
         },
     };
 </script>
+<style scoped>
+    @media (max-width: 768px){
+        .menu {display: none}
+    }
+</style>
 
 
 
