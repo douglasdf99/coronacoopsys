@@ -243,18 +243,6 @@ select.browser-default option:focus {
     position: relative;
 }
 
-/*.div-select:after {
-    content: '';
-    position: absolute;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    background-image: url("../images/seta-select.png");
-    background-repeat: no-repeat;
-    -webkit-background-size: contain;
-    background-size: contain;: ;
-}*/
-
 select:focus {
     outline: none;
 }
@@ -268,18 +256,6 @@ label {
 option {
     background: white;
     color: black;
-}
-
-.dropdown-button {
-    position: absolute;
-    right: 0;
-    height: 95%;
-    font-size: 2rem;
-    font-weight: 700;
-    border-bottom-right-radius: 8px;
-    border-top-right-radius: 8px;
-    background-color: #1C205C;
-    transition-duration: .3s;
 }
 
 .row-resultado {
@@ -366,6 +342,19 @@ option {
     width: 100%;
     padding: 2rem 0 0;
     border-top: 2px solid #6783c182;
+}
+
+.btn-buscar {
+    float: right;
+    background-color: #6784C1;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 5px;
+}
+
+.input-field>label {
+    font-size: 1.3rem;
+    color: #1c205c;
 }
 
 /* Mapa */
@@ -480,4 +469,16 @@ option {
 #map .model-darkgreen .state:hover .icon_state,
 #map .model-darkgreen .state.hover .icon_state {
     fill: #5a95ce;
+}
+
+
+@media (max-width: 768px) {
+    .header-1 {
+        background-image: url("../images/bg-header-1-m.png");
+    }
+
+    .geral-header {
+        height: 100%;
+        background-color: #6784C1;
+    }
 }

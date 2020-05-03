@@ -3,17 +3,13 @@
     <div class="geral-header header-1">
         <menu-front></menu-front>
     </div>
-    <home></home>
+    <home :produtos="{{$produtos}}"></home>
 </div>
-<script src="{{asset('front/assets/js/materialize.min.js')}}"></script>
 @include('front.footer')
+<script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('front/assets/js/materialize.min.js')}}"></script>
 <script>
-    $(document).ready(function () {
-        $('.dropdown-trigger').dropdown();
-        $('input.autocomplete').autocomplete({
-            data: self.produtos,
-        });
-    });
+    $('.dropdown-trigger').dropdown();
 
     function highlight_map_states() {
         if ($(".states_section").length > 0) {
@@ -27,6 +23,4 @@
         }
     };
 </script>
-<script src="{{asset('js/app.js')}}"></script>
-
 </body>
