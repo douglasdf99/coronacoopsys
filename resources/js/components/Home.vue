@@ -53,18 +53,20 @@
                             <span class="numero">3</span>
                             <div class="div-select">
                                 <label for="ramo" class="label">Qual o ramo?</label>
-                                <select name="ramo" id="ramo" class="browser-default">
-                                    <option value="teste">Teste</option>
+                                <select name="ramo" id="ramo" class="browser-default" v-model="pesquisa.ramo">
+                                    <option v-for="ramo in ramos" v-bind:value="ramo.id">{{ramo.descricao}}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col l12 align-items-center">
-                            <span class="numero">4</span>
-                            <div class="div-select">
-                                <label for="produto" class="label">De qual produto/serviço você precisa?</label>
-                                <select name="produto" id="produto" class="browser-default">
-                                    <option value="teste">Teste</option>
-                                </select>
+                            <span class="numero">3</span>
+                            <div class="div-select input-field">
+                                <!--<label for="ramo" class="label">De qual produto/serviço você precisa??</label>
+                                <select name="ramo" id="ramo" class="browser-default" v-model="pesquisa.produto">
+                                    <option v-for="produto in produtos" v-bind:value="produto.descricao">{{produto.descricao}}</option>
+                                </select>-->
+                                <input type="text" id="autocomplete-input" v-model="pesquisa.produto" class="autocomplete">
+                                <label for="autocomplete-input">De qual produto/serviço você precisa?</label>
                             </div>
                         </div>
                     </div>
@@ -87,6 +89,7 @@
                 estados: estados,
                 cidades: cidades,
                 ramos: [],
+                produtos: [],
                 cidadesFiltradas: [],
                 pesquisa: {
                     estado: '',
@@ -98,6 +101,7 @@
         },
         created() {
             this.getRamos();
+            let self = this;
         },
         methods: {
             getCidades() {
@@ -117,6 +121,7 @@
             getRamos(){
                 axios.get('/api/ramos').then(response => {
                     console.log(response)
+                    this.ramos = response.data.data;
                 })
             }
         }
