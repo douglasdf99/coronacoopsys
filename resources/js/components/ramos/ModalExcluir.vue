@@ -8,7 +8,7 @@
            :adaptive="true"
            :scrollable="true"
            :reset="true"
-           width="40%"
+           :width="widht"
            height="auto"
            @before-open="beforeOpen"
            @opened="opened"
@@ -77,7 +77,15 @@
         computed: {
             uploadDisabled() {
                 return this.files.length === 0;
+            },
+          widht(){
+            if (window.innerWidth > 500) {
+              return window.innerWidth * 0.4;
             }
+            else{
+              return window.innerWidth * 0.8;
+            }
+          }
 
         },
         methods: {

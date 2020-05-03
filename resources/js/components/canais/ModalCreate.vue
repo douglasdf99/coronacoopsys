@@ -2,7 +2,8 @@
     <modal name="demo-login"
            transition="nice-modal-fade"
            classes="demo-modal-class"
-           min-height="200"
+           :min-width="200"
+           :min-height="200"
            :pivot-y="0.5"
            :adaptive="true"
            :scrollable="true"
@@ -20,7 +21,7 @@
                         <div class="col-xl-10">
                             <!-- Pricing Title-->
                             <div class="text-center mb-3">
-                                <h3 class="mb-2">Criar <b>Usuário</b></h3>
+                                <h3 class="mb-2">Criar <b>Canal</b></h3>
                             </div>
                             <div class="botaofechar">
                                 <button class="btn btn-primary" @click="fechar">x</button>
@@ -29,67 +30,13 @@
                             <div class="text-left mt-0">
                                 <form id="editaitem" enctype="multipart/form-data" @submit="checkForm"
                                       class="parsley-examples" autocomplete="off">
-                                    <div class="invalid-feedback d-block" v-if="errors.avatar">
-                                        {{errors.avatar[0]}}
+                                <div class="invalid-feedback  d-block" :class="{'has-error': errors.descricao}" v-if="errors.descricao">
+                                        {{errors.descricao[0]}}
                                     </div>
-                                    <div class="uploader"
-                                         @dragenter="OnDragEnter"
-                                         @dragleave="OnDragLeave"
-                                         @dragover.prevent
-                                         @drop="onDrop"
-                                         :class="{ dragging: isDragging ,'has-error': errors.avatar}">
-                                        <div v-show="!images.length">
-                                            <i class="fa fa-cloud-upload"></i>
-                                            <p>Arraste para aqui</p>
-                                            <div>OU</div>
-                                            <div class="file-input">
-                                                <label for="file">Selecione o Avatar</label>
-                                                <input type="file" id="file" @change="onInputChange">
-                                            </div>
-                                        </div>
-                                        <div class="images-preview justify-content-center align-items-center d-flex"
-                                             v-show="images.length">
-                                            <div class="img-wrapper" v-for="(image, index) in images" :key="index">
-                                                <img :src="image" :alt="`Image Uplaoder ${index}`"
-                                                     class="img-fluid rounded-circle" width="120">
-                                                <div class="details justify-content-center align-items-center d-flex">
-                                                    <span class="name" v-text="files[index].name"></span>
-                                                    <span class="size" v-text="getFileSize(files[index].size)"></span>
-                                                    <div class="upload-control">
-                                                        <label for="file">Alterar Arquivo</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" id="id" name="id" value="4">
-                                    <input type="hidden" value="1">
-                                <div class="invalid-feedback  d-block" :class="{'has-error': errors.name}" v-if="errors.name">
-                                        {{errors.name[0]}}
-                                    </div>
-                                    <div class="form-group mb-3" :class="{'has-error': errors.name}" >
-                                        <label for="name">Nome completo:</label>
-                                        <input required="required" v-model="name" name="name" type="text" id="name"
+                                    <div class="form-group mb-3" :class="{'has-error': errors.descricao}" >
+                                        <label for="name">Descrição do Ramo:</label>
+                                        <input required="required" v-model="descricao" name="name" type="text" id="name"
                                                class="form-control" autocomplete="off">
-                                    </div>
-                                    <div class="invalid-feedback d-block" v-if="errors.email">
-                                        {{errors.email[0]}}
-                                    </div>
-                                    <div class="form-group mb-3" :class="{'has-error': errors.email}">
-                                        <label for="email">Email:</label>
-                                        <input required="required" v-model="email" name="email" type="email" id="email"
-                                               class="form-control">
-                                    </div>
-                                    <div class="invalid-feedback d-block" v-if="errors.password">
-                                        {{errors.password[0]}}
-                                    </div>
-                                    <div class="form-group mb-3" :class="{'has-error': errors.password}">
-                                        <label for="senha">Senha:</label>
-                                        <input name="senha" v-model="password" type="password" id="senha"
-                                               class="form-control" autocomplete="new-password">
-                                    </div>
-                                    <div class="invalid-feedback d-block" v-if="errors.role_id">
-                                        {{errors.role_id[0]}}
                                     </div>
                                     <!-- Submit Field -->
                                     <div class="form-group d-flex float-right">
@@ -112,7 +59,7 @@
         name: 'SizeModalTest',
         data() {
             return {
-                name: null,
+              descricao: null,
                 email: null,
                 password: '',
                 role_id: null,
@@ -129,19 +76,19 @@
 
             }
         },
-        computed: {
-            uploadDisabled() {
-                return this.files.length === 0;
-            },
-            widht(){
-              if (window.innerWidth > 500) {
-                return window.innerWidth * 0.4;
-              }
-              else{
-                return window.innerWidth * 0.8;
-              }
-            }
+      computed: {
+        uploadDisabled() {
+          return this.files.length === 0;
         },
+        widht(){
+          if (window.innerWidth > 500) {
+            return window.innerWidth * 0.4;
+          }
+          else{
+            return window.innerWidth * 0.8;
+          }
+        }
+      },
         methods: {
             beforeOpen(event) {
 
@@ -168,85 +115,27 @@
                 console.log('closed', e)
             },
             limpaform() {
-                this.files = [];
-                this.images = [];
-                this.name = null;
-                this.email = null;
-                this.password = '';
-                this.role_id = null;
-                this.errors = {}
-                console.log('limpa');
+                this.descricao = null;
             },
             fechar() {
                 this.stop = 0;
                 this.$modal.hide('demo-login')
             },
-            OnDragEnter(e) {
-                e.preventDefault();
-                this.dragCount++;
-                this.isDragging = true;
-                return false;
-            },
-            OnDragLeave(e) {
-                e.preventDefault();
-                this.dragCount--;
-                if (this.dragCount <= 0)
-                    this.isDragging = false;
-            },
-            onInputChange(e) {
-                const files = e.target.files;
-                Array.from(files).forEach(file => this.addImage(file));
-            },
-            onDrop(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                this.isDragging = false;
-                const files = e.dataTransfer.files;
-                Array.from(files).forEach(file => this.addImage(file));
-            },
-            addImage(file) {
-                this.files.pop();
-                console.log(file.type);
-                if (!file.type.match('image.*')) {
-                    this.$toastr.e(`${file.name} is not an image`);
-                    return;
-                }
-                this.files.push(file);
-                const img = new Image(),
-                    reader = new FileReader();
-                this.images.pop();
-                reader.onload = (e) => this.images.push(e.target.result);
-                reader.readAsDataURL(file);
-            },
-            getFileSize(size) {
-                const fSExt = ['Bytes', 'KB', 'MB', 'GB'];
-                let i = 0;
 
-                while (size > 900) {
-                    size /= 1024;
-                    i++;
-                }
-                return `${(Math.round(size * 100) / 100)} ${fSExt[i]}`;
-            },
             checkForm(e) {
                 e.preventDefault();
                 const formData = new FormData();
               Swal.fire({
-                title: 'Criando Usuário!',
-                html: 'Aguarde enquanto o usuário é editado',
+                title: 'Criando Canal!',
+                html: 'Aguarde enquanto o canal é criado',
                 showConfirmButton: false,
                 onBeforeOpen: () => {
                   Swal.showLoading()
                 },
               });
-                this.files.forEach(file => {
-                    formData.append('avatar', file, file.name);
-                });
-                formData.append('name', this.name);
-                formData.append('email', this.email);
-                formData.append('password', this.password);
+                formData.append('descricao', this.descricao);
 
-                axios.post('/api/users', formData)
+                axios.post('/api/canais', formData)
                     .then(response => {
                         this.error =0;
                         console.log(response)

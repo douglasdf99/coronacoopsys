@@ -5,16 +5,16 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row mb-2 row-sm-reverse ">
+                        <div class="row mb-2 ">
                             <div class="col-sm-8">
-                                <form class="form-inline">
-                                  <div class="input-group">
+                                <span class="form-inline">
+                                  <div class="input-group  w-100">
                                     <input type="text" class="form-control" v-model="tableData.search" placeholder="Buscar ramos" aria-describedby="button-addon2">
                                     <div class="input-group-append" id="button-addon2">
                                       <button class="btn btn-primary" type="button" @click="getProjects()">Bucar</button>
                                     </div>
                                   </div>
-                                </form>
+                                </span>
                             </div>
                             <div class="col-sm-4">
                                 <div class="text-sm-right">
@@ -51,7 +51,7 @@
                         <div class="card-box mb-2" v-if="!pagination.total">
                             <div class="row justify-content-center">
                                 <div class="rapper text-center">
-                                    <img class="img-responsive" src="/uploads/not-found.gif"/>
+                                  <img class="img-responsive" :src="url_redirect('images/nenhum-resultado.svg')" width="200px"/>
                                     <br>
                                     <h2>Nenhum Ramo Encontrado</h2>
                                 </div>

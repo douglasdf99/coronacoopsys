@@ -20,7 +20,7 @@
                                 <div class="text-sm-right">
                                     <a href="#" @click="showCriar()" class="btn btn-danger waves-effect waves-light mb-2"
                                        data-animation="fadein" data-plugin="custommodal" data-overlayColor="#38414a">
-                                        <i class="mdi mdi-plus-circle mr-1"></i> Add Usuário
+                                        <i class="mdi mdi-plus-circle mr-1"></i> Adicionar
                                     </a>
                                 </div>
                             </div><!-- end col-->
@@ -30,25 +30,31 @@
                             <table class="table table-centered table-hover mb-0" v-if="pagination.total">
                                 <thead>
                                 <tr>
-                                    <th>Nome</th>
-                                    <th>Email</th>
+                                    <th>Logo/Razão</th>
+                                    <th>CNPJ</th>
+                                    <th>tipo</th>
+                                    <th>email</th>
                                     <th style="width: 82px;">Ações</th>
                                 </tr>
                                 </thead>
                                 <tbody v-for="project in projects" :key="project.id">
                                 <tr @click="getUsuario(project)">
                                     <td class=" d-flex justify-content-center align-items-center" >
-
                                         <div class="col-4">
                                           <div class="avatar ">
-                                            <img v-bind:src="url_redirect(project.avatar)" alt="avtar img holder" height="32"
+                                            <img v-bind:src="url_redirect(project.logo)" alt="avtar img holder" height="32"
                                                  width="32">
                                           </div>
                                         </div>
                                         <div class="col-8">
-                                          <a href="javascript:void(0);" class=" text-body font-weight-semibold">{{project.name}}</a>
+                                          <a href="javascript:void(0);" class=" text-body font-weight-semibold">{{project.razao}}</a>
                                         </div>
-
+                                    </td>
+                                    <td>
+                                        {{project.cnpj}}
+                                    </td>
+                                    <td>
+                                        {{project.matriz}}
                                     </td>
                                     <td>
                                         {{project.email}}
@@ -57,7 +63,6 @@
                                       <a href="javascript:void(0);" @click="showEditar(project.id)" ><i class="users-edit-icon feather icon-edit-1 mr-50"></i> </a>
                                       <a href="javascript:void(0);" @click="showExcluir(project.id)" ><i class="users-delete-icon feather icon-trash-2"></i> </a>
                                     </td>
-
                                 </tr>
                                 </tbody>
                             </table>
@@ -66,9 +71,9 @@
                         <div class="card-box mb-2" v-if="!pagination.total">
                             <div class="row justify-content-center">
                                 <div class="rapper text-center">
-                                    <img class="img-responsive" :src="url_redirect('images/nenhum-resultado.svg')" width="200px"/>
+                                  <img class="img-responsive" :src="url_redirect('images/nenhum-resultado.svg')" width="200px"/>
                                     <br>
-                                    <h2>Nenhum Usuário Encontrado</h2>
+                                    <h2>Nenhuma Cooperativa encontrada</h2>
                                 </div>
                             </div> <!-- end row -->
                         </div>
@@ -85,22 +90,58 @@
             <div class="col-xl-4">
               <div class="card" v-if="usuario">
                 <div class="card-body overflow-auto">
-                  <div class="card-title">Detalhamento</div>
+                  <div class="card-title">Detalhamento simples</div>
                   <div class="row">
-                    <div class="col-12 users-view-image d-flex justify-content-center align-items-center">
-                      <img v-bind:src="url_redirect(usuario.avatar)" class="rounded mb-2" style="width:200px"
-                           alt="avatar">
+                    <div class="col-12 ">
+                      <div class="media mb-2">
+                        <a class="mr-2 my-25" href="#">
+                          <img :src="url_redirect('images/portrait/small/avatar-s-12.jpg')"  alt="users avatar"
+                               class="users-avatar-shadow rounded" height="64" width="64">
+                        </a>
+                        <div class="media-body mt-50">
+
+                          <h6 class="media-heading">Incluído em: {{usuario.created_at | formatDate}}</h6>
+                          <h6 class="media-heading">Status: {{usuario.ativo}}</h6>
+                          <div class="col-12 d-flex mt-1 px-0">
+                            <a href="#" class="btn btn-primary d-none d-sm-block mr-75"><i
+                              class="feather icon-settings"></i> Gerenciar</a>
+                            <a href="#" class="btn btn-primary d-block d-sm-none mr-75"><i
+                              class="feather icon-settings"></i></a>
+                          </div>
+                        </div>
+                      </div>
                       <!-- height="150" width="150" -->
                     </div>
                     <div class="col-12">
+                      <div class="divider"><div class="divider-text">Informações Principais </div></div>
                       <table>
                         <tr>
-                          <td class="font-weight-bold">Nome:</td>
-                          <td>{{usuario.name}}</td>
+                          <td class="font-weight-bold">Razão:</td>
+                          <td>{{usuario.razao}}</td>
+                        </tr>
+                        <tr>
+                          <td class="font-weight-bold">CNPJ:</td>
+                          <td>{{usuario.cnpj}}</td>
                         </tr>
                         <tr>
                           <td class="font-weight-bold">Email:</td>
                           <td>{{usuario.email}}</td>
+                        </tr>
+                        <tr>
+                          <td class="font-weight-bold">Tipo:</td>
+                          <td>{{usuario.matriz}}</td>
+                        </tr>
+                        <tr>
+                          <td class="font-weight-bold">Site:</td>
+                          <td>{{usuario.site}}</td>
+                        </tr>
+                        <tr>
+                          <td class="font-weight-bold">Telefone:</td>
+                          <td>{{usuario.telefone}}</td>
+                        </tr>
+                        <tr>
+                          <td class="font-weight-bold">Whatsapp:</td>
+                          <td>{{usuario.whatsapp}}</td>
                         </tr>
                         <tr>
                           <td class="font-weight-bold">Criado em:</td>
@@ -109,7 +150,25 @@
                       </table>
                     </div>
                     <div class="col-12">
-
+                      <div class="divider"><div class="divider-text">Gerais </div></div>
+                      <table>
+                        <tr>
+                          <td class="font-weight-bold">Compatilhamento de dados?</td>
+                          <td>{{usuario.compartilhamento}}</td>
+                        </tr>
+                        <tr>
+                          <td class="font-weight-bold">Quer vender?</td>
+                          <td>{{usuario.sell}}</td>
+                        </tr>
+                        <tr>
+                          <td class="font-weight-bold">Ramo:</td>
+                          <td>{{usuario.ramo_id}}</td>
+                        </tr>
+                        <tr>
+                          <td class="font-weight-bold">Cátalogo:</td>
+                          <td>{{usuario.catalogo}}</td>
+                        </tr>
+                      </table>
                     </div>
                   </div>
                 </div>
@@ -236,7 +295,7 @@
             hide() {
                 this.$modal.hide('demo-login');
             },
-            getProjects(url = '/api/users') {
+            getProjects(url = '/api/coops') {
               Swal.fire({
                 title: 'Carregando...',
                 html: '',
@@ -279,7 +338,7 @@
                 },
               });
                 this.usuarioEditar = '';
-                axios.get('/api/users/' + id, {params: this.tableData})
+                axios.get('/api/coops/' + id, {params: this.tableData})
                     .then(response => {
                         console.log(response.data);
                         let data = response.data;

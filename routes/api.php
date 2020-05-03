@@ -37,3 +37,9 @@ Route::group([
 Route::resource('users', 'UserAPIController');
 
 Route::resource('ramos', 'RamoAPIController');
+
+Route::resource('produtos', 'ProdutoAPIController');
+
+Route::resource('coops', 'CoopAPIController');
+
+Route::resource('canais', 'CanaisAPIController');

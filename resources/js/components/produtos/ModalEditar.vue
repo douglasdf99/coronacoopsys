@@ -1,5 +1,5 @@
 <template>
-    <modal name="demo-login"
+    <modal name="ramo-editar"
            transition="nice-modal-fade"
            classes="demo-modal-class"
            :min-width="200"
@@ -21,7 +21,7 @@
                         <div class="col-xl-10">
                             <!-- Pricing Title-->
                             <div class="text-center mb-3">
-                                <h3 class="mb-2">Criar <b>Ramo</b></h3>
+                                <h3 class="mb-2">Editar <b>Produto</b></h3>
                             </div>
                             <div class="botaofechar">
                                 <button class="btn btn-primary" @click="fechar">x</button>
@@ -30,18 +30,19 @@
                             <div class="text-left mt-0">
                                 <form id="editaitem" enctype="multipart/form-data" @submit="checkForm"
                                       class="parsley-examples" autocomplete="off">
-                                <div class="invalid-feedback  d-block" :class="{'has-error': errors.descricao}" v-if="errors.descricao">
+                                    <div class="invalid-feedback d-block" v-if="errors.descricao">
                                         {{errors.descricao[0]}}
                                     </div>
-                                    <div class="form-group mb-3" :class="{'has-error': errors.descricao}" >
-                                        <label for="name">Descrição do Ramo:</label>
-                                        <input required="required" v-model="descricao" name="name" type="text" id="name"
+                                    <div class="form-group mb-3">
+                                        <label for="name">Descrição:</label>
+                                        <input required="required" v-model="ramo.descricao" name="name" type="text"
+                                               id="name"
                                                class="form-control" autocomplete="off">
                                     </div>
                                     <!-- Submit Field -->
                                     <div class="form-group d-flex float-right">
                                         <a @click="fechar" class="btn btn-light">Cancelar</a>
-                                        <button type="submit" class="btn btn-primary">Criar</button>
+                                        <button type="submit" class="btn btn-primary">Salvar</button>
                                     </div>
                                 </form>
                             </div>
@@ -56,12 +57,13 @@
 </template>
 <script>
     export default {
+        props: ['ramo', 'client', 'filtered'],
         name: 'SizeModalTest',
         data() {
             return {
-              descricao: null,
+                descricao: null,
                 email: null,
-                password: '',
+                password: null,
                 role_id: null,
                 roles: [],
                 isDragging: false,
@@ -71,9 +73,8 @@
                 images: [],
                 paragraphs: [true],
                 timer: null,
-                errors:{},
-                error:0
-
+                errors: {},
+                error: 0
             }
         },
       computed: {
@@ -90,6 +91,9 @@
         }
       },
         methods: {
+            carregaimagem() {
+                this.files.length === 1;
+            },
             beforeOpen(event) {
 
             },
@@ -104,8 +108,8 @@
                 }
             },
             opened(e) {
+
                 this.stop = 1;
-                this.limpaform();
                 // e.ref should not be undefined here
                 console.log('opened', e)
                 console.log('ref', e.ref)
@@ -115,29 +119,35 @@
                 console.log('closed', e)
             },
             limpaform() {
+
                 this.descricao = null;
+
+                console.log('limpa');
             },
             fechar() {
                 this.stop = 0;
-                this.$modal.hide('demo-login')
+                this.$modal.hide('ramo-editar')
             },
 
-            checkForm(e) {
+            checkForm: function (e) {
                 e.preventDefault();
-                const formData = new FormData();
+                const formData2 = new FormData();
               Swal.fire({
-                title: 'Criando Ramo!',
-                html: 'Aguarde enquanto o ramo é editado',
+                title: 'Editando Produto!',
+                html: 'Aguarde enquanto o produto é editado',
                 showConfirmButton: false,
                 onBeforeOpen: () => {
                   Swal.showLoading()
                 },
               });
-                formData.append('descricao', this.descricao);
 
-                axios.post('/api/ramos', formData)
+
+                formData2.append('_method', 'PUT');
+                formData2.append('descricao', this.ramo.descricao);
+                console.log(formData2);
+                axios.post(`/api/produtos/${this.ramo.id}`, formData2)
                     .then(response => {
-                        this.error =0;
+                        this.error = 0;
                         console.log(response)
                       Swal.fire({
                         title: 'Sucesso!',
@@ -146,29 +156,27 @@
                         showConfirmButton: false,
                         timer: 1500
                       });
-                    })
-                  .catch(errors => {
+                    }).catch(errors => {
                     this.error = 1;
-                        console.log('erros',errors.response.data.errors);
-                        this.errors = errors.response.data.errors;
-                        console.log( this.errors);
-                    Swal.fire({
-                      title: 'Algo deu errado!',
-                      text: '',
-                      type: 'error',
-                      showConfirmButton: false,
-                      timer: 1500
-                    });
-                    })
+                    console.log('erros', errors.response.data.errors);
+                    this.errors = errors.response.data.errors;
+                    console.log(this.errors);
+                      Swal.fire({
+                        title: 'Algo deu errado!',
+                        text: '',
+                        type: 'error',
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                })
                     .finally(response => {
                         console.log(response);
-                        if ( this.error == 0) {
+                        if (this.error == 0) {
                             this.fechar()
                             this.$emit('paginate');
                         }
                     });
             },
-
         }
     }
 </script>

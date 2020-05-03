@@ -102,12 +102,14 @@ span, p {
 }
 
 .menu {
+  font-family: "Nunito", sans-serif;
     margin: 7rem 0 2rem;
     background-color: rgba(97, 125, 185, 0.68);
     border-radius: 25px;
     list-style: none;
     padding: 0.8rem 1.5rem;
     box-shadow: 0 6px 6px #0000002e;
+  font-size: 13px;
 }
 
 .menu ul {
@@ -117,7 +119,6 @@ span, p {
 .menu ul li {
     display: inline;
     color: white;
-    font-family: "Nunito", sans-serif;
     font-weight: 600;
     text-transform: uppercase;
     margin: 0 .5rem;
@@ -184,7 +185,7 @@ h2 {
 .span-pesquise {
     font-size: 2rem;
     color: #1C205C;
-    font-weight: 800;
+    font-weight: 600;
 }
 
 .numero {

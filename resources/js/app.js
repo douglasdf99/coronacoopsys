@@ -55,6 +55,9 @@ Vue.component('home', require('./components/Home.vue').default);
 Vue.component('menu-front', require('./components/Menu.vue').default);
 Vue.component('usuarios-lista', require('./components/usuarios/Lista.vue').default);
 Vue.component('ramos-lista', require('./components/ramos/Lista.vue').default);
+Vue.component('produtos-lista', require('./components/produtos/Lista.vue').default);
+Vue.component('coops-lista', require('./components/coops/Lista.vue').default);
+Vue.component('canais-lista', require('./components/canais/Lista.vue').default);
 
 
 /**

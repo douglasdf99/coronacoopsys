@@ -23,6 +23,9 @@ Route::middleware([ 'middleware' => 'auth'])->prefix('admin')->group(function ()
 
   Route::resource('usuarios', 'UserController');
   Route::resource('ramos', 'RamoController');
+  Route::resource('produtos', 'ProdutoController');
+  Route::resource('coops', 'CoopController');
+  Route::resource('canais', 'CanaisController');
 });
 
 
@@ -164,5 +167,9 @@ Route::get('/ext-component-i18n', 'ExtensionController@i18n');
 Auth::routes();
 
 Route::post('/login/validate', 'Auth\LoginController@validate_api');
+
+
+
+
 
 
