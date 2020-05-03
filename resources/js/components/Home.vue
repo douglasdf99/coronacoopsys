@@ -145,7 +145,7 @@
                         'coopProdutos.produto.descricao': this.pesquisa.produto
                     }
                 };
-                axios.get('/api/coops', {params: dados}).then(response => {
+                axios.get(`/api/pesquisa?search=ramo.descricao:${this.pesquisa.ramo};coopProdutos.produto.descricao:${this.pesquisa.produto};cidade=${this.pesquisa.cidade};estado=${this.pesquisa.estado}`).then(response => {
                     console.log('pesquisa', response)
                     //this.ramos = response.data.data;
                 })

@@ -43,6 +43,15 @@ class CoopAPIController extends AppBaseController
         return $this->sendResponse($coops->toArray(), 'Coops retrieved successfully');
     }
 
+    public function pesquisa(Request $request)
+    {
+        $this->coopRepository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
+        $query = $this->coopRepository->with(['ramo', 'coopProdutos.produto']);
+        $coops = $query->paginate($limit = 10, $columns = ['*']);
+
+        return $this->sendResponse($coops->toArray(), 'Coops retrieved successfully');
+    }
+
     /**
      * Store a newly created Coop in storage.
      * POST /coops

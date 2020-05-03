@@ -20,11 +20,7 @@ class CoopRepository extends BaseRepository implements CacheableInterface {
      */
     protected $fieldSearchable = [
         'cnpj' => 'like',
-        'estado' => 'like',
-        'cidade' => 'like',
         'razao' => 'like',
-        'matriz',
-        'site',
         'email'=> 'like',
         'ramo.descricao',
         'coopProdutos.produto.descricao'
