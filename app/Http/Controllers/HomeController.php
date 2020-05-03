@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\ProdutoRepository;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,10 +12,11 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-
-    }
+  private $produtoRepository;
+  public function __construct(ProdutoRepository $produtoRepo)
+  {
+    $this->produtoRepository = $produtoRepo;
+  }
 
     /**
      * Show the application dashboard.
@@ -23,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('front.home');
+      $produtos = $this->produtoRepository->all();
+        return view('front.home') ->with('produtos', $produtos);
     }
 }
