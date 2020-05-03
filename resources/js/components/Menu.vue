@@ -21,27 +21,26 @@
                     </div>
                 </div>
                 <div class="menu-mobile">
-                    <ul id="slide-out" class="sidenav">
-                        <li><div class="user-view">
-                            <div class="background">
-                                <img src="images/office.jpg">
-                            </div>
-                            <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
-                            <a href="#name"><span class="white-text name">John Doe</span></a>
-                            <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-                        </div></li>
-                        <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-                        <li><a href="#!">Second Link</a></li>
-                        <li><div class="divider"></div></li>
-                        <li><a class="subheader">Subheader</a></li>
-                        <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-                    </ul>
-                    <a href="#" data-target="slide-out" class="sidenav-trigger" style="float: right"><i class="material-icons menu-icon">menu</i></a>
+                    <div id="slide-out" class="sidenav sidenav-mobile">
+                        <ul>
+                            <i class="material-icons close-btn-sidenav sidenav-close">close</i>
+                            <li>Início</li>
+                            <li>Sobre</li>
+                            <li>Pesquisar</li>
+                            <li style="border-bottom: unset">Conta</li>
+                        </ul>
+                        <p style="text-align: center; font-size: 1rem; text-transform: initial;" class="mb-0">
+                            É uma cooperativa? <br>
+                            <a href="#" class="btn-small btn-cadastre-mobile">CADASTRE-SE</a>
+                        </p>
+                    </div>
+                    <a href="#" data-target="slide-out" class="sidenav-trigger" style="float: right"><i
+                            class="material-icons menu-icon">menu</i></a>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col l5 m5 s12">
+            <div class="col l5 m5 s12 col-titulo">
                 <h1 class="titulo">Coopera<strong>Brasil</strong></h1>
                 <p class="proposta">
                     Promovendo negócios entre cooperativas brasileiras neste novo cenário.
@@ -59,10 +58,8 @@
                 name: ''
             }
         },
-        methods: {
-        },
-        computed: {
-        },
+        methods: {},
+        computed: {},
     };
 </script>
 

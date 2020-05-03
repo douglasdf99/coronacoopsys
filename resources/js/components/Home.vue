@@ -18,7 +18,7 @@
             </div>
             <hr class="divisor">
             <div class="row">
-                <div class="col l6 m12 s12">
+                <div class="col l6 m12 s12 hide-on-small-only">
                     <!--<img src="assets/images/mapa.svg" alt="">-->
                     <mapa @getCidades="getCidadesMapa"></mapa>
                 </div>
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col l12 align-items-center">
+                        <div class="col s12 align-items-center">
                             <span class="numero">1</span>
                             <div class="div-select">
                                 <label for="estado" class="label">Selecione o seu estado</label>
@@ -42,7 +42,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col l12 align-items-center">
+                        <div class="col s12 align-items-center">
                             <span class="numero">2</span>
                             <div class="div-select">
                                 <label for="cidade" class="label">Selecione a sua cidade</label>
@@ -54,7 +54,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col l12 align-items-center">
+                        <div class="col s12 align-items-center">
                             <span class="numero">3</span>
                             <div class="div-select">
                                 <label for="ramo" class="label">Qual o ramo?</label>
@@ -65,7 +65,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col l12 align-items-center">
+                        <div class="col s12 align-items-center">
                             <span class="numero">4</span>
                             <div class="div-select input-field">
                                 <!--<label for="ramo" class="label">De qual produto/serviço você precisa??</label>

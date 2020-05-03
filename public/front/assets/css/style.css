@@ -114,7 +114,45 @@ span, p {
 
 .menu-mobile {
     display: none;
-    //margin: .5rem 0 13rem;
+    margin-top: .5rem;
+}
+
+.sidenav-mobile {
+    width: 100vw;
+    padding: 4rem 2rem !important;
+    background-color: #1C205C;
+    color: white;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-family: "Nunito", sans-serif;
+    text-align: right;
+    background-image: url("../images/footer-menu.svg");
+    background-repeat: no-repeat;
+    background-position: 0 90vh;
+    background-size: contain;
+}
+
+.close-btn-sidenav {
+    color: white;
+    margin-bottom: 2rem;
+    font-size: 3.5rem !important;
+}
+
+.sidenav-mobile li {
+    border-bottom: 1px solid #78C7C9;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.sidenav-mobile ul {
+    margin-bottom: 2rem;
+}
+
+.btn-cadastre-mobile {
+    background-color: #78C7C9;
+    color: #1C205C;
+    border-radius: 26px;
+    margin-top: 1rem;
 }
 
 .menu-icon {
@@ -169,7 +207,7 @@ h2 {
     font-family: "Nunito", sans-serif;
     font-weight: 700;
     color: #1C205C;
-    line-height: 1.5;
+    line-height: 1.2;
     padding: 0 4rem;
 }
 
@@ -486,6 +524,23 @@ option {
         background-image: url("../images/bg-header-1-m.png");
     }
 
+    .col-titulo {
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 3rem !important;
+    }
+
+    h2 {
+        padding: 0;
+        font-size: 2.5rem !important;
+    }
+
+    .input-field label {
+        font-size: 1.2rem;
+    }
+
     .geral-header {
         height: 100%;
         background-color: #6784C1;
@@ -497,10 +552,13 @@ option {
 
     .menu-mobile {
         display: block;
-        margin-top: .5rem;
     }
 
     .col-menu {
         height: 30vh;
+    }
+
+    #map {
+        zoom: 75%;
     }
 }
