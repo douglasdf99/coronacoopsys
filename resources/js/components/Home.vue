@@ -33,9 +33,12 @@
                             <span class="numero">1</span>
                             <div class="div-select">
                                 <label for="estado" class="label">Selecione o seu estado</label>
-                                <select v-model="pesquisa.estado" name="estado" id="estado" class="browser-default" @change="getCidades()">
+                                <select v-model="pesquisa.estado" name="estado" id="estado" class="browser-default"
+                                        @change="getCidades()">
                                     <option selected="selected" value="">...</option>
-                                    <option v-for="estado in estados" v-bind:value="estado.ID">{{estado.Nome}} / {{estado.Sigla}}</option>
+                                    <option v-for="estado in estados" v-bind:value="estado.ID">{{estado.Nome}} /
+                                        {{estado.Sigla}}
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -43,9 +46,11 @@
                             <span class="numero">2</span>
                             <div class="div-select">
                                 <label for="cidade" class="label">Selecione a sua cidade</label>
-                                <select name="cidade" id="cidade" class="browser-default">
+                                <select name="cidade" id="cidade" class="browser-default" v-model="pesquisa.cidade">
                                     <option selected="selected" value="">...</option>
-                                    <option v-for="cidade in cidadesFiltradas" v-bind:value="cidade.ID">{{cidade.Nome}}</option>
+                                    <option v-for="cidade in cidadesFiltradas" v-bind:value="cidade.ID">
+                                        {{cidade.Nome}}
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -55,7 +60,8 @@
                                 <label for="ramo" class="label">Qual o ramo?</label>
                                 <select name="ramo" id="ramo" class="browser-default" v-model="pesquisa.ramo">
                                     <option selected="selected" value="">...</option>
-                                    <option v-for="ramo in ramos" v-bind:value="ramo.descricao">{{ramo.descricao}}</option>
+                                    <option v-for="ramo in ramos" v-bind:value="ramo.descricao">{{ramo.descricao}}
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -66,7 +72,7 @@
                                 <select name="ramo" id="ramo" class="browser-default" v-model="pesquisa.produto">
                                     <option v-for="produto in produtos" v-bind:value="produto.descricao">{{produto.descricao}}</option>
                                 </select>-->
-                                <input type="text" id="autocomplete-input" v-model="pesquisa.produto" class="autocomplete">
+                                <input type="text" id="autocomplete-input" class="autocomplete">
                                 <label for="autocomplete-input">De qual produto/serviço você precisa?</label>
                             </div>
                         </div>
@@ -114,7 +120,7 @@
                 this.pesquisa.cidade = '';
                 this.cidadesFiltradas = [];
                 this.cidades.forEach(item => {
-                    if(item.Estado == this.pesquisa.estado)
+                    if (item.Estado == this.pesquisa.estado)
                         this.cidadesFiltradas.push(item);
                 });
                 console.log(this.cidadesFiltradas);
@@ -124,15 +130,20 @@
                 this.pesquisa.estado = estado;
                 this.getCidades();
             },
-            getRamos(){
+            getRamos() {
                 axios.get('/api/ramos').then(response => {
                     console.log(response)
                     this.ramos = response.data.data;
                 })
             },
-            buscar(){
+            buscar() {
                 let dados = {
-                    search: {...this.pesquisa}
+                    search: {
+                        estado: this.pesquisa.estado,
+                        cidade: this.pesquisa.cidade,
+                        'ramo.descricao': this.pesquisa.ramo,
+                        'coopProdutos.produto.descricao': this.pesquisa.produto
+                    }
                 };
                 axios.get('/api/coops', {params: dados}).then(response => {
                     console.log('pesquisa', response)
@@ -149,7 +160,11 @@
             const dados = {...data}
             $(document).ready(function () {
                 $('input.autocomplete').autocomplete({
-                    data: dados
+                    data: dados,
+                    onAutocomplete() {
+                        self.pesquisa.produto = $('#autocomplete-input').val();
+                        console.log(self.pesquisa.produto)
+                    }
                 });
             });
         }

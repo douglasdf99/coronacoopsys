@@ -10,6 +10,7 @@
 <script src="{{asset('front/assets/js/materialize.min.js')}}"></script>
 <script>
     $('.dropdown-trigger').dropdown();
+    $('.sidenav').sidenav();
 
     function highlight_map_states() {
         if ($(".states_section").length > 0) {

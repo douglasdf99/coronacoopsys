@@ -102,14 +102,23 @@ span, p {
 }
 
 .menu {
-  font-family: "Nunito", sans-serif;
+    font-family: "Nunito", sans-serif;
     margin: 7rem 0 2rem;
     background-color: rgba(97, 125, 185, 0.68);
     border-radius: 25px;
     list-style: none;
     padding: 0.8rem 1.5rem;
     box-shadow: 0 6px 6px #0000002e;
-  font-size: 13px;
+    font-size: 13px;
+}
+
+.menu-mobile {
+    display: none;
+    //margin: .5rem 0 13rem;
+}
+
+.menu-icon {
+    font-size: 3rem !important;
 }
 
 .menu ul {
@@ -352,7 +361,7 @@ option {
     border-radius: 5px;
 }
 
-.input-field>label {
+.input-field > label {
     font-size: 1.3rem;
     color: #1c205c;
 }
@@ -480,5 +489,18 @@ option {
     .geral-header {
         height: 100%;
         background-color: #6784C1;
+    }
+
+    .menu {
+        display: none
+    }
+
+    .menu-mobile {
+        display: block;
+        margin-top: .5rem;
+    }
+
+    .col-menu {
+        height: 30vh;
     }
 }
