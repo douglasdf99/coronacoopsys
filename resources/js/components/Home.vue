@@ -110,13 +110,20 @@
                                                     <p class="area">
                                                         Tipos de entrega
                                                     </p>
+                                                    <div class="row">
+                                                        <div class="col l3 m4 s4" v-for="canal in result.coop_canais">
+                                                            <p class="detalhe">
+                                                                {{canal.canai.descricao}}
+                                                            </p>
+                                                        </div>
+                                                    </div>
                                                     <p class="area">
                                                         Produtos comercializados
                                                     </p>
                                                     <div class="row">
                                                         <div class="col l3 m4 s4" v-for="prod in result.coop_produtos">
                                                             <p class="detalhe">
-                                                                {{prod.produto.descricao}}
+                                                                {{prod.descricao}}
                                                             </p>
                                                         </div>
                                                     </div>
@@ -134,13 +141,13 @@
                                                                 </div>
                                                             </div>
                                                             <div class="row">
-                                                                <div class="col s4">
+                                                                <div class="col s6">
                                                                     <p class="detalhe">
                                                                         <i class="material-icons">email</i>
                                                                         {{result.email}}
                                                                     </p>
                                                                 </div>
-                                                                <div class="col s4">
+                                                                <div class="col s6">
                                                                     <p class="detalhe">
                                                                         <i class="material-icons">language</i>
                                                                         {{result.site}}
@@ -151,7 +158,7 @@
                                                                 <div class="col s12">
                                                                     <p class="detalhe">
                                                                         <i class="material-icons">location_on</i>
-                                                                        Endereço aqui
+                                                                        {{result.endereco}}
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -360,39 +367,38 @@
                 };
                 let url = '/api/pesquisa?search=';
                 let attr = 0;
-                if (this.pesquisa.ramo != ''){
+                if (this.pesquisa.ramo != '') {
 
-                  url += 'ramo.descricao:' + this.pesquisa.ramo ;
-                  attr++;
+                    url += 'ramo.descricao:' + this.pesquisa.ramo;
+                    attr++;
                 }
-                if (this.pesquisa.produto != ''){
-                  if (attr>0) {
-                    url +=';';
-                  }
-                  url +=  'coopProdutos.produto.descricao:' + this.pesquisa.produto ;
-                  attr++;
-                }
-
-                if (this.pesquisa.estado != ''){
-                  if (attr>0) {
-                    url +=';';
-                  }
-                  url += 'estado:' + this.pesquisa.estado;
-                  attr++;
-                }
-                if (this.pesquisa.cidade != ''){
-                  if (attr>0) {
-                    url +=';';
-                  }
-                  url += 'cidade:' + this.pesquisa.cidade ;
-                  attr++;
-                }
-                if (attr> 1) {
-                  url += '&searchJoin=and';
-                }else{
-                  attr= 0;
+                if (this.pesquisa.produto != '') {
+                    if (attr > 0) {
+                        url += ';';
+                    }
+                    url += 'coopProdutos.produto.descricao:' + this.pesquisa.produto;
+                    attr++;
                 }
 
+                if (this.pesquisa.estado != '') {
+                    if (attr > 0) {
+                        url += ';';
+                    }
+                    url += 'estado:' + this.pesquisa.estado;
+                    attr++;
+                }
+                if (this.pesquisa.cidade != '') {
+                    if (attr > 0) {
+                        url += ';';
+                    }
+                    url += 'cidade:' + this.pesquisa.cidade;
+                    attr++;
+                }
+                if (attr > 1) {
+                    url += '&searchJoin=and';
+                } else {
+                    attr = 0;
+                }
 
 
                 axios.get(url).then(response => {
