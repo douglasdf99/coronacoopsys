@@ -359,19 +359,41 @@
                     }
                 };
                 let url = '/api/pesquisa?search=';
-                if (this.pesquisa.ramo)
-                    url += 'ramo.descricao:' + this.pesquisa.ramo + ';';
+                let attr = 0;
+                if (this.pesquisa.ramo != ''){
 
-                if (this.pesquisa.produto)
-                    url += 'coopProdutos.produto.descricao:' + this.pesquisa.produto + ';';
+                  url += 'ramo.descricao:' + this.pesquisa.ramo ;
+                  attr++;
+                }
+                if (this.pesquisa.produto != ''){
+                  if (attr>0) {
+                    url +=';';
+                  }
+                  url +=  'coopProdutos.produto.descricao:' + this.pesquisa.produto ;
+                  attr++;
+                }
 
-                if (this.pesquisa.estado)
-                    url += 'estado:' + this.pesquisa.estado + ';';
+                if (this.pesquisa.estado != ''){
+                  if (attr>0) {
+                    url +=';';
+                  }
+                  url += 'estado:' + this.pesquisa.estado;
+                  attr++;
+                }
+                if (this.pesquisa.cidade != ''){
+                  if (attr>0) {
+                    url +=';';
+                  }
+                  url += 'cidade:' + this.pesquisa.cidade ;
+                  attr++;
+                }
+                if (attr> 1) {
+                  url += '&searchJoin=and';
+                }else{
+                  attr= 0;
+                }
 
-                if (this.pesquisa.cidade)
-                    url += 'cidade:' + this.pesquisa.cidade + ';';
 
-                url += '&searchJoin=and';
 
                 axios.get(url).then(response => {
                     console.log('pesquisa', response)
