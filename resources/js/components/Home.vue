@@ -76,7 +76,7 @@
                                                          width="80" class="hide-on-large-only">
                                                 </div>
                                                 <div class="col s6">
-                                                    <p class="nome-cooperativa">NOME DA COOPERATIVA</p>
+                                                    <p class="nome-cooperativa">{{result.razao.substring(0, 70)}}</p>
                                                     <p class="area hide-on-med-and-down">
                                                         Área de atuação
                                                     </p>
@@ -97,7 +97,7 @@
                                                     </div>
                                                     <p class="area">
                                                         Produto:
-                                                        <span class="span-produto">Café</span>
+                                                        <span class="span-produto">{{pesquisa.produto}}</span>
                                                     </p>
                                                 </div>
                                                 <div class="col s2 right-align">
