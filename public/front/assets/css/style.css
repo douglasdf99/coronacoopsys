@@ -385,10 +385,19 @@ option {
 }
 
 .row-footer {
-    color: #6783c182;
+    color: #6784C1;
     width: 100%;
     padding: 2rem 0 0;
     border-top: 2px solid #6783c182;
+}
+
+.row-footer a {
+    color: #6784C1;
+}
+
+.row-footer i {
+    margin: 0 1rem;
+    font-size: 1.5rem;
 }
 
 .btn-buscar {

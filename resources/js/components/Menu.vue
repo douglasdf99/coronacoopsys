@@ -7,8 +7,8 @@
                         <div class="col l8">
                             <ul class="left-align">
                                 <li>Início</li>
-                                <li>Sobre</li>
-                                <li>Pesquisar</li>
+                                <!--<li>Sobre</li>
+                                <li>Pesquisar</li>-->
                                 <li>Contato</li>
                             </ul>
                         </div>
@@ -25,8 +25,8 @@
                         <ul>
                             <i class="material-icons close-btn-sidenav sidenav-close">close</i>
                             <li>Início</li>
-                            <li>Sobre</li>
-                            <li>Pesquisar</li>
+                            <!--<li>Sobre</li>
+                            <li>Pesquisar</li>-->
                             <li style="border-bottom: unset">Conta</li>
                         </ul>
                         <p style="text-align: center; font-size: 1rem; text-transform: initial;" class="mb-0">

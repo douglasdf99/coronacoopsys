@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col l6 m12 s12 hide-on-small-only">
                     <!--<img src="assets/images/mapa.svg" alt="">-->
-                    <mapa @getCidades="getCidadesMapa"></mapa>
+                    <mapa @getCidades="getCidadesMapa" :estado="pesquisa.estado"></mapa>
                 </div>
                 <div class="col l6 m12 s12">
                     <div class="row">
@@ -68,12 +68,13 @@
                         <div class="col s12 align-items-center">
                             <span class="numero">4</span>
                             <div class="div-select input-field">
-                                <!--<label for="ramo" class="label">De qual produto/serviço você precisa??</label>
-                                <select name="ramo" id="ramo" class="browser-default" v-model="pesquisa.produto">
+                                <label for="produto" class="label">De qual produto/serviço você precisa??</label>
+                                <select name="produto" id="produto" class="browser-default" v-model="pesquisa.produto">
+                                    <option selected="selected" value="">...</option>
                                     <option v-for="produto in produtos" v-bind:value="produto.descricao">{{produto.descricao}}</option>
-                                </select>-->
-                                <input type="text" id="autocomplete-input" class="autocomplete">
-                                <label for="autocomplete-input">De qual produto/serviço você precisa?</label>
+                                </select>
+                                <!--<input type="text" id="autocomplete-input" class="autocomplete">
+                                <label for="autocomplete-input">De qual produto/serviço você precisa?</label>-->
                             </div>
                         </div>
                     </div>
@@ -158,7 +159,7 @@
                 data[item.descricao] = null
             });
             const dados = {...data}
-            $(document).ready(function () {
+            /*$(document).ready(function () {
                 $('input.autocomplete').autocomplete({
                     data: dados,
                     onAutocomplete() {
@@ -166,7 +167,7 @@
                         console.log(self.pesquisa.produto)
                     }
                 });
-            });
+            });*/
         }
     }
 </script>
