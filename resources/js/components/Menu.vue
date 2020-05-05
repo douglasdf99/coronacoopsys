@@ -6,7 +6,7 @@
                     <div class="row mb-0 align-items-center">
                         <div class="col l8">
                             <ul class="left-align">
-                                <li>Início</li>
+                                <li><a href="#" @click="inicio">Início</a></li>
                                 <!--<li>Sobre</li>
                                 <li>Pesquisar</li>-->
                                 <li>Contato</li>
@@ -24,10 +24,10 @@
                     <div id="slide-out" class="sidenav sidenav-mobile">
                         <ul>
                             <i class="material-icons close-btn-sidenav sidenav-close">close</i>
-                            <li>Início</li>
+                            <li><a href="#" @click="inicio">Início</a></li>
                             <!--<li>Sobre</li>
                             <li>Pesquisar</li>-->
-                            <li style="border-bottom: unset">Conta</li>
+                            <li style="border-bottom: unset">Contato</li>
                         </ul>
                         <p style="text-align: center; font-size: 1rem; text-transform: initial;" class="mb-0">
                             É uma cooperativa? <br>
@@ -58,7 +58,13 @@
                 name: ''
             }
         },
-        methods: {},
+        methods: {
+            inicio() {
+                localStorage.removeItem('pesquisa');
+                localStorage.removeItem('resultado');
+                location.reload();
+            }
+        },
         computed: {},
     };
 </script>

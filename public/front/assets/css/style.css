@@ -395,6 +395,11 @@ option {
     color: #6784C1;
 }
 
+.menu a {
+    color: white;
+    text-decoration: none;
+}
+
 .row-footer i {
     margin: 0 1rem;
     font-size: 1.5rem;
@@ -411,6 +416,28 @@ option {
 .input-field > label {
     font-size: 1.3rem;
     color: #1c205c;
+}
+
+.inputs-resultado label, .inputs-resultado select {
+    font-size: 1rem;
+}
+
+.span-produto {
+    background-color: #6784C1;
+    border-radius: 5px;
+    color: white;
+    padding: .2rem 1rem;
+}
+
+.detalhe {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    color: #1C205C;
+}
+
+.detalhe i {
+    margin-right: .5rem;
 }
 
 /* Mapa */

@@ -52,6 +52,7 @@ Vue.component('pagination', require('./components/pagination/Pagination.vue').de
 Vue.component('preloader', require('./components/pagination/PreloaderComponent.vue').default);
 
 Vue.component('home', require('./components/Home.vue').default);
+Vue.component('resultado', require('./components/Resultado.vue').default);
 Vue.component('menu-front', require('./components/Menu.vue').default);
 Vue.component('usuarios-lista', require('./components/usuarios/Lista.vue').default);
 Vue.component('ramos-lista', require('./components/ramos/Lista.vue').default);

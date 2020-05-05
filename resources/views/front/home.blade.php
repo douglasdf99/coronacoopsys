@@ -1,8 +1,5 @@
 @include('front.head')
 <div id="app">
-    <div class="geral-header header-1">
-        <menu-front></menu-front>
-    </div>
     <home :produtos="{{$produtos}}"></home>
 </div>
 @include('front.footer')
@@ -11,6 +8,7 @@
 <script>
     $('.dropdown-trigger').dropdown();
     $('.sidenav').sidenav();
+    $('.collapsible').collapsible();
 
     function highlight_map_states() {
         if ($(".states_section").length > 0) {
