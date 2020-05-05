@@ -335,10 +335,11 @@ option {
     color: #6784C1;
 }
 
-.div-produto {
+.div-produto  li{
     border-bottom: 2px solid #6784c17d;
     border-right: 2px solid #6784c17d;
     border-radius: 8px;
+  margin-bottom: 20px;
 }
 
 .div-checkbox {
