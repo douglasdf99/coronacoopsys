@@ -136,12 +136,14 @@
                                                             <div class="row">
                                                                 <div class="col s4">
                                                                     <p class="detalhe">
-                                                                        <i class="material-icons">email</i> {{result.email}}
+                                                                        <i class="material-icons">email</i>
+                                                                        {{result.email}}
                                                                     </p>
                                                                 </div>
                                                                 <div class="col s4">
                                                                     <p class="detalhe">
-                                                                        <i class="material-icons">language</i> {{result.site}}
+                                                                        <i class="material-icons">language</i>
+                                                                        {{result.site}}
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -356,7 +358,22 @@
                         'coopProdutos.produto.descricao': this.pesquisa.produto
                     }
                 };
-                axios.get(`/api/pesquisa?search=ramo.descricao:${this.pesquisa.ramo};coopProdutos.produto.descricao:${this.pesquisa.produto};cidade=${this.pesquisa.cidade};estado=${this.pesquisa.estado}&searchJoin=and`).then(response => {
+                let url = '/api/pesquisa?search=';
+                if (this.pesquisa.ramo)
+                    url += 'ramo.descricao:' + this.pesquisa.ramo + ';';
+
+                if (this.pesquisa.produto)
+                    url += 'coopProdutos.produto.descricao:' + this.pesquisa.produto + ';';
+
+                if (this.pesquisa.estado)
+                    url += 'estado:' + this.pesquisa.estado + ';';
+
+                if (this.pesquisa.cidade)
+                    url += 'cidade:' + this.pesquisa.cidade + ';';
+
+                url += '&searchJoin=and';
+
+                axios.get(url).then(response => {
                     console.log('pesquisa', response)
                     localStorage.setItem('resultado', JSON.stringify(response.data.data))
                     localStorage.setItem('pesquisa', JSON.stringify(this.pesquisa))
