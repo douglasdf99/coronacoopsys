@@ -448,7 +448,7 @@ $(window).on("load", function () {
     scrollTo: true
   })
 
-  // tour steps
+/*  // tour steps
   tour.addStep('step-1', {
     text: 'Toggle Collapse Sidebar.',
     attachTo: '.modern-nav-toggle .collapse-toggle-icon bottom',
@@ -543,7 +543,7 @@ $(window).on("load", function () {
         action: tour.complete
       },
     ]
-  });
+  });*/
 
   if ($(window).width() > 1200 && !$("body").hasClass("menu-collapsed")) {
     tour.start()

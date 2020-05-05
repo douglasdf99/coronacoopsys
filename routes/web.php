@@ -15,7 +15,7 @@
 Route::get('/', 'HomeController@index');
 
 Route::middleware([ 'middleware' => 'auth'])->prefix('admin')->group(function () {
-  Route::get('/', 'DashboardController@dashboardAnalytics');
+  Route::get('/', 'DashboardController@dashboardAnalytics')->name('inicio');
 
   // Route Dashboards
   Route::get('/dashboard-analytics', 'DashboardController@dashboardAnalytics');

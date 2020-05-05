@@ -72,7 +72,7 @@ class CoopController extends AppBaseController
      */
     public function show($id)
     {
-        $coop = $this->coopRepository->find($id);
+        $coop = $this->coopRepository->with(['ramo', 'coopProdutos.produto','coopCanais.canai','areas'])->find($id);
 
         if (empty($coop)) {
             Flash::error('Coop not found');
