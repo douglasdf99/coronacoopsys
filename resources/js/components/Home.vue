@@ -356,7 +356,7 @@
                         'coopProdutos.produto.descricao': this.pesquisa.produto
                     }
                 };
-                axios.get(`/api/pesquisa?search=ramo.descricao:${this.pesquisa.ramo};coopProdutos.produto.descricao:${this.pesquisa.produto};cidade=${this.pesquisa.cidade};estado=${this.pesquisa.estado}`).then(response => {
+                axios.get(`/api/pesquisa?search=ramo.descricao:${this.pesquisa.ramo};coopProdutos.produto.descricao:${this.pesquisa.produto};cidade=${this.pesquisa.cidade};estado=${this.pesquisa.estado}&searchJoin=and`).then(response => {
                     console.log('pesquisa', response)
                     localStorage.setItem('resultado', JSON.stringify(response.data.data))
                     localStorage.setItem('pesquisa', JSON.stringify(this.pesquisa))
