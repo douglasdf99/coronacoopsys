@@ -1,19 +1,30 @@
-@extends('layouts.app')
+@extends('layouts/contentLayoutMaster')
+
+@section('title', 'Cooperativa')
+
+@section('vendor-style')
+  {{-- Page Css files --}}
+  <link rel="stylesheet" href="{{ asset(mix('vendors/css/tables/ag-grid/ag-grid.css')) }}">
+  <link rel="stylesheet" href="{{ asset(mix('vendors/css/tables/ag-grid/ag-theme-material.css')) }}">
+@endsection
+
+@section('page-style')
+  {{-- Page Css files --}}
+  <link rel="stylesheet" href="{{ asset(mix('css/pages/app-user.css')) }}">
+  <link rel="stylesheet" href="{{ asset(mix('css/pages/aggrid.css')) }}">
+@endsection
 
 @section('content')
-    <section class="content-header">
-        <h1>
-            Coop
-        </h1>
-    </section>
-    <div class="content">
-        <div class="box box-primary">
-            <div class="box-body">
-                <div class="row" style="padding-left: 20px">
-                    @include('coops.show_fields')
-                    <a href="{{ route('coops.index') }}" class="btn btn-default">Back</a>
-                </div>
-            </div>
-        </div>
-    </div>
+  <coops-gerencia :item="{{$coop}}"></coops-gerencia>
 @endsection
+
+@section('vendor-script')
+  {{-- Vendor js files --}}
+  <script src="{{ asset(mix('vendors/js/tables/ag-grid/ag-grid-community.min.noStyle.js')) }}"></script>
+@endsection
+
+@section('page-script')
+  {{-- Page js files --}}
+  <script src="{{ asset(mix('js/scripts/pages/app-user.js')) }}"></script>
+@endsection
+

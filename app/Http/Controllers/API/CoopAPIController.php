@@ -46,7 +46,7 @@ class CoopAPIController extends AppBaseController
     public function pesquisa(Request $request)
     {
         $this->coopRepository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $query = $this->coopRepository->with(['ramo', 'coopProdutos.produto']);
+        $query = $this->coopRepository->with(['ramo', 'coopProdutos.produto','coopCanais.canai','areas']);
         $coops = $query->paginate($limit = 10, $columns = ['*']);
 
         return $this->sendResponse($coops->toArray(), 'Coops retrieved successfully');

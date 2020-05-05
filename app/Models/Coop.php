@@ -122,7 +122,7 @@ class Coop extends Model
      **/
     public function areas()
     {
-        return $this->hasMany(\App\Models\Area::class, 'coop_id');
+        return $this->hasOne(\App\Models\Area::class, 'coop_id');
     }
 
     /**
@@ -139,5 +139,12 @@ class Coop extends Model
     public function coopProdutos()
     {
         return $this->hasMany(\App\Models\CoopProduto::class, 'coop_id');
+    }
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function coopCanais()
+    {
+        return $this->hasMany(\App\Models\CoopCanais::class, 'coop_id');
     }
 }

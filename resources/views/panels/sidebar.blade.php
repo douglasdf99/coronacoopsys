@@ -22,7 +22,7 @@
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
           <li class="nav-item {{ Request::is('admin') ? 'active' : '' }}">
-            <a href="{!! route('produtos.index') !!}">
+            <a href="{!! route('inicio') !!}">
               <i class="feather icon-grid"></i>
               <span class="menu-title" data-i18n="nav.page_user_profile">Início</span>
             </a>
