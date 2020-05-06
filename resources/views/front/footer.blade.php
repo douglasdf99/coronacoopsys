@@ -1,3 +1,5 @@
+</body>
+<script src="{{ asset(mix('vendors/js/extensions/sweetalert2.all.min.js')) }}"></script>
 <footer>
     <div class="container">
         <div class="row row-footer">

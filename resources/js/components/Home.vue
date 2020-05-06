@@ -52,7 +52,7 @@
                                     </select>
                                 </div>
                                 <div class="col s12">
-                                    <button class="btn btn-success btn-buscar mt-1" @click="buscar">Buscar</button>
+                                    <button class="btn btn-success btn-buscar mt-1" @click="buscar(false)">Buscar</button>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                                                          width="80" class="hide-on-large-only">
                                                 </div>
                                                 <div class="col s6">
-                                                    <p class="nome-cooperativa">{{result.razao.substring(0, 70)}}</p>
+                                                    <p class="nome-cooperativa">{{result.razao ? result.razao.substring(0, 70) : ''}}</p>
                                                     <p class="area hide-on-med-and-down">
                                                         Área de atuação
                                                     </p>
@@ -174,6 +174,14 @@
                                     </ul>
                                     <div v-else>
                                         <h6 class="center"> Nenhum resultado encontrado</h6>
+                                    </div>
+                                    <div class="row" v-if="resultado.last_page > resultado.current_page">
+                                        <div class="col s12">
+                                            <button class="btn btn-success btn-buscar" style="float: right;"
+                                                    @click="buscar(true)">Carregar
+                                                mais...
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col l3 offset-l1 m12 s12">
@@ -286,7 +294,7 @@
                             </div>
                             <div class="row">
                                 <div class="col s12">
-                                    <button class="btn btn-success btn-buscar" @click="buscar">Buscar</button>
+                                    <button class="btn btn-success btn-buscar" @click="buscar(false)">Buscar</button>
                                 </div>
                             </div>
                         </div>
@@ -315,15 +323,18 @@
                     estado: '',
                     cidade: '',
                     ramo: '',
-                    produto: ''
+                    produto: '',
+                    page: 1
                 },
                 search: {
                     estado: '',
                     cidade: '',
                     ramo: '',
-                    produto: ''
+                    produto: '',
+                    page: 1
                 },
-                resultado: {}
+                resultado: {},
+                pagination: {}
             }
         },
         props: ['produtos'],
@@ -367,7 +378,7 @@
                     this.ramos = response.data.data;
                 })
             },
-            buscar() {
+            buscar(carregaMais = false) {
 
                 this.search.estado = this.pesquisa.estado;
                 this.search.cidade = this.pesquisa.cidade;
@@ -409,17 +420,34 @@
                     attr = 0;
                 }
 
+                if (carregaMais) {
+                    console.log('entrou no carregar mais')
+                    url += ('&page=' + (this.resultado.current_page + 1))
+                }
 
+                Swal.fire({
+                    title: 'Buscando',
+                    html: '',
+                    showConfirmButton: false,
+                    onBeforeOpen: () => {
+                        Swal.showLoading()
+                    },
+                });
                 axios.get(url).then(response => {
                     console.log('pesquisa', response)
-                    localStorage.setItem('resultado', JSON.stringify(response.data.data))
-                    localStorage.setItem('pesquisa', JSON.stringify(this.pesquisa))
-                    this.resultado = response.data.data;
-
+                    //localStorage.setItem('resultado', JSON.stringify(response.data.data))
+                    //localStorage.setItem('pesquisa', JSON.stringify(this.pesquisa))
+                    if (carregaMais) {
+                        let antigos = this.resultado.data;//Armazenando antigos resgatados
+                        this.resultado = response.data.data; // colocando a paginação corretamente
+                        this.resultado.data = [...antigos, ...response.data.data.data] //substuindo o array de objetos da próxima página por um array com a soma dos dois
+                    } else
+                        this.resultado = response.data.data;
                 }).finally(() => {
+                    Swal.close();
                     $('.collapsible').collapsible();
                 })
-            }
+            },
         },
         updated() {
             let self = this;
