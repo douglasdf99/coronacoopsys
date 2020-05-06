@@ -7,14 +7,14 @@
             <div class="div-geral-1">
                 <div class="container">
                     <div class="row">
-                        <div class="col l10 offset-l1 m12 s12">
+                        <div class="col s12">
                             <div class="row">
                                 <div class="col l12">
                                     <span class="span-pesquise">Filtro:</span>
                                 </div>
                             </div>
                             <div class="row inputs-resultado">
-                                <div class="col l3 m3 s6">
+                                <div class="col s6">
                                     <label for="estado" class="label">Selecione o seu estado</label>
                                     <select v-model="pesquisa.estado" name="estado" id="estado" class="browser-default"
                                             @change="getCidades()">
@@ -24,7 +24,7 @@
                                         </option>
                                     </select>
                                 </div>
-                                <div class="col l3 m3 s6">
+                                <div class="col s6">
                                     <label for="cidade" class="label">Selecione a sua cidade</label>
                                     <select name="cidade" id="cidade" class="browser-default" v-model="pesquisa.cidade">
                                         <option selected="selected" value="">...</option>
@@ -33,7 +33,7 @@
                                         </option>
                                     </select>
                                 </div>
-                                <div class="col l3 m3 s6">
+                                <div class="col s6 mt-1">
                                     <label for="ramo" class="label">Qual o ramo?</label>
                                     <select name="ramo" id="ramo" class="browser-default" v-model="pesquisa.ramo">
                                         <option selected="selected" value="">...</option>
@@ -41,7 +41,7 @@
                                         </option>
                                     </select>
                                 </div>
-                                <div class="col l3 m3 s6">
+                                <div class="col s6 mt-1">
                                     <label for="produto" class="label">Produto/serviço</label>
                                     <select name="produto" id="produto" class="browser-default"
                                             v-model="pesquisa.produto">
@@ -63,11 +63,11 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col l10 offset-l1 m12 s12">
+                        <div class="col s12">
                             <div class="row">
                                 <div class="col l8 m12 s12">
                                     <ul class="div-produto collapsible" v-if="resultado.data.length > 0">
-                                        <li v-for="result in resultado.data" >
+                                        <li v-for="result in resultado.data">
                                             <div class="row collapsible-header" style="padding: 0">
                                                 <div class="col s4 center-align">
                                                     <img :src="url_redirect('front/assets/images/sem-produto.svg')"
@@ -172,9 +172,9 @@
                                             </div>
                                         </li>
                                     </ul>
-                                  <div v-else>
-                                    <h6 class="center"> Nenhum resultado encontrado</h6>
-                                  </div>
+                                    <div v-else>
+                                        <h6 class="center"> Nenhum resultado encontrado</h6>
+                                    </div>
                                 </div>
                                 <div class="col l3 offset-l1 m12 s12">
                                     <span class="span-pesquise center-align">Não achou o que precisa?</span>
@@ -197,7 +197,7 @@
             </div>
             <div class="div-geral-1">
                 <div class="container">
-                    <div class="row">
+                    <div class="row align-items-center">
                         <div class="col l6 m6 s12">
                             <h2>O que é o<br> CooperaBrasil?</h2>
                         </div>
@@ -213,11 +213,11 @@
                                 de
                                 negócio.
                             </p>
-                            <a class="waves-effect waves-light btn orange btn-saibamais">SAIBA MAIS</a>
+                            <!--<a class="waves-effect waves-light btn orange btn-saibamais">SAIBA MAIS</a>-->
                         </div>
                     </div>
                     <hr class="divisor">
-                    <div class="row">
+                    <div class="row align-items-center">
                         <div class="col l6 m12 s12 hide-on-small-only">
                             <!--<img src="assets/images/mapa.svg" alt="">-->
                             <mapa @getCidades="getCidadesMapa" :estado="pesquisa.estado"></mapa>
@@ -270,8 +270,8 @@
                                 </div>
                                 <div class="col s12 align-items-center">
                                     <span class="numero">4</span>
-                                    <div class="div-select input-field">
-                                        <label for="produto" class="label">De qual produto/serviço você precisa?</label>
+                                    <div class="div-select">
+                                        <label for="produto" class="label">Produto/Serviço desejado</label>
                                         <select name="produto" id="produto" class="browser-default"
                                                 v-model="pesquisa.produto">
                                             <option selected="selected" value="">...</option>
@@ -317,12 +317,12 @@
                     ramo: '',
                     produto: ''
                 },
-              search: {
-                estado: '',
-                cidade: '',
-                ramo: '',
-                produto: ''
-              },
+                search: {
+                    estado: '',
+                    cidade: '',
+                    ramo: '',
+                    produto: ''
+                },
                 resultado: {}
             }
         },
@@ -330,7 +330,7 @@
         created() {
             this.getRamos();
             let self = this;
-            let resultadoLocal = JSON.parse(localStorage.getItem('resultado'));
+            /*let resultadoLocal = JSON.parse(localStorage.getItem('resultado'));
             let pesquisa = JSON.parse(localStorage.getItem('pesquisa'));
             if (pesquisa.estado) {
                 this.pesquisa = pesquisa;
@@ -341,7 +341,8 @@
             }
             if (resultadoLocal.data) {
                 this.resultado = resultadoLocal;
-            }
+            }*/
+
         },
         methods: {
             getCidades() {
@@ -368,10 +369,10 @@
             },
             buscar() {
 
-                    this.search.estado= this.pesquisa.estado;
-                    this.search.cidade= this.pesquisa.cidade;
-                    this.search.ramo= this.pesquisa.ramo;
-                    this.search.produto= this.pesquisa.produto;
+                this.search.estado = this.pesquisa.estado;
+                this.search.cidade = this.pesquisa.cidade;
+                this.search.ramo = this.pesquisa.ramo;
+                this.search.produto = this.pesquisa.produto;
 
                 let url = '/api/pesquisa?search=';
                 let attr = 0;
@@ -416,7 +417,7 @@
                     this.resultado = response.data.data;
 
                 }).finally(() => {
-                  $('.collapsible').collapsible();
+                    $('.collapsible').collapsible();
                 })
             }
         },

@@ -4,7 +4,7 @@
             <div class="col l10 m8 s12 offset-l1 col-menu">
                 <div class="menu nav-wrapper">
                     <div class="row mb-0 align-items-center">
-                        <div class="col l8">
+                        <div class="col s12">
                             <ul class="left-align">
                                 <li><a href="#" @click="inicio">Início</a></li>
                                 <!--<li>Sobre</li>
@@ -12,12 +12,12 @@
                                 <li>Contato</li>
                             </ul>
                         </div>
-                        <div class="col l4">
+                        <!--<div class="col l4">
                             <div class="area-cadastrar">
                                 <span>É uma Cooperativa?</span>
                                 <a href="#">Cadastre-se</a>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
                 <div class="menu-mobile">
@@ -29,22 +29,14 @@
                             <li>Pesquisar</li>-->
                             <li style="border-bottom: unset">Contato</li>
                         </ul>
-                        <p style="text-align: center; font-size: 1rem; text-transform: initial;" class="mb-0">
+                        <!--<p style="text-align: center; font-size: 1rem; text-transform: initial;" class="mb-0">
                             É uma cooperativa? <br>
                             <a href="#" class="btn-small btn-cadastre-mobile">CADASTRE-SE</a>
-                        </p>
+                        </p>-->
                     </div>
                     <a href="#" data-target="slide-out" class="sidenav-trigger" style="float: right"><i
                             class="material-icons menu-icon">menu</i></a>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col l5 m5 s12 col-titulo">
-                <h1 class="titulo">Coopera<strong>Brasil</strong></h1>
-                <p class="proposta">
-                    Promovendo negócios entre cooperativas brasileiras neste novo cenário.
-                </p>
             </div>
         </div>
     </div>
