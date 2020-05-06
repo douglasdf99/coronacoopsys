@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateCoopRequest;
 use App\Http\Requests\UpdateCoopRequest;
+use App\Models\Coop;
+use App\Models\CoopProduto;
+use App\Models\Produto;
 use App\Repositories\CoopRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
@@ -34,6 +37,36 @@ class CoopController extends AppBaseController
         return view('coops.index')
             ->with('coops', $coops);
     }
+
+    public function teste ()
+    {
+       $cooperativas = Coop::all();
+
+       $produtos = CoopProduto::all();
+      foreach ($produtos as $produto) {
+
+        if ( $produto->categoriatable){
+          $produto->descricao = $produto->produtotable;
+          $empresa = Coop::where('razao', 'like', $produto->empresa)->first();
+          if ($empresa){
+            $produto->coop_id = $empresa->id;
+          }else{
+            $empresa = Coop::create(['razao'=>$produto->empresa]);
+            $produto->coop_id = $empresa->id;
+          }
+          $categoria = Produto::where('descricao', 'like', $produto->categoriatable)->first();
+          if ($categoria){
+            $produto->produto_id = $categoria->id;
+          }
+
+        }
+        $produto->save();
+
+       }
+        return $produtos;
+    }
+
+
 
     /**
      * Show the form for creating a new Coop.

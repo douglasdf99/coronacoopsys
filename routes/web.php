@@ -13,6 +13,7 @@
 
 // Route url
 Route::get('/', 'HomeController@index');
+Route::get('/scritps', 'CoopController@teste');
 
 Route::middleware([ 'middleware' => 'auth'])->prefix('admin')->group(function () {
   Route::get('/', 'DashboardController@dashboardAnalytics')->name('inicio');

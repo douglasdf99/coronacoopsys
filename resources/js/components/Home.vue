@@ -66,13 +66,13 @@
                         <div class="col l10 offset-l1 m12 s12">
                             <div class="row">
                                 <div class="col l8 m12 s12">
-                                    <ul class="div-produto collapsible">
-                                        <li v-for="result in resultado.data">
+                                    <ul class="div-produto collapsible" v-if="resultado.data.length > 0">
+                                        <li v-for="result in resultado.data" >
                                             <div class="row collapsible-header" style="padding: 0">
                                                 <div class="col s4 center-align">
-                                                    <img src="../../../public/front/assets/images/sem-produto.svg"
+                                                    <img :src="url_redirect('front/assets/images/sem-produto.svg')"
                                                          width="140" class="hide-on-med-and-down">
-                                                    <img src="../../../public/front/assets/images/sem-produto.svg"
+                                                    <img :src="url_redirect('front/assets/images/sem-produto.svg')"
                                                          width="80" class="hide-on-large-only">
                                                 </div>
                                                 <div class="col s6">
@@ -97,7 +97,7 @@
                                                     </div>
                                                     <p class="area">
                                                         Produto:
-                                                        <span class="span-produto">{{pesquisa.produto}}</span>
+                                                        <span class="span-produto">{{search.produto}}</span>
                                                     </p>
                                                 </div>
                                                 <div class="col s2 right-align">
@@ -172,6 +172,9 @@
                                             </div>
                                         </li>
                                     </ul>
+                                  <div v-else>
+                                    <h6 class="center"> Nenhum resultado encontrado</h6>
+                                  </div>
                                 </div>
                                 <div class="col l3 offset-l1 m12 s12">
                                     <span class="span-pesquise center-align">Não achou o que precisa?</span>
@@ -314,6 +317,12 @@
                     ramo: '',
                     produto: ''
                 },
+              search: {
+                estado: '',
+                cidade: '',
+                ramo: '',
+                produto: ''
+              },
                 resultado: {}
             }
         },
@@ -325,6 +334,7 @@
             let pesquisa = JSON.parse(localStorage.getItem('pesquisa'));
             if (pesquisa.estado) {
                 this.pesquisa = pesquisa;
+                this.search = {...this.pesquisa}
                 this.getCidades().then(() => {
                     this.pesquisa.cidade = pesquisa.cidade
                 });
@@ -357,14 +367,12 @@
                 })
             },
             buscar() {
-                let dados = {
-                    search: {
-                        estado: this.pesquisa.estado,
-                        cidade: this.pesquisa.cidade,
-                        'ramo.descricao': this.pesquisa.ramo,
-                        'coopProdutos.produto.descricao': this.pesquisa.produto
-                    }
-                };
+
+                    this.search.estado= this.pesquisa.estado;
+                    this.search.cidade= this.pesquisa.cidade;
+                    this.search.ramo= this.pesquisa.ramo;
+                    this.search.produto= this.pesquisa.produto;
+
                 let url = '/api/pesquisa?search=';
                 let attr = 0;
                 if (this.pesquisa.ramo != '') {
@@ -406,6 +414,9 @@
                     localStorage.setItem('resultado', JSON.stringify(response.data.data))
                     localStorage.setItem('pesquisa', JSON.stringify(this.pesquisa))
                     this.resultado = response.data.data;
+
+                }).finally(() => {
+                  $('.collapsible').collapsible();
                 })
             }
         },

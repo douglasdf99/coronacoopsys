@@ -31,7 +31,11 @@ class CoopProduto extends Model
 
     public $fillable = [
         'produto_id',
-        'coop_id'
+        'coop_id',
+        'descricao',
+        'produtotable',
+        'categoriatable',
+        'empresa',
     ];
 
     /**
@@ -42,7 +46,11 @@ class CoopProduto extends Model
     protected $casts = [
         'id' => 'integer',
         'produto_id' => 'integer',
-        'coop_id' => 'integer'
+        'coop_id' => 'integer',
+        'descricao'=> 'string',
+        'produtotable'=> 'string',
+        'categoriatable'=> 'string',
+        'empresa'=> 'string',
     ];
 
     /**
