@@ -70,9 +70,9 @@
                                         <li v-for="result in resultado.data">
                                             <div class="row collapsible-header" style="padding: 0">
                                                 <div class="col s4 center-align">
-                                                    <img :src="url_redirect('front/assets/images/sem-produto.svg')"
+                                                    <img :src="url_redirect('front/assets/images/avatar-ocb.png')"
                                                          width="140" class="hide-on-med-and-down">
-                                                    <img :src="url_redirect('front/assets/images/sem-produto.svg')"
+                                                    <img :src="url_redirect('front/assets/images/avatar-ocb.png')"
                                                          width="80" class="hide-on-large-only">
                                                 </div>
                                                 <div class="col s6">
@@ -82,20 +82,20 @@
                                                     </p>
                                                     <div class="align-items-center div-checkbox hide-on-med-and-down">
                                                         <label>
-                                                            <input type="checkbox" checked="checked" readonly
+                                                            <input type="checkbox"  class="filled-in" checked="checked" readonly
                                                                    disabled="disabled"/>
                                                             <span>Nacional</span>
                                                         </label>
                                                         <label>
-                                                            <input type="checkbox" readonly disabled="disabled"/>
+                                                            <input type="checkbox"  class="filled-in" readonly disabled="disabled"/>
                                                             <span>Estadual</span>
                                                         </label>
                                                         <label>
-                                                            <input type="checkbox" readonly disabled="disabled"/>
+                                                            <input type="checkbox"  class="filled-in" readonly disabled="disabled"/>
                                                             <span>Municipal</span>
                                                         </label>
                                                     </div>
-                                                    <p class="area">
+                                                    <p class="area" v-show="search.produto">
                                                         Produto:
                                                         <span class="span-produto">{{search.produto}}</span>
                                                     </p>

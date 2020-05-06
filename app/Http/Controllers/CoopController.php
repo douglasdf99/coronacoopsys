@@ -7,10 +7,12 @@ use App\Http\Requests\UpdateCoopRequest;
 use App\Models\Coop;
 use App\Models\CoopProduto;
 use App\Models\Produto;
+use App\Models\Ramo;
 use App\Repositories\CoopRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\DB;
 use Response;
 
 class CoopController extends AppBaseController
@@ -40,11 +42,24 @@ class CoopController extends AppBaseController
 
     public function teste ()
     {
-       $cooperativas = Coop::all();
 
+       $cooperativas = Coop::all();
+       foreach ($cooperativas as $coop){
+         $tudo = DB::table('tudo')
+           ->where('cnpj', '=', $coop->cnpj)
+           ->first();
+         if ($tudo){
+           $ramo = Ramo::where('descricao',$tudo->ramo)->first();
+         }
+         if ($ramo){
+           $coop->ramo_id = $ramo->id;
+           $coop->save();
+         }
+
+       }
+/*
        $produtos = CoopProduto::all();
       foreach ($produtos as $produto) {
-
         if ( $produto->categoriatable){
           $produto->descricao = $produto->produtotable;
           $empresa = Coop::where('razao', 'like', $produto->empresa)->first();
@@ -62,7 +77,7 @@ class CoopController extends AppBaseController
         }
         $produto->save();
 
-       }
+       }*/
         return $produtos;
     }
 

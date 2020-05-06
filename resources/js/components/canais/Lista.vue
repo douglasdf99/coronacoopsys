@@ -210,7 +210,6 @@
                         let data = response.data;
                         console.log(data.data);
                         this.usuarioEditar = data.data;
-
                     })
                     .catch(errors => {
                         console.log(errors);

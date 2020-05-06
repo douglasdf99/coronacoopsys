@@ -103,7 +103,7 @@ span, p {
 
 .menu {
     font-family: "Nunito", sans-serif;
-    margin: 7rem 0 2rem;
+    margin: 5rem 0 2rem;
     background-color: rgba(97, 125, 185, 0.68);
     border-radius: 25px;
     list-style: none;
@@ -265,6 +265,7 @@ select {
     -moz-appearance: window;
     -webkit-appearance: none;
 }
+
 
 select.browser-default {
     background-image: url(../images/seta-select.png);
@@ -451,6 +452,33 @@ option {
     margin-right: .5rem;
 }
 
+[type="checkbox"].filled-in:checked+span:not(.lever):before {
+  top: 0;
+  left: 1px;
+  width: 8px;
+  height: 13px;
+  border-top: 2px solid transparent;
+  border-left: 2px solid transparent;
+  border-right: 2px solid #6784c1 !important;
+  border-bottom: 2px solid #6784c1 !important;
+  -webkit-transform: rotateZ(37deg);
+  transform: rotateZ(37deg);
+  -webkit-transform-origin: 100% 100%;
+  /* transform-origin: 100% 100%; */
+}
+[type="checkbox"].filled-in:checked+span:not(.lever):after {
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #6784C1 !important;
+  background-color: transparent !important;
+  z-index: 0;
+  color: #6784C1;
+}
+[type="checkbox"].filled-in:disabled:not(:checked)+span:not(.lever):after {
+  border: 2px solid #6784C1 !important;
+  background-color: transparent !important;
+}
 /* Mapa */
 
 #map {
@@ -568,7 +596,7 @@ option {
 
 @media (max-width: 1300px) {
     .menu {
-        margin: 4rem 0 2rem;
+        margin: 3.5rem 0 2rem;
     }
 
     .geral-header {
