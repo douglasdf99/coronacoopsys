@@ -95,7 +95,7 @@
                                                             <span>Municipal</span>
                                                         </label>
                                                     </div>
-                                                    <p class="area">
+                                                    <p class="area" v-if="search.produto !== ''">
                                                         Produto:
                                                         <span class="span-produto">{{search.produto}}</span>
                                                     </p>
