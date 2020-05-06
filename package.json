@@ -28,6 +28,7 @@
     "dependencies": {
         "moment": "^2.25.1",
         "moment-locales-webpack-plugin": "^1.2.0",
+        "v-mask": "^2.1.0",
         "vue-js-modal": "^2.0.0-rc.3",
         "vue-moment": "^4.1.0"
     }

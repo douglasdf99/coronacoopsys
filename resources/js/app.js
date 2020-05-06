@@ -36,7 +36,17 @@ import VModal from 'vue-js-modal'
 
 
 Vue.use(VModal);
+// As a plugin
+import VueMask from 'v-mask'
+Vue.use(VueMask);
 
+// Or as a directive
+import { VueMaskDirective } from 'v-mask'
+Vue.directive('mask', VueMaskDirective);
+
+// Or only as a filter
+import { VueMaskFilter } from 'v-mask'
+Vue.filter('VMask', VueMaskFilter)
 
 /**
  * The following block of code may be used to automatically register your
