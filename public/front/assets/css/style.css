@@ -121,15 +121,18 @@ span, p {
     width: 100vw;
     padding: 4rem 2rem !important;
     background-color: #1C205C;
-    color: white;
-    font-size: 1.8rem;
-    text-transform: uppercase;
-    font-family: "Nunito", sans-serif;
     text-align: right;
     background-image: url("../images/footer-menu.svg");
     background-repeat: no-repeat;
     background-position: 0 90vh;
     background-size: contain;
+}
+
+.sidenav-mobile * {
+    color: white;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-family: "Nunito", sans-serif;
 }
 
 .close-btn-sidenav {
@@ -142,6 +145,11 @@ span, p {
     border-bottom: 1px solid #78C7C9;
     text-align: center;
     padding: 1rem 0;
+}
+
+.sidenav-mobile li > a {
+    color: white;
+    font-size: 1.8rem;
 }
 
 .sidenav-mobile ul {
@@ -265,6 +273,7 @@ select.browser-default {
     background-size: contain;
     background-repeat: no-repeat;
     transition-duration: .3s;
+    padding-right: 23%;
 }
 
 select.browser-default:focus {
@@ -557,9 +566,42 @@ option {
 }
 
 
+@media (max-width: 1300px) {
+    .menu {
+        margin: 4rem 0 2rem;
+    }
+
+    .geral-header {
+        height: 35vw;
+    }
+
+    h2 {
+        padding: 0;
+        font-size: 3rem;
+    }
+
+    .sobre {
+        padding: 0;
+    }
+
+    #map {
+        zoom: 85%;
+    }
+}
+
+@media (max-width: 1180px) {
+    #map {
+        zoom: 70%
+    }
+}
+
 @media (max-width: 768px) {
     .header-1 {
         background-image: url("../images/bg-header-1-m.png");
+    }
+
+    .header-2 {
+        background-image: url("../images/bg-header-2-m.png");
     }
 
     .col-titulo {
@@ -584,6 +626,10 @@ option {
         background-color: #6784C1;
     }
 
+    .primeira-row {
+        flex-direction: column;
+    }
+
     .menu {
         display: none
     }
@@ -598,34 +644,5 @@ option {
 
     #map {
         zoom: 75%;
-    }
-}
-
-@media (max-width: 1180px) {
-    #map {
-        zoom: 70%
-    }
-}
-
-@media (max-width: 1300px) {
-    .menu {
-        margin: 4rem 0 2rem;
-    }
-
-    .geral-header {
-        height: 35vw;
-    }
-
-    h2 {
-        padding: 0;
-        font-size: 3rem;
-    }
-
-    .sobre {
-        padding: 0;
-    }
-
-    #map {
-        zoom: 85%;
     }
 }

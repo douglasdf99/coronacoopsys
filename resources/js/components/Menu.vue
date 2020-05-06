@@ -39,6 +39,14 @@
                 </div>
             </div>
         </div>
+        <div class="row hide-on-large-only" v-if="!resultado">
+            <div class="col l5 m5 s12 col-titulo">
+                <h1 class="titulo">Coopera<strong>Brasil</strong></h1>
+                <p class="proposta">
+                    Promovendo negócios entre cooperativas brasileiras neste novo cenário.
+                </p>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -57,6 +65,7 @@
                 location.reload();
             }
         },
+        props: ['resultado'],
         computed: {},
     };
 </script>

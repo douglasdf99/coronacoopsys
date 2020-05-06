@@ -2,7 +2,7 @@
     <div>
         <div v-if="resultado.data">
             <div class="geral-header header-2">
-                <menu-front></menu-front>
+                <menu-front :resultado="resultado.data.length > 0"></menu-front>
             </div>
             <div class="div-geral-1">
                 <div class="container">
@@ -205,7 +205,7 @@
             </div>
             <div class="div-geral-1">
                 <div class="container">
-                    <div class="row align-items-center">
+                    <div class="row align-items-center primeira-row">
                         <div class="col l6 m6 s12">
                             <h2>O que é o<br> CooperaBrasil?</h2>
                         </div>
