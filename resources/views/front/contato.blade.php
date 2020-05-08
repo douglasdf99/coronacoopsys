@@ -1,5 +1,5 @@
 @include('front.head')
 <div id="app">
-    <home :produtos="{{$produtos}}"></home>
+    <contato></contato>
 </div>
 @include('front.footer')

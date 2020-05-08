@@ -6,10 +6,10 @@
                     <div class="row mb-0 align-items-center">
                         <div class="col s12">
                             <ul class="left-align">
-                                <li><a href="#" @click="inicio">Início</a></li>
+                                <li><a href="/" @click="inicio">Início</a></li>
                                 <!--<li>Sobre</li>
                                 <li>Pesquisar</li>-->
-                                <li>Contato</li>
+                                <li><a href="/contato">Contato</a></li>
                             </ul>
                         </div>
                         <!--<div class="col l4">
@@ -24,10 +24,10 @@
                     <div id="slide-out" class="sidenav sidenav-mobile">
                         <ul>
                             <i class="material-icons close-btn-sidenav sidenav-close">close</i>
-                            <li><a href="#" @click="inicio">Início</a></li>
+                            <li><a href="/" @click="inicio">Início</a></li>
                             <!--<li>Sobre</li>
                             <li>Pesquisar</li>-->
-                            <li style="border-bottom: unset">Contato</li>
+                            <li style="border-bottom: unset"><a href="/contato">Contato</a></li>
                         </ul>
                         <!--<p style="text-align: center; font-size: 1rem; text-transform: initial;" class="mb-0">
                             É uma cooperativa? <br>
@@ -39,11 +39,22 @@
                 </div>
             </div>
         </div>
-        <div class="row hide-on-large-only" v-if="!resultado">
+        <div class="row hide-on-large-only" v-if="!resultado && !contato">
             <div class="col l5 m5 s12 col-titulo">
                 <h1 class="titulo">Coopera<strong>Brasil</strong></h1>
                 <p class="proposta">
                     Promovendo negócios entre cooperativas brasileiras neste novo cenário.
+                </p>
+            </div>
+        </div>
+        <div class="row hide-on-large-only" v-if="contato">
+            <div class="col l5 m5 s12 col-titulo">
+                <h1 class="titulo">Não achou o que precisa?
+                    Dúvidas? Sugestões?
+                </h1>
+                <p class="proposta">
+                    Escreva pra gente!
+                    Além de ouvir a sua necessidade, será um prazer ajudar.
                 </p>
             </div>
         </div>
@@ -65,7 +76,7 @@
                 location.reload();
             }
         },
-        props: ['resultado'],
+        props: ['resultado', 'contato'],
         computed: {},
     };
 </script>

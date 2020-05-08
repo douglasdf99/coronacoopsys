@@ -101,6 +101,10 @@ span, p {
     background-image: url("../images/bg-header-2.png");
 }
 
+.header-contato {
+    background-image: url("../images/bg-header-contato.png");
+}
+
 .menu {
     font-family: "Nunito", sans-serif;
     margin: 5rem 0 2rem;
@@ -477,10 +481,17 @@ option {
   z-index: 0;
   color: #6784C1;
 }
+
 [type="checkbox"].filled-in:disabled:not(:checked)+span:not(.lever):after {
   border: 2px solid #6784C1 !important;
   background-color: transparent !important;
 }
+
+.contatos {
+    font-size: 1.2rem;
+    color: #1C205C;
+}
+
 /* Mapa */
 
 #map {
@@ -634,12 +645,21 @@ option {
         background-image: url("../images/bg-header-2-m.png");
     }
 
+    .header-contato {
+        background-image: url("../images/bg-header-contato-m.png");
+    }
+
     .col-titulo {
         text-align: center;
     }
 
     h1 {
-        font-size: 3rem !important;
+        font-size: 2rem !important;
+        font-weight: 600;
+    }
+
+    .proposta {
+        font-size: 1.5rem;
     }
 
     h2 {
