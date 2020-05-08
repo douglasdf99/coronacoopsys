@@ -47,7 +47,11 @@ class CoopAPIController extends AppBaseController
     {
         $this->coopRepository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         $query = $this->coopRepository->with(['ramo', 'coopProdutos.produto','coopCanais.canai','areas']);
+        $query->whereHas('areas', function ($q) use($request){
+          $q->where('tipo','Nacional')->orWhere([['tipo','Estadual'],['estado',$request->estado]])->orWhere([['tipo','Municipal'],['cidade',$request->cidade]]);
+        });
         $coops = $query->paginate($limit = 10, $columns = ['*']);
+
 
         return $this->sendResponse($coops->toArray(), 'Coops retrieved successfully');
     }

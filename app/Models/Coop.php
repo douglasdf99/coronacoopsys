@@ -50,6 +50,7 @@ class Coop extends Model
     public $fillable = [
         'cnpj',
         'razao',
+        'nome',
         'matriz',
         'site',
         'email',
@@ -77,6 +78,7 @@ class Coop extends Model
         'id' => 'integer',
         'cnpj' => 'string',
         'razao' => 'string',
+        'nome' => 'string',
         'matriz' => 'string',
         'site' => 'string',
         'email' => 'string',
@@ -122,7 +124,7 @@ class Coop extends Model
      **/
     public function areas()
     {
-        return $this->hasOne(\App\Models\Area::class, 'coop_id');
+        return $this->hasMany(\App\Models\Area::class, 'coop_id');
     }
 
     /**

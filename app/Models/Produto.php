@@ -28,7 +28,8 @@ class Produto extends Model
 
 
     public $fillable = [
-        'descricao'
+        'descricao',
+        'ramo_id'
     ];
 
     /**
@@ -38,7 +39,8 @@ class Produto extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'descricao' => 'string'
+        'descricao' => 'string',
+        'ramo_id' => 'integer'
     ];
 
     /**
