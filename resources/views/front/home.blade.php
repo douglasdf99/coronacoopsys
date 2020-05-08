@@ -5,6 +5,9 @@
 @include('front.footer')
 <script src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('front/assets/js/materialize.min.js')}}"></script>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v7.0&appId=358057404575901&autoLogAppEvents=1"></script>
+
 <script>
     $('.dropdown-trigger').dropdown();
     $('.sidenav').sidenav();

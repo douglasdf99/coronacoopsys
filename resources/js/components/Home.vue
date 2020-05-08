@@ -190,7 +190,7 @@
             </div>
             <div class="col s12 right-align">
               <p class="area mb-0 align-items-center" style="float: right">
-                Compartilhar <i class="material-icons btn-share">share</i></p>
+                Compartilhar <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.cooperabrasil.coop.br%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="material-icons btn-share">share</i></a></p>
             </div>
           </div>
           </li>
@@ -226,8 +226,8 @@
             Escreva pra gente! <br>
             Além de ouvir a sua necessidade, será um prazer ajudar.
           </p>
-          <button class="btn btn-success btn-buscar" style="float: left;">FALE CONOSCO
-          </button>
+          <a :href="url_redirect('contato')" class="btn btn-success btn-buscar" style="float: left;">FALE CONOSCO
+          </a>
         </div>
       </div>
     </div>
