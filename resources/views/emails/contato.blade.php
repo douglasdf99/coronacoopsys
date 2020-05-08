@@ -21,7 +21,7 @@
                         <td class="x_primary-font x_title" style="word-break: break-word; font-family: Arial,sans-serif; font-size: 60px; line-height: 30px; color: #32ad84; text-align: left; border-collapse: collapse; padding-bottom: 30px; padding-top: 35px;">
                           <div id="x_title" class="x_mktoText">
                             <div style="text-align: center;">
-                              <img src="https://www.cooperabrasil.coop.br/images/logo-branco.svg" class="brand-text" height="28px">
+                              <p style="text-align: justify;"><span style="font-size: 30px; font-weight: 600">Coopera Brasil</span></p>
                             </div>
                           </div>
                         </td>

@@ -89,12 +89,21 @@
         methods: {
             enviar(e) {
                 e.preventDefault();
-
+              Swal.fire({
+                title: 'Enviando..',
+                html: '',
+                showConfirmButton: false,
+                onBeforeOpen: () => {
+                  Swal.showLoading()
+                },
+              });
                 axios.post('/enviar', {nome: this.nome, email: this.email, mensagem: this.mensagem}).then(response => {
                     console.log(response);
                     this.enviado = true;
                 }).catch(erro => {
                     console.log(erro)
+                }).finally(()=>{
+                  Swal.close();
                 })
             }
         }
@@ -113,7 +122,7 @@
     }
 
     .div-sucesso {
-        position: absolute;
+        position: fixed;
         top: 0;
         display: flex;
         height: 100vh;
