@@ -14,6 +14,7 @@
 // Route url
 Route::get('/', 'HomeController@index');
 Route::get('/contato', 'HomeController@contato');
+Route::post('/enviar', 'HomeController@enviar');
 Route::get('/scritps', 'CoopController@teste');
 
 Route::middleware([ 'middleware' => 'auth'])->prefix('admin')->group(function () {

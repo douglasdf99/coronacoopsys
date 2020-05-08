@@ -7,7 +7,7 @@
   <meta property="og:type"          content="website" />
   <meta property="og:title"         content="Coopera Brasil" />
   <meta property="og:description"   content="Uma grande rede nacional de cooperativas onde você encontra os produtos e serviços que procura. Esse é o CooperaBrasil: uma iniciativa do Sistema OCB para conectar cooperativas, sociedade e estimular a intercooperação! Uma oportunidade para as pessoas encontrarem produtos e serviços de cooperativas, e ver de perto a qualidade de tudo que leva a marca coop." />
-  <meta property="og:image"         content="http://127.0.0.1:8000/front/assets/images/avatar-ocb.png" />
+  <meta property="og:image"         content="https://www.cooperabrasil.coop.br/front/assets/images/avatar-ocb.png" />
     <link rel="stylesheet" href="{{asset('front/assets/css/materialize.min.css')}}">
     <link rel="stylesheet" href="{{asset('front/assets/css/style.css')}}">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap"
