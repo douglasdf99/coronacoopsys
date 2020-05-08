@@ -28,4 +28,9 @@ class HomeController extends Controller
       $produtos = $this->produtoRepository->all();
         return view('front.home') ->with('produtos', $produtos);
     }
+    public function contato()
+    {
+      $produtos = $this->produtoRepository->all();
+        return view('front.contato');
+    }
 }

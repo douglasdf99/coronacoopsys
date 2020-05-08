@@ -7,10 +7,10 @@
                  style="display: flex;justify-content: space-around;">
                 <img src="{{asset('front/assets/images/footer-logos.svg')}}" alt="">
                 <div>
-                    <a href=""><i class="fab fa-facebook-f"></i></a>
-                    <a href=""><i class="fab fa-twitter"></i></a>
-                    <a href=""><i class="fab fa-flickr"></i></a>
-                    <a href=""><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/sistemaocb" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/sistemaocb" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/company/organiza-o-das-cooperativas-brasileiras-ocb-/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="http://www.youtube.com/sistemaocb" target="_blank"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
             <div class="col l0 m0 s12 hide-on-large-only" style="display: flex;justify-content: space-around;">
