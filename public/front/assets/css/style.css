@@ -107,7 +107,7 @@ span, p {
 
 .menu {
     font-family: "Nunito", sans-serif;
-    margin: 5rem 0 2rem;
+    margin: 7rem 0 2rem;
     background-color: rgba(97, 125, 185, 0.68);
     border-radius: 25px;
     list-style: none;
@@ -119,6 +119,10 @@ span, p {
 .menu-mobile {
     display: none;
     margin-top: .5rem;
+}
+
+.primeira-row {
+    margin: 1rem 0 -1rem;
 }
 
 .sidenav-mobile {
@@ -492,6 +496,21 @@ option {
     color: #1C205C;
 }
 
+.listagem-prod {
+    list-style: none;
+    border: unset !important;
+}
+
+.listagem-prod:before {
+    content: '\f00c';
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    color: white;
+    margin-right: 10px;
+}
+
 /* Mapa */
 
 #map {
@@ -607,9 +626,9 @@ option {
 }
 
 
-@media (max-width: 1300px) {
+@media (max-width: 1366px) {
     .menu {
-        margin: 3.5rem 0 2rem;
+        margin: 4.5rem 0 2rem;
     }
 
     .geral-header {

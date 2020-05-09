@@ -4,7 +4,7 @@
             <div class="col l10 m8 s12 offset-l1 col-menu">
                 <div class="menu nav-wrapper">
                     <div class="row mb-0 align-items-center">
-                        <div class="col s12">
+                        <div class="col s6">
                             <ul class="left-align">
                                 <li><a href="/" @click="inicio">Início</a></li>
                                 <!--<li>Sobre</li>
@@ -12,12 +12,12 @@
                                 <li><a href="/contato">Contato</a></li>
                             </ul>
                         </div>
-                        <!--<div class="col l4">
+                        <div class="col s6">
                             <div class="area-cadastrar">
                                 <span>É uma Cooperativa?</span>
-                                <a href="#">Cadastre-se</a>
+                                <a href="https://pt.surveymonkey.com/r/cooperabrasil" target="_blank">Cadastre-se</a>
                             </div>
-                        </div>-->
+                        </div>
                     </div>
                 </div>
                 <div class="menu-mobile">
@@ -29,10 +29,10 @@
                             <li>Pesquisar</li>-->
                             <li style="border-bottom: unset"><a href="/contato">Contato</a></li>
                         </ul>
-                        <!--<p style="text-align: center; font-size: 1rem; text-transform: initial;" class="mb-0">
+                        <p style="text-align: center; font-size: 1rem; text-transform: initial;" class="mb-0">
                             É uma cooperativa? <br>
-                            <a href="#" class="btn-small btn-cadastre-mobile">CADASTRE-SE</a>
-                        </p>-->
+                            <a href="https://pt.surveymonkey.com/r/cooperabrasil" target="_blank" class="btn-small btn-cadastre-mobile">CADASTRE-SE</a>
+                        </p>
                     </div>
                     <a href="#" data-target="slide-out" class="sidenav-trigger" style="float: right"><i
                             class="material-icons menu-icon">menu</i></a>
