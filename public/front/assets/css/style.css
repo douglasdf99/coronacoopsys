@@ -258,22 +258,48 @@ h2 {
     font-weight: 800;
 }
 
-select {
+select, .select2-container--default .select2-selection--single {
     color: white;
     font-family: "Nunito", sans-serif;
     font-size: 1.3rem;
     padding: 0.7rem 2.5rem 0.7rem 1.5rem;
-    height: auto;
-    border-radius: 4px;
-    background-color: #78C7C9;
-    border: unset;
-    outline: unset;
+    height: auto !important;
+    border-radius: 4px !important;
+    background-color: #78C7C9 !important;
+    border: unset !important;
+    outline: unset !important;
     position: relative;
     appearance: none;
     -moz-appearance: window;
     -webkit-appearance: none;
 }
 
+.select2-container--default .select2-selection--single {
+    background-image: url(../images/seta-select.png);
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-right: 23%;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: white !important;
+    padding: 0 !important;
+    font-size: 1.3rem !important;
+    line-height: 1.2 !important;
+}
+
+.inputs-resultado .select2-container--default .select2-selection--single .select2-selection__rendered {
+    font-size: 1rem !important;
+}
+
+.select2-container {
+    width: 100% !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    display: none !important;
+}
 
 select.browser-default {
     background-image: url(../images/seta-select.png);

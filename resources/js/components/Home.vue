@@ -43,13 +43,16 @@
                                 </div>
                                 <div class="col s6 mt-1">
                                     <label for="produto" class="label">Produto/serviço</label>
-                                    <select name="produto" id="produto" class="browser-default"
+                                    <!--<select name="produto" id="produto" class="browser-default"
                                             v-model="pesquisa.produto">
                                         <option selected="selected" value="">...</option>
                                         <option v-for="produto in ProdutoRamo" v-bind:value="produto.descricao">
                                             {{produto.descricao}}
                                         </option>
-                                    </select>
+                                    </select>-->
+                                    <Select2 v-model="pesquisa.produto" :options="ProdutoRamo">
+                                        <option selected="selected" value="">...</option>
+                                    </Select2>
                                 </div>
                                 <div class="col s12" v-if="ok">
                                     <button class="btn btn-success btn-buscar mt-1" @click="buscar(false)">Buscar
@@ -172,7 +175,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col s12">
-                                            <a :href="'mailto:'+result.email">
+                                            <a :href="'mailto:'+result.email" target="_blank">
                                                 <p class="detalhe">
                                                     <i class="material-icons">email</i>
                                                     {{result.email}}
@@ -182,7 +185,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col s12">
-                                            <a :href="'https://' + result.site">
+                                            <a :href="'https://' + result.site" target="_blank">
                                                 <p class="detalhe">
                                                     <i class="material-icons">language</i>
                                                     {{result.site}}
@@ -342,7 +345,7 @@
                                             {{produto.descricao}}
                                         </option>
                                     </select>-->
-                                    <Select2 v-model="pesquisa.produto" :options="ProdutoRamo" class="browser-default"></Select2>
+                                    <Select2 v-model="pesquisa.produto" :options="ProdutoRamo"></Select2>
                                 </div>
                             </div>
                         </div>
@@ -462,16 +465,19 @@
                     console.log('prod', prod)
                     console.log('ramo', self.pesquisa.ramo)
                     if (self.pesquisa.ramo.id) {
-                    if (prod.ramo_id == self.pesquisa.ramo.id) {
+                        if (prod.ramo_id == self.pesquisa.ramo.id) {
+                            prod.text = prod.descricao;
+                            prod.id = prod.descricao;
+                            filtrado.push(prod);
+                        }
+                    } else {
                         prod.text = prod.descricao;
+                        prod.id = prod.descricao;
                         filtrado.push(prod);
                     }
-                    }else{
-                        prod.text = prod.descricao;
-                        filtrado.push(prod);
-                    }
-
                 });
+                filtrado.push({id: '...', text: '...', selected: true});
+                this.pesquisa.produto = '...';
                 console.log('filtrado', filtrado)
                 return filtrado;
             }
@@ -563,7 +569,7 @@
                     url += 'ramo.descricao:' + this.pesquisa.ramo.descricao;
                     attr++;
                 }
-                if (this.pesquisa.produto != '') {
+                if (this.pesquisa.produto != '' && this.pesquisa.produto != '...') {
                     if (attr > 0) {
                         url += ';';
                     }
