@@ -3,20 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2c3cdbd0-b40c-4f8a-b442-2f1aa704db63" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/CoopAPIController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/CoopAPIController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/ProdutoAPIController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/ProdutoAPIController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Produto.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Produto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Mapa.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Mapa.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/coops/Lista.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/coops/Lista.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/coops/gerencia.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/coops/gerencia.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/produtos/Lista.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/produtos/Lista.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/produtos/ModalCreate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/produtos/ModalCreate.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/produtos/ModalEditar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/produtos/ModalEditar.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,8 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/produtos/ModalCreate.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="69" column="83" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="83" />
+            <state relative-caret-position="108">
+              <caret line="62" column="11" selection-start-line="62" selection-end-line="63" />
               <folding>
                 <element signature="e#4506#6264#0" />
               </folding>
@@ -53,8 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/produtos/ModalEditar.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="43" column="60" selection-start-line="43" selection-start-column="60" selection-end-line="43" selection-end-column="60" />
+            <state relative-caret-position="250">
+              <caret line="44" column="41" selection-start-line="44" selection-end-line="45" />
               <folding>
                 <element signature="e#4630#6486#0" />
               </folding>
@@ -65,20 +53,41 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/coops/Lista.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
+            <state relative-caret-position="240">
+              <caret line="49" column="110" selection-start-line="49" selection-start-column="90" selection-end-line="49" selection-end-column="110" />
+              <folding>
+                <element signature="e#10978#11016#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/coops/gerencia.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="65" column="74" selection-start-line="65" selection-start-column="74" selection-end-line="65" selection-end-column="74" />
+            <state relative-caret-position="300">
+              <caret line="130" column="47" selection-start-line="130" selection-start-column="47" selection-end-line="130" selection-end-column="47" />
               <folding>
+                <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#div#3;n#div#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="e#31247#31285#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/pages/app-user-edit.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="19" selection-start-line="19" selection-end-line="470" selection-end-column="10" />
+              <folding>
+                <element signature="e#785#1903#0#HTML" />
+                <element signature="e#1948#11489#0#HTML" />
+                <element signature="e#11500#20502#0#HTML" />
+                <element signature="e#20513#24360#0#HTML" />
               </folding>
             </state>
           </provider>
@@ -92,6 +101,24 @@
               <folding>
                 <element signature="e#277#298#0" expanded="true" />
                 <element signature="e#756#789#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/Home.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="155" column="45" lean-forward="true" selection-start-line="155" selection-start-column="45" selection-end-line="155" selection-end-column="45" />
+              <folding>
+                <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#div#2;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#1;n#div#2;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#div#1;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="e#25563#26326#0" />
               </folding>
             </state>
           </provider>
@@ -136,7 +163,6 @@
       <find>(estado</find>
       <find>busca</find>
       <find>wat</find>
-      <find>encontradas</find>
       <find>modal</find>
       <find>img</find>
       <find>col l10 offset-l1 m12 hide-on-med-and-down</find>
@@ -149,6 +175,7 @@
       <find>selec</find>
       <find>sele</find>
       <find>forEach</find>
+      <find>encontradas</find>
     </findStrings>
     <replaceStrings>
       <replace>(estado.ID</replace>
@@ -199,7 +226,6 @@
         <option value="$PROJECT_DIR$/resources/views/emails/contato.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/components/Contato.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/Home.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/Mapa.vue" />
         <option value="$PROJECT_DIR$/resources/views/panels/sidebar.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/components/produtos/Lista.vue" />
@@ -211,6 +237,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/API/CoopAPIController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/coops/Lista.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/coops/gerencia.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/Home.vue" />
       </list>
     </option>
   </component>
@@ -481,7 +508,7 @@
       <workItem from="1588337421528" duration="4663000" />
       <workItem from="1588343397049" duration="67726000" />
       <workItem from="1588628712092" duration="74773000" />
-      <workItem from="1589031872725" duration="8251000" />
+      <workItem from="1589031872725" duration="12357000" />
     </task>
     <task id="LOCAL-00001" summary="primeiro commit login meio e rotas ok e banco setado">
       <created>1588344232855</created>
@@ -672,11 +699,18 @@
       <option name="project" value="LOCAL" />
       <updated>1588949608569</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="ajustes 9">
+      <created>1589043508694</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1589043508694</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159516000" />
+    <option name="totallyTimeSpent" value="163622000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -756,7 +790,8 @@
     <MESSAGE value="ajustes 4" />
     <MESSAGE value="ajustes 5" />
     <MESSAGE value="ajustes 8" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajustes 8" />
+    <MESSAGE value="ajustes 9" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajustes 9" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -775,13 +810,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Repositories/ProdutoRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="22" column="29" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/api.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="515">
@@ -1004,23 +1032,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Home.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="490" column="42" selection-start-line="490" selection-start-column="42" selection-end-line="490" selection-end-column="42" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#div#2;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#1;n#div#2;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#div#1;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/API/ProdutoAPIController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -1094,26 +1105,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/produtos/ModalCreate.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="69" column="83" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="83" />
-          <folding>
-            <element signature="e#4506#6264#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/produtos/ModalEditar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="43" column="60" selection-start-line="43" selection-start-column="60" selection-end-line="43" selection-end-column="60" />
-          <folding>
-            <element signature="e#4630#6486#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/API/CoopAPIController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="163">
@@ -1121,20 +1112,75 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/pages/app-user-edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="19" selection-start-line="19" selection-end-line="470" selection-end-column="10" />
+          <folding>
+            <element signature="e#785#1903#0#HTML" />
+            <element signature="e#1948#11489#0#HTML" />
+            <element signature="e#11500#20502#0#HTML" />
+            <element signature="e#20513#24360#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/produtos/ModalEditar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="44" column="41" selection-start-line="44" selection-end-line="45" />
+          <folding>
+            <element signature="e#4630#6486#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/coops/Lista.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
+        <state relative-caret-position="240">
+          <caret line="49" column="110" selection-start-line="49" selection-start-column="90" selection-end-line="49" selection-end-column="110" />
+          <folding>
+            <element signature="e#10978#11016#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/produtos/ModalCreate.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="62" column="11" selection-start-line="62" selection-end-line="63" />
+          <folding>
+            <element signature="e#4506#6264#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/coops/gerencia.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="65" column="74" selection-start-line="65" selection-start-column="74" selection-end-line="65" selection-end-column="74" />
+        <state relative-caret-position="300">
+          <caret line="130" column="47" selection-start-line="130" selection-start-column="47" selection-end-line="130" selection-end-column="47" />
           <folding>
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#div#0;n#template#0;n#!!top" />
             <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#div#3;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="e#31247#31285#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Home.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="155" column="45" lean-forward="true" selection-start-line="155" selection-start-column="45" selection-end-line="155" selection-end-column="45" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#2;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#1;n#div#2;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="e#25563#26326#0" />
           </folding>
         </state>
       </provider>

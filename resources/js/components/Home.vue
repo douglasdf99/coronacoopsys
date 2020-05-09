@@ -127,7 +127,6 @@
                                                     </p>
                                                 </div>
                                                 <div class="col s2 right-align">
-
                                                     <i class="material-icons btn-add"
                                                        style="font-size: 2.3rem;" v-show="show[index]">indeterminate_check_box</i>
                                                     <i class="material-icons btn-add"
@@ -151,11 +150,11 @@
                                                     </p>
                                                     <div class="row">
                                                         <div class="col l3 m4 s4" v-for="prod in result.coop_produtos">
-                                                            <p class="detalhe">
+                                                            <p class="detalhe"></p>
                                         <li style="border: unset;" class="listagem-prod">
                                             {{prod.descricao}}
                                         </li>
-                                        </p>
+
                                 </div>
                             </div>
                             <p class="area">
@@ -462,10 +461,16 @@
                 this.produtos.map(function (prod) {
                     console.log('prod', prod)
                     console.log('ramo', self.pesquisa.ramo)
+                    if (self.pesquisa.ramo.id) {
                     if (prod.ramo_id == self.pesquisa.ramo.id) {
                         prod.text = prod.descricao;
                         filtrado.push(prod);
                     }
+                    }else{
+                        prod.text = prod.descricao;
+                        filtrado.push(prod);
+                    }
+
                 });
                 console.log('filtrado', filtrado)
                 return filtrado;
