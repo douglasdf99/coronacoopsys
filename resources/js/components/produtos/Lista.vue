@@ -31,6 +31,7 @@
                                 <thead>
                                 <tr>
                                     <th>Nome</th>
+                                    <th>Ramo</th>
                                     <th style="width: 82px;">Ações</th>
                                 </tr>
                                 </thead>
@@ -38,6 +39,9 @@
                                 <tr @click="getUsuario(project)">
                                     <td>
                                           <a href="javascript:void(0);" class=" text-body font-weight-semibold">{{project.descricao}}</a>
+                                    </td>
+                                    <td>
+                                          <a href="javascript:void(0);" class=" text-body font-weight-semibold">{{project.ramo.descricao}}</a>
                                     </td>
                                     <td>
                                       <a href="javascript:void(0);" @click="showEditar(project.id)" ><i class="users-edit-icon feather icon-edit-1 mr-50"></i> </a>

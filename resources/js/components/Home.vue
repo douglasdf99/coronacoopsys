@@ -488,6 +488,7 @@
       },
       getCidades() {
         return new Promise((resolve, reject) => {
+          console.log(this.pesquisa.estado);
           this.pesquisa.cidade = '';
           this.cidadesFiltradas = [];
           this.cidades.forEach(item => {

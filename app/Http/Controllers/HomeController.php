@@ -44,8 +44,8 @@ class HomeController extends Controller
         'mensagem' => $request->mensagem
       ];
 
-      //Mail::to('nucleo@ocb.coop.br')->send(new ContatoEmail($data));
-      Mail::to('douglasmatosbsi@gmail.com')->send(new ContatoEmail($data));
+      Mail::to('nucleo@ocb.coop.br')->send(new ContatoEmail($data));
+      //Mail::to('douglasmatosbsi@gmail.com')->send(new ContatoEmail($data));
       return response()->json(['message' => 'email enviado com sucesso'], 200);
 
     }

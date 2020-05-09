@@ -39,6 +39,11 @@
                                                id="name"
                                                class="form-control" autocomplete="off">
                                     </div>
+
+                                    <div class="form-group mb-3" >
+                                      <label for="name">Ramo:</label>
+                                      <Select2 v-model="ramo.ramo_id" :options="myOptions" :settings="{ settingOption: value, settingOption: value }" @change="myChangeEvent($event)" @select="mySelectEvent($event)" />
+                                    </div>
                                     <!-- Submit Field -->
                                     <div class="form-group d-flex float-right">
                                         <a @click="fechar" class="btn btn-light">Cancelar</a>
@@ -61,7 +66,9 @@
         name: 'SizeModalTest',
         data() {
             return {
+              myOptions: [], // or [{id: key, text: value}, {id: key, text: value}]
                 descricao: null,
+                ramo: null,
                 email: null,
                 password: null,
                 role_id: null,
@@ -108,7 +115,7 @@
                 }
             },
             opened(e) {
-
+                this.getRamos()               ;
                 this.stop = 1;
                 // e.ref should not be undefined here
                 console.log('opened', e)
@@ -128,7 +135,19 @@
                 this.stop = 0;
                 this.$modal.hide('ramo-editar')
             },
-
+          getRamos() {
+            axios.get('/api/ramos')
+              .then(response => {
+                console.log(response.data);
+                console.log('draw');
+                let data = response.data.data;
+                data.forEach(item =>{
+                  this.myOptions.push({id: item.id, text: item.descricao})
+                });
+              })
+              .catch(errors => {
+                console.log(errors);
+              })},
             checkForm: function (e) {
                 e.preventDefault();
                 const formData2 = new FormData();

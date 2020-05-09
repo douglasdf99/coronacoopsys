@@ -36,9 +36,9 @@ class CoopAPIController extends AppBaseController
     {
       $this->coopRepository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
       if ( $request->input('page') )
-        $coops = $this->coopRepository->paginate($limit = 10, $columns = ['*']);
+        $coops = $this->coopRepository->with(['ramo', 'coopProdutos.produto','coopCanais.canai','areas'])->paginate($limit = 10, $columns = ['*']);
       else
-        $coops = $this->coopRepository->all();
+        $coops = $this->coopRepository->with(['ramo', 'coopProdutos.produto','coopCanais.canai','areas'])->all();
 
         return $this->sendResponse($coops->toArray(), 'Coops retrieved successfully');
     }
@@ -47,9 +47,13 @@ class CoopAPIController extends AppBaseController
     {
         $this->coopRepository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         $query = $this->coopRepository->with(['ramo', 'coopProdutos.produto','coopCanais.canai','areas']);
-        $query->whereHas('areas', function ($q) use($request){
-          $q->where('tipo','Nacional')->orWhere([['tipo','Estadual'],['estado',$request->estado]])->orWhere([['tipo','Municipal'],['cidade',$request->cidade]]);
-        });
+
+        if ($request->cidade !== null or $request->estado !== 'undefined'){
+          $query->whereHas('areas', function ($q) use($request){
+            $q->where('tipo','Nacional')->orWhere([['tipo','Estadual'],['estado',$request->estado]])->orWhere([['tipo','Municipal'],['cidade',$request->cidade]]);
+          });
+        }
+
         $coops = $query->paginate($limit = 10, $columns = ['*']);
 
 

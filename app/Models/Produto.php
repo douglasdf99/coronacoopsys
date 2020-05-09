@@ -55,6 +55,13 @@ class Produto extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
+    public function ramo()
+    {
+        return $this->belongsTo(\App\Models\Ramo::class, 'ramo_id');
+    }
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
     public function coopProdutos()
     {
         return $this->hasMany(\App\Models\CoopProduto::class, 'produto_id');

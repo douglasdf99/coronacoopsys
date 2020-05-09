@@ -34,10 +34,15 @@
                                         {{errors.descricao[0]}}
                                     </div>
                                     <div class="form-group mb-3" :class="{'has-error': errors.descricao}" >
-                                        <label for="name">Descrição do Ramo:</label>
+                                        <label for="name">Descrição do Produto:</label>
                                         <input required="required" v-model="descricao" name="name" type="text" id="name"
                                                class="form-control" autocomplete="off">
                                     </div>
+                                    <div class="form-group mb-3" :class="{'has-error': errors.descricao}" >
+                                        <label for="name">Descrição do Produto:</label>
+                                      <Select2 v-model="ramo" :options="myOptions" :settings="{ settingOption: value, settingOption: value }" @change="myChangeEvent($event)" @select="mySelectEvent($event)" />
+                                    </div>
+
                                     <!-- Submit Field -->
                                     <div class="form-group d-flex float-right">
                                         <a @click="fechar" class="btn btn-light">Cancelar</a>
@@ -55,11 +60,16 @@
     </modal>
 </template>
 <script>
-    export default {
+  import VueSelect from 'vue-select2';
+  export default{
+    components: {VueSelect},
         name: 'SizeModalTest',
-        data() {
+      data() {
             return {
+              myValue: '',
+              myOptions: [], // or [{id: key, text: value}, {id: key, text: value}]
               descricao: null,
+              ramo: null,
                 email: null,
                 password: '',
                 role_id: null,
@@ -90,6 +100,12 @@
         }
       },
         methods: {
+          myChangeEvent(val){
+            console.log(val);
+          },
+          mySelectEvent({id, text}){
+            console.log({id, text})
+          },
             beforeOpen(event) {
 
             },
@@ -106,6 +122,7 @@
             opened(e) {
                 this.stop = 1;
                 this.limpaform();
+                this.getRamos();
                 // e.ref should not be undefined here
                 console.log('opened', e)
                 console.log('ref', e.ref)
@@ -121,6 +138,19 @@
                 this.stop = 0;
                 this.$modal.hide('demo-login')
             },
+            getRamos() {
+              axios.get('/api/ramos')
+                .then(response => {
+                  console.log(response.data);
+                  console.log('draw');
+                  let data = response.data.data;
+                  data.forEach(item =>{
+                    this.myOptions.push({id: item.id, text: item.descricao})
+                  });
+                })
+                .catch(errors => {
+                  console.log(errors);
+                })},
 
             checkForm(e) {
                 e.preventDefault();
@@ -134,6 +164,7 @@
                 },
               });
                 formData.append('descricao', this.descricao);
+                formData.append('ramo_id', this.ramo);
 
                 axios.post('/api/produtos', formData)
                     .then(response => {

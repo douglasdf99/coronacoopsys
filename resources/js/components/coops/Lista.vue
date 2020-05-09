@@ -32,8 +32,8 @@
                                 <tr>
                                     <th>Logo/Razão</th>
                                     <th>CNPJ</th>
-                                    <th>tipo</th>
-                                    <th>email</th>
+                                    <th>Ramo</th>
+                                    <th>Email</th>
                                     <th style="width: 82px;">Ações</th>
                                 </tr>
                                 </thead>
@@ -47,21 +47,21 @@
                                           </div>
                                         </div>
                                         <div class="col-8">
-                                          <a href="javascript:void(0);" class=" text-body font-weight-semibold">{{project.razao}}</a>
+                                          <a href="javascript:void(0);" class=" text-body font-weight-semibold">{{project.nome}}</a>
                                         </div>
                                     </td>
                                     <td>
                                         {{project.cnpj}}
                                     </td>
                                     <td>
-                                        {{project.matriz}}
+                                        {{project.ramo.descricao}}
                                     </td>
                                     <td>
                                         {{project.email}}
                                     </td>
                                     <td>
-                                      <a href="javascript:void(0);" @click="showEditar(project.id)" ><i class="users-edit-icon feather icon-edit-1 mr-50"></i> </a>
-                                      <a href="javascript:void(0);" @click="showExcluir(project.id)" ><i class="users-delete-icon feather icon-trash-2"></i> </a>
+                                      <a :href="url_redirect('admin/coops/'+project.id)" class="btn btn-primary  mr-75"><i
+                                        class="feather icon-settings"></i></a>
                                     </td>
                                 </tr>
                                 </tbody>

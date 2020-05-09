@@ -36,9 +36,9 @@ class ProdutoAPIController extends AppBaseController
     {
       $this->produtoRepository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
       if ( $request->input('page') )
-        $produtos = $this->produtoRepository->paginate($limit = 10, $columns = ['*']);
+        $produtos = $this->produtoRepository->with('ramo')->orderBy('descricao','ASC')->paginate($limit = 10, $columns = ['*']);
       else
-        $produtos = $this->produtoRepository->all();
+        $produtos = $this->produtoRepository->with('ramo')->orderBy('descricao','ASC')->all();
 
         return $this->sendResponse($produtos->toArray(), 'Produtos retrieved successfully');
     }

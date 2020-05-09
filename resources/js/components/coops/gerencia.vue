@@ -13,7 +13,12 @@
             <div class="card-body">
               <h6 class="border-bottom py-1 mx-1 mb-2 mb-0 font-medium-2"><i class="feather icon-lock mr-50 "></i>Informações principais
               </h6>
-              <table>
+              <table styel="border-collapse:separate;border-spacing:5px;">
+                <tr>
+                  <td class="font-weight-bold">Nome Fantasia: </td>
+                  <td> {{item.nome}}
+                  </td>
+                </tr>
                 <tr>
                   <td class="font-weight-bold">Razão Social : </td>
                   <td> {{item.razao}}
@@ -58,24 +63,7 @@
             <div class="card-body">
               <h6 class="border-bottom py-1 mx-1 mb-2 mb-0 font-medium-2"><i class="feather icon-lock mr-50 "></i>Configurações
               </h6>
-              <table>
-                <tr>
-                  <td class="font-weight-bold">Área de atuação :</td>
-                  <td> {{item.areas.tipo}}</td>
-                </tr>
-              </table>
-              <table>
-                <tr>
-                  <th>Canais de venda</th>
-                </tr>
-                <tr v-for="canal in item.coop_canais">
-                  <td>
-                    {{canal.canai.descricao}}
-                  </td>
-                </tr>
-              </table>
-              <div class="divider"><div class="divider-text">Gerais </div></div>
-              <table>
+              <table style="border-collapse:separate;border-spacing:5px;">
                 <tr>
                   <td class="font-weight-bold">Compatilhamento :</td>
                   <td>{{item.compartilhamento}}</td>
@@ -97,6 +85,59 @@
           </div>
         </div>
         <!-- social links end -->
+        <!-- permissions start -->
+        <div class="col-6">
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <h6 class="border-bottom py-1 mx-1 mb-0 font-medium-2"><i class="feather icon-lock mr-50 "></i>Áreas de atuação
+                </h6>
+                <table class="table table-borderless">
+                  <thead>
+                  <tr>
+                    <th>Tipo</th>
+                    <th>Estado</th>
+                    <th>Cidade</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr v-for="area in item.areas">
+                    <td>{{area.tipo}}</td>
+                    <td>
+                      {{area.estado}}
+                    </td>
+                    <td>
+                      {{area.cidade}}
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>     <!-- permissions start -->
+        <div class="col-6">
+          <div class="card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <h6 class="border-bottom py-1 mx-1 mb-0 font-medium-2"><i class="feather icon-lock mr-50 "></i>Canais de venda
+                </h6>
+                <table class="table table-borderless">
+                  <thead>
+                  <tr>
+                    <th>Canal</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr v-for="canal in item.coop_canais">
+                    <td>{{canal.canai.descricao}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- permissions start -->
         <div class="col-6">
           <div class="card">
