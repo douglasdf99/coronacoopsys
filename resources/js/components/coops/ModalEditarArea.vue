@@ -1,5 +1,5 @@
 <template>
-    <modal name="ramo-editar"
+    <modal name="editar-area"
            transition="nice-modal-fade"
            classes="demo-modal-class"
            :min-width="200"
@@ -21,7 +21,7 @@
                         <div class="col-xl-10">
                             <!-- Pricing Title-->
                             <div class="text-center mb-3">
-                                <h3 class="mb-2">Editar <b>Produto</b></h3>
+                                <h3 class="mb-2">Editar <b>Área de atuação</b></h3>
                             </div>
                             <div class="botaofechar">
                                 <button class="btn btn-primary" @click="fechar">x</button>
@@ -30,24 +30,27 @@
                             <div class="text-left mt-0">
                                 <form id="editaitem" enctype="multipart/form-data" @submit="checkForm"
                                       class="parsley-examples" autocomplete="off">
-                                    <div class="invalid-feedback d-block" v-if="errors.descricao">
-                                        {{errors.descricao[0]}}
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label for="name">Descrição:</label>
-                                        <input required="required" v-model="ramo.descricao" name="name" type="text"
-                                               id="name"
-                                               class="form-control" autocomplete="off">
-                                    </div>
 
                                     <div class="form-group mb-3" >
-                                      <label for="name">Ramo:</label>
-                                      <Select2 v-model="ramo.ramo_id" :options="myOptions" :settings="{ settingOption: value, settingOption: value }" @change="myChangeEvent($event)" @select="mySelectEvent($event)" />
+                                        <label>Tipo:</label>
+                                        <Select2 v-model="item.tipo" required :options="myOptions"/>
                                     </div>
-                                    <!-- Submit Field -->
+                                    <div class="form-group">
+                                      <div class="controls">
+                                        <label>Estado </label>
+                                        <Select2 v-model="estado" :options="estdosCpm" @select="setEstado($event)"/>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <div class="controls">
+                                        <label>Cidade </label>
+                                        <Select2 v-model="cidade" :options="cidadesCpm"  @select="setCidade($event)"/>
+                                      </div>
+                                    </div>
+                                    <!-- Field -->
                                     <div class="form-group d-flex float-right">
                                         <a @click="fechar" class="btn btn-light">Cancelar</a>
-                                        <button type="submit" class="btn btn-primary">Salvar</button>
+                                        <button type="submit" class="btn btn-primary">Criar</button>
                                     </div>
                                 </form>
                             </div>
@@ -61,16 +64,28 @@
     </modal>
 </template>
 <script>
-    export default {
-        props: ['ramo', 'client', 'filtered'],
+  import VueSelect from 'vue-select2';
+  import cidades from '../../scripts/Cidades.json'
+  import estados from '../../scripts/Estados.json'
+  export default{
+    components: {VueSelect},
         name: 'SizeModalTest',
-        data() {
+      props: ['coop','itemEdit'],
+      data() {
             return {
-              myOptions: [], // or [{id: key, text: value}, {id: key, text: value}]
-                descricao: null,
-                ramo: null,
+              item: {},
+              estados: estados,
+              estado: '',
+              estadoReal: '',
+              cidades: cidades,
+              cidade: '',
+              cidadeReal: '',
+              myValue: '',
+              myOptions: [{id: 'Nacional', text: 'Nacional'},{id: 'Estadual', text: 'Estadual'},{id: 'Municipal', text: 'Municipal'},{id: 'Local', text: 'Local'}],
+              tipo: null,
+              ramo: null,
                 email: null,
-                password: null,
+                password: '',
                 role_id: null,
                 roles: [],
                 isDragging: false,
@@ -80,8 +95,8 @@
                 images: [],
                 paragraphs: [true],
                 timer: null,
-                errors: {},
-                error: 0
+                errors:{},
+                error:0
             }
         },
       computed: {
@@ -95,27 +110,69 @@
           else{
             return window.innerWidth * 0.8;
           }
-        }
+        },
+        estdosCpm() {
+          let filtrado = [];
+          let self = this;
+          this.estados.map(function (prod) {
+
+            if (prod.Nome === self.item.estado){
+              self.estado =  prod.ID
+              console.log( self.estado)
+            }
+            filtrado.push({id:prod.ID, text:prod.Nome});
+          });
+          console.log('filtrado', filtrado)
+          return filtrado;
+        },
+        cidadesCpm() {
+          let self = this;
+          let filtrado = [];
+          this.cidades.forEach(item => {
+            if (item.Estado == self.estado){
+              if (item.Nome === self.item.cidade){
+                self.cidade =  item.ID
+              }
+              filtrado.push({id:item.ID, text:item.Nome});
+            }
+          });
+          console.log('filtrado', filtrado)
+          return filtrado;
+        },
       },
-        methods: {
-            carregaimagem() {
-                this.files.length === 1;
+
+        methods:
+          {
+            setCidade({id, text}){
+              this.item.cidade = text;
+
             },
+            setEstado({id, text}){
+              this.item.estado = text;
+            },
+          myChangeEvent(val){
+            console.log(val);
+          },
+          mySelectEvent({id, text}){
+            console.log({id, text})
+          },
             beforeOpen(event) {
 
             },
             beforeClose(event) {
-                console.log('fechou');
 
-                if (this.stop > 0) {
-                    /*
-                    Stopping close event execution
-                    */
-                    event.stop()
-                }
+              if (this.stop > 0) {
+                console.log('closed', event.cancel())
+              }
+
+              /*
+              Stopping close event execution
+              */
             },
             opened(e) {
+              this.item = {... this.itemEdit}
                 this.stop = 1;
+                this.limpaform();
                 // e.ref should not be undefined here
                 console.log('opened', e)
                 console.log('ref', e.ref)
@@ -125,35 +182,37 @@
                 console.log('closed', e)
             },
             limpaform() {
-
-                this.descricao = null;
-
-                console.log('limpa');
+                this.estado = null;
+                this.estadoReal = null;
+                this.cidade = null;
+                this.cidadeReal = null;
+                this.tipo = null;
             },
             fechar() {
                 this.stop = 0;
-                this.$modal.hide('ramo-editar')
+                this.$modal.hide('editar-area')
             },
-
-            checkForm: function (e) {
+            checkForm(e) {
                 e.preventDefault();
-                const formData2 = new FormData();
-              Swal.fire({
-                title: 'Editando Produto!',
-                html: 'Aguarde enquanto o produto é editado',
-                showConfirmButton: false,
-                onBeforeOpen: () => {
-                  Swal.showLoading()
-                },
-              });
+                const formData = new FormData();
+                Swal.fire({
+                  title: 'Criando Area!',
+                  html: 'Aguarde enquanto a nova área é criada',
+                  showConfirmButton: false,
+                  onBeforeOpen: () => {
+                    Swal.showLoading()
+                  }
+                });
 
+                formData.append('_method', 'PUT');
+                formData.append('tipo', this.item.tipo);
+                formData.append('estado', this.item.estado);
+                formData.append('cidade', this.item.cidade);
+                formData.append('coop_id', this.coop.id);
 
-                formData2.append('_method', 'PUT');
-                formData2.append('descricao', this.ramo.descricao);
-                console.log(formData2);
-                axios.post(`/api/produtos/${this.ramo.id}`, formData2)
+                axios.post(`/api/areas/${this.item.id}`, formData)
                     .then(response => {
-                        this.error = 0;
+                        this.error =0;
                         console.log(response)
                       Swal.fire({
                         title: 'Sucesso!',
@@ -162,27 +221,29 @@
                         showConfirmButton: false,
                         timer: 1500
                       });
-                    }).catch(errors => {
+                    })
+                  .catch(errors => {
                     this.error = 1;
-                    console.log('erros', errors.response.data.errors);
-                    this.errors = errors.response.data.errors;
-                    console.log(this.errors);
-                      Swal.fire({
-                        title: 'Algo deu errado!',
-                        text: '',
-                        type: 'error',
-                        showConfirmButton: false,
-                        timer: 1500
-                      });
-                })
+                        console.log('erros',errors.response.data.errors);
+                        this.errors = errors.response.data.errors;
+                        console.log( this.errors);
+                    Swal.fire({
+                      title: 'Algo deu errado!',
+                      text: '',
+                      type: 'error',
+                      showConfirmButton: false,
+                      timer: 1500
+                    });
+                    })
                     .finally(response => {
                         console.log(response);
-                        if (this.error == 0) {
+                        if ( this.error == 0) {
                             this.fechar()
                             this.$emit('paginate');
                         }
                     });
             },
+
         }
     }
 </script>

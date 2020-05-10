@@ -49,10 +49,6 @@ class Area extends Model
     protected $casts = [
         'id' => 'integer',
         'tipo' => 'string',
-        'endereco_padrao' => 'integer',
-        'endereco' => 'string',
-        'cidade' => 'string',
-        'estado' => 'string',
         'coop_id' => 'integer'
     ];
 

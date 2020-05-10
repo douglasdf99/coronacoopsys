@@ -15,7 +15,7 @@
                 <li class="nav-item">
                   <a class="nav-link d-flex align-items-center" id="information-tab" data-toggle="tab" href="#information"
                      aria-controls="information" role="tab" aria-selected="false">
-                    <i class="feather icon-info mr-25"></i><span class="d-none d-sm-block">Information</span>
+                    <i class="feather icon-settings mr-25"></i><span class="d-none d-sm-block">Configurações</span>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -27,108 +27,199 @@
               </ul>
               <div class="tab-content">
                 <div class="tab-pane active" id="account" aria-labelledby="account-tab" role="tabpanel">
-                  <!-- users edit media object start -->
-                  <div class="media mb-2">
-                    <a class="mr-2 my-25" href="#">
-                      <img :src="url_redirect(item.logo)" alt="users avatar"
-                           class="users-avatar-shadow rounded" height="64" width="64">
-                    </a>
-                    <div class="media-body mt-50">
-                      <div class="col-12 d-flex mt-1 px-0">
-                        <a href="#" class="btn btn-primary d-none d-sm-block mr-75">Alterar</a>
-                        <a href="#" class="btn btn-primary d-block d-sm-none mr-75"><i
-                          class="feather icon-edit-1"></i></a>
-                      </div>
-                    </div>
-                  </div>
+
                   <!-- users edit media object ends -->
                   <!-- users edit account form start -->
-                  <form>
+                  <form @submit="checkForm">
+                    <!-- users edit media object start -->
+                    <div class="media mb-2">
+                      <div class="uploader"
+                           @dragenter="OnDragEnter"
+                           @dragleave="OnDragLeave"
+                           @dragover.prevent
+                           @drop="onDrop"
+                           :class="{ dragging: isDragging }">
+                        <div class="images-preview justify-content-center align-items-center d-flex"
+                             v-if="item.logo && !images.length">
+                          <div class="img-wrapper">
+                            <img :src="url_redirect(item.logo)"
+                                 class="users-avatar-shadow rounded" height="200" width="200">
+                            <div class="details justify-content-center align-items-center d-flex">
+                              <div class="upload-control">
+                                <label for="file">Alterar Arquivo</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div v-show="!item.logo">
+                          <div v-show="!images.length">
+                            <i class="fa fa-cloud-upload"></i>
+                            <p>Arraste para aqui</p>
+                            <div>OU</div>
+                            <div class="file-input">
+                              <label for="file">Selecione a logo</label>
+                              <input type="file" id="file" @change="onInputChange">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="images-preview justify-content-center align-items-center d-flex"
+                             v-show="images.length">
+                          <div class="img-wrapper" v-for="(image, index) in images" :key="index">
+                            <img :src="image" :alt="`Image Uplaoder ${index}`"
+                                 class="users-avatar-shadow rounded" height="200" width="200">
+                            <div class="details justify-content-center align-items-center d-flex">
+                              <span class="name" v-text="files[index].name"></span>
+                              <span class="size" v-text="getFileSize(files[index].size)"></span>
+                              <div class="upload-control">
+                                <label for="file">Alterar Arquivo</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+
+
                     <div class="row">
                       <div class="col-12 col-sm-6">
-                        <div class="form-group">
-                          <div class="controls">
-                            <label>Nome Fantasia</label>
-                            <input type="text" class="form-control" required v-model="item.nome">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="controls">
-                            <label>Razão social</label>
-                            <input type="text" class="form-control" required v-model="item.razao">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="controls">
-                            <label>E-mail</label>
-                            <input type="email" class="form-control" required v-model="item.email">
+                        <h5 class="mb-1"><i class="feather icon-user mr-25"></i>Geral</h5>
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="form-group">
+                              <div class="controls">
+                                <label>Nome Fantasia</label>
+                                <input type="text" class="form-control" required v-model="item.nome">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="controls">
+                                <label>Razão social</label>
+                                <input type="text" class="form-control" required v-model="item.razao">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="controls">
+                                <label>CNPJ</label>
+                                <input type="text" class="form-control" required v-model="item.cnpj">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="controls">
+                                <label>E-mail</label>
+                                <input type="email" class="form-control" required v-model="item.email">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="controls">
+                                <label>Matriz</label>
+                                <Select2 v-model="item.matriz" :options="myOptions"/>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="controls">
+                                <label>Site </label>
+                                <input type="text" class="form-control" required v-model="item.site">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="controls">
+                                <label>Telefone </label>
+                                <input type="text" class="form-control" required v-model="item.telefone">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="controls">
+                                <label>Whatsapp </label>
+                                <input type="text" class="form-control" required v-model="item.whatsapp">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="controls">
+                                <label>Compatilhamento </label>
+                              </div>
+                              <div class="custom-control custom-switch custom-switch-primary switch-md mr-2 mb-1">
+                                <input v-model="compartilhamento" type="checkbox" class="custom-control-input" id="compartilhamento">
+                                <label class="custom-control-label" for="compartilhamento">
+                                  <span class="switch-text-left">Sim</span> <span class="switch-text-right">Não</span>
+                                </label>
+                              </div>
+
+                            </div>
+                            <div class="form-group">
+                              <div class="controls">
+                                <label>Venda </label>
+                              </div>
+                              <div class="custom-control custom-switch custom-switch-primary switch-md mr-2 mb-1">
+                                <input v-model="sell" type="checkbox" class="custom-control-input" id="sell">
+                                <label class="custom-control-label" for="sell">
+                                  <span class="switch-text-left">Sim</span> <span class="switch-text-right">Não</span>
+                                </label>
+                              </div>
+
+                            </div>
+                            <div class="form-group">
+                              <div class="controls">
+                                <label >Ramo:</label>
+                                <Select2 v-model="item.ramo_id" :options="ramos" @change="myChangeEvent($event)" @select="mySelectEvent($event)" />
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="controls">
+                                <label>Catálogo</label>
+                                <h6>
+                                <a href="#">Download</a>
+
+                                </h6>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
                       <div class="col-12 col-sm-6">
-                        <div class="form-group">
-                          <div class="controls">
-                            <label>Matriz</label>
-                            <Select2 v-model="item.ramo_id" :options="myOptions" :settings="{ settingOption: value, settingOption: value }" />
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="controls">
-                            <label>Site </label>
-                            <input type="email" class="form-control" required v-model="item.site">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="controls">
-                            <label>Telefone </label>
-                            <input type="email" class="form-control" required v-model="item.telefone">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-12">
+                        <h5 class="mb-1 mt-2 mt-sm-0"><i class="feather icon-map-pin mr-25"></i>Endereço</h5>
                         <div class="form-group">
                           <div class="controls">
                             <label>Cep</label>
-                            <input type="email" class="form-control" required v-model="item.cep">
+                            <input type="text" class="form-control" required v-model="item.cep">
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="controls">
                             <label>Estado </label>
-                            <Select2 v-model="item.estado" :options="myOptions" :settings="{ settingOption: value, settingOption: value }" />
+                            <Select2 v-model="estado" :options="estdosCpm" @select="setEstado($event)"/>
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="controls">
                             <label>Cidade </label>
-                            <Select2 v-model="item.cidade" :options="myOptions" :settings="{ settingOption: value, settingOption: value }" />
+                            <Select2 v-model="cidade" :options="cidadesCpm"  @select="setCidade($event)"/>
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="controls">
                             <label>Endereco </label>
-                            <input type="email" class="form-control" required v-model="item.endereco">
+                            <input type="text" class="form-control" required v-model="item.endereco">
                           </div>
                         </div>
-
                         <div class="form-group">
                           <div class="controls">
                             <label>Número </label>
-                            <input type="email" class="form-control" required v-model="item.numero">
+                            <input type="text" class="form-control" required v-model="item.numero">
                           </div>
                         </div>
-
                         <div class="form-group">
                           <div class="controls">
                             <label>Complemento </label>
-                            <input type="email" class="form-control" required v-model="item.complemento">
+                            <input type="text" class="form-control" required v-model="item.complemento">
                           </div>
                         </div>
-
                         <div class="form-group">
                           <div class="controls">
                             <label>Bairro </label>
-                            <input type="email" class="form-control" required v-model="item.bairro">
+                            <input type="text" class="form-control" required v-model="item.bairro">
                           </div>
                         </div>
                       </div>
@@ -141,176 +232,72 @@
                   </form>
                   <!-- users edit account form ends -->
                 </div>
+
                 <div class="tab-pane" id="information" aria-labelledby="information-tab" role="tabpanel">
                   <!-- users edit Info form start -->
                   <form novalidate>
                     <div class="row mt-1">
                       <div class="col-12 col-sm-6">
-                        <h5 class="mb-1"><i class="feather icon-user mr-25"></i>Personal Information</h5>
-                        <div class="row">
-                          <div class="col-12">
-                            <div class="form-group">
-                              <div class="controls">
-                                <label>Birth date</label>
-                                <input type="text" class="form-control birthdate-picker" required placeholder="Birth date"
-                                       data-validation-required-message="This birthdate field is required">
-                              </div>
+                        <div class="table-responsive border rounded px-1">
+                          <h6 class="border-bottom py-2 mx-1 mb-0 font-medium-2">Áreas de atuação
+                            <a href="#" @click="showCriarArea()" class="btn btn-primary bt-sm waves-effect waves-light mb-2 float-right" data-overlayColor="#38414a">
+                            Add
+                          </a>
+                          </h6>
+
+                          <div class="row">
+                            <div class="col-12">
+                              <table class="table table-borderless">
+                                <thead>
+                                <tr>
+                                  <th>Tipo</th>
+                                  <th>Estado</th>
+                                  <th>Cidade</th>
+                                  <th>Ações</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="area in item.areas">
+                                  <td>{{area.tipo}}</td>
+                                  <td>
+                                    {{area.estado}}
+                                  </td>
+                                  <td>
+                                    {{area.cidade}}
+                                  </td>
+                                  <td>
+                                    <a href="javascript:void(0);" @click="showEditarArea(area)" ><i class="users-edit-icon feather icon-edit-1 mr-50"></i> </a>
+                                    <a href="javascript:void(0);" @click="showExcluirArea(area.id)" ><i class="users-delete-icon feather icon-trash-2"></i> </a>
+                                  </td>
+                                </tr>
+                                </tbody>
+                              </table>
                             </div>
                           </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="controls">
-                            <label>Mobile</label>
-                            <input type="text" class="form-control" value="&#43;6595895857"
-                                   placeholder="Mobile number here..."
-                                   data-validation-required-message="This mobile number is required">
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                          <div class="controls">
-                            <label>Website</label>
-                            <input type="text" class="form-control" required placeholder="Website here..."
-                                   value="https://rowboat.com/insititious/Angelo"
-                                   data-validation-required-message="This Website field is required">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label>Languages</label>
-                          <select class="form-control" id="users-language-select2" multiple="multiple">
-                            <option value="English" selected>English</option>
-                            <option value="Spanish">Spanish</option>
-                            <option value="French">French</option>
-                            <option value="Russian">Russian</option>
-                            <option value="German">German</option>
-                            <option value="Arabic" selected>Arabic</option>
-                            <option value="Sanskrit">Sanskrit</option>
-                          </select>
-                        </div>
-                        <div class="form-group">
-                          <label>Gender</label>
-                          <ul class="list-unstyled mb-0">
-                            <li class="d-inline-block mr-2">
-                              <fieldset>
-                                <div class="vs-radio-con">
-                                  <input type="radio" name="vueradio" checked value="false">
-                                  <span class="vs-radio">
-                              <span class="vs-radio--border"></span>
-                              <span class="vs-radio--circle"></span>
-                            </span>
-                                  Male
-                                </div>
-                              </fieldset>
-                            </li>
-                            <li class="d-inline-block mr-2">
-                              <fieldset>
-                                <div class="vs-radio-con">
-                                  <input type="radio" name="vueradio" value="false">
-                                  <span class="vs-radio">
-                              <span class="vs-radio--border"></span>
-                              <span class="vs-radio--circle"></span>
-                            </span>
-                                  Female
-                                </div>
-                              </fieldset>
-                            </li>
-                            <li class="d-inline-block mr-2">
-                              <fieldset>
-                                <div class="vs-radio-con">
-                                  <input type="radio" name="vueradio" value="false">
-                                  <span class="vs-radio">
-                              <span class="vs-radio--border"></span>
-                              <span class="vs-radio--circle"></span>
-                            </span>
-                                  Other
-                                </div>
-                              </fieldset>
-                            </li>
-
-                          </ul>
-                        </div>
-                        <div class="form-group">
-                          <label>Contact Options</label>
-                          <ul class="list-unstyled mb-0">
-                            <li class="d-inline-block mr-2">
-                              <fieldset>
-                                <div class="custom-control custom-checkbox">
-                                  <input type="checkbox" class="custom-control-input" checked name="customCheck1"
-                                         id="customCheck1">
-                                  <label class="custom-control-label" for="customCheck1">Email</label>
-                                </div>
-                              </fieldset>
-                            </li>
-                            <li class="d-inline-block mr-2">
-                              <fieldset>
-                                <div class="custom-control custom-checkbox">
-                                  <input type="checkbox" class="custom-control-input" checked name="customCheck2"
-                                         id="customCheck2">
-                                  <label class="custom-control-label" for="customCheck2">Message</label>
-                                </div>
-                              </fieldset>
-                            </li>
-                            <li class="d-inline-block mr-2">
-                              <fieldset>
-                                <div class="custom-control custom-checkbox">
-                                  <input type="checkbox" class="custom-control-input" name="customCheck3" id="customCheck3">
-                                  <label class="custom-control-label" for="customCheck3">Phone</label>
-                                </div>
-                              </fieldset>
-                            </li>
-                          </ul>
                         </div>
 
                       </div>
                       <div class="col-12 col-sm-6">
-                        <h5 class="mb-1 mt-2 mt-sm-0"><i class="feather icon-map-pin mr-25"></i>Address</h5>
-                        <div class="form-group">
-                          <div class="controls">
-                            <label>Address Line 1</label>
-                            <input type="text" class="form-control" value="A-65, Belvedere Streets" required
-                                   placeholder="Address Line 1" data-validation-required-message="This Address field is required">
-                          </div>
+                        <div class="table-responsive border rounded px-1">
+                          <h5 class="border-bottom py-1 mx-1 mb-0 font-medium-2">Canais de Venda</h5>
+                          <table class="table table-borderless">
+                            <thead>
+                            <tr>
+                              <th>Canal</th>
+                              <th>Ação</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="canal in item.coop_canais">
+                              <td>{{canal.canai.descricao}}</td>
+                              <td>
+                                <a href="javascript:void(0);" @click="showEditar(project.id)" ><i class="users-edit-icon feather icon-edit-1 mr-50"></i> </a>
+                                <a href="javascript:void(0);" @click="showExcluir(project.id)" ><i class="users-delete-icon feather icon-trash-2"></i> </a>
+                              </td>
+                            </tr>
+                            </tbody>
+                          </table>
                         </div>
-                        <div class="form-group">
-                          <div class="controls">
-                            <label>Address Line 2</label>
-                            <input type="text" class="form-control" required placeholder="Address Line 2"
-                                   data-validation-required-message="This Address field is required">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="controls">
-                            <label>Postcode</label>
-                            <input type="text" class="form-control" required placeholder="postcode" value="1868"
-                                   data-validation-required-message="This Postcode field is required">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="controls">
-                            <label>City</label>
-                            <input type="text" class="form-control" required value="New York"
-                                   data-validation-required-message="This Time Zone field is required">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="controls">
-                            <label>State</label>
-                            <input type="text" class="form-control" required value="New York"
-                                   data-validation-required-message="This Time Zone field is required">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="controls">
-                            <label>Country</label>
-                            <input type="text" class="form-control" required value="United Kingdom"
-                                   data-validation-required-message="This Time Zone field is required">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
-                        <button type="submit" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">Save
-                          Changes</button>
-                        <button type="reset" class="btn btn-outline-warning">Reset</button>
                       </div>
                     </div>
                   </form>
@@ -320,66 +307,36 @@
                   <!-- users edit socail form start -->
                   <form novalidate>
                     <div class="row">
-                      <div class="col-12 col-sm-6">
+                      <div class="col-12 ">
+                          <div class="table-responsive border rounded px-1">
+                            <h5 class="border-bottom py-1 mx-1 mb-0 font-medium-2"><i class="feather icon-settings mr-25"></i>Produtos</h5>
+                            <div class="row">
+                              <div class="col-12">
+                                <table class="table table-borderless">
+                                  <thead>
+                                  <tr>
+                                    <th>Produtos</th>
+                                    <th>Categoria</th>
+                                    <th>Ações</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  <tr v-for="produtos in item.coop_produtos">
+                                    <td>{{produtos.descricao}}</td>
+                                    <td>
+                                      {{produtos.produto.descricao}}
+                                    </td>
+                                    <td>
+                                      <a href="javascript:void(0);" @click="showEditar(project.id)" ><i class="users-edit-icon feather icon-edit-1 mr-50"></i> </a>
+                                      <a href="javascript:void(0);" @click="showExcluir(project.id)" ><i class="users-delete-icon feather icon-trash-2"></i> </a>
+                                    </td>
+                                  </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
 
-                        <fieldset>
-                          <label>Twitter</label>
-                          <div class="input-group mb-75">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text feather icon-twitter" id="basic-addon3"></span>
-                            </div>
-                            <input type="text" class="form-control" value="https://www.twitter.com/adoptionism744"
-                                   placeholder="https://www.twitter.com/" aria-describedby="basic-addon3">
-                          </div>
-
-                          <label>Facebook</label>
-                          <div class="input-group mb-75">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text feather icon-facebook" id="basic-addon4"></span>
-                            </div>
-                            <input type="text" class="form-control" value="https://www.facebook.com/adoptionism664"
-                                   placeholder="https://www.facebook.com/" aria-describedby="basic-addon4">
-                          </div>
-                          <label>Instagram</label>
-                          <div class="input-group mb-75">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text feather icon-instagram" id="basic-addon5"></span>
-                            </div>
-                            <input type="text" class="form-control" value="https://www.instagram.com/adopt-ionism744"
-                                   placeholder="https://www.instagram.com/" aria-describedby="basic-addon5">
-                          </div>
-                        </fieldset>
-                      </div>
-                      <div class="col-12 col-sm-6">
-                        <label>Github</label>
-                        <div class="input-group mb-75">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text feather icon-github" id="basic-addon9"></span>
-                          </div>
-                          <input type="text" class="form-control" value="https://www.github.com/madop818"
-                                 placeholder="https://www.github.com/" aria-describedby="basic-addon9">
-                        </div>
-                        <label>Codepen</label>
-                        <div class="input-group mb-75">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text feather icon-codepen" id="basic-addon12"></span>
-                          </div>
-                          <input type="text" class="form-control" value="https://www.codepen.com/adoptism243"
-                                 placeholder="https://www.codepen.com/" aria-describedby="basic-addon12">
-                        </div>
-                        <label>Slack</label>
-                        <div class="input-group mb-75">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text feather icon-slack" id="basic-addon11"></span>
-                          </div>
-                          <input type="text" class="form-control" value="@adoptionism744" placeholder="https://www.slack.com/"
-                                 aria-describedby="basic-addon11">
-                        </div>
-                      </div>
-                      <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
-                        <button type="submit" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">Save
-                          Changes</button>
-                        <button type="reset" class="btn btn-outline-warning">Reset</button>
                       </div>
                     </div>
                   </form>
@@ -390,275 +347,14 @@
           </div>
         </div>
       </section>
-      <div class="row">
-        <!-- account start -->
 
-        <!-- account end -->
-        <!-- information start -->
-        <div class="col-md-6 col-12 ">
-          <div class="card">
-            <div class="card-body">
-              <h6 class="border-bottom py-1 mx-1 mb-2 mb-0 font-medium-2"><i class="feather icon-lock mr-50 "></i>Informações principais
-              </h6>
-              <table styel="border-collapse:separate;border-spacing:5px;">
-                <tr>
-                  <td class="font-weight-bold">Nome Fantasia: </td>
-                  <td> {{item.nome}}
-                  </td>
-                </tr>
-                <tr>
-                  <td class="font-weight-bold">Razão Social : </td>
-                  <td> {{item.razao}}
-                  </td>
-                </tr>
-                <tr>
-                  <td class="font-weight-bold">CPNJ :</td>
-                  <td>{{item.cnpj}}</td>
-                </tr>
-                <tr>
-                  <td class="font-weight-bold">Email :</td>
-                  <td>{{item.email}}
-                  </td>
-                </tr>
-                <tr>
-                  <td class="font-weight-bold">Tipo :</td>
-                  <td>{{item.matriz}}
-                  </td>
-                </tr>
-                <tr>
-                  <td class="font-weight-bold">Site :</td>
-                  <td>{{item.site}}</td>
-                </tr>
-                <tr>
-                  <td class="font-weight-bold">Telefone :</td>
-                  <td>{{item.cnpj}}
-                  </td>
-                </tr>
-                <tr>
-                  <td class="font-weight-bold">Whatsapp :</td>
-                  <td>{{item.whatsapp}}
-                  </td>
-                </tr>
-              </table>
-            </div>
-          </div>
-        </div>
-        <!-- information start -->
-        <!-- social links end -->
-        <div class="col-md-6 col-12 ">
-          <div class="card">
-            <div class="card-body">
-              <h6 class="border-bottom py-1 mx-1 mb-2 mb-0 font-medium-2"><i class="feather icon-lock mr-50 "></i>Configurações
-              </h6>
-              <table style="border-collapse:separate;border-spacing:5px;">
-                <tr>
-                  <td class="font-weight-bold">Compatilhamento :</td>
-                  <td>{{item.compartilhamento}}</td>
-                </tr>
-                <tr>
-                  <td class="font-weight-bold">Venda :</td>
-                  <td>{{item.sell}}</td>
-                </tr>
-                <tr>
-                  <td class="font-weight-bold">Ramo :</td>
-                  <td>{{item.ramo.descricao}}</td>
-                </tr>
-                <tr>
-                  <td class="font-weight-bold">Cátalogo :</td>
-                  <td>{{item.catalogo}}</td>
-                </tr>
-              </table>
-            </div>
-          </div>
-        </div>
-        <!-- social links end -->
-        <!-- permissions start -->
-        <div class="col-6">
-          <div class="card">
-            <div class="card-body">
-              <div class="table-responsive">
-                <h6 class="border-bottom py-1 mx-1 mb-0 font-medium-2"><i class="feather icon-lock mr-50 "></i>Áreas de atuação
-                </h6>
-                <table class="table table-borderless">
-                  <thead>
-                  <tr>
-                    <th>Tipo</th>
-                    <th>Estado</th>
-                    <th>Cidade</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr v-for="area in item.areas">
-                    <td>{{area.tipo}}</td>
-                    <td>
-                      {{area.estado}}
-                    </td>
-                    <td>
-                      {{area.cidade}}
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>     <!-- permissions start -->
-        <div class="col-6">
-          <div class="card">
-            <div class="card-body">
-              <div class="table-responsive">
-                <h6 class="border-bottom py-1 mx-1 mb-0 font-medium-2"><i class="feather icon-lock mr-50 "></i>Canais de venda
-                </h6>
-                <table class="table table-borderless">
-                  <thead>
-                  <tr>
-                    <th>Canal</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr v-for="canal in item.coop_canais">
-                    <td>{{canal.canai.descricao}}</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- permissions start -->
-        <div class="col-6">
-          <div class="card">
-            <div class="card-body">
-              <div class="table-responsive">
-                <h6 class="border-bottom py-1 mx-1 mb-0 font-medium-2"><i class="feather icon-lock mr-50 "></i>Produtos
-                </h6>
-                <table class="table table-borderless">
-                  <thead>
-                  <tr>
-                    <th>Produtos</th>
-                    <th>Categoria</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr v-for="produtos in item.coop_produtos">
-                    <td>{{produtos.descricao}}</td>
-                    <td>
-                      {{produtos.produto.descricao}}
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="card">
-            <div class="card-body">
-              <div class="table-responsive">
-                <h6 class="border-bottom py-1 mx-1 mb-0 font-medium-2"><i class="feather icon-lock mr-50 "></i>Permission
-                </h6>
-                <table class="table table-borderless">
-                  <thead>
-                  <tr>
-                    <th>Module</th>
-                    <th>Read</th>
-                    <th>Write</th>
-                    <th>Create</th>
-                    <th>Delete</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>Users</td>
-                    <td>
-                      <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox1"
-                                                                         class="custom-control-input" checked>
-                        <label class="custom-control-label" for="users-checkbox1"></label>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox2"
-                                                                         class="custom-control-input"><label class="custom-control-label" for="users-checkbox2"></label>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox3"
-                                                                         class="custom-control-input"><label class="custom-control-label" for="users-checkbox3"></label>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox4"
-                                                                         class="custom-control-input" checked>
-                        <label class="custom-control-label" for="users-checkbox4"></label>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Articles</td>
-                    <td>
-                      <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox5"
-                                                                         class="custom-control-input"><label class="custom-control-label" for="users-checkbox5"></label>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox6"
-                                                                         class="custom-control-input" checked>
-                        <label class="custom-control-label" for="users-checkbox6"></label>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox7"
-                                                                         class="custom-control-input"><label class="custom-control-label" for="users-checkbox7"></label>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox8"
-                                                                         class="custom-control-input" checked>
-                        <label class="custom-control-label" for="users-checkbox8"></label>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Staff</td>
-                    <td>
-                      <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox9"
-                                                                         class="custom-control-input" checked>
-                        <label class="custom-control-label" for="users-checkbox9"></label>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox10"
-                                                                         class="custom-control-input" checked>
-                        <label class="custom-control-label" for="users-checkbox10"></label>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox11"
-                                                                         class="custom-control-input"><label class="custom-control-label" for="users-checkbox11"></label>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox12"
-                                                                         class="custom-control-input"><label class="custom-control-label" for="users-checkbox12"></label>
-                      </div>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- permissions end -->
-      </div>
         <!-- end row -->
-        <modal2 @paginate="getProjects()"></modal2>
-        <modaleditar :usuario="usuarioEditar"
-                     @paginate="getProjects()">
-        </modaleditar>
-        <modalexcluir :usuario="usuarioExcluir"
-                     @paginate="getProjects()">
+        <modalCreateArea :coop="item" @paginate="refresh()"></modalCreateArea>
+        <modalEditarArea :coop="item" :itemEdit="areaEdit" @paginate="refresh()"></modalEditarArea>
+        <modalExcluirArea :usuario="areaExcluir" @paginate="refresh()">
+        </modalExcluirArea>
+      <modalexcluir :usuario="usuarioExcluir"
+                     @paginate="refresh()">
         </modalexcluir>
     </div> <!-- container -->
 
@@ -667,19 +363,26 @@
 
 
 <script>
-    import Modal from './ModalCreate.vue';
-    import ModalEditar from './ModalEditar.vue';
+    import ModalCreateArea from './ModalCreateArea.vue';
+    import ModalEditarArea from './ModalEditarArea.vue';
+    import ModalExcluirArea from './ModalExcluirArea.vue';
     import ModalExcluir from './ModalExcluir.vue';
     import VueSelect from 'vue-select2';
+    import cidades from '../../scripts/Cidades.json'
+    import estados from '../../scripts/Estados.json'
 
 
     export default {
-        components: {VueSelect, modal2: Modal, modaleditar: ModalEditar, modalexcluir: ModalExcluir},
+        components: {VueSelect, modalCreateArea: ModalCreateArea, modalEditarArea: ModalEditarArea, modalExcluirArea: ModalExcluirArea},
       props: ['item'],
 
       created() {
-            this.getProjects();
+            this.getRamos();
         },
+      mounted(){
+        this.compartilhamento = this.item.compartilhamento
+        this.sell = this.item.sell
+      },
         data() {
             let sortOrders = {};
             let columns = [
@@ -694,8 +397,16 @@
                 sortOrders[column.name] = -1;
             });
             return {
+              areaEdit: '',
+              areaExcluir: '',
+              compartilhamento: '',
+              sell: '',
+              estados: estados,
+              estado: '',
+              cidades: cidades,
+              cidade: '',
+              ramos: [], // or [{id: key, text: value}, {id: key, text: value}]
               myOptions: ['Matriz','Filial'], // or [{id: key, text: value}, {id: key, text: value}]
-
               projects: [],
                 curso: '',
                 usuario: '',
@@ -725,8 +436,47 @@
                     from: '',
                     to: ''
                 },
+
+              isDragging: false,
+              dragCount: 0,
+              stop: 1,
+              files: [],
+              images: [],
             }
         },
+
+      computed: {
+        estdosCpm() {
+          let filtrado = [];
+          let self = this;
+          this.estados.map(function (prod) {
+              console.log(prod.Nome  ,self.item.estado);
+              if (prod.Nome === self.item.estado){
+                console.log('entrou dfssdfdsfdsfdsfdsfdsfsdfdsfsfs')
+                self.estado =  prod.ID
+              }
+
+            filtrado.push({id:prod.ID, text:prod.Nome});
+          });
+          console.log('filtrado', filtrado)
+          return filtrado;
+        },
+        cidadesCpm() {
+          let self = this;
+          let filtrado = [];
+          this.cidades.forEach(item => {
+            if (item.Estado == self.estado){
+              if (item.Nome === self.item.cidade){
+                console.log('entrou dfssdfdsfdsfdsfdsfdsfsdfdsfsfs')
+                self.cidade =  item.ID
+              }
+              filtrado.push({id:item.ID, text:item.Nome});
+            }
+          });
+          console.log('filtrado', filtrado)
+          return filtrado;
+        },
+      },
       watch: {
         tableData:{
           handler(val) {
@@ -736,12 +486,55 @@
             }
           },
           deep: true
+        },
+        compartilhamento: function(val){
+          //Use your source of truth to trigger events!
+          console.log(val)
+          this.item.compartilhamento = val;
+        },
+        sell: function(val){
+          //Use your source of truth to trigger events!
+          console.log(val)
+          this.item.sell = val;
+
         }
       },
         methods: {
-            showEditar(id) {
-                this.editarUsuario(id);
-                this.$modal.show('usuario-editar');
+          getRamos() {
+            axios.get('/api/ramos')
+              .then(response => {
+                console.log(response.data);
+                console.log('draw');
+                let data = response.data.data;
+                data.forEach(item =>{
+                  this.ramos.push({id: item.id, text: item.descricao})
+                });
+              })
+              .catch(errors => {
+                console.log(errors);
+              })},
+          showCriarArea(id) {
+            this.$modal.show('criar-area');
+          },
+          showExcluir(id) {
+            console.log('id enviado',id);
+            this.usuarioExcluir = id;
+            this.$modal.show('usuario-excluir');
+          },
+          setCidade({id, text}){
+            this.item.cidade = text;
+
+          },
+          setEstado({id, text}){
+            this.item.estado = text;
+          },
+            showEditarArea(areaEdit) {
+                this.areaEdit = areaEdit;
+                this.$modal.show('editar-area');
+            },
+          showExcluirArea(areaExcluir) {
+                this.areaExcluir = areaExcluir;
+                this.$modal.show('area-excluir');
             },
             showExcluir(id) {
                 console.log('id enviado',id);
@@ -754,40 +547,56 @@
             hide() {
                 this.$modal.hide('demo-login');
             },
-            getProjects(url = '/api/coops') {
-              Swal.fire({
-                title: 'Carregando...',
-                html: '',
-                showConfirmButton: false,
-                onBeforeOpen: () => {
-                  Swal.showLoading()
-                },
-              });
-                this.preloader = true;
-                this.tableData.draw++;
-                this.tableData.page= this.pagination.current_page;
-                axios.get(url, {params: this.tableData})
-                    .then(response => {
-                        console.log(response.data);
-                        console.log('draw');
-                        console.log(this.tableData.draw);
-                        let data = response.data;
+          OnDragEnter(e) {
+            e.preventDefault();
+            this.dragCount++;
+            this.isDragging = true;
+            return false;
+          },
+          OnDragLeave(e) {
+            e.preventDefault();
+            this.dragCount--;
+            if (this.dragCount <= 0)
+              this.isDragging = false;
+          },
+          onInputChange(e) {
+            const files = e.target.files;
+            Array.from(files).forEach(file => this.addImage(file));
+          },
+          onDrop(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            this.isDragging = false;
+            const files = e.dataTransfer.files;
+            Array.from(files).forEach(file => this.addImage(file));
+          },
+          addImage(file) {
+            this.files.pop();
+            if (!file.type.match('image.*')) {
+              this.$toastr.e(`${file.name} is not an image`);
+              return;
+            }
+            this.files.push(file);
+            const img = new Image(),
+              reader = new FileReader();
+            this.images.pop();
+            reader.onload = (e) => this.images.push(e.target.result);
+            reader.readAsDataURL(file);
+          },
+          getFileSize(size) {
+            const fSExt = ['Bytes', 'KB', 'MB', 'GB'];
+            let i = 0;
 
-
-                            this.projects = data.data.data;
-                            console.log(this.projects);
-                            this.configPagination(data.data);
-
-                    })
-                    .catch(errors => {
-                        console.log(errors);
-                    })
-                    .finally(() => Swal.close());
-            },
-            getUsuario(usu) {
+            while (size > 900) {
+              size /= 1024;
+              i++;
+            }
+            return `${(Math.round(size * 100) / 100)} ${fSExt[i]}`;
+          },
+          getUsuario(usu) {
                 this.usuario = usu;
             },
-            editarUsuario(id) {
+          editarUsuario(id) {
               Swal.fire({
                 title: 'Aguarde!',
                 html: '',
@@ -803,6 +612,28 @@
                         let data = response.data;
                         console.log(data.data);
                         this.usuarioEditar = data.data;
+                    })
+                    .catch(errors => {
+                        console.log(errors);
+                    })
+                    .finally(() => Swal.close());
+            },
+          refresh() {
+              Swal.fire({
+                title: 'Aguarde!',
+                html: '',
+                showConfirmButton: false,
+                onBeforeOpen: () => {
+                  Swal.showLoading()
+                },
+              });
+                this.usuarioEditar = '';
+                axios.get('/api/coops/' + this.item.id, {params: this.tableData})
+                    .then(response => {
+                        console.log(response.data);
+                        let data = response.data;
+                        console.log(data.data);
+                        this.item = data.data;
                     })
                     .catch(errors => {
                         console.log(errors);
@@ -833,6 +664,203 @@
             getIndex(array, key, value) {
                 return array.findIndex(i => i[key] == value)
             },
+          checkForm: function (e) {
+            e.preventDefault();
+            const formData2 = new FormData();
+            Swal.fire({
+              title: 'Salvando..',
+              html: 'Aguarde enquanto a cooperativa é salva',
+              showConfirmButton: false,
+              onBeforeOpen: () => {
+                Swal.showLoading()
+              },
+            });
+
+            this.files.forEach(file => {
+              formData2.append('logo', file, file.name);
+            });
+            this.files.forEach(file => {
+              formData2.append('catalogo', file, file.name);
+            });
+            formData2.append('_method', 'PUT');
+            formData2.append('nome', this.item.nome);
+            formData2.append('razao', this.item.razao);
+            formData2.append('cnpj', this.item.cnpj);
+            formData2.append('email', this.item.email);
+            formData2.append('matriz', this.item.matriz);
+            formData2.append('site', this.item.site);
+            formData2.append('telefone', this.item.telefone);
+            formData2.append('whatsapp', this.item.whatsapp);
+            formData2.append('ramo_id', this.item.ramo_id);
+            formData2.append('cep', this.item.cep);
+            formData2.append('estado', this.item.estado);
+            formData2.append('cidade', this.item.cidade);
+            formData2.append('endereco', this.item.endereco);
+            formData2.append('numero', this.item.numero);
+            if (this.item.compartilhamento){
+              formData2.append('compartilhamento', 1);
+
+            }else{
+              formData2.append('compartilhamento', 0);
+
+            }
+            if (this.item.sell){
+              formData2.append('sell', 1);
+
+            }else{
+              formData2.append('sell', 0);
+
+            }
+            formData2.append('complemento', this.item.complemento);
+            formData2.append('bairro', this.item.bairro);
+            console.log(formData2);
+            console.log(this.item);
+            axios.post(`/api/coops/${this.item.id}`, formData2)
+              .then(response => {
+                this.error = 0;
+                console.log(response)
+                Swal.fire({
+                  title: 'Sucesso!',
+                  text: response.data.message,
+                  type: 'success',
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+              }).catch(errors => {
+              this.error = 1;
+              console.log('erros', errors.response.data.errors);
+              this.errors = errors.response.data.errors;
+              console.log(this.errors);
+              Swal.fire({
+                title: 'Algo deu errado!',
+                text: '',
+                type: 'error',
+                showConfirmButton: false,
+                timer: 1500
+              });
+            })
+              .finally(response => {
+                console.log(response);
+                if (this.error == 0) {
+                  this.fechar()
+                  this.$emit('paginate');
+                }
+              });
+          },
         }
     }
 </script>
+<style lang="scss" scoped>
+  .botaofechar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 5px;
+  }
+
+  .uploader {
+    width: 100%;
+    background: #fff;
+    color: #0c0808;
+    padding: 40px 15px;
+    text-align: center;
+    border-radius: 10px;
+    border: 3px dashed #fff;
+    font-size: 20px;
+    position: relative;
+
+    &.dragging {
+      background: #fff;
+      color: #2196F3;
+      border: 3px dashed #e7e7e7;
+
+      .file-input label {
+        background: #f0f2f4;
+        color: #fff;
+      }
+    }
+
+    i {
+      font-size: 85px;
+    }
+
+    .file-input {
+      width: 200px;
+      margin: auto;
+      height: 68px;
+      position: relative;
+
+      label,
+      input {
+        background: #f1f5f7;
+        color: #0c0808;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 18px;
+        padding: 10px;
+        border-radius: 4px;
+        margin-top: 7px;
+        cursor: pointer;
+      }
+
+      input {
+        opacity: 0;
+        z-index: -2;
+      }
+    }
+
+    .images-preview {
+      display: flex;
+      flex-wrap: wrap;
+
+      .img-wrapper {
+        width: auto;
+        display: flex;
+        /*/flex-direction: column;*/
+        margin: 10px;
+
+        justify-content: space-between;
+        background: #fff0;
+        //box-shadow: 5px 5px 20px #3e3737;
+        img {
+          max-height: 200px;
+          max-width: 200px;
+          width: 100%;
+        }
+      }
+
+      .details {
+        font-size: 12px;
+        background: #fff;
+        color: #000;
+        display: flex;
+        flex-direction: column;
+        align-items: self-start;
+        padding: 3px 6px;
+
+        .name {
+          overflow: hidden;
+          height: 18px;
+        }
+      }
+    }
+
+    .upload-control {
+      button, label {
+        background: #7e57c2;
+        border: 2px solid #7e57c2;
+        border-radius: 3px;
+        color: #fff;
+        font-size: 15px;
+        cursor: pointer;
+      }
+
+      label {
+        padding: 2px 5px;
+      }
+    }
+
+  }
+</style>

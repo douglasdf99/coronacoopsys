@@ -1,5 +1,5 @@
 <template>
-    <modal name="ramo-editar"
+    <modal name="area-excluir"
            transition="nice-modal-fade"
            classes="demo-modal-class"
            :min-width="200"
@@ -8,7 +8,7 @@
            :adaptive="true"
            :scrollable="true"
            :reset="true"
-           :width="widht"
+           :width="width"
            height="auto"
            @before-open="beforeOpen"
            @opened="opened"
@@ -21,36 +21,28 @@
                         <div class="col-xl-10">
                             <!-- Pricing Title-->
                             <div class="text-center mb-3">
-                                <h3 class="mb-2">Editar <b>Produto</b></h3>
+                                <h3 class="mb-2">Excluir <b>Área</b></h3>
                             </div>
-                            <div class="botaofechar">
-                                <button class="btn btn-primary" @click="fechar">x</button>
-                            </div>
+                            <!--               <div class="botaofechar">
+                                               <button class="btn btn-primary" @click="fechar">x</button>
+                                           </div>-->
                             <hr>
-                            <div class="text-left mt-0">
-                                <form id="editaitem" enctype="multipart/form-data" @submit="checkForm"
-                                      class="parsley-examples" autocomplete="off">
-                                    <div class="invalid-feedback d-block" v-if="errors.descricao">
-                                        {{errors.descricao[0]}}
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="text-left mt-0 mb-3 font-15 text-center">
+                                        Você tem certeza que deseja <span
+                                        class="text-danger font-weight-bold">exluir</span> essa <b>área</b>?
                                     </div>
-                                    <div class="form-group mb-3">
-                                        <label for="name">Descrição:</label>
-                                        <input required="required" v-model="ramo.descricao" name="name" type="text"
-                                               id="name"
-                                               class="form-control" autocomplete="off">
-                                    </div>
-
-                                    <div class="form-group mb-3" >
-                                      <label for="name">Ramo:</label>
-                                      <Select2 v-model="ramo.ramo_id" :options="myOptions" :settings="{ settingOption: value, settingOption: value }" @change="myChangeEvent($event)" @select="mySelectEvent($event)" />
-                                    </div>
-                                    <!-- Submit Field -->
+                                </div>
+                                <div class="col-12">
                                     <div class="form-group d-flex float-right">
                                         <a @click="fechar" class="btn btn-light">Cancelar</a>
-                                        <button type="submit" class="btn btn-primary">Salvar</button>
+                                        <button type="button" @click="checkForm" class="btn btn-danger">Deletar</button>
                                     </div>
-                                </form>
+                                </div>
                             </div>
+
+
                         </div>
                         <!-- end row -->
                     </div> <!-- end col-->
@@ -62,13 +54,11 @@
 </template>
 <script>
     export default {
-        props: ['ramo', 'client', 'filtered'],
+        props: ['usuario', 'client', 'filtered'],
         name: 'SizeModalTest',
         data() {
             return {
-              myOptions: [], // or [{id: key, text: value}, {id: key, text: value}]
-                descricao: null,
-                ramo: null,
+                name: null,
                 email: null,
                 password: null,
                 role_id: null,
@@ -84,74 +74,54 @@
                 error: 0
             }
         },
-      computed: {
-        uploadDisabled() {
-          return this.files.length === 0;
-        },
-        widht(){
-          if (window.innerWidth > 500) {
-            return window.innerWidth * 0.4;
-          }
-          else{
-            return window.innerWidth * 0.8;
-          }
-        }
-      },
-        methods: {
-            carregaimagem() {
-                this.files.length === 1;
+        computed: {
+            uploadDisabled() {
+                return this.files.length === 0;
             },
+          widht(){
+            if (window.innerWidth > 500) {
+              return window.innerWidth * 0.4;
+            }
+            else{
+              return window.innerWidth * 0.8;
+            }
+          }
+        },
+        methods: {
             beforeOpen(event) {
 
             },
             beforeClose(event) {
-                console.log('fechou');
 
-                if (this.stop > 0) {
-                    /*
-                    Stopping close event execution
-                    */
-                    event.stop()
-                }
             },
             opened(e) {
-                this.stop = 1;
                 // e.ref should not be undefined here
                 console.log('opened', e)
                 console.log('ref', e.ref)
             },
             closed(e) {
-                this.limpaform();
                 console.log('closed', e)
             },
-            limpaform() {
-
-                this.descricao = null;
-
-                console.log('limpa');
-            },
             fechar() {
-                this.stop = 0;
-                this.$modal.hide('ramo-editar')
+                this.$modal.hide('area-excluir')
             },
-
             checkForm: function (e) {
                 e.preventDefault();
+
                 const formData2 = new FormData();
               Swal.fire({
-                title: 'Editando Produto!',
-                html: 'Aguarde enquanto o produto é editado',
+                title: 'Excluindo Área!',
+                html: 'Aguarde enquanto a Área é excluída',
                 showConfirmButton: false,
                 onBeforeOpen: () => {
                   Swal.showLoading()
                 },
               });
 
+                formData2.append('_method', 'DELETE');
+                formData2.append('id', this.usuario);
 
-                formData2.append('_method', 'PUT');
-                formData2.append('descricao', this.ramo.descricao);
-                console.log(formData2);
-                axios.post(`/api/produtos/${this.ramo.id}`, formData2)
+                axios.post(`/api/areas/${this.usuario}`, formData2)
                     .then(response => {
                         this.error = 0;
                         console.log(response)
@@ -162,11 +132,12 @@
                         showConfirmButton: false,
                         timer: 1500
                       });
-                    }).catch(errors => {
-                    this.error = 1;
-                    console.log('erros', errors.response.data.errors);
-                    this.errors = errors.response.data.errors;
-                    console.log(this.errors);
+                    })
+                    .catch(errors => {
+                        this.error = 1;
+                        console.log('erros', errors.response.data.errors);
+                        this.errors = errors.response.data.errors;
+                        console.log(this.errors);
                       Swal.fire({
                         title: 'Algo deu errado!',
                         text: '',
@@ -174,7 +145,7 @@
                         showConfirmButton: false,
                         timer: 1500
                       });
-                })
+                    })
                     .finally(response => {
                         console.log(response);
                         if (this.error == 0) {

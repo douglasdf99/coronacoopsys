@@ -57,6 +57,7 @@ class Coop extends Model
         'logo',
         'telefone',
         'whatsapp',
+        'cep',
         'estado',
         'cidade',
         'numero',
@@ -85,6 +86,7 @@ class Coop extends Model
         'logo' => 'string',
         'telefone' => 'string',
         'whatsapp' => 'string',
+        'cep' => 'string',
         'estado' => 'string',
         'cidade' => 'string',
         'numero' => 'string',
@@ -105,10 +107,7 @@ class Coop extends Model
     public static $rules = [
         'cnpj' => 'required',
         'razao' => 'required',
-        'matriz' => 'required',
-        'email' => 'required',
-        'logo' => 'required',
-        'whatsapp' => 'required'
+
     ];
 
     /**

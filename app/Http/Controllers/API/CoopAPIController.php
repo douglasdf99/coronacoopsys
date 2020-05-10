@@ -8,6 +8,8 @@ use App\Models\Coop;
 use App\Repositories\CoopRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Response;
 
 /**
@@ -19,6 +21,7 @@ class CoopAPIController extends AppBaseController
 {
     /** @var  CoopRepository */
     private $coopRepository;
+  private $path = 'coop';
 
     public function __construct(CoopRepository $coopRepo)
     {
@@ -88,7 +91,7 @@ class CoopAPIController extends AppBaseController
     public function show($id)
     {
         /** @var Coop $coop */
-        $coop = $this->coopRepository->find($id);
+        $coop = $this->coopRepository->with(['ramo', 'coopProdutos.produto','coopCanais.canai','areas'])->find($id);
 
         if (empty($coop)) {
             return $this->sendError('Coop not found');
@@ -116,6 +119,23 @@ class CoopAPIController extends AppBaseController
         if (empty($coop)) {
             return $this->sendError('Coop not found');
         }
+      if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
+        if ($coop->logo) {
+          if (Storage::exists("{$coop->logo}"))
+            Storage::delete("{$coop->logo}");
+        }
+
+        $name = time() .''.Str::kebab($request->nome);
+        $extension = $request->logo->extension();
+
+        $nameFile = "{$name}.{$extension}";
+        $input['logo'] = 'storage/'.$this->path.'/'.$nameFile;
+
+        $upload = $request->logo->storeAs($this->path, $nameFile);
+
+        if (!$upload)
+          return response()->json(['error' => 'Fail_Upload'], 500);
+      }
 
         $coop = $this->coopRepository->update($input, $id);
 

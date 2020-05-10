@@ -214,12 +214,11 @@
 
 
 <script>
-    import Modal from './ModalCreate.vue';
-    import ModalEditar from './ModalEditar.vue';
+
     import ModalExcluir from './ModalExcluir.vue';
 
     export default {
-        components: { modal2: Modal, modaleditar: ModalEditar, modalexcluir: ModalExcluir},
+        components: { modalexcluir: ModalExcluir},
         created() {
             this.getProjects();
         },
