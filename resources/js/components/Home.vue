@@ -43,13 +43,16 @@
                                 </div>
                                 <div class="col s6 mt-1">
                                     <label for="produto" class="label">Produto/serviço</label>
-                                    <select name="produto" id="produto" class="browser-default"
+                                    <!--<select name="produto" id="produto" class="browser-default"
                                             v-model="pesquisa.produto">
                                         <option selected="selected" value="">...</option>
                                         <option v-for="produto in ProdutoRamo" v-bind:value="produto.descricao">
                                             {{produto.descricao}}
                                         </option>
-                                    </select>
+                                    </select>-->
+                                    <Select2 v-model="pesquisa.produto" :options="ProdutoRamo">
+                                        <option selected="selected" value="">...</option>
+                                    </Select2>
                                 </div>
                                 <div class="col s12" v-if="ok">
                                     <button class="btn btn-success btn-buscar mt-1" @click="buscar(false)">Buscar
@@ -126,7 +129,11 @@
                                                         <span class="span-produto">{{search.produto}}</span>
                                                     </p>
                                                 </div>
-                                                <div class="col s2 right-align">
+                                                <div class="col s2 right-align"
+                                                     style="display: flex;align-items: flex-start;
+                                                     justify-content: space-between;">
+                                                    <img width="65px" class="hide-on-med-and-down"
+                                                         :src="url_redirect('front/assets/images/ramos/' + imagem_ramo(result.ramo.descricao) + '.svg')">
                                                     <i class="material-icons btn-add"
                                                        style="font-size: 2.3rem;" v-show="show[index]">indeterminate_check_box</i>
                                                     <i class="material-icons btn-add"
@@ -172,7 +179,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col s12">
-                                            <a :href="'mailto:'+result.email">
+                                            <a :href="'mailto:'+result.email" target="_blank">
                                                 <p class="detalhe">
                                                     <i class="material-icons">email</i>
                                                     {{result.email}}
@@ -182,7 +189,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col s12">
-                                            <a :href="'https://' + result.site">
+                                            <a :href="'https://' + result.site" target="_blank">
                                                 <p class="detalhe">
                                                     <i class="material-icons">language</i>
                                                     {{result.site}}
@@ -342,7 +349,7 @@
                                             {{produto.descricao}}
                                         </option>
                                     </select>-->
-                                    <Select2 v-model="pesquisa.produto" :options="ProdutoRamo" class="browser-default"></Select2>
+                                    <Select2 v-model="pesquisa.produto" :options="ProdutoRamo"></Select2>
                                 </div>
                             </div>
                         </div>
@@ -462,16 +469,19 @@
                     console.log('prod', prod)
                     console.log('ramo', self.pesquisa.ramo)
                     if (self.pesquisa.ramo.id) {
-                    if (prod.ramo_id == self.pesquisa.ramo.id) {
+                        if (prod.ramo_id == self.pesquisa.ramo.id) {
+                            prod.text = prod.descricao;
+                            prod.id = prod.descricao;
+                            filtrado.push(prod);
+                        }
+                    } else {
                         prod.text = prod.descricao;
+                        prod.id = prod.descricao;
                         filtrado.push(prod);
                     }
-                    }else{
-                        prod.text = prod.descricao;
-                        filtrado.push(prod);
-                    }
-
                 });
+                filtrado.push({id: '...', text: '...', selected: true});
+                this.pesquisa.produto = '...';
                 console.log('filtrado', filtrado)
                 return filtrado;
             }
@@ -495,6 +505,34 @@
 
         },
         methods: {
+            imagem_ramo(obj) {
+                console.log('asdjahsd', obj)
+                switch (obj) {
+                    case 'Agropecuário':
+                        return 'agropecuario'
+                        break;
+                    case 'Consumo':
+                        return 'consumo';
+                        break;
+                    case 'Transporte':
+                        return 'transporte';
+                        break;
+                    case 'Saúde':
+                        return 'saude';
+                        break;
+                    case 'Infraestrutura':
+                        return 'infraestrutura'
+                        break;
+                    case 'Crédito':
+                        return 'credito';
+                        break;
+                    case 'Trabalho, Produção de bens e serviços':
+                        return 'trabalho';
+                        break;
+                    default:
+                        return 'nenhum-resultado';
+                }
+            },
             changePage(page) {
                 this.pagination.current_page = page;
                 this.buscar();
@@ -563,7 +601,7 @@
                     url += 'ramo.descricao:' + this.pesquisa.ramo.descricao;
                     attr++;
                 }
-                if (this.pesquisa.produto != '') {
+                if (this.pesquisa.produto != '' && this.pesquisa.produto != '...') {
                     if (attr > 0) {
                         url += ';';
                     }
