@@ -129,7 +129,11 @@
                                                         <span class="span-produto">{{search.produto}}</span>
                                                     </p>
                                                 </div>
-                                                <div class="col s2 right-align">
+                                                <div class="col s2 right-align"
+                                                     style="display: flex;align-items: flex-start;
+                                                     justify-content: space-between;">
+                                                    <img width="65px" class="hide-on-med-and-down"
+                                                         :src="url_redirect('front/assets/images/ramos/' + imagem_ramo(result.ramo.descricao) + '.svg')">
                                                     <i class="material-icons btn-add"
                                                        style="font-size: 2.3rem;" v-show="show[index]">indeterminate_check_box</i>
                                                     <i class="material-icons btn-add"
@@ -501,6 +505,34 @@
 
         },
         methods: {
+            imagem_ramo(obj) {
+                console.log('asdjahsd', obj)
+                switch (obj) {
+                    case 'Agropecuário':
+                        return 'agropecuario'
+                        break;
+                    case 'Consumo':
+                        return 'consumo';
+                        break;
+                    case 'Transporte':
+                        return 'transporte';
+                        break;
+                    case 'Saúde':
+                        return 'saude';
+                        break;
+                    case 'Infraestrutura':
+                        return 'infraestrutura'
+                        break;
+                    case 'Crédito':
+                        return 'credito';
+                        break;
+                    case 'Trabalho, Produção de bens e serviços':
+                        return 'trabalho';
+                        break;
+                    default:
+                        return 'nenhum-resultado';
+                }
+            },
             changePage(page) {
                 this.pagination.current_page = page;
                 this.buscar();
