@@ -105,9 +105,8 @@ class Coop extends Model
      * @var array
      */
     public static $rules = [
+        'nome' => 'required',
         'cnpj' => 'required',
-        'razao' => 'required',
-
     ];
 
     /**

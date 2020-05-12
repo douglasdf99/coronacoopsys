@@ -1,5 +1,5 @@
 <template>
-    <modal name="coop-excluir"
+    <modal name="editar-produto"
            transition="nice-modal-fade"
            classes="demo-modal-class"
            :min-width="200"
@@ -8,7 +8,7 @@
            :adaptive="true"
            :scrollable="true"
            :reset="true"
-           :width="width"
+           :width="widht"
            height="auto"
            @before-open="beforeOpen"
            @opened="opened"
@@ -21,28 +21,33 @@
                         <div class="col-xl-10">
                             <!-- Pricing Title-->
                             <div class="text-center mb-3">
-                                <h3 class="mb-2">Excluir <b>Cooperativa</b></h3>
+                                <h3 class="mb-2">Editar <b>Produto</b></h3>
                             </div>
-                            <!--               <div class="botaofechar">
-                                               <button class="btn btn-primary" @click="fechar">x</button>
-                                           </div>-->
+                            <div class="botaofechar">
+                                <button class="btn btn-primary" @click="fechar">x</button>
+                            </div>
                             <hr>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="text-left mt-0 mb-3 font-15 text-center">
-                                        Você tem certeza que deseja <span
-                                        class="text-danger font-weight-bold">exluir</span> essa <b>cooperativa</b>?
+                            <div class="text-left mt-0">
+                                <form id="editaitem" enctype="multipart/form-data" @submit="checkForm"
+                                      class="parsley-examples" autocomplete="off">
+                                  <div class="form-group">
+                                    <div class="controls">
+                                      <label>Descrição</label>
+                                      <input type="text" class="form-control" required v-model="item.descricao">
                                     </div>
-                                </div>
-                                <div class="col-12">
+                                  </div>
+                                  <div class="form-group mb-3" >
+                                    <label>Produto/Serviço:</label>
+                                    <Select2 v-model="item.produto_id" required :options="myOptions" @change="myChangeEvent($event)" @select="mySelectEvent($event)" />
+                                  </div>
+
+                                    <!-- Field -->
                                     <div class="form-group d-flex float-right">
                                         <a @click="fechar" class="btn btn-light">Cancelar</a>
-                                        <button type="button" @click="checkForm" class="btn btn-danger">Deletar</button>
+                                        <button type="submit" class="btn btn-primary">Criar</button>
                                     </div>
-                                </div>
+                                </form>
                             </div>
-
-
                         </div>
                         <!-- end row -->
                     </div> <!-- end col-->
@@ -53,14 +58,28 @@
     </modal>
 </template>
 <script>
-    export default {
-        props: ['usuario', 'client', 'filtered'],
+  import VueSelect from 'vue-select2';
+  import cidades from '../../scripts/Cidades.json'
+  import estados from '../../scripts/Estados.json'
+  export default{
+    components: {VueSelect},
         name: 'SizeModalTest',
-        data() {
+      props: ['coop','itemEdit'],
+      data() {
             return {
-                name: null,
+              item: {},
+              estados: estados,
+              estado: '',
+              estadoReal: '',
+              cidades: cidades,
+              cidade: '',
+              cidadeReal: '',
+              myValue: '',
+              myOptions: [],
+              tipo: null,
+              ramo: null,
                 email: null,
-                password: null,
+                password: '',
                 role_id: null,
                 roles: [],
                 isDragging: false,
@@ -70,62 +89,141 @@
                 images: [],
                 paragraphs: [true],
                 timer: null,
-                errors: {},
-                error: 0
+                errors:{},
+                error:0
             }
         },
-        computed: {
-            uploadDisabled() {
-                return this.files.length === 0;
-            },
-          widht(){
-            if (window.innerWidth > 500) {
-              return window.innerWidth * 0.4;
-            }
-            else{
-              return window.innerWidth * 0.8;
-            }
+      computed: {
+        uploadDisabled() {
+          return this.files.length === 0;
+        },
+        widht(){
+          if (window.innerWidth > 500) {
+            return window.innerWidth * 0.4;
+          }
+          else{
+            return window.innerWidth * 0.8;
           }
         },
-        methods: {
+        estdosCpm() {
+          let filtrado = [];
+          let self = this;
+          this.estados.map(function (prod) {
+
+            if (prod.Nome === self.item.estado){
+              self.estado =  prod.ID
+              console.log( self.estado)
+            }
+            filtrado.push({id:prod.ID, text:prod.Nome});
+          });
+          console.log('filtrado', filtrado)
+          return filtrado;
+        },
+        cidadesCpm() {
+          let self = this;
+          let filtrado = [];
+          this.cidades.forEach(item => {
+            if (item.Estado == self.estado){
+              if (item.Nome === self.item.cidade){
+                self.cidade =  item.ID
+              }
+              filtrado.push({id:item.ID, text:item.Nome});
+            }
+          });
+          console.log('filtrado', filtrado)
+          return filtrado;
+        },
+      },
+
+        methods:
+          {
+            getProdutos() {
+              axios.get('/api/produtos')
+                .then(response => {
+                  console.log(response.data);
+                  console.log('draw');
+                  let data = response.data.data;
+                  data.forEach(item =>{
+                    this.myOptions.push({id: item.id, text: item.descricao})
+                  });
+                })
+                .catch(errors => {
+                  console.log(errors);
+                })
+            },
+
+            setCidade({id, text}){
+              this.item.cidade = text;
+
+            },
+            setEstado({id, text}){
+              this.item.estado = text;
+            },
+          myChangeEvent(val){
+            console.log(val);
+          },
+          mySelectEvent({id, text}){
+            console.log({id, text})
+          },
             beforeOpen(event) {
 
             },
             beforeClose(event) {
 
+              if (this.stop > 0) {
+                console.log('closed', event.cancel())
+              }
+
+              /*
+              Stopping close event execution
+              */
             },
             opened(e) {
+              this.item = {... this.itemEdit}
+                this.stop = 1;
+                this.limpaform();
+                this.getProdutos();
                 // e.ref should not be undefined here
                 console.log('opened', e)
                 console.log('ref', e.ref)
             },
             closed(e) {
+                this.limpaform();
                 console.log('closed', e)
             },
-            fechar() {
-                this.$modal.hide('usuario-excluir')
+            limpaform() {
+                this.estado = null;
+                this.estadoReal = null;
+                this.cidade = null;
+                this.cidadeReal = null;
+                this.tipo = null;
             },
-            checkForm: function (e) {
+            fechar() {
+                this.stop = 0;
+                this.$modal.hide('editar-produto')
+            },
+            checkForm(e) {
                 e.preventDefault();
-
-                const formData2 = new FormData();
-              Swal.fire({
-                title: 'Excluindo Cooperativa!',
-                html: 'Aguarde enquanto a cooperativa é excluída',
-                showConfirmButton: false,
-                onBeforeOpen: () => {
-                  Swal.showLoading()
-                },
-              });
-                this.files.forEach(file => {
-                    formData2.append('avatar', file, file.name);
+                const formData = new FormData();
+                Swal.fire({
+                  title: 'Editando produto!',
+                  html: 'Aguarde enquanto o produto é editado',
+                  showConfirmButton: false,
+                  onBeforeOpen: () => {
+                    Swal.showLoading()
+                  }
                 });
-                formData2.append('_method', 'DELETE');
-                formData2.append('id', this.usuario);
 
-                axios.post(`/api/coops/${this.usuario}`, formData2)
+                formData.append('_method', 'PUT');
+
+
+              formData.append('descricao', this.item.descricao);
+              formData.append('produto_id', this.item.produto_id);
+              formData.append('coop_id', this.item.coop_id);
+
+                axios.post(`/api/coop_produtos/${this.item.id}`, formData)
                     .then(response => {
-                        this.error = 0;
+                        this.error =0;
                         console.log(response)
                       Swal.fire({
                         title: 'Sucesso!',
@@ -135,27 +233,28 @@
                         timer: 1500
                       });
                     })
-                    .catch(errors => {
-                        this.error = 1;
-                        console.log('erros', errors.response.data.errors);
+                  .catch(errors => {
+                    this.error = 1;
+                        console.log('erros',errors.response.data.errors);
                         this.errors = errors.response.data.errors;
-                        console.log(this.errors);
-                      Swal.fire({
-                        title: 'Algo deu errado!',
-                        text: '',
-                        type: 'error',
-                        showConfirmButton: false,
-                        timer: 1500
-                      });
+                        console.log( this.errors);
+                    Swal.fire({
+                      title: 'Algo deu errado!',
+                      text: '',
+                      type: 'error',
+                      showConfirmButton: false,
+                      timer: 1500
+                    });
                     })
                     .finally(response => {
                         console.log(response);
-                        if (this.error == 0) {
+                        if ( this.error == 0) {
                             this.fechar()
                             this.$emit('paginate');
                         }
                     });
             },
+
         }
     }
 </script>

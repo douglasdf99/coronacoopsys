@@ -124,7 +124,7 @@
                                                             <span>Municipal</span>
                                                         </label>
                                                     </div>
-                                                    <p class="area" v-show="search.produto">
+                                                    <p class="area" v-if="search.produto != '...'">
                                                         Produto:
                                                         <span class="span-produto">{{search.produto}}</span>
                                                     </p>
@@ -147,9 +147,10 @@
                                                     </p>
                                                     <div class="row">
                                                         <div class="col l3 m4 s4" v-for="canal in result.coop_canais">
-                                                            <p class="detalhe">
-                                                                {{canal.canai.descricao}}
-                                                            </p>
+                                                            <p class="detalhe"></p>
+                                      <li style="border: unset;" class="listagem-prod">
+                                      {{canal.canai.descricao}}
+                                      </li>
                                                         </div>
                                                     </div>
                                                     <p class="area">
@@ -294,7 +295,9 @@
                     <div class="col l6 m12 s12">
                         <div class="row">
                             <div class="col s12 center-align">
-                                <span class="span-pesquise">Encontre sua Cooperativa:</span>
+                                <span class="span-pesquise">Encontre aqui
+os produtos e serviços das
+cooperativas brasileiras:</span>
                             </div>
                         </div>
                         <div class="row">

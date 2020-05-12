@@ -60,8 +60,8 @@
                                         {{project.email}}
                                     </td>
                                     <td>
-                                      <a :href="url_redirect('admin/coops/'+project.id)" class="btn btn-primary  mr-75"><i
-                                        class="feather icon-settings"></i></a>
+                                      <a :href="url_redirect('admin/coops/'+project.id)" ><i class="users-edit-icon feather icon-settings mr-50"></i> </a>
+                                      <a href="javascript:void(0);" @click="showExcluir(project.id)" ><i class="users-delete-icon feather icon-trash-2"></i> </a>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -95,7 +95,7 @@
                     <div class="col-12 ">
                       <div class="media mb-2">
                         <a class="mr-2 my-25" href="#">
-                          <img :src="url_redirect('images/portrait/small/avatar-s-12.jpg')"  alt="users avatar"
+                          <img :src="url_redirect(usuario.logo)"  alt="logo"
                                class="users-avatar-shadow rounded" height="64" width="64">
                         </a>
                         <div class="media-body mt-50">
@@ -200,7 +200,7 @@
             </div>
         </div>
         <!-- end row -->
-        <modal2 @paginate="getProjects()"></modal2>
+        <modalCreate :coop="item" @paginate="refresh()"></modalCreate>
         <modaleditar :usuario="usuarioEditar"
                      @paginate="getProjects()">
         </modaleditar>
@@ -216,9 +216,12 @@
 <script>
 
     import ModalExcluir from './ModalExcluir.vue';
+    import ModalCreate from './ModalCreate.vue';
 
     export default {
-        components: { modalexcluir: ModalExcluir},
+        components: {
+          modalCreate: ModalCreate,
+          modalexcluir: ModalExcluir},
         created() {
             this.getProjects();
         },
@@ -286,10 +289,10 @@
             showExcluir(id) {
                 console.log('id enviado',id);
                 this.usuarioExcluir = id;
-                this.$modal.show('usuario-excluir');
+                this.$modal.show('coop-excluir');
             },
             showCriar() {
-                this.$modal.show('demo-login');
+                this.$modal.show('criar-coop');
             },
             hide() {
                 this.$modal.hide('demo-login');

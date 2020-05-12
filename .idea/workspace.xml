@@ -2,19 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c3cdbd0-b40c-4f8a-b442-2f1aa704db63" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/coops/ModalEditarArea.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/coops/ModalExcluirArea.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/coops/ModalCreate.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/coops/ModalCreateCanal.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/coops/ModalCreateProduto.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/coops/ModalEditarCanal.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/coops/ModalEditarProduto.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/coops/ModalExcluirCanal.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/coops/ModalExcluirProduto.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/CoopAPIController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/CoopAPIController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Area.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Area.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Coop.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Coop.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/front/assets/images/bg-header-contato.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/front/assets/images/bg-header-contato.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/CoopRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/CoopRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Home.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/coops/Lista.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/coops/Lista.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/coops/Listabackup.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/coops/ModalCreate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/coops/ModalCreateArea.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/coops/ModalEditar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/coops/ModalEditar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/coops/ModalExcluir.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/coops/ModalExcluir.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/coops/gerencia.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/coops/gerencia.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/scripts/Estados.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/scripts/Estados.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front/contato.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/contato.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front/head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/head.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/home.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,62 +32,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/api.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="53" column="22" selection-start-line="53" selection-start-column="17" selection-end-line="53" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/coops/Lista.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="215" column="8" selection-start-line="215" selection-start-column="8" selection-end-line="215" selection-end-column="8" />
-              <folding>
-                <element signature="n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/API/CoopAPIController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="93" column="104" selection-start-line="93" selection-start-column="104" selection-end-line="93" selection-end-column="104" />
-              <folding>
-                <element signature="e#1277#2020#0#PHP" />
-                <element signature="e#3068#3493#0#PHP" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/coops/gerencia.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="535" column="46" selection-start-line="535" selection-start-column="46" selection-end-line="535" selection-end-column="46" />
+            <state relative-caret-position="73">
+              <caret line="344" column="29" selection-start-line="344" selection-start-column="29" selection-end-line="345" selection-end-column="169" />
               <folding>
-                <element signature="n#table#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="e#16470#16508#0" expanded="true" />
-                <element signature="e#18219#18410#0" />
-                <element signature="e#18440#18767#0" />
-                <element signature="e#21819#22263#0" />
-                <element signature="e#19343#19829#0" />
-                <element signature="e#20309#20746#0" />
-                <element signature="e#24461#24616#0" />
-                <element signature="e#24645#24816#0" />
-                <element signature="e#24847#24980#0" />
-                <element signature="e#25004#25257#0" />
-                <element signature="e#25286#25780#0" />
-                <element signature="e#25812#26100#0" />
-                <element signature="e#22276#23071#0" />
-                <element signature="e#23109#23719#0" />
-                <element signature="e#23745#24101#0" />
+                <element signature="e#20183#20235#0" expanded="true" />
+                <element signature="e#23666#24099#0" />
                 <element signature="n#style#0;n#!!top" />
               </folding>
             </state>
@@ -91,14 +46,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/coops/ModalCreateArea.vue">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/coops/Lista.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="184" column="44" selection-start-line="184" selection-start-column="44" selection-end-line="184" selection-end-column="44" />
+            <state relative-caret-position="252">
+              <caret line="97" column="75" selection-start-line="97" selection-start-column="75" selection-end-line="97" selection-end-column="75" />
               <folding>
-                <element signature="e#3468#3504#0" expanded="true" />
-                <element signature="e#4449#4465#0" />
+                <element signature="e#10998#11044#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/coops/ModalCreate.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1295">
+              <caret line="64" column="37" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/front/contato.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -106,49 +78,51 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/coops/ModalExcluir.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-12">
-              <caret line="65" column="34" selection-start-line="65" selection-start-column="34" selection-end-line="65" selection-end-column="34" />
+            <state relative-caret-position="2352">
+              <caret line="113" column="64" selection-start-line="113" selection-start-column="64" selection-end-line="113" selection-end-column="64" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/coops/ModalEditarArea.vue">
+        <entry file="file://$PROJECT_DIR$/resources/views/front/footer.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="46" column="65" selection-start-line="46" selection-start-column="65" selection-end-line="46" selection-end-column="65" />
+            <state relative-caret-position="-84">
+              <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/front/mapa.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
               <folding>
-                <element signature="e#4319#5216#0" />
-                <element signature="e#4346#4399#0" />
-                <element signature="e#4416#4596#0" />
+                <element signature="n#style#0;n#svg#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/coops/ModalExcluirArea.vue">
+        <entry file="file://$PROJECT_DIR$/resources/views/front/home.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="105" column="38" selection-start-line="105" selection-start-column="38" selection-end-line="105" selection-end-column="38" />
+            <state relative-caret-position="408">
+              <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/coops/ModalEditar.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="150" column="31" selection-start-line="150" selection-end-line="151" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/resources/views/front/resultado.blade.php">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Models/Area.php">
+        <entry file="file://$PROJECT_DIR$/app/Repositories/CoopRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="50" column="27" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
+            <state relative-caret-position="192">
+              <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -157,18 +131,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>item.ramo_id</find>
-      <find>files</find>
-      <find>200</find>
-      <find>value</find>
-      <find>upl</find>
-      <find>upload</find>
-      <find>site</find>
-      <find>compartilhamento</find>
-      <find>show</find>
-      <find>modalc</find>
-      <find>setCidade</find>
-      <find>descri</find>
       <find>checkForm</find>
       <find>pagina</find>
       <find>pro</find>
@@ -176,17 +138,29 @@
       <find>this.getRamos</find>
       <find>getRamos</find>
       <find>area</find>
-      <find>ramo</find>
       <find>fechar</find>
       <find>cidade</find>
       <find>item</find>
       <find>estado</find>
       <find>stop</find>
       <find>close</find>
-      <find>getRamo</find>
-      <find>get</find>
       <find>areaEdit</find>
       <find>areas</find>
+      <find>encontre</find>
+      <find>Produto</find>
+      <find>fav</find>
+      <find>produtos</find>
+      <find>Produto:</find>
+      <find>getRamo</find>
+      <find>fecha</find>
+      <find>showCriarArea</find>
+      <find>get</find>
+      <find>ModalEditarProduto</find>
+      <find>produto</find>
+      <find>produtoEdit</find>
+      <find>ramo</find>
+      <find>ramos</find>
+      <find>email</find>
     </findStrings>
     <replaceStrings>
       <replace>(estado.ID</replace>
@@ -198,14 +172,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Repositories/CanaisRepository.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/canais/ModalEditar.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/canais/ModalCreate.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/canais/ModalExcluir.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/produtos/ModalExcluir.vue" />
-        <option value="$PROJECT_DIR$/resources/views/canais/index.blade.php" />
-        <option value="$PROJECT_DIR$/app/Repositories/CoopRepository.php" />
-        <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/resources/views/panels/scripts.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/scripts/pages/dashboard-analytics.js" />
         <option value="$PROJECT_DIR$/resources/views/panels/navbar.blade.php" />
@@ -219,8 +185,6 @@
         <option value="$PROJECT_DIR$/public/front/assets/css/style.css" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CoopController.php" />
         <option value="$PROJECT_DIR$/resources/views/front/footer.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/front/head.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/front/home.blade.php" />
         <option value="$PROJECT_DIR$/app/Mail/ContatoEmail.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/js/components/Menu.vue" />
@@ -235,20 +199,30 @@
         <option value="$PROJECT_DIR$/resources/js/app.js" />
         <option value="$PROJECT_DIR$/resources/js/components/produtos/ModalCreate.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/produtos/ModalEditar.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/Home.vue" />
         <option value="$PROJECT_DIR$/resources/js/scripts/Estados.json" />
         <option value="$PROJECT_DIR$/resources/js/components/usuarios/ModalEditar.vue" />
-        <option value="$PROJECT_DIR$/app/Models/Coop.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/coops/ModalCreate.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/coops/Lista.vue" />
         <option value="$PROJECT_DIR$/app/Models/Area.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/API/CoopAPIController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/coops/ModalEditar.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/coops/ModalExcluir.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/coops/ModalCreateArea.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/coops/ModalEditarArea.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/coops/ModalExcluirArea.vue" />
+        <option value="$PROJECT_DIR$/resources/views/front/head.blade.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/Home.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/coops/ModalCreateCanal.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/coops/ModalEditarCanal.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/coops/ModalExcluirCanal.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/coops/ModalCreateProduto.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/coops/ModalEditarProduto.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/coops/ModalExcluirProduto.vue" />
+        <option value="$PROJECT_DIR$/app/Models/Coop.php" />
         <option value="$PROJECT_DIR$/resources/js/components/coops/gerencia.vue" />
+        <option value="$PROJECT_DIR$/app/Repositories/CoopRepository.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/coops/ModalCreate.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/coops/ModalExcluir.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/coops/Lista.vue" />
+        <option value="$PROJECT_DIR$/resources/views/front/home.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/front/contato.blade.php" />
       </list>
     </option>
   </component>
@@ -394,6 +368,24 @@
             <path>
               <item name="coop" type="b2602c69:ProjectViewProjectNode" />
               <item name="coop" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="coop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="coop" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="coop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="coop" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Repositories" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="coop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="coop" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -421,9 +413,19 @@
               <item name="coop" type="b2602c69:ProjectViewProjectNode" />
               <item name="coop" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="produtos" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="coop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="coop" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="front" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="coop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="coop" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -447,19 +449,19 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2019.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\projects\coop\resources\js\components\coops" />
-      <recent name="C:\projects\coop\public\images" />
-      <recent name="C:\projects\coop\resources\views" />
-      <recent name="C:\projects\coop\resources\js\components" />
-      <recent name="C:\projects\coop\resources\views\produtos" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\projects\coop\public\front\assets\images" />
       <recent name="C:\projects\coop\public\images" />
       <recent name="C:\projects\coop\app\Models" />
       <recent name="C:\projects\coop\resources\views\front" />
       <recent name="C:\projects\coop\resources\views\auth" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\projects\coop\resources\js\components\coops" />
+      <recent name="C:\projects\coop\public\images" />
+      <recent name="C:\projects\coop\resources\views" />
+      <recent name="C:\projects\coop\resources\js\components" />
+      <recent name="C:\projects\coop\resources\views\produtos" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -494,7 +496,9 @@
       <workItem from="1588337421528" duration="4663000" />
       <workItem from="1588343397049" duration="67726000" />
       <workItem from="1588628712092" duration="74773000" />
-      <workItem from="1589031872725" duration="38554000" />
+      <workItem from="1589031872725" duration="68620000" />
+      <workItem from="1589240615701" duration="337000" />
+      <workItem from="1589240968531" duration="7625000" />
     </task>
     <task id="LOCAL-00001" summary="primeiro commit login meio e rotas ok e banco setado">
       <created>1588344232855</created>
@@ -699,17 +703,24 @@
       <option name="project" value="LOCAL" />
       <updated>1589048111935</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="crud areas e tal completa de coop">
+      <created>1589138988306</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1589138988306</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="189819000" />
+    <option name="totallyTimeSpent" value="227847000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26066098" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26599148" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -759,7 +770,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="vue js implementado no front" />
     <MESSAGE value="crud usuario e ramos ok" />
     <MESSAGE value="crud usuario e ramos ok 2" />
     <MESSAGE value="crud usuario e ramos ok preloader" />
@@ -784,7 +794,8 @@
     <MESSAGE value="ajustes 8" />
     <MESSAGE value="ajustes 9" />
     <MESSAGE value="filtro por ramo ok" />
-    <option name="LAST_COMMIT_MESSAGE" value="filtro por ramo ok" />
+    <MESSAGE value="crud areas e tal completa de coop" />
+    <option name="LAST_COMMIT_MESSAGE" value="crud areas e tal completa de coop" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -801,66 +812,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/resources/js/components/Home.vue</url>
-          <line>211</line>
-          <properties lambdaOrdinal="-1" />
+          <line>219</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CoopController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="48" column="25" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="25" />
-          <folding>
-            <element signature="e#40#80#0#PHP" expanded="true" />
-            <element signature="e#927#1630#0#PHP" />
-            <element signature="e#1888#3091#0#PHP" />
-            <element signature="e#3845#5048#0#PHP" />
-            <element signature="e#4013#4833#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/Grupo de máscara svg">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/logo-branco.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/Grupo de máscara.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/sem-produto.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/spritemap.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/nenhum-resultado.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/logo-coop-enc.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/logo-coop.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="33" column="47" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Menu.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
@@ -895,23 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/front/contato.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/front/footer.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/front/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" column="61" selection-start-line="8" selection-start-column="61" selection-end-line="8" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1080">
@@ -926,13 +867,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="124" column="101" selection-start-line="124" selection-start-column="101" selection-end-line="124" selection-end-column="101" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/API/ProdutoAPIController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="40" column="86" selection-start-line="40" selection-start-column="86" selection-end-line="40" selection-end-column="86" />
         </state>
       </provider>
     </entry>
@@ -995,26 +929,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Home.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="524" column="23" selection-start-line="521" selection-start-column="19" selection-end-line="524" selection-end-column="23" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#div#2;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#1;n#div#2;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#div#1;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="e#23410#23435#0" expanded="true" />
-            <element signature="e#25563#26326#0" />
-            <element signature="e#26354#27017#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/pages/app-user-edit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
@@ -1070,13 +984,6 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Requests/UpdateCoopRequest.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Coop.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="94" column="25" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/produtos/Lista.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -1115,16 +1022,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/coops/Lista.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="215" column="8" selection-start-line="215" selection-start-column="8" selection-end-line="215" selection-end-column="8" />
-          <folding>
-            <element signature="n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/Area.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
@@ -1132,92 +1029,207 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api.php">
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Home.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="53" column="22" selection-start-line="53" selection-start-column="17" selection-end-line="53" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/API/CoopAPIController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="93" column="104" selection-start-line="93" selection-start-column="104" selection-end-line="93" selection-end-column="104" />
+        <state relative-caret-position="11232">
+          <caret line="623" selection-start-line="621" selection-start-column="12" selection-end-line="623" />
           <folding>
-            <element signature="e#1277#2020#0#PHP" />
-            <element signature="e#3068#3493#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/coops/ModalEditar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="150" column="31" selection-start-line="150" selection-end-line="151" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/coops/ModalCreateArea.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="184" column="44" selection-start-line="184" selection-start-column="44" selection-end-line="184" selection-end-column="44" />
-          <folding>
-            <element signature="e#3468#3504#0" expanded="true" />
-            <element signature="e#4449#4465#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/coops/ModalExcluir.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12">
-          <caret line="65" column="34" selection-start-line="65" selection-start-column="34" selection-end-line="65" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/coops/ModalEditarArea.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="46" column="65" selection-start-line="46" selection-start-column="65" selection-end-line="46" selection-end-column="65" />
-          <folding>
-            <element signature="e#4319#5216#0" />
-            <element signature="e#4346#4399#0" />
-            <element signature="e#4416#4596#0" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#2;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#1;n#div#2;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/coops/ModalExcluirArea.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="2520">
           <caret line="105" column="38" selection-start-line="105" selection-start-column="38" selection-end-line="105" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/front/head.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="82" selection-start-line="5" selection-start-column="82" selection-end-line="5" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/coops/ModalEditar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3600">
+          <caret line="150" column="31" selection-start-line="150" selection-end-line="151" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/API/ProdutoAPIController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="67" column="6" selection-start-line="67" selection-start-column="6" selection-end-line="67" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/coops/ModalEditarArea.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3853">
+          <caret line="35" column="62" selection-start-line="35" selection-start-column="58" selection-end-line="35" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/coops/ModalExcluirCanal.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="105" column="39" selection-start-line="105" selection-start-column="39" selection-end-line="105" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/coops/ModalCreateArea.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3372">
+          <caret line="184" column="44" selection-start-line="184" selection-start-column="44" selection-end-line="184" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/coops/ModalCreateCanal.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="201" column="44" selection-start-line="201" selection-start-column="33" selection-end-line="201" selection-end-column="44" />
+          <folding>
+            <element signature="e#5160#5593#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/coops/ModalEditarCanal.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="217" column="44" selection-start-line="217" selection-start-column="33" selection-end-line="217" selection-end-column="44" />
+          <folding>
+            <element signature="e#4617#5092#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="46" column="30" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/coops/ModalEditarProduto.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="223" column="46" selection-start-line="223" selection-start-column="33" selection-end-line="223" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/coops/ModalExcluirProduto.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="1" column="24" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/coops/ModalCreateProduto.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="38" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Coop.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="108" column="29" selection-start-line="108" selection-start-column="29" selection-end-line="108" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/API/CoopAPIController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="79" column="40" selection-start-line="79" selection-start-column="35" selection-end-line="79" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Repositories/CoopRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/coops/gerencia.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="535" column="46" selection-start-line="535" selection-start-column="46" selection-end-line="535" selection-end-column="46" />
+        <state relative-caret-position="73">
+          <caret line="344" column="29" selection-start-line="344" selection-start-column="29" selection-end-line="345" selection-end-column="169" />
           <folding>
-            <element signature="n#table#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="e#16470#16508#0" expanded="true" />
-            <element signature="e#18219#18410#0" />
-            <element signature="e#18440#18767#0" />
-            <element signature="e#21819#22263#0" />
-            <element signature="e#19343#19829#0" />
-            <element signature="e#20309#20746#0" />
-            <element signature="e#24461#24616#0" />
-            <element signature="e#24645#24816#0" />
-            <element signature="e#24847#24980#0" />
-            <element signature="e#25004#25257#0" />
-            <element signature="e#25286#25780#0" />
-            <element signature="e#25812#26100#0" />
-            <element signature="e#22276#23071#0" />
-            <element signature="e#23109#23719#0" />
-            <element signature="e#23745#24101#0" />
+            <element signature="e#20183#20235#0" expanded="true" />
+            <element signature="e#23666#24099#0" />
             <element signature="n#style#0;n#!!top" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/coops/ModalCreate.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1295">
+          <caret line="64" column="37" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/coops/ModalExcluir.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2352">
+          <caret line="113" column="64" selection-start-line="113" selection-start-column="64" selection-end-line="113" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/coops/Lista.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="97" column="75" selection-start-line="97" selection-start-column="75" selection-end-line="97" selection-end-column="75" />
+          <folding>
+            <element signature="e#10998#11044#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/front/footer.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-84">
+          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/front/mapa.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#style#0;n#svg#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/front/home.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/front/resultado.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/front/contato.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
         </state>
       </provider>
     </entry>

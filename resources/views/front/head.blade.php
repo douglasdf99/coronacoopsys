@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta property="og:url" content="https://www.cooperabrasil.coop.br/"/>
+  <link rel="shortcut icon" href="{{asset('front/assets/images/avatar-ocb.png')}}">
+  <meta property="og:url" content="https://www.cooperabrasil.coop.br/"/>
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="Coopera Brasil"/>
     <meta property="og:description"

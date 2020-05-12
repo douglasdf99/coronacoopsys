@@ -1,5 +1,5 @@
 <template>
-    <modal name="coop-excluir"
+    <modal name="produto-excluir"
            transition="nice-modal-fade"
            classes="demo-modal-class"
            :min-width="200"
@@ -21,7 +21,7 @@
                         <div class="col-xl-10">
                             <!-- Pricing Title-->
                             <div class="text-center mb-3">
-                                <h3 class="mb-2">Excluir <b>Cooperativa</b></h3>
+                                <h3 class="mb-2">Excluir <b>Produto</b></h3>
                             </div>
                             <!--               <div class="botaofechar">
                                                <button class="btn btn-primary" @click="fechar">x</button>
@@ -31,13 +31,13 @@
                                 <div class="col-12">
                                     <div class="text-left mt-0 mb-3 font-15 text-center">
                                         Você tem certeza que deseja <span
-                                        class="text-danger font-weight-bold">exluir</span> essa <b>cooperativa</b>?
+                                        class="text-danger font-weight-bold">remover</span> esse <b>produto</b>?
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group d-flex float-right">
                                         <a @click="fechar" class="btn btn-light">Cancelar</a>
-                                        <button type="button" @click="checkForm" class="btn btn-danger">Deletar</button>
+                                        <button type="button" @click="checkForm" class="btn btn-danger">Remover</button>
                                     </div>
                                 </div>
                             </div>
@@ -103,27 +103,25 @@
                 console.log('closed', e)
             },
             fechar() {
-                this.$modal.hide('usuario-excluir')
+                this.$modal.hide('produto-excluir')
             },
             checkForm: function (e) {
                 e.preventDefault();
 
                 const formData2 = new FormData();
               Swal.fire({
-                title: 'Excluindo Cooperativa!',
-                html: 'Aguarde enquanto a cooperativa é excluída',
+                title: 'Removendo Produto',
+                html: 'Aguarde enquanto o produto é removido',
                 showConfirmButton: false,
                 onBeforeOpen: () => {
                   Swal.showLoading()
                 },
               });
-                this.files.forEach(file => {
-                    formData2.append('avatar', file, file.name);
-                });
+
                 formData2.append('_method', 'DELETE');
                 formData2.append('id', this.usuario);
 
-                axios.post(`/api/coops/${this.usuario}`, formData2)
+                axios.post(`/api/coop_produtos/${this.usuario}`, formData2)
                     .then(response => {
                         this.error = 0;
                         console.log(response)

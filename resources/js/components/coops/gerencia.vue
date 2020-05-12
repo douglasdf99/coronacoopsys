@@ -2,6 +2,8 @@
     <!-- Start Content-->
     <div class="container-fluid">
       <section class="users-edit">
+        <a :href="url_redirect('admin/coops')" type="reset" class="btn btn-outline-primary">Voltar</a>
+
         <div class="card">
           <div class="card-content">
             <div class="card-body">
@@ -15,13 +17,13 @@
                 <li class="nav-item">
                   <a class="nav-link d-flex align-items-center" id="information-tab" data-toggle="tab" href="#information"
                      aria-controls="information" role="tab" aria-selected="false">
-                    <i class="feather icon-settings mr-25"></i><span class="d-none d-sm-block">Configurações</span>
+                   <span class="d-none d-sm-block">Areas / Canais</span>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link d-flex align-items-center" id="social-tab" data-toggle="tab" href="#social"
                      aria-controls="social" role="tab" aria-selected="false">
-                    <i class="feather icon-share-2 mr-25"></i><span class="d-none d-sm-block">Social</span>
+                   <span class="d-none d-sm-block">Produtos</span>
                   </a>
                 </li>
               </ul>
@@ -224,9 +226,7 @@
                         </div>
                       </div>
                       <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
-                        <button type="submit" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">Save
-                          Changes</button>
-                        <button type="reset" class="btn btn-outline-warning">Reset</button>
+                        <button type="submit" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">Salvar</button>
                       </div>
                     </div>
                   </form>
@@ -247,7 +247,7 @@
 
                           <div class="row">
                             <div class="col-12">
-                              <table class="table table-borderless">
+                              <table class="table table-borderless" v-if="item.areas.length > 0">
                                 <thead>
                                 <tr>
                                   <th>Tipo</th>
@@ -256,7 +256,7 @@
                                   <th>Ações</th>
                                 </tr>
                                 </thead>
-                                <tbody>
+                                <tbody >
                                 <tr v-for="area in item.areas">
                                   <td>{{area.tipo}}</td>
                                   <td>
@@ -272,6 +272,10 @@
                                 </tr>
                                 </tbody>
                               </table>
+                              <div class="text-center py-2" v-else>
+                                Nenhum item adicionado
+                              </div>
+
                             </div>
                           </div>
                         </div>
@@ -279,24 +283,31 @@
                       </div>
                       <div class="col-12 col-sm-6">
                         <div class="table-responsive border rounded px-1">
-                          <h5 class="border-bottom py-1 mx-1 mb-0 font-medium-2">Canais de Venda</h5>
-                          <table class="table table-borderless">
+                          <h6 class="border-bottom py-2 mx-1 mb-0 font-medium-2">Canais de Venda
+                            <a href="#" @click="showCriarCanal()" class="btn btn-primary bt-sm waves-effect waves-light mb-2 float-right" data-overlayColor="#38414a">
+                              Add
+                            </a>
+                          </h6>
+                          <table class="table table-borderless" v-if="item.coop_canais.length > 0">
                             <thead>
                             <tr>
                               <th>Canal</th>
                               <th>Ação</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody >
                             <tr v-for="canal in item.coop_canais">
                               <td>{{canal.canai.descricao}}</td>
                               <td>
-                                <a href="javascript:void(0);" @click="showEditar(project.id)" ><i class="users-edit-icon feather icon-edit-1 mr-50"></i> </a>
-                                <a href="javascript:void(0);" @click="showExcluir(project.id)" ><i class="users-delete-icon feather icon-trash-2"></i> </a>
+                                <a href="javascript:void(0);" @click="showEditarCanal(canal)" ><i class="users-edit-icon feather icon-edit-1 mr-50"></i> </a>
+                                <a href="javascript:void(0);" @click="showExcluirCanal(canal.id)" ><i class="users-delete-icon feather icon-trash-2"></i> </a>
                               </td>
                             </tr>
                             </tbody>
                           </table>
+                          <div class="text-center py-2" v-else>
+                            Nenhum item adicionado
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -309,10 +320,14 @@
                     <div class="row">
                       <div class="col-12 ">
                           <div class="table-responsive border rounded px-1">
-                            <h5 class="border-bottom py-1 mx-1 mb-0 font-medium-2"><i class="feather icon-settings mr-25"></i>Produtos</h5>
+                            <h6 class="border-bottom py-2 mx-1 mb-0 font-medium-2">Produtos
+                              <a href="#" @click="showCriarProduto()" class="btn btn-primary bt-sm waves-effect waves-light mb-2 float-right" data-overlayColor="#38414a">
+                                Add
+                              </a>
+                            </h6>
                             <div class="row">
                               <div class="col-12">
-                                <table class="table table-borderless">
+                                <table class="table table-borderless" v-if="item.coop_produtos.length > 0">
                                   <thead>
                                   <tr>
                                     <th>Produtos</th>
@@ -320,19 +335,22 @@
                                     <th>Ações</th>
                                   </tr>
                                   </thead>
-                                  <tbody>
+                                  <tbody >
                                   <tr v-for="produtos in item.coop_produtos">
                                     <td>{{produtos.descricao}}</td>
                                     <td>
                                       {{produtos.produto.descricao}}
                                     </td>
                                     <td>
-                                      <a href="javascript:void(0);" @click="showEditar(project.id)" ><i class="users-edit-icon feather icon-edit-1 mr-50"></i> </a>
-                                      <a href="javascript:void(0);" @click="showExcluir(project.id)" ><i class="users-delete-icon feather icon-trash-2"></i> </a>
+                                      <a href="javascript:void(0);" @click="showEditarProduto(produtos)" ><i class="users-edit-icon feather icon-edit-1 mr-50"></i> </a>
+                                      <a href="javascript:void(0);" @click="showExcluirProduto(produtos.id)" ><i class="users-delete-icon feather icon-trash-2"></i> </a>
                                     </td>
                                   </tr>
                                   </tbody>
                                 </table>
+                                <div class="text-center py-2" v-else>
+                                  Nenhum item adicionado
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -350,9 +368,14 @@
 
         <!-- end row -->
         <modalCreateArea :coop="item" @paginate="refresh()"></modalCreateArea>
+        <modalCreateCanal :coop="item" @paginate="refresh()"></modalCreateCanal>
+        <modalCreateProduto :coop="item" @paginate="refresh()"></modalCreateProduto>
         <modalEditarArea :coop="item" :itemEdit="areaEdit" @paginate="refresh()"></modalEditarArea>
-        <modalExcluirArea :usuario="areaExcluir" @paginate="refresh()">
-        </modalExcluirArea>
+        <modalEditarCanal :coop="item" :itemEdit="canalEdit" @paginate="refresh()"></modalEditarCanal>
+        <modalEditarProduto :coop="item" :itemEdit="produtoEdit" @paginate="refresh()"></modalEditarProduto>
+        <modalExcluirArea :usuario="areaExcluir" @paginate="refresh()"></modalExcluirArea>
+        <modalExcluirCanal :usuario="canalExcluir" @paginate="refresh()"></modalExcluirCanal>
+        <modalExcluirProduto :usuario="produtoExcluir" @paginate="refresh()"></modalExcluirProduto>
       <modalexcluir :usuario="usuarioExcluir"
                      @paginate="refresh()">
         </modalexcluir>
@@ -364,8 +387,14 @@
 
 <script>
     import ModalCreateArea from './ModalCreateArea.vue';
+    import ModalCreateCanal from './ModalCreateCanal.vue';
+    import ModalCreateProduto from './ModalCreateProduto.vue';
     import ModalEditarArea from './ModalEditarArea.vue';
+    import ModalEditarCanal from './ModalEditarCanal.vue';
+    import ModalEditarProduto from './ModalEditarProduto.vue';
     import ModalExcluirArea from './ModalExcluirArea.vue';
+    import ModalExcluirCanal from './ModalExcluirCanal.vue';
+    import ModalExcluirProduto from './ModalExcluirProduto.vue';
     import ModalExcluir from './ModalExcluir.vue';
     import VueSelect from 'vue-select2';
     import cidades from '../../scripts/Cidades.json'
@@ -373,7 +402,18 @@
 
 
     export default {
-        components: {VueSelect, modalCreateArea: ModalCreateArea, modalEditarArea: ModalEditarArea, modalExcluirArea: ModalExcluirArea},
+        components: {
+          VueSelect,
+          modalCreateArea: ModalCreateArea,
+          modalCreateCanal: ModalCreateCanal,
+          modalCreateProduto: ModalCreateProduto,
+          modalEditarArea: ModalEditarArea,
+          modalEditarCanal: ModalEditarCanal,
+          modalEditarProduto: ModalEditarProduto,
+          modalExcluirArea: ModalExcluirArea,
+          modalExcluirCanal: ModalExcluirCanal,
+          modalExcluirProduto: ModalExcluirProduto,
+        },
       props: ['item'],
 
       created() {
@@ -398,7 +438,11 @@
             });
             return {
               areaEdit: '',
+              canalEdit: '',
+              produtoEdit: '',
               areaExcluir: '',
+              canalExcluir: '',
+              produtoExcluir: '',
               compartilhamento: '',
               sell: '',
               estados: estados,
@@ -512,9 +556,16 @@
               })
               .catch(errors => {
                 console.log(errors);
-              })},
+              })
+          },
           showCriarArea(id) {
             this.$modal.show('criar-area');
+          },
+          showCriarCanal(id) {
+            this.$modal.show('criar-canal');
+          },
+          showCriarProduto(id) {
+            this.$modal.show('criar-produto');
           },
           showExcluir(id) {
             console.log('id enviado',id);
@@ -532,9 +583,25 @@
                 this.areaEdit = areaEdit;
                 this.$modal.show('editar-area');
             },
+            showEditarCanal(canalEdit) {
+                this.canalEdit = canalEdit;
+                this.$modal.show('editar-canal');
+            },
+            showEditarProduto(produtoEdit) {
+                this.produtoEdit = produtoEdit;
+                this.$modal.show('editar-produto');
+            },
           showExcluirArea(areaExcluir) {
                 this.areaExcluir = areaExcluir;
                 this.$modal.show('area-excluir');
+            },
+          showExcluirCanal(canalExcluir) {
+                this.canalExcluir = canalExcluir;
+                this.$modal.show('canal-excluir');
+            },
+          showExcluirProduto(canalExcluir) {
+                this.produtoExcluir = canalExcluir;
+                this.$modal.show('produto-excluir');
             },
             showExcluir(id) {
                 console.log('id enviado',id);
