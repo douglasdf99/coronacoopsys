@@ -75,6 +75,7 @@ Vue.component('produtos-lista', require('./components/produtos/Lista.vue').defau
 Vue.component('coops-lista', require('./components/coops/Lista.vue').default);
 Vue.component('coops-gerencia', require('./components/coops/gerencia.vue').default);
 Vue.component('canais-lista', require('./components/canais/Lista.vue').default);
+Vue.component('cadastrar', require('./components/Cadastrar.vue').default);
 
 
 /**

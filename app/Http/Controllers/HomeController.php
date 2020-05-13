@@ -36,6 +36,11 @@ class HomeController extends Controller
       $produtos = $this->produtoRepository->all();
         return view('front.contato');
     }
+
+    public function cadastrar()
+    {
+        return view('front.cadastrar');
+    }
     public function enviar(Request $request)
     {
       $data = [

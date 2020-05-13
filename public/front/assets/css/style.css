@@ -105,6 +105,10 @@ span, p {
     background-image: url("../images/bg-header-contato.png");
 }
 
+.header-cadastrar {
+    background-image: url("../images/bg-header-cadastrar.png");
+}
+
 .menu {
     font-family: "Nunito", sans-serif;
     margin: 7rem 0 2rem;
@@ -375,18 +379,20 @@ option {
     font-weight: 800;
     color: #1C205C;
 }
+
 .pagination li.active {
-  background-color: #6784c1;
+    background-color: #6784c1;
 }
+
 .btn-add {
     color: #6784C1;
 }
 
-.div-produto  li{
+.div-produto li {
     border-bottom: 2px solid #6784c17d;
     border-right: 2px solid #6784c17d;
     border-radius: 8px;
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .div-checkbox {
@@ -488,33 +494,34 @@ option {
     margin-right: .5rem;
 }
 
-[type="checkbox"].filled-in:checked+span:not(.lever):before {
-  top: 0;
-  left: 1px;
-  width: 8px;
-  height: 13px;
-  border-top: 2px solid transparent;
-  border-left: 2px solid transparent;
-  border-right: 2px solid #6784c1 !important;
-  border-bottom: 2px solid #6784c1 !important;
-  -webkit-transform: rotateZ(37deg);
-  transform: rotateZ(37deg);
-  -webkit-transform-origin: 100% 100%;
-  /* transform-origin: 100% 100%; */
-}
-[type="checkbox"].filled-in:checked+span:not(.lever):after {
-  top: 0;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #6784C1 !important;
-  background-color: transparent !important;
-  z-index: 0;
-  color: #6784C1;
+[type="checkbox"].filled-in:checked + span:not(.lever):before {
+    top: 0;
+    left: 1px;
+    width: 8px;
+    height: 13px;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: 2px solid #6784c1 !important;
+    border-bottom: 2px solid #6784c1 !important;
+    -webkit-transform: rotateZ(37deg);
+    transform: rotateZ(37deg);
+    -webkit-transform-origin: 100% 100%;
+    /* transform-origin: 100% 100%; */
 }
 
-[type="checkbox"].filled-in:disabled:not(:checked)+span:not(.lever):after {
-  border: 2px solid #6784C1 !important;
-  background-color: transparent !important;
+[type="checkbox"].filled-in:checked + span:not(.lever):after {
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #6784C1 !important;
+    background-color: transparent !important;
+    z-index: 0;
+    color: #6784C1;
+}
+
+[type="checkbox"].filled-in:disabled:not(:checked) + span:not(.lever):after {
+    border: 2px solid #6784C1 !important;
+    background-color: transparent !important;
 }
 
 .contatos {
