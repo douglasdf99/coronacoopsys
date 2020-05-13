@@ -46,7 +46,7 @@ class CoopController extends AppBaseController
 
     public function teste ()
     {
-     $this->preencheAreas();
+     $this->preencheAjuda();
 /*
        $produtos = CoopProduto::all();
       foreach ($produtos as $produto) {
@@ -157,6 +157,31 @@ class CoopController extends AppBaseController
               $canp->canai_id = $canal->id;
               $canp->save();
             }
+          }
+        }
+      }
+    function preencheContato()
+    {
+      $tudo = DB::table('coopcontato2ok')->get();
+      foreach ($tudo as $prod) {
+        $has = Coop::where('cnpj', $prod->cnpj)->first();
+        if ($has) {
+          $has->contato_nome = $prod->nome;
+          $has->contato_telefone= $prod->telefone;
+          $has->contato_email = $prod->email;
+          $has->contato_cargo = $prod->cargo;
+          $has->save();
+          }
+        }
+      }
+    function preencheAjuda()
+    {
+      $tudo = DB::table('coopocb2ok')->get();
+      foreach ($tudo as $prod) {
+        $has = Coop::where('cnpj', $prod->cnpj)->first();
+        if ($has) {
+          $has->ajuda = $prod->ocb;
+          $has->save();
           }
         }
       }

@@ -4,7 +4,11 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Requests\API\CreateCoopAPIRequest;
 use App\Http\Requests\API\UpdateCoopAPIRequest;
+use App\Models\Area;
 use App\Models\Coop;
+use App\Models\CoopCanais;
+use App\Repositories\AreaRepository;
+use App\Repositories\CanaisRepository;
 use App\Repositories\CoopRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
@@ -21,10 +25,14 @@ class CoopAPIController extends AppBaseController
 {
     /** @var  CoopRepository */
     private $coopRepository;
+    private $canaisRepository;
+    private $areaRepository;
   private $path = 'coop';
 
-    public function __construct(CoopRepository $coopRepo)
+    public function __construct(CoopRepository $coopRepo, CanaisRepository $canaisRepo,AreaRepository $areaRepo)
     {
+        $this->areaRepository = $areaRepo;
+        $this->canaisRepository = $canaisRepo;
         $this->coopRepository = $coopRepo;
     }
 
@@ -99,6 +107,48 @@ class CoopAPIController extends AppBaseController
 
         return $this->sendResponse($coop->toArray(), 'Coop retrieved successfully');
     }
+    public function crud(Request $request)
+  {
+    $input = $request->all();
+
+    if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
+
+      $name = time() .''.Str::kebab($request->nome);
+      $extension = $request->logo->extension();
+
+      $nameFile = "{$name}.{$extension}";
+      $input['logo'] = 'storage/'.$this->path.'/'.$nameFile;
+
+      $upload = $request->logo->storeAs($this->path, $nameFile);
+
+      if (!$upload)
+        return response()->json(['error' => 'Fail_Upload'], 500);
+    }
+    if ($request->hasFile('catalogo') && $request->file('catalogo')->isValid()) {
+
+      $name = time() .''.Str::kebab($request->nome);
+      $extension = $request->catalogo->extension();
+
+      $nameFile = "{$name}.{$extension}";
+      $input['catalogo'] = 'storage/'.$this->path.'/'.$nameFile;
+
+      $upload = $request->catalogo->storeAs($this->path, $nameFile);
+
+      if (!$upload)
+        return response()->json(['error' => 'Fail_Upload'], 500);
+    }
+
+    $coop = $this->coopRepository->create($input);
+    $input['coop_id'] = $coop->id;
+    foreach ($request->canais as $canal){
+      CoopCanais::create($input);
+    }
+    foreach ($request->areas as $area){
+      Area::create($input);
+    }
+
+    return $this->sendResponse($coop->toArray(), 'Coop updated successfully');
+  }
 
     /**
      * Update the specified Coop in storage.
@@ -132,6 +182,23 @@ class CoopAPIController extends AppBaseController
         $input['logo'] = 'storage/'.$this->path.'/'.$nameFile;
 
         $upload = $request->logo->storeAs($this->path, $nameFile);
+
+        if (!$upload)
+          return response()->json(['error' => 'Fail_Upload'], 500);
+      }
+      if ($request->hasFile('catalogo') && $request->file('catalogo')->isValid()) {
+        if ($coop->catalogo) {
+          if (Storage::exists("{$coop->catalogo}"))
+            Storage::delete("{$coop->catalogo}");
+        }
+
+        $name = time() .''.Str::kebab($request->nome);
+        $extension = $request->catalogo->extension();
+
+        $nameFile = "{$name}.{$extension}";
+        $input['catalogo'] = 'storage/'.$this->path.'/'.$nameFile;
+
+        $upload = $request->catalogo->storeAs($this->path, $nameFile);
 
         if (!$upload)
           return response()->json(['error' => 'Fail_Upload'], 500);

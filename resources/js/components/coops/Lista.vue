@@ -149,27 +149,6 @@
                         </tr>
                       </table>
                     </div>
-                    <div class="col-12">
-                      <div class="divider"><div class="divider-text">Gerais </div></div>
-                      <table>
-                        <tr>
-                          <td class="font-weight-bold">Compatilhamento de dados?</td>
-                          <td>{{usuario.compartilhamento}}</td>
-                        </tr>
-                        <tr>
-                          <td class="font-weight-bold">Quer vender?</td>
-                          <td>{{usuario.sell}}</td>
-                        </tr>
-                        <tr>
-                          <td class="font-weight-bold">Ramo:</td>
-                          <td>{{usuario.ramo_id}}</td>
-                        </tr>
-                        <tr>
-                          <td class="font-weight-bold">Cátalogo:</td>
-                          <td>{{usuario.catalogo}}</td>
-                        </tr>
-                      </table>
-                    </div>
                   </div>
                 </div>
               </div>

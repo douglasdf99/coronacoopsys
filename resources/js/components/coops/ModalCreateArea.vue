@@ -47,6 +47,13 @@
                                         <Select2 v-model="cidade" required :options="cidadesCpm"  @select="setCidade($event)"/>
                                       </div>
                                     </div>
+                                  <div class="form-group">
+                                  <div class="controls">
+                                    <label>Endereço</label>
+                                    <input type="text" class="form-control" required v-model="endereco">
+                                  </div>
+                                </div>
+
                                     <!-- Field -->
                                     <div class="form-group d-flex float-right">
                                         <a @click="fechar" class="btn btn-light">Cancelar</a>
@@ -75,6 +82,7 @@
             return {
               estados: estados,
               estado: '',
+              endereco: '',
               estadoReal: '',
               estadoReal: '',
               cidades: cidades,
@@ -179,6 +187,7 @@
                 this.cidade = null;
                 this.cidadeReal = null;
                 this.tipo = null;
+                this.endereco = null;
             },
             fechar() {
                 this.stop = 0;
@@ -199,6 +208,7 @@
                 formData.append('tipo', this.tipo);
                 formData.append('estado', this.estadoReal);
                 formData.append('cidade', this.cidadeReal);
+                formData.append('endereco', this.endereco);
                 formData.append('coop_id', this.coop.id);
 
                 axios.post('/api/areas', formData)

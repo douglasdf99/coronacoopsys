@@ -67,7 +67,12 @@ class Coop extends Model
         'sell',
         'ramo_id',
         'catalogo',
-        'ativo'
+        'ativo',
+        'contato_nome',
+        'contato_telefone',
+        'contato_email',
+        'contato_cargo',
+        'ajuda',
     ];
 
     /**
@@ -96,7 +101,12 @@ class Coop extends Model
         'sell' => 'integer',
         'ramo_id' => 'integer',
         'catalogo' => 'string',
-        'ativo' => 'integer'
+        'ativo' => 'integer',
+      'contato_nome' => 'string',
+      'contato_telefone' => 'string',
+      'contato_email' => 'string',
+      'contato_cargo' => 'string',
+      'ajuda' => 'string',
     ];
 
     /**

@@ -80,11 +80,6 @@
                         </div>
                       </div>
                     </div>
-
-
-
-
-
                     <div class="row">
                       <div class="col-12 col-sm-6">
                         <h5 class="mb-1"><i class="feather icon-user mr-25"></i>Geral</h5>
@@ -116,7 +111,7 @@
                             </div>
                             <div class="form-group">
                               <div class="controls">
-                                <label>Matriz</label>
+                                <label>Tipo</label>
                                 <Select2 v-model="item.matriz" :options="myOptions"/>
                               </div>
                             </div>
@@ -172,7 +167,12 @@
                               <div class="controls">
                                 <label>Catálogo</label>
                                 <h6>
-                                <a href="#">Download</a>
+                                  <div v-if="item.catalogo">
+                                    <a :href="url_redirect(item.catalogo)">Download</a>
+                                  </div>
+                                  <div v-else>
+                                    <input type="file"  ref="myFiles"  @change="setcatalogo">
+                                  </div>
 
                                 </h6>
                               </div>
@@ -181,10 +181,35 @@
                         </div>
                       </div>
                       <div class="col-12 col-sm-6">
+                        <h5 class="mb-1 mt-2 mt-sm-0"><i class="feather icon-map-pin mr-25"></i>Contato</h5>
+                        <div class="form-group">
+                          <div class="controls">
+                            <label>Nome</label>
+                            <input type="text" class="form-control" required v-model="item.contato_nome">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="controls">
+                            <label>Cargo</label>
+                            <input type="text" class="form-control" required v-model="item.contato_cargo">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="controls">
+                            <label>Telefone</label>
+                            <input type="text" class="form-control" required v-model="item.contato_telefone">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="controls">
+                            <label>Email</label>
+                            <input type="email" class="form-control" required v-model="item.contato_email">
+                          </div>
+                        </div>
                         <h5 class="mb-1 mt-2 mt-sm-0"><i class="feather icon-map-pin mr-25"></i>Endereço</h5>
                         <div class="form-group">
                           <div class="controls">
-                            <label>Cep</label>
+                            <label>cep</label>
                             <input type="text" class="form-control" required v-model="item.cep">
                           </div>
                         </div>
@@ -225,6 +250,15 @@
                           </div>
                         </div>
                       </div>
+                      <div class="col-12">
+                        <div class="form-group">
+                          <div class="controls">
+                            <label>Como pode ajudar </label>
+                            <textarea type="text" class="form-control" required v-model="item.ajuda"> </textarea>
+                          </div>
+                        </div>
+                      </div>
+
                       <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
                         <button type="submit" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">Salvar</button>
                       </div>
@@ -253,6 +287,7 @@
                                   <th>Tipo</th>
                                   <th>Estado</th>
                                   <th>Cidade</th>
+                                  <th>Endereço</th>
                                   <th>Ações</th>
                                 </tr>
                                 </thead>
@@ -264,6 +299,9 @@
                                   </td>
                                   <td>
                                     {{area.cidade}}
+                                  </td>
+                                  <td>
+                                    {{area.endereço}}
                                   </td>
                                   <td>
                                     <a href="javascript:void(0);" @click="showEditarArea(area)" ><i class="users-edit-icon feather icon-edit-1 mr-50"></i> </a>
@@ -485,6 +523,7 @@
               dragCount: 0,
               stop: 1,
               files: [],
+              files2: [],
               images: [],
             }
         },
@@ -544,6 +583,10 @@
         }
       },
         methods: {
+          setcatalogo(event){
+            const files2 = event.target.files;
+            Array.from(files2).forEach(file => this.files2.push(file));
+          },
           getRamos() {
             axios.get('/api/ramos')
               .then(response => {
@@ -746,7 +789,7 @@
             this.files.forEach(file => {
               formData2.append('logo', file, file.name);
             });
-            this.files.forEach(file => {
+            this.files2.forEach(file => {
               formData2.append('catalogo', file, file.name);
             });
             formData2.append('_method', 'PUT');
@@ -764,6 +807,11 @@
             formData2.append('cidade', this.item.cidade);
             formData2.append('endereco', this.item.endereco);
             formData2.append('numero', this.item.numero);
+            formData2.append('contato_nome', this.item.contato_nome);
+            formData2.append('contato_telefone', this.item.contato_telefone);
+            formData2.append('contato_email', this.item.contato_email);
+            formData2.append('contato_cargo', this.item.contato_cargo);
+            formData2.append('ajuda', this.item.ajuda);
             if (this.item.compartilhamento){
               formData2.append('compartilhamento', 1);
 

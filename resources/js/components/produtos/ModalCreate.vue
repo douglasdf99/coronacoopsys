@@ -39,7 +39,7 @@
                                                class="form-control" autocomplete="off">
                                     </div>
                                     <div class="form-group mb-3" :class="{'has-error': errors.descricao}" >
-                                        <label for="name">Descrição do Produto:</label>
+                                        <label for="name">Ramo:</label>
                                       <Select2 v-model="ramo" :options="myOptions" :settings="{ settingOption: value, settingOption: value }" @change="myChangeEvent($event)" @select="mySelectEvent($event)" />
                                     </div>
 
