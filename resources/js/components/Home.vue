@@ -509,7 +509,6 @@ cooperativas brasileiras:</span>
         },
         methods: {
             imagem_ramo(obj) {
-                console.log('asdjahsd', obj)
                 switch (obj) {
                     case 'Agropecuário':
                         return 'agropecuario'

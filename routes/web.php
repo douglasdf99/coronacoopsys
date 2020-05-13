@@ -16,6 +16,7 @@ Route::get('/', 'HomeController@index');
 Route::get('/contato', 'HomeController@contato');
 Route::post('/enviar', 'HomeController@enviar');
 Route::get('/scritps', 'CoopController@teste');
+Route::get('/cadastrar', 'HomeController@cadastrar');
 
 Route::middleware([ 'middleware' => 'auth'])->prefix('admin')->group(function () {
   Route::get('/', 'DashboardController@dashboardAnalytics')->name('inicio');
