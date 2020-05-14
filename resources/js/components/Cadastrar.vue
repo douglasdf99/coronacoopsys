@@ -240,6 +240,7 @@
                         </div>
                         <div class="row">
                             <div class="col s12">
+                                <a @click="step = 1" class="btn btn-primary" style="float: left">Voltar</a>
                                 <a @click="step = 3" class="btn btn-success btn-buscar"
                                    style="float: right;">PRÓXIMO
                                 </a>
@@ -365,6 +366,50 @@
                                 <input class="file-path validate" type="text">
                             </div>
                         </div>
+                        <p class="pergunta">Insira até 10 produtos ou serviços que deseja comercializar. Tente não utilizar abreviações, para facilitar a comunicação.</p>
+                        <span class="help">(informe um único produto ou serviço por caixa de texto)</span>
+                        <div class="row">
+                            <div class="col s12">
+                                <input placeholder="Ex.: Chocolate Ao Leite" style="border-radius: 5px; margin-top: 1rem" v-for="(prod, index) in produtos"
+                                       v-model="produtos[index]" type="text"
+                                       class="validate white">
+                            </div>
+                            <div class="col s12">
+                                <div class="div-add">
+                                    <i class="material-icons btn-add" style="font-size: 3rem; cursor: pointer;" @click="add('produto')" v-if="produtos.length < 11">add_box</i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="pergunta">Quais são os principais canais de entrega que
+                            sua cooperativa está utilizando para comercializar
+                            seus produtos/serviços (e-commerce, delivery,
+                            varejo, etc)? *
+                        </p>
+                        <span class="help">(informe um único canal por caixa de texto)</span>
+                        <div class="row">
+                            <div class="col s12">
+                                <input placeholder="Ex.: Delivery" style="border-radius: 5px; margin-top: 1rem" v-for="(canal, index) in canais"
+                                       v-model="canais[index]" type="text"
+                                       class="validate white">
+                            </div>
+                            <div class="col s12">
+                                <div class="div-add">
+                                    <i class="material-icons btn-add" style="font-size: 3rem; cursor: pointer;" @click="add('canal')" v-if="canais.length < 11">add_box</i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="pergunta">Como o Sistema OCB pode ajudar com os desafios trazidos pela Covid-19?
+                        </p>
+                        <span class="help">(Ajude-nos com ideias, sugestões e melhorias)</span>
+                        <textarea rows="7" id="mensagem" name="mensagem" class="mt-1 validate white" v-model="ajuda" required
+                                  data-length="240"></textarea>
+                        <div class="row">
+                            <div class="col s12">
+                                <a @click="enviar" class="btn btn-success btn-buscar"
+                                   style="float: right;">ENVIAR
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -410,12 +455,14 @@
                 telefone_contato: '',
                 email_contato: '',
                 email_contato_confirmed: '',
-                ramo: ''
+                ramo: '',
+                produtos: [''],
+                canais: [''],
+                ajuda: ''
             }
         },
         methods: {
-            enviar(e) {
-                e.preventDefault();
+            enviar() {
                 Swal.fire({
                     title: 'Enviando..',
                     html: '',
@@ -450,6 +497,12 @@
                     this.ramos = response.data.data;
                 })
             },
+            add(val){
+                if(val == 'produto')
+                    this.produtos.push('');
+                else
+                    this.canais.push('');
+            }
         }
     }
     $(document).ready(function () {
@@ -543,5 +596,22 @@
     .div-endereco-atuacao .checklabel {
         margin: 0 1rem;
         color: white;
+    }
+
+    input {
+        padding-left: 1rem !important;
+        width: 97% !important;
+    }
+
+    .div-add {
+        background: #6784c133;
+        border-radius: 5px;
+        display: flex;
+        width: 100%;
+        flex-direction: row-reverse;
+    }
+
+    .help {
+        color: #6784C1;
     }
 </style>
