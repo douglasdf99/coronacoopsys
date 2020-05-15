@@ -103,7 +103,7 @@
                           <h6 class="media-heading">Incluído em: {{usuario.created_at | formatDate}}</h6>
                           <h6 class="media-heading">Status: {{usuario.ativo}}</h6>
                           <div class="col-12 d-flex mt-1 px-0">
-                            <a href="#" class="btn btn-primary d-none d-sm-block mr-75"><i
+                            <a :href="url_redirect('admin/coops/'+usuario.id)" class="btn btn-primary d-none d-sm-block mr-75"><i
                               class="feather icon-settings"></i> Gerenciar</a>
                             <a href="#" class="btn btn-primary d-block d-sm-none mr-75"><i
                               class="feather icon-settings"></i></a>
