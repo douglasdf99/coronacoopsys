@@ -481,6 +481,8 @@ option {
     border-radius: 5px;
     color: white;
     padding: .2rem 1rem;
+    display: inline-block;
+    display: -moz-inline-box;
 }
 
 .detalhe {
@@ -558,7 +560,7 @@ option {
 .obrigado {
     font-size: 1.5rem;
     font-weight: 700;
-    margin: 0;
+    margin: 0 0 2rem;
 }
 
 .div-sucesso .container {
@@ -572,6 +574,7 @@ option {
     right: 10%;
     top: 10%;
 }
+
 
 /* Mapa */
 
@@ -714,6 +717,16 @@ option {
 @media (max-width: 1180px) {
     #map {
         zoom: 70%
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        width: 90%;
+    }
+
+    .logo-ramo {
+        width: 45px;
     }
 }
 

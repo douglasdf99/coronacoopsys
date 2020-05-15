@@ -18,7 +18,7 @@
                                     <label for="estado" class="label">Selecione o seu estado</label>
                                     <select v-model="pesquisa.estado" name="estado" id="estado" class="browser-default"
                                             @change="getCidades()">
-                                        <option selected="selected" value="">...</option>
+                                        <option selected="selected" value="">Todos</option>
                                         <option v-for="estado in estados" v-bind:value="estado">{{estado.Nome}} /
                                             {{estado.Sigla}}
                                         </option>
@@ -27,7 +27,7 @@
                                 <div class="col s6">
                                     <label for="cidade" class="label">Selecione a sua cidade</label>
                                     <select name="cidade" id="cidade" class="browser-default" v-model="pesquisa.cidade">
-                                        <option selected="selected" value="">...</option>
+                                        <option selected="selected" value="">Todas</option>
                                         <option v-for="cidade in cidadesFiltradas" v-bind:value="cidade.Nome">
                                             {{cidade.Nome}}
                                         </option>
@@ -36,7 +36,7 @@
                                 <div class="col s6 mt-1">
                                     <label for="ramo" class="label">Qual o ramo?</label>
                                     <select name="ramo" id="ramo" class="browser-default" v-model="pesquisa.ramo">
-                                        <option selected="selected" value="">...</option>
+                                        <option selected="selected" value="">Todos</option>
                                         <option v-for="ramo in ramos" v-bind:value="ramo">{{ramo.descricao}}
                                         </option>
                                     </select>
@@ -51,7 +51,7 @@
                                         </option>
                                     </select>-->
                                     <Select2 v-model="pesquisa.produto" :options="ProdutoRamo">
-                                        <option selected="selected" value="">...</option>
+                                        <option selected="selected" value="">Todos</option>
                                     </Select2>
                                 </div>
                                 <div class="col s12" v-if="ok">
@@ -76,7 +76,7 @@
                                 <div class="col l8 m12 s12">
                                     <ul class="div-produto collapsible" v-if="resultado.data.length > 0">
                                         <li v-for="(result, index) in resultado.data">
-                                            <div class="row collapsible-header" style="padding: 0"
+                                            <div class="row collapsible-header" style="padding: 0; background: transparent !important;"
                                                  @click="toogleicon(index)">
                                                 <div class="col s4 center-align">
                                                     <img :src="url_redirect('front/assets/images/avatar-ocb.png')"
@@ -137,7 +137,7 @@
                                                 <div class="col s2 right-align"
                                                      style="display: flex;align-items: flex-start;
                                                      justify-content: space-between;">
-                                                    <img width="65px" class="hide-on-med-and-down"
+                                                    <img width="55px" class="hide-on-med-and-down logo-ramo"
                                                          :src="url_redirect('front/assets/images/ramos/' + imagem_ramo(result.ramo.id) + '.svg')">
                                                     <i class="material-icons btn-add"
                                                        style="font-size: 2.3rem;" v-show="show[index]">indeterminate_check_box</i>
@@ -175,7 +175,7 @@
                             </p>
                             <div class="row mb-0">
                                 <div class="col s12">
-                                    <div class="row">
+                                    <div class="row" v-if="result.telefone">
                                         <div class="col s12">
                                             <p class="detalhe">
                                                 <i class="material-icons">call</i>
@@ -183,7 +183,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row" v-if="result.email">
                                         <div class="col s12">
                                             <a :href="'mailto:'+result.email" target="_blank">
                                                 <p class="detalhe">
@@ -193,7 +193,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row" v-if="result.site">
                                         <div class="col s12">
                                             <a :href="'https://' + result.site" target="_blank">
                                                 <p class="detalhe">
@@ -203,7 +203,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row" v-if="result.endereco">
                                         <div class="col s12">
                                             <p class="detalhe">
                                                 <i class="material-icons">location_on</i>
@@ -217,8 +217,7 @@
                         </div>
                         <div class="col s12 right-align">
                             <p class="area mb-0 align-items-center" style="float: right">
-                                Compartilhar <a target="_blank"
-                                                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.cooperabrasil.coop.br%2F&amp;src=sdkpreparse"
+                                Compartilhar <a target="_blank" style="margin-left: 15px;" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.cooperabrasil.coop.br%2F&amp;src=sdkpreparse"
                                                 class="fb-xfbml-parse-ignore"><i
                                     class="material-icons btn-share">share</i></a></p>
                         </div>
@@ -324,7 +323,7 @@ cooperativas brasileiras:</span>
                                     <select v-model="pesquisa.estado" name="estado" id="estado"
                                             class="browser-default"
                                             @change="getCidades()">
-                                        <option selected="selected" value="">...</option>
+                                        <option selected="selected" value="">Todos</option>
                                         <option v-for="estado in estados" v-bind:value="estado">{{estado.Nome}} /
                                             {{estado.Sigla}}
                                         </option>
@@ -337,7 +336,7 @@ cooperativas brasileiras:</span>
                                     <label for="cidade" class="label">Selecione a sua cidade</label>
                                     <select name="cidade" id="cidade" class="browser-default"
                                             v-model="pesquisa.cidade">
-                                        <option selected="selected" value="">...</option>
+                                        <option selected="selected" value="">Todas</option>
                                         <option v-for="cidade in cidadesFiltradas" v-bind:value="cidade.Nome">
                                             {{cidade.Nome}}
                                         </option>
@@ -349,7 +348,7 @@ cooperativas brasileiras:</span>
                                 <div class="div-select">
                                     <label for="ramo" class="label">Qual o ramo?</label>
                                     <select name="ramo" id="ramo" class="browser-default" v-model="pesquisa.ramo">
-                                        <option selected="selected" value="">...</option>
+                                        <option selected="selected" value="">Todos</option>
                                         <option v-for="ramo in ramos" v-bind:value="ramo">
                                             {{ramo.descricao}}
                                         </option>
@@ -499,8 +498,8 @@ cooperativas brasileiras:</span>
                         filtrado.push(prod);
                     }
                 });
-                filtrado.push({id: '...', text: '...', selected: true});
-                this.pesquisa.produto = '...';
+                filtrado.push({id: 'Todos', text: 'Todos', selected: true});
+                this.pesquisa.produto = 'Todos';
                 console.log('filtrado', filtrado)
                 return filtrado;
             }
@@ -619,7 +618,7 @@ cooperativas brasileiras:</span>
                     url += 'ramo.descricao:' + this.pesquisa.ramo.descricao;
                     attr++;
                 }
-                if (this.pesquisa.produto != '' && this.pesquisa.produto != '...') {
+                if (this.pesquisa.produto != '' && this.pesquisa.produto != 'Todos') {
                     if (attr > 0) {
                         url += ';';
                     }

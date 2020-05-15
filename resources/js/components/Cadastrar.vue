@@ -439,10 +439,15 @@
             <i class="material-icons close-btn-sidenav" style="float: right; cursor: pointer" @click="enviado = false">close</i>
             <div class="container relative">
                 <div class="row">
-                    <div class="col s12 center-align">
+                    <div class="col l8 offset-l2 m12 s12 center-align">
                         <p class="obrigado">Obrigado pela sua contribuição!</p>
                         <span>Seu formulário foi enviado para equipe responsável. Em caso de dúvida,
-                            entre em contato pelo endereço de email nucleo@ocb.coop.br.</span>
+                            entre em contato pelo endereço de email <a href="mailto:nucleo@ocb.coop.br" target="_blank" class="coop_link">nucleo@ocb.coop.br</a>.</span> <br>
+                        <p style="margin: 1rem 0"><b>Aproveite e conheça o carimbo <a href="https://somos.coop.br" target="_blank" class="coop_link">SomosCoop</a>.</b></p>
+                        <p>Atenciosamento, <br> Sistema OCB</p>
+                    </div>
+                    <div class="col s12 center-align">
+                        <button class="btn btn-retorno" @click="enviado = false">RETORNAR</button>
                     </div>
                 </div>
             </div>
@@ -875,5 +880,18 @@
     }
 
     .checkboxes {
+    }
+
+    .coop_link {
+        color: #88C754;
+    }
+
+    .coop_link:hover {
+        text-decoration: underline;
+    }
+
+    .btn-retorno {
+        background: #7db655;
+        border-radius: 5px;
     }
 </style>

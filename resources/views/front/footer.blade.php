@@ -7,8 +7,8 @@
                  style="display: flex;justify-content: space-around;">
                 <div>
                     {{--<img src="{{asset('front/assets/images/footer-logos.svg')}}" alt="">--}}
-                    <a href="https://somos.coop.br" target="_blank"><img src="{{asset('front/assets/images/logo-coop.svg')}}" alt=""></a>
-                    <a href="https://somoscooperativismo.coop.br" target="_blank"><img src="{{asset('front/assets/images/logo-ocb.svg')}}" alt=""></a>
+                    <a style="margin: 0 1.5rem" href="https://somos.coop.br" target="_blank"><img src="{{asset('front/assets/images/logo-coop.svg')}}" alt=""></a>
+                    <a style="margin: 0 1.5rem" href="https://somoscooperativismo.coop.br" target="_blank"><img src="{{asset('front/assets/images/logo-ocb.svg')}}" alt=""></a>
                 </div>
                 <div>
                     <a href="https://www.facebook.com/sistemaocb" target="_blank"><i class="fab fa-facebook-f"></i></a>
