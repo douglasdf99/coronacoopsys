@@ -42,7 +42,7 @@
 
                                     <div class="form-group mb-3" >
                                       <label for="name">Ramo:</label>
-                                      <Select2 v-model="ramo.ramo_id" :options="myOptions" :settings="{ settingOption: value, settingOption: value }" @change="myChangeEvent($event)" @select="mySelectEvent($event)" />
+                                      <Select2 v-model="ramo.ramo_id" :options="myOptions" :settings="{ settingOption: value, settingOption: value }"  @select="mySelectEvent($event)" />
                                     </div>
                                     <!-- Submit Field -->
                                     <div class="form-group d-flex float-right">
@@ -98,6 +98,12 @@
         }
       },
         methods: {
+          myChangeEvent(val){
+            console.log(val);
+          },
+          mySelectEvent({id, text}){
+            console.log({id, text})
+          },
             carregaimagem() {
                 this.files.length === 1;
             },
@@ -163,7 +169,9 @@
 
                 formData2.append('_method', 'PUT');
                 formData2.append('descricao', this.ramo.descricao);
-                console.log(formData2);
+              formData2.append('ramo_id', this.ramo.ramo_id);
+
+              console.log(formData2);
                 axios.post(`/api/produtos/${this.ramo.id}`, formData2)
                     .then(response => {
                         this.error = 0;

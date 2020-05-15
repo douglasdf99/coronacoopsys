@@ -108,9 +108,6 @@
             }
         }
     }
-    $(document).ready(function () {
-        $('textarea#mensagem').characterCounter();
-    });
 </script>
 <style scoped>
     textarea {
