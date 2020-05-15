@@ -8,7 +8,7 @@
            :adaptive="true"
            :scrollable="true"
            :reset="true"
-           :width="width"
+           :width="widht"
            height="auto"
            @before-open="beforeOpen"
            @opened="opened"

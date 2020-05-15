@@ -15,8 +15,8 @@
                         <div class="col s6">
                             <div class="area-cadastrar">
                                 <span>É uma Cooperativa?</span>
-                                <!--<a href="https://pt.surveymonkey.com/r/cooperabrasil" target="_blank">Cadastre-se</a>-->
-                                <a href="/cadastrar">Cadastre-se</a>
+                                <a href="https://pt.surveymonkey.com/r/cooperabrasil" target="_blank">Cadastre-se</a>
+                                <!--<a href="/cadastrar">Cadastre-se</a>-->
                             </div>
                         </div>
                     </div>

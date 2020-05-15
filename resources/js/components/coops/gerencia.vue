@@ -88,25 +88,25 @@
                             <div class="form-group">
                               <div class="controls">
                                 <label>Nome Fantasia</label>
-                                <input type="text" class="form-control" required v-model="item.nome">
+                                <input type="text" class="form-control"  v-model="item.nome">
                               </div>
                             </div>
                             <div class="form-group">
                               <div class="controls">
                                 <label>Razão social</label>
-                                <input type="text" class="form-control" required v-model="item.razao">
+                                <input type="text" class="form-control"  v-model="item.razao">
                               </div>
                             </div>
                             <div class="form-group">
                               <div class="controls">
                                 <label>CNPJ</label>
-                                <input type="text" class="form-control" required v-model="item.cnpj">
+                                <input type="text" class="form-control"  v-model="item.cnpj" v-mask="'##.###.####/####-##'">
                               </div>
                             </div>
                             <div class="form-group">
                               <div class="controls">
                                 <label>E-mail</label>
-                                <input type="email" class="form-control" required v-model="item.email">
+                                <input type="email" class="form-control"  v-model="item.email">
                               </div>
                             </div>
                             <div class="form-group">
@@ -118,19 +118,19 @@
                             <div class="form-group">
                               <div class="controls">
                                 <label>Site </label>
-                                <input type="text" class="form-control" required v-model="item.site">
+                                <input type="text" class="form-control"  v-model="item.site">
                               </div>
                             </div>
                             <div class="form-group">
                               <div class="controls">
                                 <label>Telefone </label>
-                                <input type="text" class="form-control" required v-model="item.telefone">
+                                <input type="text" class="form-control"  v-model="item.telefone" v-mask="'(##) #####-####'">
                               </div>
                             </div>
                             <div class="form-group">
                               <div class="controls">
                                 <label>Whatsapp </label>
-                                <input type="text" class="form-control" required v-model="item.whatsapp">
+                                <input type="text" class="form-control"  v-model="item.whatsapp" v-mask="'(##) #####-####'">
                               </div>
                             </div>
                             <div class="form-group">
@@ -145,18 +145,7 @@
                               </div>
 
                             </div>
-                            <div class="form-group">
-                              <div class="controls">
-                                <label>Venda </label>
-                              </div>
-                              <div class="custom-control custom-switch custom-switch-primary switch-md mr-2 mb-1">
-                                <input v-model="sell" type="checkbox" class="custom-control-input" id="sell">
-                                <label class="custom-control-label" for="sell">
-                                  <span class="switch-text-left">Sim</span> <span class="switch-text-right">Não</span>
-                                </label>
-                              </div>
 
-                            </div>
                             <div class="form-group">
                               <div class="controls">
                                 <label >Ramo:</label>
@@ -165,13 +154,15 @@
                             </div>
                             <div class="form-group">
                               <div class="controls">
-                                <label>Catálogo</label>
+                                <label>Catálogo  -                                    <a :href="url_redirect(item.catalogo)"  v-show="item.catalogo">Fazer Download</a></label>
+
                                 <h6>
-                                  <div v-if="item.catalogo">
-                                    <a :href="url_redirect(item.catalogo)">Download</a>
-                                  </div>
-                                  <div v-else>
+                                  <div >
+
                                     <input type="file"  ref="myFiles"  @change="setcatalogo">
+                                      <br>
+                                    <label class="text-danger" v-show="item.catalogo">Só escolha um arquivo caso queira substituir o atual</label>
+
                                   </div>
 
                                 </h6>
@@ -185,32 +176,32 @@
                         <div class="form-group">
                           <div class="controls">
                             <label>Nome</label>
-                            <input type="text" class="form-control" required v-model="item.contato_nome">
+                            <input type="text" class="form-control"  v-model="item.contato_nome">
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="controls">
                             <label>Cargo</label>
-                            <input type="text" class="form-control" required v-model="item.contato_cargo">
+                            <input type="text" class="form-control"  v-model="item.contato_cargo">
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="controls">
                             <label>Telefone</label>
-                            <input type="text" class="form-control" required v-model="item.contato_telefone">
+                            <input type="text" class="form-control"  v-model="item.contato_telefone">
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="controls">
                             <label>Email</label>
-                            <input type="email" class="form-control" required v-model="item.contato_email">
+                            <input type="email" class="form-control"  v-model="item.contato_email">
                           </div>
                         </div>
                         <h5 class="mb-1 mt-2 mt-sm-0"><i class="feather icon-map-pin mr-25"></i>Endereço</h5>
                         <div class="form-group">
                           <div class="controls">
                             <label>cep</label>
-                            <input type="text" class="form-control" required v-model="item.cep">
+                            <input type="text" class="form-control"  v-model="item.cep">
                           </div>
                         </div>
                         <div class="form-group">
@@ -228,25 +219,25 @@
                         <div class="form-group">
                           <div class="controls">
                             <label>Endereco </label>
-                            <input type="text" class="form-control" required v-model="item.endereco">
+                            <input type="text" class="form-control"  v-model="item.endereco">
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="controls">
                             <label>Número </label>
-                            <input type="text" class="form-control" required v-model="item.numero">
+                            <input type="text" class="form-control"  v-model="item.numero">
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="controls">
                             <label>Complemento </label>
-                            <input type="text" class="form-control" required v-model="item.complemento">
+                            <input type="text" class="form-control"  v-model="item.complemento">
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="controls">
                             <label>Bairro </label>
-                            <input type="text" class="form-control" required v-model="item.bairro">
+                            <input type="text" class="form-control"  v-model="item.bairro">
                           </div>
                         </div>
                       </div>
@@ -254,7 +245,7 @@
                         <div class="form-group">
                           <div class="controls">
                             <label>Como pode ajudar </label>
-                            <textarea type="text" class="form-control" required v-model="item.ajuda"> </textarea>
+                            <textarea type="text" class="form-control"  v-model="item.ajuda"> </textarea>
                           </div>
                         </div>
                       </div>
@@ -414,9 +405,7 @@
         <modalExcluirArea :usuario="areaExcluir" @paginate="refresh()"></modalExcluirArea>
         <modalExcluirCanal :usuario="canalExcluir" @paginate="refresh()"></modalExcluirCanal>
         <modalExcluirProduto :usuario="produtoExcluir" @paginate="refresh()"></modalExcluirProduto>
-      <modalexcluir :usuario="usuarioExcluir"
-                     @paginate="refresh()">
-        </modalexcluir>
+
     </div> <!-- container -->
 
 
@@ -459,7 +448,6 @@
         },
       mounted(){
         this.compartilhamento = this.item.compartilhamento
-        this.sell = this.item.sell
       },
         data() {
             let sortOrders = {};
@@ -482,7 +470,7 @@
               canalExcluir: '',
               produtoExcluir: '',
               compartilhamento: '',
-              sell: '',
+
               estados: estados,
               estado: '',
               cidades: cidades,
@@ -574,15 +562,13 @@
           //Use your source of truth to trigger events!
           console.log(val)
           this.item.compartilhamento = val;
-        },
-        sell: function(val){
-          //Use your source of truth to trigger events!
-          console.log(val)
-          this.item.sell = val;
-
         }
       },
         methods: {
+          alterarcatalogo(){
+            console.log('muda catalogo', this.item.catalogo );
+            this.item.catalogo = '';
+          },
           setcatalogo(event){
             const files2 = event.target.files;
             Array.from(files2).forEach(file => this.files2.push(file));
@@ -817,13 +803,6 @@
 
             }else{
               formData2.append('compartilhamento', 0);
-
-            }
-            if (this.item.sell){
-              formData2.append('sell', 1);
-
-            }else{
-              formData2.append('sell', 0);
 
             }
             formData2.append('complemento', this.item.complemento);
