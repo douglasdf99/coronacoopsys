@@ -92,7 +92,7 @@
                                                         Área de atuação
                                                     </p>
                                                     <div class="align-items-center div-checkbox hide-on-med-and-down">
-                                                        <label v-if="result.areas[0].tipo == 'Nacional'">
+                                                        <label v-if="result.areas.tipo == 'Nacional'">
                                                             <input type="checkbox" class="filled-in" checked="checked"
                                                                    readonly
                                                                    disabled="disabled"/>
@@ -103,7 +103,7 @@
                                                                    disabled="disabled"/>
                                                             <span>Nacional</span>
                                                         </label>
-                                                        <label v-if="result.areas[0].tipo == 'Estadual'">
+                                                        <label v-if="result.areas.tipo == 'Estadual'">
                                                             <input type="checkbox" class="filled-in" checked="checked"
                                                                    readonly disabled="disabled"/>
                                                             <span>Estadual</span>
@@ -113,7 +113,7 @@
                                                                    disabled="disabled"/>
                                                             <span>Estadual</span>
                                                         </label>
-                                                        <label v-if="result.areas[0].tipo == 'Municipal'">
+                                                        <label v-if="result.areas.tipo == 'Municipal'">
                                                             <input type="checkbox" class="filled-in" checked="checked"
                                                                    readonly disabled="disabled"/>
                                                             <span>Municipal</span>
@@ -122,6 +122,11 @@
                                                             <input type="checkbox" class="filled-in" readonly
                                                                    disabled="disabled"/>
                                                             <span>Municipal</span>
+                                                        </label>
+                                                        <label v-if="result.areas.tipo == 'Local'">
+                                                            <input type="checkbox" class="filled-in" checked="checked"
+                                                                   readonly disabled="disabled"/>
+                                                            <span>Local</span>
                                                         </label>
                                                     </div>
                                                     <p class="area" v-if="search.produto != '...'">
@@ -133,7 +138,7 @@
                                                      style="display: flex;align-items: flex-start;
                                                      justify-content: space-between;">
                                                     <img width="65px" class="hide-on-med-and-down"
-                                                         :src="url_redirect('front/assets/images/ramos/' + imagem_ramo(result.ramo.descricao) + '.svg')">
+                                                         :src="url_redirect('front/assets/images/ramos/' + imagem_ramo(result.ramo.id) + '.svg')">
                                                     <i class="material-icons btn-add"
                                                        style="font-size: 2.3rem;" v-show="show[index]">indeterminate_check_box</i>
                                                     <i class="material-icons btn-add"
@@ -510,25 +515,25 @@ cooperativas brasileiras:</span>
         methods: {
             imagem_ramo(obj) {
                 switch (obj) {
-                    case 'Agropecuário':
+                    case 1:
                         return 'agropecuario'
                         break;
-                    case 'Consumo':
+                    case 2:
                         return 'consumo';
                         break;
-                    case 'Transporte':
+                    case 7:
                         return 'transporte';
                         break;
-                    case 'Saúde':
+                    case 5:
                         return 'saude';
                         break;
-                    case 'Infraestrutura':
+                    case 4:
                         return 'infraestrutura'
                         break;
-                    case 'Crédito':
+                    case 3:
                         return 'credito';
                         break;
-                    case 'Trabalho, Produção de bens e serviços':
+                    case 6:
                         return 'trabalho';
                         break;
                     default:
