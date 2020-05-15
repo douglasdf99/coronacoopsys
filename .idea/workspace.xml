@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2c3cdbd0-b40c-4f8a-b442-2f1aa704db63" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/CoopAPIController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/CoopAPIController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/CoopRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/CoopRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Home.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -479,7 +476,7 @@
       <workItem from="1589402213477" duration="779000" />
       <workItem from="1589403745034" duration="547000" />
       <workItem from="1589461166377" duration="418000" />
-      <workItem from="1589495355447" duration="17447000" />
+      <workItem from="1589495355447" duration="17719000" />
     </task>
     <task id="LOCAL-00001" summary="primeiro commit login meio e rotas ok e banco setado">
       <created>1588344232855</created>
@@ -726,11 +723,18 @@
       <option name="project" value="LOCAL" />
       <updated>1589507719526</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="ordem listagem ok">
+      <created>1589514859604</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1589514859604</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="255713000" />
+    <option name="totallyTimeSpent" value="255985000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -786,7 +790,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="vie home com produtos2" />
     <MESSAGE value="relacionamento produto bancos" />
     <MESSAGE value="comit pesquisa com ramos nova rota" />
     <MESSAGE value="coopProduto" />
@@ -811,7 +814,8 @@
     <MESSAGE value="ajustes 1 14" />
     <MESSAGE value="ajustes 2 14" />
     <MESSAGE value="ajustes 3 14" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajustes 3 14" />
+    <MESSAGE value="ordem listagem ok" />
+    <option name="LAST_COMMIT_MESSAGE" value="ordem listagem ok" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
