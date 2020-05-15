@@ -23,6 +23,7 @@ class CoopRepository extends BaseRepository implements CacheableInterface {
         'nome' => 'like',
         'razao' => 'like',
         'email'=> 'like',
+        'areas.tipo',
         'ramo.descricao',
         'coopProdutos.produto.descricao'
     ];

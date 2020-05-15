@@ -636,6 +636,7 @@ cooperativas brasileiras:</span>
                 url += ('&page=' + this.pagination.current_page);
                 url += ('&cidade=' + this.pesquisa.cidade);
                 url += ('&estado=' + this.pesquisa.estado.Nome);
+                url += ('&with=areas&orderBy=areas:id|coop_id|tipo&sortedBy=asc');
 
 
                 Swal.fire({

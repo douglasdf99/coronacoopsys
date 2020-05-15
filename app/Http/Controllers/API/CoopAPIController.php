@@ -12,6 +12,7 @@ use App\Repositories\CanaisRepository;
 use App\Repositories\CoopRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Response;
@@ -56,19 +57,54 @@ class CoopAPIController extends AppBaseController
 
     public function pesquisa(Request $request)
     {
+
+
         $this->coopRepository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $query = $this->coopRepository->with(['ramo', 'coopProdutos.produto','coopCanais.canai','areas']);
+        $query = $this->coopRepository->with(['ramo', 'coopProdutos.produto','coopCanais.canai','areas'=> function($query) {
+          $query->orderBy('tipo','DESC');
+        }]);
 
         if ($request->cidade !== null or $request->estado !== 'undefined'){
           $query->whereHas('areas', function ($q) use($request){
-            $q->where('tipo','Nacional')->orWhere([['tipo','Estadual'],['estado',$request->estado]])->orWhere([['tipo','Municipal'],['cidade',$request->cidade]])->orderBy('tipo');
+            $q->where('tipo','Nacional')->orWhere([['tipo','Estadual'],['estado',$request->estado]])->orWhere([['tipo','Municipal'],['cidade',$request->cidade]])->orWhere([['tipo','Municipal'],['estado',$request->estado]]);
           });
         }
 
-        $coops = $query->paginate($limit = 10, $columns = ['*']);
+      $coops = $query->all();
+        $coops2=[];
+        foreach ($coops as $coop){
+          if ($coop->areas->tipo == 'Municipal'){
+            array_push($coops2,$coop);
+          }
+        }
+        foreach ($coops as $coop){
+          if ($coop->areas->tipo == 'Estadual'){
+            array_push($coops2,$coop);
+          }
+        }
+        foreach ($coops as $coop){
+          if ($coop->areas->tipo == 'Nacional'){
+            array_push($coops2,$coop);
+          }
+        }
 
+      // Get current page form url e.x. &page=1
+      $currentPage = LengthAwarePaginator::resolveCurrentPage();
 
-        return $this->sendResponse($coops->toArray(), 'Coops retrieved successfully');
+      // Create a new Laravel collection from the array data
+      $itemCollection = collect($coops2);
+      // Define how many items we want to be visible in each page
+      $perPage = 10;
+
+      // Slice the collection to get the items to display in current page
+      $currentPageItems = $itemCollection->slice(($currentPage * $perPage) - $perPage, $perPage)->values();
+
+      // Create our paginator and pass it to the view
+      $paginatedItems= new LengthAwarePaginator($currentPageItems , count($itemCollection), $perPage);
+
+      $paginatedItems->setPath($request->url());
+
+        return $this->sendResponse($paginatedItems->toArray(), 'Coops retrieved successfully');
     }
 
     /**
@@ -87,6 +123,12 @@ class CoopAPIController extends AppBaseController
 
         return $this->sendResponse($coop->toArray(), 'Coop saved successfully');
     }
+  public function paginate($items, $perPage = 5, $page = null, $options = [])
+  {
+    $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+    $items = $items instanceof Collection ? $items : Collection::make($items);
+    return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+  }
 
     /**
      * Display the specified Coop.
