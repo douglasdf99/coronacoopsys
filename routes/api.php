@@ -47,6 +47,7 @@ Route::resource('canais', 'CanaisAPIController');
 Route::resource('coop_produtos', 'CoopProdutoAPIController');
 
 Route::get('pesquisa', 'CoopAPIController@pesquisa');
+Route::post('enviar-coop', 'CoopAPIController@crud');
 
 
 Route::resource('coop_canais', 'CoopCanaisAPIController');

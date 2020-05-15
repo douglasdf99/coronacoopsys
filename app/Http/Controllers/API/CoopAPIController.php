@@ -61,9 +61,8 @@ class CoopAPIController extends AppBaseController
 
         if ($request->cidade !== null or $request->estado !== 'undefined'){
           $query->whereHas('areas', function ($q) use($request){
-            $q->where('tipo','Nacional')->orWhere([['tipo','Estadual'],['estado',$request->estado]])->orWhere([['tipo','Municipal'],['cidade',$request->cidade]])->orderBy('id');
+            $q->where('tipo','Nacional')->orWhere([['tipo','Estadual'],['estado',$request->estado]])->orWhere([['tipo','Municipal'],['cidade',$request->cidade]])->orderBy('tipo');
           });
-          $query->orderBy('areas.id','ASC');
         }
 
         $coops = $query->paginate($limit = 10, $columns = ['*']);
@@ -108,9 +107,12 @@ class CoopAPIController extends AppBaseController
 
         return $this->sendResponse($coop->toArray(), 'Coop retrieved successfully');
     }
+
     public function crud(Request $request)
   {
     $input = $request->all();
+
+    return $input;
 
     if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
 
