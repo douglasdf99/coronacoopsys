@@ -37,14 +37,13 @@
                             <div class="col s12">
                                 <label for="cnpj">CNPJ *</label>
                                 <input id="cnpj" style="border-radius: 5px; margin-top: 1rem" v-model="cnpj" name="nome"
-                                       type="text"
-                                       class="validate white" required>
+                                       type="text" class="validate white" required v-mask="'##.###.##/####-##'">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col s12">
                                 <label for="razao">Razão Social*</label>
-                                <input id="razao" style="border-radius: 5px; margin-top: 1rem" v-model="razaosocial"
+                                <input id="razao" style="border-radius: 5px; margin-top: 1rem" v-model="razao"
                                        type="email"
                                        class="validate white" required>
                             </div>
@@ -59,10 +58,11 @@
                         </div>
                         <div class="row">
                             <div class="col s12">
+                                <label for="file">Logo <span class="help">(Imagem com o fundo branco ou transparente, até 1MB)</span></label>
                                 <div class="file-field input-field">
                                     <div class="btn">
-                                        <span>File</span>
-                                        <input type="file">
+                                        <span>Selecione o arquivo</span>
+                                        <input type="file" @change="setLogo" accept="image/png, image/jpeg">
                                     </div>
                                     <div class="file-path-wrapper">
                                         <input class="file-path validate" type="text">
@@ -74,14 +74,14 @@
                             <div class="col s12">
                                 <label for="telefone">Telefone *</label>
                                 <input id="telefone" style="border-radius: 5px; margin-top: 1rem" v-model="telefone"
-                                       type="text" class="validate white" required>
+                                       type="text" class="validate white" required v-mask="'(##) #####-####'">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col s12">
                                 <label for="whats">Whatsapp</label>
                                 <input id="whats" style="border-radius: 5px; margin-top: 1rem" v-model="whatsapp"
-                                       type="text" class="validate white">
+                                       type="text" class="validate white" v-mask="'(##) #####-####'">
                             </div>
                         </div>
                         <div class="row">
@@ -123,7 +123,7 @@
                             <div class="col s12">
                                 <label for="cep">CEP</label>
                                 <input id="cep" style="border-radius: 5px; margin-top: 1rem" v-model="cep" type="text"
-                                       class="validate white">
+                                       class="validate white" v-mask="'##.###-###'">
                             </div>
                         </div>
                         <div class="row">
@@ -184,7 +184,7 @@
                         </div>
                         <div class="row">
                             <div class="col s12">
-                                <a @click="step = 2" class="btn btn-success btn-buscar"
+                                <a @click="nextStep(2)" class="btn btn-success btn-buscar"
                                    style="float: right;">PRÓXIMO
                                 </a>
                             </div>
@@ -201,40 +201,41 @@
                     <div class="col s12 m12 l6 offset-l3">
                         <div class="row">
                             <div class="col s12">
-                                <label for="nome_contato">Nome Completo *</label>
-                                <input id="nome_contato" style="border-radius: 5px; margin-top: 1rem"
-                                       v-model="nome_contato"
+                                <label for="contato_nome">Nome Completo *</label>
+                                <input id="contato_nome" style="border-radius: 5px; margin-top: 1rem"
+                                       v-model="contato_nome"
                                        type="text" class="validate white" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col s12">
-                                <label for="cargo">Cargo Função *</label>
-                                <input id="cargo" style="border-radius: 5px; margin-top: 1rem" v-model="cargo"
+                                <label for="contato_cargo">Cargo Função *</label>
+                                <input id="contato_cargo" style="border-radius: 5px; margin-top: 1rem"
+                                       v-model="contato_cargo"
                                        type="text" class="validate white" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col s12">
-                                <label for="telefone_contato">Telefone para contato*</label>
-                                <input id="telefone_contato" style="border-radius: 5px; margin-top: 1rem"
-                                       v-model="telefone_contato"
+                                <label for="contato_telefone">Telefone para contato*</label>
+                                <input id="contato_telefone" style="border-radius: 5px; margin-top: 1rem"
+                                       v-model="contato_telefone"
                                        type="text" class="validate white" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col s12">
-                                <label for="email_contato">E-mail *</label>
-                                <input id="email_contato" style="border-radius: 5px; margin-top: 1rem"
-                                       v-model="email_contato"
+                                <label for="contato_email">E-mail *</label>
+                                <input id="contato_email" style="border-radius: 5px; margin-top: 1rem"
+                                       v-model="contato_email"
                                        type="text" class="validate white" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col s12">
-                                <label for="email_contato_confirmed">Confirmar E-mail *</label>
-                                <input id="email_contato_confirmed" style="border-radius: 5px; margin-top: 1rem"
-                                       v-model="email_contato_confirmed"
+                                <label for="contato_email_confirmed">Confirmar E-mail *</label>
+                                <input id="contato_email_confirmed" style="border-radius: 5px; margin-top: 1rem"
+                                       v-model="contato_email_confirmed"
                                        type="text" class="validate white" required>
                             </div>
                         </div>
@@ -312,7 +313,8 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="pergunta">Você autoriza o compartilhamento dos seus dados para potenciais compradores? *</p>
+                        <p class="pergunta">Você autoriza o compartilhamento dos seus dados para potenciais compradores?
+                            *</p>
                         <div class="checkboxes">
                             <div class="row">
                                 <div class="col s6">
@@ -356,27 +358,31 @@
                                 </option>
                             </select>
                         </div>
-                        <p class="pergunta">Catálogo de produtos/serviços *</p>
+                        <p class="pergunta">Catálogo de produtos/serviços * <span
+                                class="help">(Somente arquivos em PDF)</span></p>
                         <div class="file-field input-field">
                             <div class="btn">
-                                <span>Inserir</span>
-                                <input type="file">
+                                <span>Selecionae o arquivo</span>
+                                <input type="file" @change="setCatalogo"
+                                       accept="application/pdf,application/vnd.ms-excel">
                             </div>
                             <div class="file-path-wrapper">
                                 <input class="file-path validate" type="text">
                             </div>
                         </div>
-                        <p class="pergunta">Insira até 10 produtos ou serviços que deseja comercializar. Tente não utilizar abreviações, para facilitar a comunicação.</p>
+                        <p class="pergunta">Insira até 10 produtos ou serviços que deseja comercializar. Tente não
+                            utilizar abreviações, para facilitar a comunicação.</p>
                         <span class="help">(informe um único produto ou serviço por caixa de texto)</span>
                         <div class="row">
                             <div class="col s12">
-                                <input placeholder="Ex.: Chocolate Ao Leite" style="border-radius: 5px; margin-top: 1rem" v-for="(prod, index) in produtos"
-                                       v-model="produtos[index]" type="text"
-                                       class="validate white">
+                                <input placeholder="Ex.: Chocolate Ao Leite"
+                                       style="border-radius: 5px; margin-top: 1rem" v-for="(prod, index) in produtos"
+                                       v-model="produtos[index]" type="text" class="validate white">
                             </div>
                             <div class="col s12">
                                 <div class="div-add">
-                                    <i class="material-icons btn-add" style="font-size: 3rem; cursor: pointer;" @click="add('produto')" v-if="produtos.length < 11">add_box</i>
+                                    <i class="material-icons btn-add" style="font-size: 3rem; cursor: pointer;"
+                                       @click="add('produto')" v-if="produtos.length < 11">add_box</i>
                                 </div>
                             </div>
                         </div>
@@ -388,23 +394,26 @@
                         <span class="help">(informe um único canal por caixa de texto)</span>
                         <div class="row">
                             <div class="col s12">
-                                <input placeholder="Ex.: Delivery" style="border-radius: 5px; margin-top: 1rem" v-for="(canal, index) in canais"
+                                <input placeholder="Ex.: Delivery" style="border-radius: 5px; margin-top: 1rem"
+                                       v-for="(canal, index) in canais"
                                        v-model="canais[index]" type="text"
                                        class="validate white">
                             </div>
                             <div class="col s12">
                                 <div class="div-add">
-                                    <i class="material-icons btn-add" style="font-size: 3rem; cursor: pointer;" @click="add('canal')" v-if="canais.length < 11">add_box</i>
+                                    <i class="material-icons btn-add" style="font-size: 3rem; cursor: pointer;"
+                                       @click="add('canal')" v-if="canais.length < 11">add_box</i>
                                 </div>
                             </div>
                         </div>
                         <p class="pergunta">Como o Sistema OCB pode ajudar com os desafios trazidos pela Covid-19?
                         </p>
                         <span class="help">(Ajude-nos com ideias, sugestões e melhorias)</span>
-                        <textarea rows="7" id="mensagem" name="mensagem" class="mt-1 validate white" v-model="ajuda" required
+                        <textarea rows="7" id="ajuda" name="ajuda" class="mt-1 validate white" v-model="ajuda" required
                                   data-length="240"></textarea>
                         <div class="row">
                             <div class="col s12">
+                                <a @click="step = 2" class="btn btn-primary" style="float: left">Voltar</a>
                                 <a @click="enviar" class="btn btn-success btn-buscar"
                                    style="float: right;">ENVIAR
                                 </a>
@@ -428,37 +437,41 @@
         data() {
             return {
                 step: 1,
+                isValid: false,
                 enviado: false,
                 ramos: [],
-                nome: '',
-                razaosocial: '',
                 cnpj: '',
-                telefone: '',
-                whatsapp: '',
-                facebook: '',
-                instagram: '',
-                linkedin: '',
+                nome: '',
+                razao: '',
                 site: '',
                 email: '',
+                logo: [],
+                telefone: '',
+                whatsapp: '',
                 cep: '',
-                estados: estados,
-                cidades: cidades,
-                cidadesFiltradas: [],
+                endereco: '',
                 estado: '',
                 cidade: '',
-                endereco: '',
                 numero: '',
                 complemento: '',
                 bairro: '',
-                cargo: '',
-                nome_contato: '',
-                telefone_contato: '',
-                email_contato: '',
-                email_contato_confirmed: '',
-                ramo: '',
+                compartilhamento: true,
+                ramo_id: '',
+                catalogo: [],
+                facebook: '',
+                instagram: '',
+                linkedin: '',
+                estados: estados,
+                cidades: cidades,
+                cidadesFiltradas: [],
+                contato_cargo: '',
+                contato_nome: '',
+                contato_telefone: '',
+                contato_email: '',
+                contato_email_confirmed: '',
+                ajuda: '',
                 produtos: [''],
-                canais: [''],
-                ajuda: ''
+                canais: ['']
             }
         },
         methods: {
@@ -480,6 +493,65 @@
                     Swal.close();
                 })
             },
+            nextStep(val) {
+                let erros = [];
+                let self = this;
+                if (val == 2) {
+                    if (this.cnpj === '' || this.cnpj.length != 17) {
+                        erros.push('CNPJ')
+                    }
+                    if (this.razao === '') {
+                        erros.push('Razão Social')
+                    }
+                    if (this.telefone === '' || this.telefone.length < 14) {
+                        erros.push('Telefone')
+                    }
+                    if (this.estado === '') {
+                        erros.push('Estado')
+                    }
+                    if (this.cidade === '') {
+                        erros.push('Cidade')
+                    }
+                    if (this.endereco === '') {
+                        erros.push('Endereco')
+                    }
+                    if (this.numero === '') {
+                        erros.push('Número')
+                    }
+                    if (this.complemento === '') {
+                        erros.push('Complemento')
+                    }
+
+                    if (erros.length > 0) {
+                        Swal.fire({
+                            title: 'Oops!',
+                            text: 'Os campos abaixo precisam ser verificados:',
+                            type: 'warning',
+                            html: self.montaAlerta(erros),
+                        });
+                    } else {
+                        this.step = 2
+                    }
+                }
+            },
+            montaAlerta(erros){
+                let str = '';
+                erros.forEach(erro => {
+                    str += '<p>' + erro + '</p>';
+                });
+
+                return str;
+            },
+            setLogo(event) {
+                const files = event.target.files;
+                Array.from(files).forEach(file => this.logo.push(file));
+                console.log(this.logo)
+            },
+            setCatalogo(event) {
+                const files2 = event.target.files2;
+                Array.from(files2).forEach(file => this.catalogo.push(file));
+                console.log(this.logo)
+            },
             getCidades() {
                 return new Promise((resolve, reject) => {
                     this.cidade = '';
@@ -497,8 +569,8 @@
                     this.ramos = response.data.data;
                 })
             },
-            add(val){
-                if(val == 'produto')
+            add(val) {
+                if (val == 'produto')
                     this.produtos.push('');
                 else
                     this.canais.push('');
@@ -506,7 +578,6 @@
         }
     }
     $(document).ready(function () {
-        $('textarea#mensagem').characterCounter();
         $('.tabs').tabs();
     });
 </script>
