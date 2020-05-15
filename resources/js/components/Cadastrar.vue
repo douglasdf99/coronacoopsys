@@ -184,7 +184,7 @@
                         </div>
                         <div class="row">
                             <div class="col s12">
-                                <a @click="nextStep(2)" class="btn btn-success btn-buscar"
+                                <a @click="nextStep(1)" class="btn btn-success btn-buscar"
                                    style="float: right;">PRÓXIMO
                                 </a>
                             </div>
@@ -219,8 +219,8 @@
                             <div class="col s12">
                                 <label for="contato_telefone">Telefone para contato*</label>
                                 <input id="contato_telefone" style="border-radius: 5px; margin-top: 1rem"
-                                       v-model="contato_telefone"
-                                       type="text" class="validate white" required>
+                                       v-model="contato_telefone" type="text" class="validate white" required
+                                       v-mask="'(##) #####-####'">
                             </div>
                         </div>
                         <div class="row">
@@ -228,7 +228,7 @@
                                 <label for="contato_email">E-mail *</label>
                                 <input id="contato_email" style="border-radius: 5px; margin-top: 1rem"
                                        v-model="contato_email"
-                                       type="text" class="validate white" required>
+                                       type="email" class="validate white" required>
                             </div>
                         </div>
                         <div class="row">
@@ -236,13 +236,13 @@
                                 <label for="contato_email_confirmed">Confirmar E-mail *</label>
                                 <input id="contato_email_confirmed" style="border-radius: 5px; margin-top: 1rem"
                                        v-model="contato_email_confirmed"
-                                       type="text" class="validate white" required>
+                                       type="email" class="validate white" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col s12">
                                 <a @click="step = 1" class="btn btn-primary" style="float: left">Voltar</a>
-                                <a @click="step = 3" class="btn btn-success btn-buscar"
+                                <a @click="nextStep(2)" class="btn btn-success btn-buscar"
                                    style="float: right;">PRÓXIMO
                                 </a>
                             </div>
@@ -264,13 +264,15 @@
                             <div class="row">
                                 <div class="col s6">
                                     <label>
-                                        <input type="checkbox" class="filled-in"/>
+                                        <input type="checkbox" @click="changeArea('nacional')" v-model="nacional"
+                                               class="filled-in"/>
                                         <span>Nacional</span>
                                     </label>
                                 </div>
                                 <div class="col s6">
                                     <label>
-                                        <input type="checkbox" class="filled-in"/>
+                                        <input type="checkbox" @click="changeArea('estadual')" v-model="estadual"
+                                               class="filled-in"/>
                                         <span>Estadual</span>
                                     </label>
                                 </div>
@@ -278,33 +280,35 @@
                             <div class="row">
                                 <div class="col s6">
                                     <label>
-                                        <input type="checkbox" class="filled-in"/>
+                                        <input type="checkbox" @click="changeArea('municipal')" v-model="municipal"
+                                               class="filled-in"/>
                                         <span>Municipal</span>
                                     </label>
                                 </div>
                                 <div class="col s6">
                                     <label>
-                                        <input type="checkbox" class="filled-in"/>
+                                        <input type="checkbox" @click="changeArea('local')" v-model="local"
+                                               class="filled-in"/>
                                         <span>Local</span>
                                     </label>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" v-if="local">
                             <div class="div-endereco-atuacao col s12">
                                 <div class="row">
                                     <div class="col s12" style="margin-bottom: 1rem">
                                         <p>O endereco de atuação é o mesmo da cooperativa?</p>
                                         <label class="checklabel">
-                                            <input type="checkbox" class="filled-in"/>
+                                            <input type="checkbox" @click="needEndereco(true)" class="filled-in" v-model="need_endereco_atuacao_sim"/>
                                             <span>Sim</span>
                                         </label>
                                         <label class="checklabel">
-                                            <input type="checkbox" class="filled-in"/>
+                                            <input type="checkbox" @click="needEndereco(false)" v-model="need_endereco_atuacao_nao" class="filled-in"/>
                                             <span>Não</span>
                                         </label>
                                     </div>
-                                    <div class="col s12">
+                                    <div class="col s12" v-if="need_endereco_atuacao_nao">
                                         <label for="endereco_atuacao" class="white-text">Endereço de atuação</label>
                                         <input id="endereco_atuacao" style="border-radius: 5px; margin-top: 1rem"
                                                v-model="endereco_atuacao" type="text"
@@ -319,13 +323,15 @@
                             <div class="row">
                                 <div class="col s6">
                                     <label>
-                                        <input type="checkbox" class="filled-in"/>
+                                        <input type="checkbox" @click="autorizaCompartilhar(true)" v-model="autoriza"
+                                               class="filled-in"/>
                                         <span>Sim</span>
                                     </label>
                                 </div>
                                 <div class="col s6">
                                     <label>
-                                        <input type="checkbox" class="filled-in"/>
+                                        <input type="checkbox" @click="autorizaCompartilhar(false)"
+                                               v-model="naoAutoriza" class="filled-in"/>
                                         <span>Não</span>
                                     </label>
                                 </div>
@@ -336,25 +342,25 @@
                             <div class="row">
                                 <div class="col s6">
                                     <label>
-                                        <input type="checkbox" class="filled-in"/>
+                                        <input type="checkbox" v-model="vende_produto" class="filled-in"/>
                                         <span>Produtos</span>
                                     </label>
                                 </div>
                                 <div class="col s6">
                                     <label>
-                                        <input type="checkbox" class="filled-in"/>
+                                        <input type="checkbox" v-model="vende_servico" class="filled-in"/>
                                         <span>Serviços</span>
                                     </label>
                                 </div>
                             </div>
                         </div>
                         <div class="div-select" style="margin: 1rem 0">
-                            <label for="estado" class="label">Em qual ramo sua cooperativa está inserida? *</label>
-                            <select v-model="ramo" name="estado" id="estado"
+                            <label for="ramo_id" class="label">Em qual ramo sua cooperativa está inserida? *</label>
+                            <select v-model="ramo_id" name="ramo_id" id="ramo_id"
                                     class="browser-default" required>
                                 <option selected="selected" value="">...</option>
-                                <option v-for="ramo in ramos" v-bind:value="estado">{{estado.Nome}} /
-                                    {{estado.Sigla}}
+                                <option v-for="ramo in ramos" v-bind:value="ramo.id">
+                                    {{ramo.descricao}}
                                 </option>
                             </select>
                         </div>
@@ -362,7 +368,7 @@
                                 class="help">(Somente arquivos em PDF)</span></p>
                         <div class="file-field input-field">
                             <div class="btn">
-                                <span>Selecionae o arquivo</span>
+                                <span>Selecione o arquivo</span>
                                 <input type="file" @change="setCatalogo"
                                        accept="application/pdf,application/vnd.ms-excel">
                             </div>
@@ -394,10 +400,14 @@
                         <span class="help">(informe um único canal por caixa de texto)</span>
                         <div class="row">
                             <div class="col s12">
-                                <input placeholder="Ex.: Delivery" style="border-radius: 5px; margin-top: 1rem"
-                                       v-for="(canal, index) in canais"
-                                       v-model="canais[index]" type="text"
-                                       class="validate white">
+                                <select v-for="(canal, index) in canais" v-model="canais[index]" name="canais"
+                                        id="canais"
+                                        class="browser-default" required style="margin: 1rem 0">
+                                    <option selected="selected" value="">...</option>
+                                    <option v-for="canal in canaisOptions" v-bind:value="canal.id">
+                                        {{canal.descricao}}
+                                    </option>
+                                </select>
                             </div>
                             <div class="col s12">
                                 <div class="div-add">
@@ -411,7 +421,7 @@
                         <span class="help">(Ajude-nos com ideias, sugestões e melhorias)</span>
                         <textarea rows="7" id="ajuda" name="ajuda" class="mt-1 validate white" v-model="ajuda" required
                                   data-length="240"></textarea>
-                        <div class="row">
+                        <div class="row" style="margin-top: 1rem">
                             <div class="col s12">
                                 <a @click="step = 2" class="btn btn-primary" style="float: left">Voltar</a>
                                 <a @click="enviar" class="btn btn-success btn-buscar"
@@ -433,6 +443,7 @@
         name: 'Cadastrar',
         created() {
             this.getRamos();
+            this.getCanais();
         },
         data() {
             return {
@@ -471,32 +482,185 @@
                 contato_email_confirmed: '',
                 ajuda: '',
                 produtos: [''],
-                canais: ['']
+                canais: [''],
+                canaisOptions: [],
+                nacional: false,
+                estadual: false,
+                municipal: false,
+                local: false,
+                need_endereco_atuacao_nao: false,
+                need_endereco_atuacao_sim: false,
+                endereco_atuacao: '',
+                autoriza: true,
+                naoAutoriza: false,
+                tipo: '',
+                vende_produto: true,
+                vende_servico: false,
             }
         },
         methods: {
             enviar() {
-                Swal.fire({
-                    title: 'Enviando..',
-                    html: '',
-                    showConfirmButton: false,
-                    onBeforeOpen: () => {
-                        Swal.showLoading()
-                    },
-                });
-                axios.post('/enviar', {nome: this.nome, email: this.email, mensagem: this.mensagem}).then(response => {
-                    console.log(response);
-                    this.enviado = true;
-                }).catch(erro => {
-                    console.log(erro)
-                }).finally(() => {
-                    Swal.close();
-                })
+                let erros = [];
+                let self = this;
+                if (!this.municipal && !this.nacional && !this.estadual && !this.local) {
+                    erros.push('Área de Atuação')
+                }
+                if (this.ramo_id === '') {
+                    erros.push('Ramo')
+                }
+                if (this.catalogo.length === 0) {
+                    erros.push('Catálogo')
+                }
+                if (this.produtos.length == 0 || this.produtos[0] == '') {
+                    erros.push('Produtos/Serviços Comercializados')
+                }
+
+                if (this.canais.length == 0 || this.canais[0] == '') {
+                    erros.push('Canais')
+                }
+
+                if (this.need_endereco_atuacao_nao && this.endereco_atuacao === '') {
+                    erros.push('Endereço de Atuação')
+                }
+
+                if (erros.length > 0) {
+                    Swal.fire({
+                        title: 'Oops! Verifique os campos abaixo',
+                        text: 'Os campos abaixo precisam ser verificados:',
+                        type: 'warning',
+                        html: self.montaAlerta(erros),
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Enviando..',
+                        html: '',
+                        showConfirmButton: false,
+                        onBeforeOpen: () => {
+                            Swal.showLoading()
+                        },
+                    });
+                    const formData2 = new FormData();
+                    this.logo.forEach(file => {
+                        formData2.append('logo', file, file.name);
+                    });
+                    this.catalogo.forEach(file => {
+                        formData2.append('catalogo', file, file.name);
+                    });
+
+                    formData2.append('nome', this.item.nome);
+                    formData2.append('razao', this.item.razao);
+                    formData2.append('cnpj', this.item.cnpj);
+                    formData2.append('email', this.item.email);
+                    //formData2.append('matriz', this.item.matriz);
+                    formData2.append('site', this.item.site);
+                    formData2.append('telefone', this.item.telefone);
+                    formData2.append('whatsapp', this.item.whatsapp);
+                    formData2.append('ramo_id', this.item.ramo_id);
+                    formData2.append('cep', this.item.cep);
+                    formData2.append('estado', this.item.estado);
+                    formData2.append('cidade', this.item.cidade);
+                    formData2.append('endereco', this.item.endereco);
+                    formData2.append('numero', this.item.numero);
+                    formData2.append('contato_nome', this.item.contato_nome);
+                    formData2.append('contato_telefone', this.item.contato_telefone);
+                    formData2.append('contato_email', this.item.contato_email);
+                    formData2.append('contato_cargo', this.item.contato_cargo);
+                    formData2.append('ajuda', this.item.ajuda);
+                    formData2.append('contato_cargo', this.contato_cargo);
+                    formData2.append('contato_nome', this.contato_nome);
+                    formData2.append('contato_telefone', this.contato_telefone);
+                    formData2.append('contato_email', this.contato_email);
+                    formData2.append('contato_email_confirmed', this.contato_email_confirmed);
+                    formData2.append('produtos', this.produtos);
+                    formData2.append('canais', this.canais);
+                    formData2.append('complemento', this.item.complemento);
+                    formData2.append('bairro', this.item.bairro);
+                    formData2.append('instagram', this.item.instagram);
+                    formData2.append('linkedin', this.item.linkedin);
+                    formData2.append('facebook', this.item.facebook);
+                    formData2.append('vende_produto', this.item.vende_produto);
+                    formData2.append('vende_servico', this.item.vende_servico);
+                    formData2.append('tipo', this.item.tipo);
+
+                    if (this.item.compartilhamento) {
+                        formData2.append('compartilhamento', 1);
+                    } else {
+                        formData2.append('compartilhamento', 0);
+                    }
+                    if (this.nacional) {
+                        formData2.append('area', 'nacional');
+                    }
+                    if (this.estadual) {
+                        formData2.append('area', 'estadual');
+                    }
+                    if (this.municipal) {
+                        formData2.append('area', 'municipal');
+                    }
+                    if (this.local) {
+                        formData2.append('area', 'local');
+                        if(this.need_endereco_atuacao_nao){
+                            formData2.append('endereco_atuacao', this.endereco_atuacao);
+                        }
+                    }
+
+                    axios.post('/enviar', formData2).then(response => {
+                        console.log(response);
+                        this.enviado = true;
+                    }).catch(erro => {
+                        console.log(erro)
+                    }).finally(() => {
+                        Swal.close();
+                    })
+                }
+            },
+            autorizaCompartilhar(val) {
+                if (val) {
+                    this.naoAutoriza = false;
+                    this.compartilhamento = true;
+                } else {
+                    this.autoriza = false;
+                    this.compartilhamento = false;
+                }
+            },
+            needEndereco(val) {
+                if (val) {
+                    this.need_endereco_atuacao_nao = false;
+                    this.need_endereco_atuacao_sim = true;
+                } else {
+                    this.need_endereco_atuacao_nao = true;
+                    this.need_endereco_atuacao_sim = false;
+                }
+            },
+            changeArea(val) {
+                switch (val) {
+                    case 'nacional':
+                        this.estadual = false;
+                        this.municipal = false;
+                        this.local = false;
+                        break;
+                    case 'estadual':
+                        this.nacional = false;
+                        this.municipal = false;
+                        this.local = false;
+                        break;
+                    case 'municipal':
+                        this.estadual = false;
+                        this.nacional = false;
+                        this.local = false;
+                        break;
+                    case 'local':
+                        this.estadual = false;
+                        this.municipal = false;
+                        this.nacional = false;
+                        break;
+                }
+
+                this.tipo = val;
             },
             nextStep(val) {
                 let erros = [];
                 let self = this;
-                if (val == 2) {
+                /*if (val == 1) {
                     if (this.cnpj === '' || this.cnpj.length != 17) {
                         erros.push('CNPJ')
                     }
@@ -524,7 +688,7 @@
 
                     if (erros.length > 0) {
                         Swal.fire({
-                            title: 'Oops!',
+                            title: 'Oops! Verifique os campos abaixo',
                             text: 'Os campos abaixo precisam ser verificados:',
                             type: 'warning',
                             html: self.montaAlerta(erros),
@@ -533,8 +697,38 @@
                         this.step = 2
                     }
                 }
+                if (val == 2) {
+                    if (this.contato_nome === '') {
+                        erros.push('Nome Completo')
+                    }
+                    if (this.contato_cargo === '') {
+                        erros.push('Cargo')
+                    }
+                    if (this.contato_telefone === '' || this.contato_telefone.length < 14) {
+                        erros.push('Telefone')
+                    }
+                    if (this.contato_email === '') {
+                        erros.push('E-mail')
+                    }
+
+                    if (this.contato_email != this.contato_email_confirmed) {
+                        erros.push('E-mail de confirmação difere')
+                    }
+
+                    if (erros.length > 0) {
+                        Swal.fire({
+                            title: 'Oops! Verifique os campos abaixo',
+                            text: 'Os campos abaixo precisam ser verificados:',
+                            type: 'warning',
+                            html: self.montaAlerta(erros),
+                        });
+                    } else {
+                        this.step = 3
+                    }
+                }*/
+                this.step = val + 1;
             },
-            montaAlerta(erros){
+            montaAlerta(erros) {
                 let str = '';
                 erros.forEach(erro => {
                     str += '<p>' + erro + '</p>';
@@ -567,6 +761,11 @@
                 axios.get('/api/ramos').then(response => {
                     console.log(response)
                     this.ramos = response.data.data;
+                })
+            },
+            getCanais() {
+                axios.get('/api/canais').then(response => {
+                    this.canaisOptions = response.data.data;
                 })
             },
             add(val) {
@@ -654,6 +853,7 @@
 
     .div-endereco-atuacao {
         padding: 1rem;
+        /*background: #6784C1*/;
         background: #BCBCBC;
         border-radius: 5px;
     }
@@ -684,5 +884,8 @@
 
     .help {
         color: #6784C1;
+    }
+
+    .checkboxes {
     }
 </style>
