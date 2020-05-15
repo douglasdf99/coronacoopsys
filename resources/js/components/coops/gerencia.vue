@@ -1,7 +1,7 @@
 <template>
     <!-- Start Content-->
     <div class="container-fluid">
-      <section class="users-edit">
+      <section class="users-edit"  v-if="item.nome">
         <a :href="url_redirect('admin/coops')" type="reset" class="btn btn-outline-primary">Voltar</a>
 
         <div class="card">
@@ -9,7 +9,7 @@
             <div class="card-body">
               <ul class="nav nav-tabs mb-3" role="tablist">
                 <li class="nav-item">
-                  <a class="nav-link d-flex align-items-center active" id="account-tab" data-toggle="tab" href="#account"
+                  <a class="nav-link d-flex align-item1s-center active" id="account-tab" data-toggle="tab" href="#account"
                      aria-controls="account" role="tab" aria-selected="true">
                     <i class="feather icon-user mr-25"></i><span class="d-none d-sm-block">Informações principais</span>
                   </a>
@@ -41,10 +41,10 @@
                            @dragover.prevent
                            @drop="onDrop"
                            :class="{ dragging: isDragging }">
-                        <div class="images-preview justify-content-center align-items-center d-flex"
-                             v-if="item.logo && !images.length">
+                        <div class="images-preview justify-content-center align-item1s-center d-flex"
+                             v-if="item1.logo && !images.length">
                           <div class="img-wrapper">
-                            <img :src="url_redirect(item.logo)"
+                            <img :src="url_redirect(item1.logo)"
                                  class="users-avatar-shadow rounded" height="200" width="200">
                             <div class="details justify-content-center align-items-center d-flex">
                               <div class="upload-control">
@@ -53,7 +53,7 @@
                             </div>
                           </div>
                         </div>
-                        <div v-show="!item.logo">
+                        <div v-show="!item1.logo">
                           <div v-show="!images.length">
                             <i class="fa fa-cloud-upload"></i>
                             <p>Arraste para aqui</p>
@@ -88,49 +88,49 @@
                             <div class="form-group">
                               <div class="controls">
                                 <label>Nome Fantasia</label>
-                                <input type="text" class="form-control"  v-model="item.nome">
+                                <input type="text" class="form-control"  v-model="item1.nome">
                               </div>
                             </div>
                             <div class="form-group">
                               <div class="controls">
                                 <label>Razão social</label>
-                                <input type="text" class="form-control"  v-model="item.razao">
+                                <input type="text" class="form-control"  v-model="item1.razao">
                               </div>
                             </div>
                             <div class="form-group">
                               <div class="controls">
                                 <label>CNPJ</label>
-                                <input type="text" class="form-control"  v-model="item.cnpj" v-mask="'##.###.####/####-##'">
+                                <input type="text" class="form-control" v-mask="'##.###.####/####-##'"  v-model="item1.cnpj" >
                               </div>
                             </div>
                             <div class="form-group">
                               <div class="controls">
                                 <label>E-mail</label>
-                                <input type="email" class="form-control"  v-model="item.email">
+                                <input type="email" class="form-control"  v-model="item1.email">
                               </div>
                             </div>
                             <div class="form-group">
                               <div class="controls">
                                 <label>Tipo</label>
-                                <Select2 v-model="item.matriz" :options="myOptions"/>
+                                <Select2 v-model="item1.matriz" :options="myOptions"/>
                               </div>
                             </div>
                             <div class="form-group">
                               <div class="controls">
                                 <label>Site </label>
-                                <input type="text" class="form-control"  v-model="item.site">
+                                <input type="text" class="form-control"  v-model="item1.site">
                               </div>
                             </div>
                             <div class="form-group">
                               <div class="controls">
                                 <label>Telefone </label>
-                                <input type="text" class="form-control"  v-model="item.telefone" v-mask="'(##) #####-####'">
+                                <input type="text" class="form-control"  v-model="item1.telefone" v-mask="'(##) #####-####'">
                               </div>
                             </div>
                             <div class="form-group">
                               <div class="controls">
                                 <label>Whatsapp </label>
-                                <input type="text" class="form-control"  v-model="item.whatsapp" v-mask="'(##) #####-####'">
+                                <input type="text" class="form-control"  v-model="item1.whatsapp" v-mask="'(##) #####-####'">
                               </div>
                             </div>
                             <div class="form-group">
@@ -149,19 +149,19 @@
                             <div class="form-group">
                               <div class="controls">
                                 <label >Ramo:</label>
-                                <Select2 v-model="item.ramo_id" :options="ramos" @change="myChangeEvent($event)" @select="mySelectEvent($event)" />
+                                <Select2 v-model="item1.ramo_id" :options="ramos" @change="myChangeEvent($event)" @select="mySelectEvent($event)" />
                               </div>
                             </div>
                             <div class="form-group">
                               <div class="controls">
-                                <label>Catálogo  -                                    <a :href="url_redirect(item.catalogo)"  v-show="item.catalogo">Fazer Download</a></label>
+                                <label>Catálogo  -                                    <a :href="url_redirect(item1.catalogo)"  v-show="item1.catalogo">Fazer Download</a></label>
 
                                 <h6>
                                   <div >
 
                                     <input type="file"  ref="myFiles"  @change="setcatalogo">
                                       <br>
-                                    <label class="text-danger" v-show="item.catalogo">Só escolha um arquivo caso queira substituir o atual</label>
+                                    <label class="text-danger" v-show="item1.catalogo">Só escolha um arquivo caso queira substituir o atual</label>
 
                                   </div>
 
@@ -176,32 +176,32 @@
                         <div class="form-group">
                           <div class="controls">
                             <label>Nome</label>
-                            <input type="text" class="form-control"  v-model="item.contato_nome">
+                            <input type="text" class="form-control"  v-model="item1.contato_nome">
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="controls">
                             <label>Cargo</label>
-                            <input type="text" class="form-control"  v-model="item.contato_cargo">
+                            <input type="text" class="form-control"  v-model="item1.contato_cargo">
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="controls">
                             <label>Telefone</label>
-                            <input type="text" class="form-control"  v-model="item.contato_telefone">
+                            <input type="text" class="form-control"  v-model="item1.contato_telefone">
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="controls">
                             <label>Email</label>
-                            <input type="email" class="form-control"  v-model="item.contato_email">
+                            <input type="email" class="form-control"  v-model="item1.contato_email">
                           </div>
                         </div>
                         <h5 class="mb-1 mt-2 mt-sm-0"><i class="feather icon-map-pin mr-25"></i>Endereço</h5>
                         <div class="form-group">
                           <div class="controls">
                             <label>cep</label>
-                            <input type="text" class="form-control"  v-model="item.cep">
+                            <input type="text" class="form-control"  v-model="item1.cep">
                           </div>
                         </div>
                         <div class="form-group">
@@ -219,25 +219,25 @@
                         <div class="form-group">
                           <div class="controls">
                             <label>Endereco </label>
-                            <input type="text" class="form-control"  v-model="item.endereco">
+                            <input type="text" class="form-control"  v-model="item1.endereco">
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="controls">
                             <label>Número </label>
-                            <input type="text" class="form-control"  v-model="item.numero">
+                            <input type="text" class="form-control"  v-model="item1.numero">
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="controls">
                             <label>Complemento </label>
-                            <input type="text" class="form-control"  v-model="item.complemento">
+                            <input type="text" class="form-control"  v-model="item1.complemento">
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="controls">
                             <label>Bairro </label>
-                            <input type="text" class="form-control"  v-model="item.bairro">
+                            <input type="text" class="form-control"  v-model="item1.bairro">
                           </div>
                         </div>
                       </div>
@@ -245,7 +245,7 @@
                         <div class="form-group">
                           <div class="controls">
                             <label>Como pode ajudar </label>
-                            <textarea type="text" class="form-control"  v-model="item.ajuda"> </textarea>
+                            <textarea type="text" class="form-control"  v-model="item1.ajuda"> </textarea>
                           </div>
                         </div>
                       </div>
@@ -265,14 +265,14 @@
                       <div class="col-12 col-sm-6">
                         <div class="table-responsive border rounded px-1">
                           <h6 class="border-bottom py-2 mx-1 mb-0 font-medium-2">Áreas de atuação
-                            <a href="#" @click="showCriarArea()" class="btn btn-primary bt-sm waves-effect waves-light mb-2 float-right" data-overlayColor="#38414a">
+                            <a href="#" v-if="!item1.areas" @click="showCriarArea()" class="btn btn-primary bt-sm waves-effect waves-light mb-2 float-right" data-overlayColor="#38414a">
                             Add
                           </a>
                           </h6>
 
-                          <div class="row">
+                          <div class="row" v-if="item1.areas" >
                             <div class="col-12">
-                              <table class="table table-borderless" v-if="item.areas.length > 0">
+                              <table class="table table-borderless">
                                 <thead>
                                 <tr>
                                   <th>Tipo</th>
@@ -283,29 +283,28 @@
                                 </tr>
                                 </thead>
                                 <tbody >
-                                <tr v-for="area in item.areas">
-                                  <td>{{area.tipo}}</td>
+                                <tr>
+                                  <td>{{item1.areas.tipo}}</td>
                                   <td>
-                                    {{area.estado}}
+                                    {{item1.areas.estado}}
                                   </td>
                                   <td>
-                                    {{area.cidade}}
+                                    {{item1.areas.cidade}}
                                   </td>
                                   <td>
-                                    {{area.endereço}}
+                                    {{item1.areas.endereco}}
                                   </td>
                                   <td>
-                                    <a href="javascript:void(0);" @click="showEditarArea(area)" ><i class="users-edit-icon feather icon-edit-1 mr-50"></i> </a>
-                                    <a href="javascript:void(0);" @click="showExcluirArea(area.id)" ><i class="users-delete-icon feather icon-trash-2"></i> </a>
+                                    <a href="javascript:void(0);" @click="showEditarArea(item1.areas)" ><i class="users-edit-icon feather icon-edit-1 mr-50"></i> </a>
+                                    <a href="javascript:void(0);" @click="showExcluirArea(item1.areas.id)" ><i class="users-delete-icon feather icon-trash-2"></i> </a>
                                   </td>
                                 </tr>
                                 </tbody>
                               </table>
-                              <div class="text-center py-2" v-else>
-                                Nenhum item adicionado
-                              </div>
-
                             </div>
+                          </div>
+                          <div class="text-center py-2" v-else>
+                            Nenhum item adicionado
                           </div>
                         </div>
 
@@ -317,7 +316,7 @@
                               Add
                             </a>
                           </h6>
-                          <table class="table table-borderless" v-if="item.coop_canais.length > 0">
+                          <table class="table table-borderless" v-if="item1.coop_canais.length > 0">
                             <thead>
                             <tr>
                               <th>Canal</th>
@@ -325,7 +324,7 @@
                             </tr>
                             </thead>
                             <tbody >
-                            <tr v-for="canal in item.coop_canais">
+                            <tr v-for="canal in item1.coop_canais">
                               <td>{{canal.canai.descricao}}</td>
                               <td>
                                 <a href="javascript:void(0);" @click="showEditarCanal(canal)" ><i class="users-edit-icon feather icon-edit-1 mr-50"></i> </a>
@@ -356,7 +355,7 @@
                             </h6>
                             <div class="row">
                               <div class="col-12">
-                                <table class="table table-borderless" v-if="item.coop_produtos.length > 0">
+                                <table class="table table-borderless" v-if="item1.coop_produtos.length > 0">
                                   <thead>
                                   <tr>
                                     <th>Produtos</th>
@@ -365,7 +364,7 @@
                                   </tr>
                                   </thead>
                                   <tbody >
-                                  <tr v-for="produtos in item.coop_produtos">
+                                  <tr v-for="produtos in item1.coop_produtos">
                                     <td>{{produtos.descricao}}</td>
                                     <td>
                                       {{produtos.produto.descricao}}
@@ -443,78 +442,92 @@
         },
       props: ['item'],
 
+
+      data() {
+        let sortOrders = {};
+        let columns = [
+          {label: 'ident', data: 'ident', name: 'ident'},
+          {label: 'lead', data: 'lead', name: 'lead'},
+          {label: 'lead_email', data: 'lead_email', name: 'lead_email'},
+          {label: 'produto', data: 'produto', name: 'produto'},
+          {label: 'status', data: 'status', name: 'status'},
+          {label: '', data: 'actions', name: 'actions', orderable: false, searchable: false},
+        ];
+        columns.forEach((column) => {
+          sortOrders[column.name] = -1;
+        });
+        return {
+          item1: {},
+          areaEdit: '',
+          canalEdit: '',
+          produtoEdit: '',
+          areaExcluir: '',
+          canalExcluir: '',
+          produtoExcluir: '',
+          compartilhamento: '',
+
+          estados: estados,
+          estado: '',
+          cidades: cidades,
+          cidade: '',
+          ramos: [], // or [{id: key, text: value}, {id: key, text: value}]
+          myOptions: ['Matriz','Filial'], // or [{id: key, text: value}, {id: key, text: value}]
+          projects: [],
+          curso: '',
+          usuario: '',
+          usuarioEditar: '',
+          usuarioExcluir: '',
+          showpreloader: false,
+          columns: columns,
+          sortKey: 'deadline',
+          sortOrders: sortOrders,
+          perPage: ['10', '20', '30'],
+          tableData: {
+            draw: 0,
+            length: 10,
+            search: '',
+            column: 0,
+            dir: 'desc',
+            page:1
+          },
+          pagination: {
+            lastPage: '',
+            total: '',
+            lastPageUrl: '',
+            nextPageUrl: '',
+            prevPageUrl: '',
+            current_page: 1,
+            firstPageUrl: '',
+            from: '',
+            to: ''
+          },
+
+          isDragging: false,
+          dragCount: 0,
+          stop: 1,
+          files: [],
+          files2: [],
+          images: [],
+        }
+      },
       created() {
             this.getRamos();
+        this.item1 = {...this.item}
+        console.log('item created',this.item)
+        console.log('item2 created',this.item1)
         },
-      mounted(){
+      mounted() {
+        let vm = this;
+        this.$nextTick(function () {
+          this.set();
+        });
         this.compartilhamento = this.item.compartilhamento
       },
-        data() {
-            let sortOrders = {};
-            let columns = [
-                {label: 'ident', data: 'ident', name: 'ident'},
-                {label: 'lead', data: 'lead', name: 'lead'},
-                {label: 'lead_email', data: 'lead_email', name: 'lead_email'},
-                {label: 'produto', data: 'produto', name: 'produto'},
-                {label: 'status', data: 'status', name: 'status'},
-                {label: '', data: 'actions', name: 'actions', orderable: false, searchable: false},
-            ];
-            columns.forEach((column) => {
-                sortOrders[column.name] = -1;
-            });
-            return {
-              areaEdit: '',
-              canalEdit: '',
-              produtoEdit: '',
-              areaExcluir: '',
-              canalExcluir: '',
-              produtoExcluir: '',
-              compartilhamento: '',
+      updated(){
+        console.log('item u',this.item)
+        console.log('item2 u',this.item1)
+      },
 
-              estados: estados,
-              estado: '',
-              cidades: cidades,
-              cidade: '',
-              ramos: [], // or [{id: key, text: value}, {id: key, text: value}]
-              myOptions: ['Matriz','Filial'], // or [{id: key, text: value}, {id: key, text: value}]
-              projects: [],
-                curso: '',
-                usuario: '',
-                usuarioEditar: '',
-                usuarioExcluir: '',
-                showpreloader: false,
-                columns: columns,
-                sortKey: 'deadline',
-                sortOrders: sortOrders,
-                perPage: ['10', '20', '30'],
-                tableData: {
-                  draw: 0,
-                  length: 10,
-                  search: '',
-                  column: 0,
-                  dir: 'desc',
-                  page:1
-                },
-                pagination: {
-                    lastPage: '',
-                    total: '',
-                    lastPageUrl: '',
-                    nextPageUrl: '',
-                    prevPageUrl: '',
-                    current_page: 1,
-                    firstPageUrl: '',
-                    from: '',
-                    to: ''
-                },
-
-              isDragging: false,
-              dragCount: 0,
-              stop: 1,
-              files: [],
-              files2: [],
-              images: [],
-            }
-        },
 
       computed: {
         estdosCpm() {
@@ -568,6 +581,10 @@
           alterarcatalogo(){
             console.log('muda catalogo', this.item.catalogo );
             this.item.catalogo = '';
+          },
+          set(){
+            console.log('item c',this.item)
+            console.log('item2 c',this.item1)
           },
           setcatalogo(event){
             const files2 = event.target.files;
@@ -729,7 +746,7 @@
                         console.log(response.data);
                         let data = response.data;
                         console.log(data.data);
-                        this.item = data.data;
+                        this.item1 = data.data;
                     })
                     .catch(errors => {
                         console.log(errors);
