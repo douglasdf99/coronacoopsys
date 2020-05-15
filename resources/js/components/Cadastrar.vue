@@ -50,7 +50,7 @@
                         </div>
                         <div class="row">
                             <div class="col s12">
-                                <label for="nome">Nome Fantazia</label>
+                                <label for="nome">Nome Fantasia</label>
                                 <input id="nome" style="border-radius: 5px; margin-top: 1rem" v-model="nome"
                                        type="email"
                                        class="validate white">
@@ -300,11 +300,13 @@
                                     <div class="col s12" style="margin-bottom: 1rem">
                                         <p>O endereco de atuação é o mesmo da cooperativa?</p>
                                         <label class="checklabel">
-                                            <input type="checkbox" @click="needEndereco(true)" class="filled-in" v-model="need_endereco_atuacao_sim"/>
+                                            <input type="checkbox" @click="needEndereco(true)" class="filled-in"
+                                                   v-model="need_endereco_atuacao_sim"/>
                                             <span>Sim</span>
                                         </label>
                                         <label class="checklabel">
-                                            <input type="checkbox" @click="needEndereco(false)" v-model="need_endereco_atuacao_nao" class="filled-in"/>
+                                            <input type="checkbox" @click="needEndereco(false)"
+                                                   v-model="need_endereco_atuacao_nao" class="filled-in"/>
                                             <span>Não</span>
                                         </label>
                                     </div>
@@ -433,6 +435,18 @@
                 </div>
             </div>
         </div>
+        <div v-if="enviado" class="div-sucesso">
+            <i class="material-icons close-btn-sidenav" style="float: right; cursor: pointer" @click="enviado = false">close</i>
+            <div class="container relative">
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <p class="obrigado">Obrigado pela sua contribuição!</p>
+                        <span>Seu formulário foi enviado para equipe responsável. Em caso de dúvida,
+                            entre em contato pelo endereço de email nucleo@ocb.coop.br.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -508,9 +522,9 @@
                 if (this.ramo_id === '') {
                     erros.push('Ramo')
                 }
-                if (this.catalogo.length === 0) {
+                /*if (this.catalogo.length === 0) {
                     erros.push('Catálogo')
-                }
+                }*/
                 if (this.produtos.length == 0 || this.produtos[0] == '') {
                     erros.push('Produtos/Serviços Comercializados')
                 }
@@ -546,43 +560,48 @@
                     this.catalogo.forEach(file => {
                         formData2.append('catalogo', file, file.name);
                     });
+                    this.produtos.forEach(prod => {
+                        formData2.append('produtos[]', prod);
+                    });
 
-                    formData2.append('nome', this.item.nome);
-                    formData2.append('razao', this.item.razao);
-                    formData2.append('cnpj', this.item.cnpj);
-                    formData2.append('email', this.item.email);
-                    //formData2.append('matriz', this.item.matriz);
-                    formData2.append('site', this.item.site);
-                    formData2.append('telefone', this.item.telefone);
-                    formData2.append('whatsapp', this.item.whatsapp);
-                    formData2.append('ramo_id', this.item.ramo_id);
-                    formData2.append('cep', this.item.cep);
-                    formData2.append('estado', this.item.estado);
-                    formData2.append('cidade', this.item.cidade);
-                    formData2.append('endereco', this.item.endereco);
-                    formData2.append('numero', this.item.numero);
-                    formData2.append('contato_nome', this.item.contato_nome);
-                    formData2.append('contato_telefone', this.item.contato_telefone);
-                    formData2.append('contato_email', this.item.contato_email);
-                    formData2.append('contato_cargo', this.item.contato_cargo);
-                    formData2.append('ajuda', this.item.ajuda);
+                    this.canais.forEach(canal => {
+                        formData2.append('canais[]', canal);
+                    });
+
+                    formData2.append('nome', this.nome);
+                    formData2.append('razao', this.razao);
+                    formData2.append('cnpj', this.cnpj);
+                    formData2.append('email', this.email);
+                    //formData2.append('matriz', this.matriz);
+                    formData2.append('site', this.site);
+                    formData2.append('telefone', this.telefone);
+                    formData2.append('whatsapp', this.whatsapp);
+                    formData2.append('ramo_id', this.ramo_id);
+                    formData2.append('cep', this.cep);
+                    formData2.append('estado', this.estado.Nome);
+                    formData2.append('cidade', this.cidade);
+                    formData2.append('endereco', this.endereco);
+                    formData2.append('numero', this.numero);
+                    formData2.append('contato_nome', this.contato_nome);
+                    formData2.append('contato_telefone', this.contato_telefone);
+                    formData2.append('contato_email', this.contato_email);
+                    formData2.append('contato_cargo', this.contato_cargo);
+                    formData2.append('ajuda', this.ajuda);
                     formData2.append('contato_cargo', this.contato_cargo);
                     formData2.append('contato_nome', this.contato_nome);
                     formData2.append('contato_telefone', this.contato_telefone);
                     formData2.append('contato_email', this.contato_email);
                     formData2.append('contato_email_confirmed', this.contato_email_confirmed);
-                    formData2.append('produtos', this.produtos);
-                    formData2.append('canais', this.canais);
-                    formData2.append('complemento', this.item.complemento);
-                    formData2.append('bairro', this.item.bairro);
-                    formData2.append('instagram', this.item.instagram);
-                    formData2.append('linkedin', this.item.linkedin);
-                    formData2.append('facebook', this.item.facebook);
-                    formData2.append('vende_produto', this.item.vende_produto);
-                    formData2.append('vende_servico', this.item.vende_servico);
-                    formData2.append('tipo', this.item.tipo);
+                    formData2.append('complemento', this.complemento);
+                    formData2.append('bairro', this.bairro);
+                    formData2.append('instagram', this.instagram);
+                    formData2.append('linkedin', this.linkedin);
+                    formData2.append('facebook', this.facebook);
+                    formData2.append('vende_produto', this.vende_produto);
+                    formData2.append('vende_servico', this.vende_servico);
+                    formData2.append('tipo', this.tipo);
 
-                    if (this.item.compartilhamento) {
+                    if (this.compartilhamento) {
                         formData2.append('compartilhamento', 1);
                     } else {
                         formData2.append('compartilhamento', 0);
@@ -598,12 +617,12 @@
                     }
                     if (this.local) {
                         formData2.append('area', 'local');
-                        if(this.need_endereco_atuacao_nao){
+                        if (this.need_endereco_atuacao_nao) {
                             formData2.append('endereco_atuacao', this.endereco_atuacao);
                         }
                     }
 
-                    axios.post('/enviar', formData2).then(response => {
+                    axios.post('api/enviar-coop', formData2).then(response => {
                         console.log(response);
                         this.enviado = true;
                     }).catch(erro => {
@@ -660,7 +679,8 @@
             nextStep(val) {
                 let erros = [];
                 let self = this;
-                /*if (val == 1) {
+                //this.step = val + 1
+                if (val == 1) {
                     if (this.cnpj === '' || this.cnpj.length != 17) {
                         erros.push('CNPJ')
                     }
@@ -725,8 +745,7 @@
                     } else {
                         this.step = 3
                     }
-                }*/
-                this.step = val + 1;
+                }
             },
             montaAlerta(erros) {
                 let str = '';
@@ -744,7 +763,6 @@
             setCatalogo(event) {
                 const files2 = event.target.files2;
                 Array.from(files2).forEach(file => this.catalogo.push(file));
-                console.log(this.logo)
             },
             getCidades() {
                 return new Promise((resolve, reject) => {
@@ -787,36 +805,6 @@
         border-right: unset;
         border-radius: 5px;
         height: auto;
-    }
-
-    .div-sucesso {
-        position: fixed;
-        top: 0;
-        display: flex;
-        height: 100vh;
-        width: 100vw;
-        background-color: #1c205cab;
-        overflow: hidden;
-        color: white;
-        transition-duration: .5s
-    }
-
-    .obrigado {
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin: 0;
-    }
-
-    .div-sucesso .container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .div-sucesso .close-btn-sidenav {
-        position: absolute;
-        right: 10%;
-        top: 10%;
     }
 
     .tabs {

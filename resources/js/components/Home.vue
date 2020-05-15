@@ -42,7 +42,7 @@
                                     </select>
                                 </div>
                                 <div class="col s6 mt-1">
-                                    <label for="produto" class="label">Produto/serviço</label>
+                                    <label class="label">Produto/serviço</label>
                                     <!--<select name="produto" id="produto" class="browser-default"
                                             v-model="pesquisa.produto">
                                         <option selected="selected" value="">...</option>
@@ -261,6 +261,17 @@
                     <a :href="url_redirect('contato')" class="btn btn-success btn-buscar" style="float: left;">FALE
                         CONOSCO
                     </a>
+                </div>
+            </div>
+            <div v-if="enviado" class="div-sucesso">
+                <i class="material-icons close-btn-sidenav" style="float: right; cursor: pointer" @click="enviado = false">close</i>
+                <div class="container relative">
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <p class="obrigado">Obrigado pela mensagem!</p>
+                            <span>Esperamos em breve trazer alguma solução pra você.</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

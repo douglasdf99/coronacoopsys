@@ -117,33 +117,4 @@
         border-radius: 5px;
         height: auto;
     }
-
-    .div-sucesso {
-        position: fixed;
-        top: 0;
-        display: flex;
-        height: 100vh;
-        width: 100vw;
-        background-color: #1c205cab;
-        overflow: hidden;
-        color: white;
-        transition-duration: .5s
-    }
-    .obrigado {
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin: 0;
-    }
-
-    .div-sucesso .container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .div-sucesso .close-btn-sidenav {
-        position: absolute;
-        right: 10%;
-        top: 10%;
-    }
 </style>
