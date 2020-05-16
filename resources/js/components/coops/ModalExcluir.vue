@@ -103,7 +103,7 @@
                 console.log('closed', e)
             },
             fechar() {
-                this.$modal.hide('usuario-excluir')
+                this.$modal.hide('coop-excluir')
             },
             checkForm: function (e) {
                 e.preventDefault();

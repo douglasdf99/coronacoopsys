@@ -88,7 +88,7 @@
                             <div class="form-group">
                               <div class="controls">
                                 <label>Nome Fantasia</label>
-                                <input type="text" class="form-control"  v-model="item1.nome">
+                                <input type="text" class="form-control" required v-model="item1.nome">
                               </div>
                             </div>
                             <div class="form-group">
@@ -100,7 +100,7 @@
                             <div class="form-group">
                               <div class="controls">
                                 <label>CNPJ</label>
-                                <input type="text" class="form-control" v-mask="'##.###.####/####-##'"  v-model="item1.cnpj" >
+                                <input type="text" class="form-control" v-mask="'##.###.###/####-##'"  v-model="item1.cnpj" >
                               </div>
                             </div>
                             <div class="form-group">
@@ -201,7 +201,7 @@
                         <div class="form-group">
                           <div class="controls">
                             <label>cep</label>
-                            <input type="text" class="form-control"  v-model="item1.cep">
+                            <input type="text" class="form-control" v-mask="'##.###-###'" required v-model="item1.cep">
                           </div>
                         </div>
                         <div class="form-group">
@@ -237,7 +237,7 @@
                         <div class="form-group">
                           <div class="controls">
                             <label>Bairro </label>
-                            <input type="text" class="form-control"  v-model="item1.bairro">
+                            <input type="text" class="form-control" required  v-model="item1.bairro">
                           </div>
                         </div>
                       </div>
@@ -796,25 +796,25 @@
               formData2.append('catalogo', file, file.name);
             });
             formData2.append('_method', 'PUT');
-            formData2.append('nome', this.item.nome);
-            formData2.append('razao', this.item.razao);
-            formData2.append('cnpj', this.item.cnpj);
-            formData2.append('email', this.item.email);
-            formData2.append('matriz', this.item.matriz);
-            formData2.append('site', this.item.site);
-            formData2.append('telefone', this.item.telefone);
-            formData2.append('whatsapp', this.item.whatsapp);
-            formData2.append('ramo_id', this.item.ramo_id);
-            formData2.append('cep', this.item.cep);
-            formData2.append('estado', this.item.estado);
-            formData2.append('cidade', this.item.cidade);
-            formData2.append('endereco', this.item.endereco);
-            formData2.append('numero', this.item.numero);
-            formData2.append('contato_nome', this.item.contato_nome);
-            formData2.append('contato_telefone', this.item.contato_telefone);
-            formData2.append('contato_email', this.item.contato_email);
-            formData2.append('contato_cargo', this.item.contato_cargo);
-            formData2.append('ajuda', this.item.ajuda);
+            formData2.append('nome', this.item1.nome);
+            formData2.append('razao', this.item1.razao);
+            formData2.append('cnpj', this.item1.cnpj);
+            formData2.append('email', this.item1.email);
+            formData2.append('matriz', this.item1.matriz);
+            formData2.append('site', this.item1.site);
+            formData2.append('telefone', this.item1.telefone);
+            formData2.append('whatsapp', this.item1.whatsapp);
+            formData2.append('ramo_id', this.item1.ramo_id);
+            formData2.append('cep', this.item1.cep);
+            formData2.append('estado', this.item1.estado);
+            formData2.append('cidade', this.item1.cidade);
+            formData2.append('endereco', this.item1.endereco);
+            formData2.append('numero', this.item1.numero);
+            formData2.append('contato_nome', this.item1.contato_nome);
+            formData2.append('contato_telefone', this.item1.contato_telefone);
+            formData2.append('contato_email', this.item1.contato_email);
+            formData2.append('contato_cargo', this.item1.contato_cargo);
+            formData2.append('ajuda', this.item1.ajuda);
             if (this.item.compartilhamento){
               formData2.append('compartilhamento', 1);
 
@@ -822,11 +822,11 @@
               formData2.append('compartilhamento', 0);
 
             }
-            formData2.append('complemento', this.item.complemento);
-            formData2.append('bairro', this.item.bairro);
+            formData2.append('complemento', this.item1.complemento);
+            formData2.append('bairro', this.item1.bairro);
             console.log(formData2);
             console.log(this.item);
-            axios.post(`/api/coops/${this.item.id}`, formData2)
+            axios.post(`/api/coops/${this.item1.id}`, formData2)
               .then(response => {
                 this.error = 0;
                 console.log(response)

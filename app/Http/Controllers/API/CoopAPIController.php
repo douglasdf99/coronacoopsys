@@ -66,12 +66,17 @@ class CoopAPIController extends AppBaseController
 
         if ($request->cidade !== null or $request->estado !== 'undefined'){
           $query->whereHas('areas', function ($q) use($request){
-            $q->where('tipo','Nacional')->orWhere([['tipo','Estadual'],['estado',$request->estado]])->orWhere([['tipo','Municipal'],['cidade',$request->cidade]])->orWhere([['tipo','Municipal'],['estado',$request->estado]]);
+            $q->where('tipo','Nacional')->orWhere([['tipo','Estadual'],['estado',$request->estado]])->orWhere([['tipo','Municipal'],['cidade',$request->cidade]])->orWhere([['tipo','Municipal'],['estado',$request->estado]])->orWhere([['tipo','Local'],['estado',$request->estado]])->orWhere([['tipo','Local'],['cidade',$request->cidade]]);
           });
         }
 
       $coops = $query->all();
         $coops2=[];
+        foreach ($coops as $coop){
+          if ($coop->areas->tipo == 'Local'){
+            array_push($coops2,$coop);
+          }
+        }
         foreach ($coops as $coop){
           if ($coop->areas->tipo == 'Municipal'){
             array_push($coops2,$coop);

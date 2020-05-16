@@ -50,7 +50,7 @@
                                   <div class="form-group">
                                     <div class="controls">
                                       <label>Endereço</label>
-                                      <input type="text" class="form-control" required v-model="item.endereco">
+                                      <input type="text" class="form-control"  v-model="item.endereco">
                                     </div>
                                   </div>
                                     <!-- Field -->

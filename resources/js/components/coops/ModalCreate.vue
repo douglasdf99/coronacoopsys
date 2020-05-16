@@ -40,7 +40,7 @@
                                   <div class="form-group">
                                     <div class="controls">
                                       <label>Cnpj</label>
-                                      <input type="text" class="form-control" required v-model="cnpj">
+                                      <input type="text" class="form-control" v-mask="'##.###.###/####-##'" required v-model="cnpj">
                                     </div>
                                   </div>
                                   <div class="form-group">

@@ -38,19 +38,19 @@
                                     <div class="form-group">
                                       <div class="controls">
                                         <label>Estado </label>
-                                        <Select2 v-model="estado" required :options="estdosCpm" @select="setEstado($event)"/>
+                                        <Select2 v-model="estado" :options="estdosCpm" @select="setEstado($event)"/>
                                       </div>
                                     </div>
                                     <div class="form-group">
                                       <div class="controls">
                                         <label>Cidade </label>
-                                        <Select2 v-model="cidade" required :options="cidadesCpm"  @select="setCidade($event)"/>
+                                        <Select2 v-model="cidade"  :options="cidadesCpm"  @select="setCidade($event)"/>
                                       </div>
                                     </div>
                                   <div class="form-group">
                                   <div class="controls">
                                     <label>Endereço</label>
-                                    <input type="text" class="form-control" required v-model="endereco">
+                                    <input type="text" class="form-control"  v-model="endereco">
                                   </div>
                                 </div>
 
