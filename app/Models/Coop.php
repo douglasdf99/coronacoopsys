@@ -73,6 +73,9 @@ class Coop extends Model
         'contato_email',
         'contato_cargo',
         'ajuda',
+        'facebook',
+        'instagram',
+        'linkedin',
     ];
 
     /**
@@ -107,6 +110,9 @@ class Coop extends Model
       'contato_email' => 'string',
       'contato_cargo' => 'string',
       'ajuda' => 'string',
+      'facebook'=> 'string',
+      'instagram'=> 'string',
+      'linkedin'=> 'string',
     ];
 
     /**

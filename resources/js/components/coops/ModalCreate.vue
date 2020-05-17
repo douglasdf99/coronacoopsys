@@ -223,6 +223,7 @@
                 formData.append('cnpj', this.cnpj);
                 formData.append('email', this.email);
                 formData.append('ramo_id', this.ramo);
+                formData.append('ativo',1);
 
                 axios.post('/api/coops', formData)
                     .then(response => {

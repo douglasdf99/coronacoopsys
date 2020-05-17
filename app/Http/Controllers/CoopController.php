@@ -43,6 +43,13 @@ class CoopController extends AppBaseController
         return view('coops.index')
             ->with('coops', $coops);
     }
+    public function inativas(Request $request)
+    {
+        $coops = $this->coopRepository->findWhere([['ativo','>' ,'0']])->all();
+
+        return view('coops.inativas')
+            ->with('coops', $coops);
+    }
 
     public function teste ()
     {

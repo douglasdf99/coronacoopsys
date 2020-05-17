@@ -33,6 +33,20 @@
                   <!-- users edit media object ends -->
                   <!-- users edit account form start -->
                   <form @submit="checkForm">
+
+                    <div class="form-group ">
+                      <div class="controls">
+                        <h5 class="mb-1">Status</h5>
+                      </div>
+                      <div class="custom-control custom-switch custom-switch-primary  switch-lg  mr-2 mb-1">
+                        <input v-model="ativo" type="checkbox" class="custom-control-input" id="ativo">
+                        <label class="custom-control-label" for="ativo">
+                          <span class="switch-text-left">Ativa</span> <span class="switch-text-right">Inativa</span>
+                        </label>
+                      </div>
+
+                    </div>
+                    <div class="divider"><div class="divider-text">.</div></div>
                     <!-- users edit media object start -->
                     <div class="media mb-2">
                       <div class="uploader"
@@ -168,6 +182,32 @@
                                 </h6>
                               </div>
                             </div>
+                            <fieldset>
+                              <label>Linkedin</label>
+                              <div class="input-group mb-75">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text feather icon-linkedin" id="basic-addon3"></span>
+                                </div>
+                                <input type="text" class="form-control" v-model="item1.linkedin"
+                                       placeholder="https://www.linkedin.com/" aria-describedby="basic-addon3">
+                              </div>
+                              <label>Facebook</label>
+                              <div class="input-group mb-75">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text feather icon-facebook" id="basic-addon4"></span>
+                                </div>
+                                <input type="text" class="form-control" v-model="item1.facebook"
+                                       placeholder="https://www.facebook.com/" aria-describedby="basic-addon4">
+                              </div>
+                              <label>Instagram</label>
+                              <div class="input-group mb-75">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text feather icon-instagram" id="basic-addon5"></span>
+                                </div>
+                                <input type="text" class="form-control" v-model="item1.instagram"
+                                       placeholder="https://www.instagram.com/" aria-describedby="basic-addon5">
+                              </div>
+                            </fieldset>
                           </div>
                         </div>
                       </div>
@@ -468,6 +508,7 @@
           canalExcluir: '',
           produtoExcluir: '',
           compartilhamento: '',
+          ativo: '',
 
           estados: estados,
           estado: '',
@@ -525,6 +566,7 @@
           this.set();
         });
         this.compartilhamento = this.item.compartilhamento
+        this.ativo = this.item.ativo
       },
       updated(){
         console.log('item u',this.item)
@@ -577,7 +619,12 @@
         compartilhamento: function(val){
           //Use your source of truth to trigger events!
           console.log(val)
-          this.item.compartilhamento = val;
+          this.item1.compartilhamento = val;
+        },
+        ativo: function(val){
+          //Use your source of truth to trigger events!
+          console.log(val)
+          this.item1.ativo = val;
         }
       },
         methods: {
@@ -818,11 +865,21 @@
             formData2.append('contato_email', this.item1.contato_email);
             formData2.append('contato_cargo', this.item1.contato_cargo);
             formData2.append('ajuda', this.item1.ajuda);
-            if (this.item.compartilhamento){
+            formData2.append('facebook', this.item1.facebook);
+            formData2.append('instagram', this.item1.instagram);
+            formData2.append('linkedin', this.item1.linkedin);
+            if (this.item1.compartilhamento){
               formData2.append('compartilhamento', 1);
 
             }else{
               formData2.append('compartilhamento', 0);
+
+            }
+            if (this.item1.ativo){
+              formData2.append('ativo', 1);
+
+            }else{
+              formData2.append('ativo', 0);
 
             }
             formData2.append('complemento', this.item1.complemento);

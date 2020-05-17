@@ -37,7 +37,7 @@
                             <div class="col s12">
                                 <label for="cnpj">CNPJ *</label>
                                 <input id="cnpj" style="border-radius: 5px; margin-top: 1rem" v-model="cnpj" name="nome"
-                                       type="text" class="validate white" required v-mask="'##.###.##/####-##'">
+                                       type="text" class="validate white" required v-mask="'##.###.###/####-##'">
                             </div>
                         </div>
                         <div class="row">
@@ -622,9 +622,8 @@
                     }
                     if (this.local) {
                         formData2.append('area', 'local');
-                        if (this.need_endereco_atuacao_nao) {
                             formData2.append('endereco_atuacao', this.endereco_atuacao);
-                        }
+
                     }
 
                     axios.post('api/enviar-coop', formData2).then(response => {

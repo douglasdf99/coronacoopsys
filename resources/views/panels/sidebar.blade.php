@@ -55,11 +55,27 @@
               <span class="menu-title" data-i18n="nav.page_user_profile">Canais</span>
             </a>
           </li>
-          <li class="nav-item {{ Request::is('admin/coops*') ? 'active' : '' }}">
-            <a href="{!! route('coops.index') !!}">
+          <li class="nav-item {{ Request::is('admin/coop*') ? 'active' : '' }}">
+            <a href="javascript:void(0)">
               <i class="feather icon-grid"></i>
               <span class="menu-title" data-i18n="nav.page_user_profile">Cooperativas</span>
             </a>
+            <ul class="menu-content">
+                <li class="{{ Request::is('admin/coops*') ? 'active' : '' }}">
+                  <a href="{!! route('coops.index') !!}">
+                    <i class="feather icon-list"></i>
+
+                    <span class="menu-title" >Todas</span>
+                  </a>
+                </li>
+                <li class="{{ Request::is('admin/coop-*') ? 'active' : '' }}">
+                  <a href="{!! route('coops.inativas') !!}">
+                    <i class="feather icon-eye-off"></i>
+
+                    <span class="menu-title" >Inativas</span>
+                  </a>
+                </li>
+            </ul>
           </li>
 
         </ul>

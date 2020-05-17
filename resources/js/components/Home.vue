@@ -135,7 +135,7 @@
                                                             <span>Local</span>
                                                         </label>
                                                     </div>
-                                                    <p class="area" v-if="search.produto != '...'">
+                                                    <p class="area" v-if="search.produto != 'Todos'">
                                                         Produto:
                                                         <span class="span-produto">{{search.produto}}</span>
                                                     </p>
@@ -223,9 +223,19 @@
                         </div>
                         <div class="col s12 right-align">
                             <p class="area mb-0 align-items-center" style="float: right">
-                                Compartilhar <a target="_blank" style="margin-left: 15px;" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.cooperabrasil.coop.br%2F&amp;src=sdkpreparse"
-                                                class="fb-xfbml-parse-ignore"><i
-                                    class="material-icons btn-share">share</i></a></p>
+
+
+                                Compartilhar
+                              <a target="_blank" style="margin-left: 15px;" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.cooperabrasil.coop.br%2F&amp;src=sdkpreparse"
+                                                class="fb-xfbml-parse-ignore btn-floating"><i
+                                class="fa fa-facebook"></i></a>
+                              <a target="_blank" style="margin-left: 15px;" href="https://api.whatsapp.com/send?text=Encontra sua cooperttiva"
+                                                class="fb-xfbml-parse-ignore btn-floating"><i
+                                class="fa fa-whatsapp"></i></a>
+                              <a target="_blank" style="margin-left: 15px;" href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.cooperabrasil.coop.br/&title=CooperaBrasil"
+                                                class="fb-xfbml-parse-ignore btn-floating"><i
+                                class="fa fa-linkedin"></i></a>
+                                                   </p>
                         </div>
                     </div>
                     </li>
@@ -513,6 +523,7 @@ cooperativas brasileiras:</span>
         props: ['produtos'],
         created() {
             this.getRamos();
+
             let self = this;
             /*let resultadoLocal = JSON.parse(localStorage.getItem('resultado'));
             let pesquisa = JSON.parse(localStorage.getItem('pesquisa'));
@@ -527,6 +538,9 @@ cooperativas brasileiras:</span>
                 this.resultado = resultadoLocal;
             }*/
 
+        },
+        mounted(){
+          $('.dropdown-trigger').dropdown();
         },
         methods: {
             imagem_ramo(obj) {

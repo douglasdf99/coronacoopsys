@@ -29,6 +29,7 @@ Route::middleware([ 'middleware' => 'auth'])->prefix('admin')->group(function ()
   Route::resource('ramos', 'RamoController');
   Route::resource('produtos', 'ProdutoController');
   Route::resource('coops', 'CoopController');
+  Route::get('coop-inativas', 'CoopController@inativas')->name('coops.inativas');
   Route::resource('canais', 'CanaisController');
 });
 

@@ -41,6 +41,7 @@ Route::resource('ramos', 'RamoAPIController');
 Route::resource('produtos', 'ProdutoAPIController');
 
 Route::resource('coops', 'CoopAPIController');
+Route::get('coop-inativas', 'CoopAPIController@inativas');
 
 Route::resource('canais', 'CanaisAPIController');
 

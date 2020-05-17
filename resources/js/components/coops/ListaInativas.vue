@@ -182,7 +182,7 @@
             </div>
         </div>
         <!-- end row -->
-        <modalCreate @paginate="refresh()"></modalCreate>
+        <modalCreate  @paginate="refresh()"></modalCreate>
         <modaleditar :usuario="usuarioEditar"
                      @paginate="getProjects()">
         </modaleditar>
@@ -279,7 +279,7 @@
             hide() {
                 this.$modal.hide('demo-login');
             },
-            getProjects(url = '/api/coops') {
+            getProjects(url = '/api/coop-inativas') {
               Swal.fire({
                 title: 'Carregando...',
                 html: '',
@@ -322,7 +322,7 @@
                 },
               });
                 this.usuarioEditar = '';
-                axios.get('/api/coops/' + id, {params: this.tableData})
+                axios.get('/api/coop/' + id, {params: this.tableData})
                     .then(response => {
                         console.log(response.data);
                         let data = response.data;
