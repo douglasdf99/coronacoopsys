@@ -366,8 +366,11 @@
                                   <tbody >
                                   <tr v-for="produtos in item1.coop_produtos">
                                     <td>{{produtos.descricao}}</td>
-                                    <td>
+                                    <td v-if="produtos.produto_id">
                                       {{produtos.produto.descricao}}
+                                    </td>
+                                    <td v-else>
+                                      <span class="badge badge-danger"> Sem categoria indicada</span>
                                     </td>
                                     <td>
                                       <a href="javascript:void(0);" @click="showEditarProduto(produtos)" ><i class="users-edit-icon feather icon-edit-1 mr-50"></i> </a>

@@ -44,7 +44,7 @@
                             <div class="col s12">
                                 <label for="razao">Razão Social*</label>
                                 <input id="razao" style="border-radius: 5px; margin-top: 1rem" v-model="razao"
-                                       type="email"
+                                       type="text"
                                        class="validate white" required>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                             <div class="col s12">
                                 <label for="nome">Nome Fantasia</label>
                                 <input id="nome" style="border-radius: 5px; margin-top: 1rem" v-model="nome"
-                                       type="email"
+                                       type="text"
                                        class="validate white">
                             </div>
                         </div>
@@ -562,8 +562,8 @@
                     this.logo.forEach(file => {
                         formData2.append('logo', file, file.name);
                     });
-                    this.catalogo.forEach(file => {
-                        formData2.append('catalogo', file, file.name);
+                    this.catalogo.forEach(file2 => {
+                        formData2.append('catalogo', file2, file2.name);
                     });
                     this.produtos.forEach(prod => {
                         formData2.append('produtos[]', prod);
@@ -650,9 +650,11 @@
                 if (val) {
                     this.need_endereco_atuacao_nao = false;
                     this.need_endereco_atuacao_sim = true;
+                    this.endereco_atuacao = this.endereco;
                 } else {
                     this.need_endereco_atuacao_nao = true;
                     this.need_endereco_atuacao_sim = false;
+                    this.endereco_atuacao = '';
                 }
             },
             changeArea(val) {
@@ -766,8 +768,10 @@
                 console.log(this.logo)
             },
             setCatalogo(event) {
-                const files2 = event.target.files2;
+                const files2 = event.target.files;
                 Array.from(files2).forEach(file => this.catalogo.push(file));
+                console.log(this.catalogo)
+
             },
             getCidades() {
                 return new Promise((resolve, reject) => {

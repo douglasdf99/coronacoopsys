@@ -7,6 +7,7 @@ use App\Http\Requests\API\UpdateCoopAPIRequest;
 use App\Models\Area;
 use App\Models\Coop;
 use App\Models\CoopCanais;
+use App\Models\CoopProduto;
 use App\Repositories\AreaRepository;
 use App\Repositories\CanaisRepository;
 use App\Repositories\CoopRepository;
@@ -72,25 +73,38 @@ class CoopAPIController extends AppBaseController
 
       $coops = $query->all();
         $coops2=[];
+
         foreach ($coops as $coop){
-          if ($coop->areas->tipo == 'Local'){
-            array_push($coops2,$coop);
+          if (isset($coop->areas->tipo)){
+            if ($coop->areas->tipo == 'Local'){
+              array_push($coops2,$coop);
+            }
           }
+
         }
         foreach ($coops as $coop){
-          if ($coop->areas->tipo == 'Municipal'){
-            array_push($coops2,$coop);
+          if (isset($coop->areas->tipo)){
+            if ($coop->areas->tipo == 'Municipal'){
+              array_push($coops2,$coop);
+            }
           }
+
         }
         foreach ($coops as $coop){
-          if ($coop->areas->tipo == 'Estadual'){
-            array_push($coops2,$coop);
+          if (isset($coop->areas->tipo)){
+            if ($coop->areas->tipo == 'Estadual'){
+              array_push($coops2,$coop);
+            }
           }
+
         }
         foreach ($coops as $coop){
-          if ($coop->areas->tipo == 'Nacional'){
-            array_push($coops2,$coop);
+          if (isset($coop->areas->tipo)){
+            if ($coop->areas->tipo == 'Nacional'){
+              array_push($coops2,$coop);
+            }
           }
+
         }
 
       // Get current page form url e.x. &page=1
@@ -159,8 +173,6 @@ class CoopAPIController extends AppBaseController
   {
     $input = $request->all();
 
-    return $input;
-
     if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
 
       $name = time() .''.Str::kebab($request->nome);
@@ -189,12 +201,28 @@ class CoopAPIController extends AppBaseController
     }
 
     $coop = $this->coopRepository->create($input);
-    $input['coop_id'] = $coop->id;
     foreach ($request->canais as $canal){
-      CoopCanais::create($input);
+      $inputCanal= [
+        'coop_id' => $coop->id,
+        'canai_id' => $canal
+        ];
+      CoopCanais::create($inputCanal);
     }
-    foreach ($request->areas as $area){
-      Area::create($input);
+    $inputArea= [
+      'tipo' => $request->area,
+      'endereco_padrao' => $request->padrao,
+      'endereco' => $request->endereco_atuacao,
+      'cidade' => $request->cidade,
+      'estado'=> $request->estado,
+      'coop_id' => $coop->id,
+    ];
+    Area::create($inputArea);
+    foreach ($request->produtos as $produto){
+      $inputProduto= [
+        'coop_id' => $coop->id,
+        'descricao' => $produto,
+      ];
+      CoopProduto::create($inputProduto);
     }
 
     return $this->sendResponse($coop->toArray(), 'Coop updated successfully');
