@@ -77,6 +77,7 @@ Vue.component('coops-lista-inativas', require('./components/coops/ListaInativas.
 Vue.component('coops-gerencia', require('./components/coops/gerencia.vue').default);
 Vue.component('canais-lista', require('./components/canais/Lista.vue').default);
 Vue.component('cadastrar', require('./components/Cadastrar.vue').default);
+Vue.component('sobre', require('./components/Sobre.vue').default);
 
 
 /**

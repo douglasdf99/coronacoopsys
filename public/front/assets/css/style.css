@@ -546,6 +546,10 @@ option {
     margin-right: 10px;
 }
 
+.listagem-sobre:before {
+    color: #797ecf;
+}
+
 .div-sucesso {
     position: fixed;
     top: 0;
@@ -575,6 +579,71 @@ option {
     top: 10%;
 }
 
+.div-titulo-cadastrar {
+    display: flex;
+    align-items: center;
+}
+
+.div-titulo-cadastrar .numero {
+    margin-right: 2rem;
+}
+
+.pergunta {
+    font-size: 1.3rem;
+    color: #1C205C;
+    margin-bottom: 1rem;
+}
+
+.div-endereco-atuacao {
+    padding: 1rem;
+    /*background: #6784C1*/;
+    background: #BCBCBC;
+    border-radius: 5px;
+}
+
+.div-endereco-atuacao p {
+    margin: 0 0 1rem;
+    font-size: 1.3rem;
+    color: white;
+}
+
+.div-endereco-atuacao .checklabel {
+    margin: 0 1rem;
+    color: white;
+}
+
+input {
+    padding-left: 1rem !important;
+    width: 97% !important;
+}
+
+.div-add {
+    background: #6784c133;
+    border-radius: 5px;
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+}
+
+.help {
+    color: #6784C1;
+}
+
+.checkboxes {
+}
+
+.coop_link {
+    color: #88C754;
+}
+
+.coop_link:hover {
+    text-decoration: underline;
+}
+
+.btn-retorno {
+    background: #7db655;
+    border-radius: 5px;
+}
 
 /* Mapa */
 

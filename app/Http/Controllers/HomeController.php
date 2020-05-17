@@ -41,6 +41,12 @@ class HomeController extends Controller
     {
         return view('front.cadastrar');
     }
+
+    public function sobre()
+    {
+        return view('front.sobre');
+    }
+
     public function enviar(Request $request)
     {
       $data = [

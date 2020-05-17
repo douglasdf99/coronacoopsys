@@ -7,6 +7,7 @@
                         <div class="col s6">
                             <ul class="left-align">
                                 <li><a href="/" @click="inicio">Início</a></li>
+                                <li><a href="/sobre">Sobre</a></li>
                                 <!--<li>Sobre</li>
                                 <li>Pesquisar</li>-->
                                 <li><a href="/contato">Contato</a></li>
@@ -26,6 +27,7 @@
                         <ul>
                             <i class="material-icons close-btn-sidenav sidenav-close">close</i>
                             <li><a href="/" @click="inicio">Início</a></li>
+                            <li><a href="/sobre" >Sobre</a></li>
                             <!--<li>Sobre</li>
                             <li>Pesquisar</li>-->
                             <li style="border-bottom: unset"><a href="/contato">Contato</a></li>
