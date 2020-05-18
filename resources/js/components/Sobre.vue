@@ -49,6 +49,12 @@
                                     cooperativas estão por todo o Brasil e agora você pode encontrá-las aqui, no
                                     CooperBrasil.
                                 </p>
+                                <div class="video mx-auto">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/ZuvxRoH5lM0"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                </div>
                                 <p class="pergunta">
                                     <b>Como funciona?</b>
                                 </p>
