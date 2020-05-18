@@ -181,6 +181,11 @@
                             </p>
                             <div class="row mb-0">
                                 <div class="col s12">
+                                    <div class="row" >
+                                        <div class="col s12">
+                                            <a :href="url_redirect(result.catalogo)" target="_blank" class="btn btn-buscar" style="float: left">Catálogo</a>
+                                        </div>
+                                    </div>
                                     <div class="row" v-if="result.telefone">
                                         <div class="col s12">
                                             <p class="detalhe">
@@ -314,7 +319,7 @@
                             cooperativas, e ver
                             de perto a qualidade de tudo que leva a marca coop.
                         </p>
-                        <!--<a class="waves-effect waves-light btn orange btn-saibamais">SAIBA MAIS</a>-->
+                        <a href="/sobre" class="waves-effect waves-light btn orange btn-saibamais">SAIBA MAIS</a>
                     </div>
                 </div>
                 <hr class="divisor">
