@@ -57,10 +57,19 @@ class CoopAPIController extends AppBaseController
     }
   public function buscaCnpj(Request $request)
   {
-    $endpoint = "https://www.receitaws.com.br/v1/cnpj/". $request->cnpj;
-    $client = new \GuzzleHttp\Client();
 
-    $response = $client->request('GET', $endpoint);
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, "https://www.receitaws.com.br/v1/cnpj/". $request->cnpj);
+// SSL important
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+    $output = curl_exec($ch);
+    curl_close($ch);
+
+
+    $response = json_decode($output);
 
     return $this->sendResponse($response, 'Produtos retrieved successfully');
 
