@@ -57,7 +57,7 @@ class CoopAPIController extends AppBaseController
     }
   public function buscaCnpj(Request $request)
   {
-
+    
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, "https://www.receitaws.com.br/v1/cnpj/". $request->cnpj);

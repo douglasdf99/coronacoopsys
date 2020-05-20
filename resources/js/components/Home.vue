@@ -137,9 +137,12 @@
                                                         </label>
                                                     </div>
                                                     <div class="div-local hide-on-med-and-down" v-if="result.areas.tipo == 'Local'">
-                                                        <p class="detalhe">
-                                                            Local x blablablabl asldajwd aladjdjwad akdjawdan
-                                                            asdkajklwdjasdhasdja aaskdjakwdhasd awjdajs
+                                                        <p class="detalhe" v-if="result.areas.endereco_padrao">
+                                                          <b>Local :</b> {{result.endereco}}
+                                                        </p>
+                                                        <p class="detalhe" v-else>
+                                                          <span v-if="result.areas.endereco"><b>Local :</b> {{result.areas.endereco}} </span>
+                                                          <span v-else><b>Local :</b> {{result.endereco}} </span>
                                                         </p>
                                                     </div>
                                                     <p class="area" v-if="search.produto != 'Todos'">
