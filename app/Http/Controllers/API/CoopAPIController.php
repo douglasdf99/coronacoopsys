@@ -57,10 +57,8 @@ class CoopAPIController extends AppBaseController
     }
   public function buscaCnpj(Request $request)
   {
-    $endpoint = "https://www.receitaws.com.br/v1/cnpj/27865757000102";
+    $endpoint = "https://www.receitaws.com.br/v1/cnpj/". $request->cnpj;
     $client = new \GuzzleHttp\Client();
-    $id = 5;
-    $value = "ABC";
 
     $response = $client->request('GET', $endpoint);
 
