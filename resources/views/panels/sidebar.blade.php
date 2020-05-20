@@ -46,7 +46,7 @@
           <li class="nav-item {{ Request::is('admin/produtos*') ? 'active' : '' }}">
             <a href="{!! route('produtos.index') !!}">
               <i class="feather icon-grid"></i>
-              <span class="menu-title" data-i18n="nav.page_user_profile">Produtos</span>
+              <span class="menu-title" data-i18n="nav.page_user_profile">Categorias</span>
             </a>
           </li>
           <li class="nav-item {{ Request::is('admin/canais*') ? 'active' : '' }}">

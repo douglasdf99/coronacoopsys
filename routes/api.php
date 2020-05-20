@@ -54,3 +54,4 @@ Route::post('enviar-coop', 'CoopAPIController@crud');
 Route::resource('coop_canais', 'CoopCanaisAPIController');
 
 Route::resource('areas', 'AreaAPIController');
+Route::get('busca-cnpj', 'CoopAPIController@buscaCnpj');

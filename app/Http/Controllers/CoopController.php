@@ -43,6 +43,22 @@ class CoopController extends AppBaseController
         return view('coops.index')
             ->with('coops', $coops);
     }
+    public function buscaCnpj(Request $request)
+    {
+      $endpoint = "https://www.receitaws.com.br/v1/cnpj/27865757000102";
+      $client = new \GuzzleHttp\Client();
+      $id = 5;
+      $value = "ABC";
+
+      $response = $client->request('GET', $endpoint);
+
+
+      $statusCode = $response->getStatusCode();
+      $content = $response->getBody();
+      return $this->sendResponse($response, 'Produtos retrieved successfully');
+
+
+    }
     public function inativas(Request $request)
     {
         $coops = $this->coopRepository->findWhere([['ativo','>' ,'0']])->all();
