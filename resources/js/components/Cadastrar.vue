@@ -35,7 +35,7 @@
                     <div class="col s12 m12 l6 offset-l3">
                         <div class="row">
                             <div class="col s12">
-                                <label for="cnpj">CNPJ * (digite-o)</label>
+                                <label for="cnpj">CNPJ *</label>
                                 <input id="cnpj" style="border-radius: 5px; margin-top: 1rem" v-model="cnpj" name="nome"
                                        type="text" class="validate white" required v-mask="'##.###.###/####-##'" @blur="verificaCnpj">
                                 <small v-if="cnpj_invalido" class="help red-text">CNPJ inválido</small>
@@ -122,13 +122,6 @@
                         </div>
                         <div class="row">
                             <div class="col s12">
-                                <label for="cep">CEP</label>
-                                <input id="cep" style="border-radius: 5px; margin-top: 1rem" v-model="cep" type="text"
-                                       class="validate white" v-mask="'##.###-###'">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12">
                                 <div class="div-select" style="margin: 0">
                                     <label for="estado" class="label">Estado *</label>
                                     <select v-model="estado" name="estado" id="estado"
@@ -157,6 +150,13 @@
                         </div>
                         <div class="row">
                             <div class="col s12">
+                                <label for="cep">CEP</label>
+                                <input id="cep" style="border-radius: 5px; margin-top: 1rem" v-model="cep" type="text"
+                                       class="validate white" v-mask="'##.###-###'" @blur="verificaCep">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
                                 <label for="endereco">Endereço *</label>
                                 <input id="endereco" style="border-radius: 5px; margin-top: 1rem" v-model="endereco"
                                        type="text" class="validate white">
@@ -164,8 +164,8 @@
                         </div>
                         <div class="row">
                             <div class="col s12">
-                                <label for="numero">Número *</label>
-                                <input id="numero" style="border-radius: 5px; margin-top: 1rem" v-model="numero"
+                                <label for="bairro">Bairro</label>
+                                <input id="bairro" style="border-radius: 5px; margin-top: 1rem" v-model="bairro"
                                        type="text" class="validate white">
                             </div>
                         </div>
@@ -178,8 +178,8 @@
                         </div>
                         <div class="row">
                             <div class="col s12">
-                                <label for="bairro">Bairro</label>
-                                <input id="bairro" style="border-radius: 5px; margin-top: 1rem" v-model="bairro"
+                                <label for="numero">Número *</label>
+                                <input id="numero" style="border-radius: 5px; margin-top: 1rem" v-model="numero"
                                        type="text" class="validate white">
                             </div>
                         </div>
@@ -807,15 +807,15 @@
                 val = val.replace(/\./g, '');
                 val = val.replace('-', '');
                 val = val.replace('/', '');
-                $.getJSON(`https://www.receitaws.com.br/v1/cnpj/${val}`, function(response) {
+                /*$.getJSON(`https://www.receitaws.com.br/v1/cnpj/${val}`, function(response) {
                     console.log('check cnpj', response)
                     if(response.status === 'ERROR'){
                         this.cnpj_invalido = true
                     } else {
                         this.cnpj_invalido = false
                     }
-                });
-                /*axios.get(`https://www.receitaws.com.br/v1/cnpj/${val}`).then(response => {
+                });*/
+                axios.get(`api/busca-cnpj`, {params: {cnpj: val}}).then(response => {
                     console.log('check cnpj', response)
                     if(response.status == 'ERROR'){
                         this.cnpj_invalido = true
@@ -824,7 +824,29 @@
                     }
                 }).catch(erro => {
                     console.log(erro)
-                })*/
+                })
+            },
+            verificaCep(){
+                let val = this.cep;
+                let self = this;
+                val = val.replace(/\./g, '');
+                val = val.replace('-', '');
+                val = val.replace('/', '');
+                $.getJSON("https://viacep.com.br/ws/"+ val +"/json/?callback=?", function(dados) {
+                    if (!("erro" in dados)) {
+                        console.log(dados);
+                        //Atualiza os campos com os valores da consulta.
+                        //$(".cidade").val(dados.localidade);
+                        //$('.estado').val(dados.uf);
+                        self.endereco = dados.logradouro;
+                        self.bairro = dados.bairro;
+                        self.complemento = dados.complemento;
+                    } //end if.
+                    else {
+                        //CEP pesquisado não foi encontrado.
+                        alert("CEP não encontrado.");
+                    }
+                });
             }
         }
     }
