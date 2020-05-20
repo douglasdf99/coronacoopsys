@@ -35,9 +35,10 @@
                     <div class="col s12 m12 l6 offset-l3">
                         <div class="row">
                             <div class="col s12">
-                                <label for="cnpj">CNPJ *</label>
+                                <label for="cnpj">CNPJ * (digite-o)</label>
                                 <input id="cnpj" style="border-radius: 5px; margin-top: 1rem" v-model="cnpj" name="nome"
-                                       type="text" class="validate white" required v-mask="'##.###.###/####-##'">
+                                       type="text" class="validate white" required v-mask="'##.###.###/####-##'" @blur="verificaCnpj">
+                                <small v-if="cnpj_invalido" class="help red-text">CNPJ inválido</small>
                             </div>
                         </div>
                         <div class="row">
@@ -515,6 +516,7 @@
                 tipo: '',
                 vende_produto: true,
                 vende_servico: false,
+                cnpj_invalido: false
             }
         },
         methods: {
@@ -687,7 +689,7 @@
                 let self = this;
                 //this.step = val + 1
                 if (val == 1) {
-                    if (this.cnpj === '' || this.cnpj.length != 17) {
+                    if (this.cnpj === '' || this.cnpj.length != 17 || this.cnpj_invalido) {
                         erros.push('CNPJ')
                     }
                     if (this.razao === '') {
@@ -799,6 +801,30 @@
                     this.produtos.push('');
                 else
                     this.canais.push('');
+            },
+            verificaCnpj(){
+                let val = this.cnpj
+                val = val.replace(/\./g, '');
+                val = val.replace('-', '');
+                val = val.replace('/', '');
+                $.getJSON(`https://www.receitaws.com.br/v1/cnpj/${val}`, function(response) {
+                    console.log('check cnpj', response)
+                    if(response.status === 'ERROR'){
+                        this.cnpj_invalido = true
+                    } else {
+                        this.cnpj_invalido = false
+                    }
+                });
+                /*axios.get(`https://www.receitaws.com.br/v1/cnpj/${val}`).then(response => {
+                    console.log('check cnpj', response)
+                    if(response.status == 'ERROR'){
+                        this.cnpj_invalido = true
+                    } else {
+                        this.cnpj_invalido = false
+                    }
+                }).catch(erro => {
+                    console.log(erro)
+                })*/
             }
         }
     }

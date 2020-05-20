@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col s12">
                             <div class="row">
-                                <div class="col l12">
+                                <div class="col s12">
                                     <span class="span-pesquise">Filtro:</span>
                                 </div>
                             </div>
@@ -76,7 +76,8 @@
                                 <div class="col l8 m12 s12">
                                     <ul class="div-produto collapsible" v-if="resultado.data.length > 0">
                                         <li v-for="(result, index) in resultado.data">
-                                            <div class="row collapsible-header" style="padding: 0; background: transparent !important;"
+                                            <div class="row collapsible-header"
+                                                 style="padding: 0; background: transparent !important;"
                                                  @click="toogleicon(index)">
                                                 <div class="col s4 center-align" v-if="result.logo">
                                                     <img :src="url_redirect(result.logo)"
@@ -135,6 +136,12 @@
                                                             <span>Local</span>
                                                         </label>
                                                     </div>
+                                                    <div class="div-local hide-on-med-and-down" v-if="result.areas.tipo == 'Local'">
+                                                        <p class="detalhe">
+                                                            Local x blablablabl asldajwd aladjdjwad akdjawdan
+                                                            asdkajklwdjasdhasdja aaskdjakwdhasd awjdajs
+                                                        </p>
+                                                    </div>
                                                     <p class="area" v-if="search.produto != 'Todos'">
                                                         Produto:
                                                         <span class="span-produto">{{search.produto}}</span>
@@ -159,20 +166,20 @@
                                                     <div class="row">
                                                         <div class="col l3 m4 s4" v-for="canal in result.coop_canais">
                                                             <p class="detalhe"></p>
-                                      <li style="border: unset;" class="listagem-prod">
-                                      {{canal.canai.descricao}}
-                                      </li>
-                                                        </div>
-                                                    </div>
-                                                    <p class="area">
-                                                        Produtos comercializados
-                                                    </p>
-                                                    <div class="row">
-                                                        <div class="col l3 m4 s4" v-for="prod in result.coop_produtos">
-                                                            <p class="detalhe"></p>
-                                        <li style="border: unset;" class="listagem-prod">
-                                            {{prod.descricao}}
+                                        <li style="border: unset; display: flex;" class="listagem-prod">
+                                            {{canal.canai.descricao}}
                                         </li>
+                                </div>
+                            </div>
+                            <p class="area">
+                                Produtos comercializados
+                            </p>
+                            <div class="row">
+                                <div class="col l3 m4 s4" v-for="prod in result.coop_produtos">
+                                    <p class="detalhe"></p>
+                                    <li style="border: unset; display: flex;" class="listagem-prod">
+                                        {{prod.descricao}}
+                                    </li>
 
                                 </div>
                             </div>
@@ -181,9 +188,10 @@
                             </p>
                             <div class="row mb-0">
                                 <div class="col s12">
-                                    <div class="row" >
+                                    <div class="row" v-if="result.catalogo">
                                         <div class="col s12">
-                                            <a :href="url_redirect(result.catalogo)" target="_blank" class="btn btn-buscar" style="float: left">Catálogo</a>
+                                            <a :href="url_redirect(result.catalogo)" target="_blank"
+                                               class="btn btn-buscar" style="float: left">Catálogo</a>
                                         </div>
                                     </div>
                                     <div class="row" v-if="result.telefone">
@@ -231,16 +239,19 @@
 
 
                                 Compartilhar
-                              <a target="_blank" style="margin-left: 15px;" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.cooperabrasil.coop.br%2F&amp;src=sdkpreparse"
-                                                class="fb-xfbml-parse-ignore btn-floating"><i
-                                class="fa fa-facebook"></i></a>
-                              <a target="_blank" style="margin-left: 15px;" href="https://api.whatsapp.com/send?text=Encontra sua cooperttiva"
-                                                class="fb-xfbml-parse-ignore btn-floating"><i
-                                class="fa fa-whatsapp"></i></a>
-                              <a target="_blank" style="margin-left: 15px;" href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.cooperabrasil.coop.br/&title=CooperaBrasil"
-                                                class="fb-xfbml-parse-ignore btn-floating"><i
-                                class="fa fa-linkedin"></i></a>
-                                                   </p>
+                                <a target="_blank" style="margin-left: 15px;"
+                                   href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.cooperabrasil.coop.br%2F&amp;src=sdkpreparse"
+                                   class="fb-xfbml-parse-ignore btn-floating"><i
+                                        class="fa fa-facebook"></i></a>
+                                <a target="_blank" style="margin-left: 15px;"
+                                   href="https://api.whatsapp.com/send?text=Encontra sua cooperttiva"
+                                   class="fb-xfbml-parse-ignore btn-floating"><i
+                                        class="fa fa-whatsapp"></i></a>
+                                <a target="_blank" style="margin-left: 15px;"
+                                   href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.cooperabrasil.coop.br/&title=CooperaBrasil"
+                                   class="fb-xfbml-parse-ignore btn-floating"><i
+                                        class="fa fa-linkedin"></i></a>
+                            </p>
                         </div>
                     </div>
                     </li>
@@ -284,7 +295,8 @@
                 </div>
             </div>
             <div v-if="enviado" class="div-sucesso">
-                <i class="material-icons close-btn-sidenav" style="float: right; cursor: pointer" @click="enviado = false">close</i>
+                <i class="material-icons close-btn-sidenav" style="float: right; cursor: pointer"
+                   @click="enviado = false">close</i>
                 <div class="container relative">
                     <div class="row">
                         <div class="col s12 center-align">
@@ -331,9 +343,8 @@
                     <div class="col l6 m12 s12">
                         <div class="row">
                             <div class="col s12 center-align">
-                                <span class="span-pesquise">Encontre aqui
-os produtos e serviços das
-cooperativas brasileiras:</span>
+                                <span class="span-pesquise">Encontre aqui os produtos e serviços das
+                                    cooperativas brasileiras:</span>
                             </div>
                         </div>
                         <div class="row">
@@ -504,7 +515,8 @@ cooperativas brasileiras:</span>
                 console.log('filtrado antes', this.produtos)
                 console.log('filtrado antes', this.pesquisa.produto = '')
                 var filtrado = [];
-                this.produtos.map(function (prod) {
+                filtrado.push({id: 'Todos', text: 'Todos', selected: true});
+                _.orderBy(this.produtos, 'descricao').map(function (prod) {
                     console.log('prod', prod)
                     console.log('ramo', self.pesquisa.ramo)
                     if (self.pesquisa.ramo.id) {
@@ -519,7 +531,6 @@ cooperativas brasileiras:</span>
                         filtrado.push(prod);
                     }
                 });
-                filtrado.push({id: 'Todos', text: 'Todos', selected: true});
                 this.pesquisa.produto = 'Todos';
                 console.log('filtrado', filtrado)
                 return filtrado;
@@ -544,8 +555,8 @@ cooperativas brasileiras:</span>
             }*/
 
         },
-        mounted(){
-          $('.dropdown-trigger').dropdown();
+        mounted() {
+            $('.dropdown-trigger').dropdown();
         },
         methods: {
             imagem_ramo(obj) {
