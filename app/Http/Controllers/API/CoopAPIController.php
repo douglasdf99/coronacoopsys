@@ -55,6 +55,18 @@ class CoopAPIController extends AppBaseController
 
         return $this->sendResponse($coops->toArray(), 'Coops retrieved successfully');
     }
+  public function buscaCnpj(Request $request)
+  {
+    $endpoint = "https://www.receitaws.com.br/v1/cnpj/27865757000102";
+    $client = new \GuzzleHttp\Client();
+    $id = 5;
+    $value = "ABC";
+
+    $response = $client->request('GET', $endpoint);
+
+    return $this->sendResponse($response, 'Produtos retrieved successfully');
+
+  }
     public function inativas(Request $request)
     {
       $this->coopRepository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
