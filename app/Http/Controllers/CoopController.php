@@ -53,8 +53,6 @@ class CoopController extends AppBaseController
       $response = $client->request('GET', $endpoint);
 
 
-      $statusCode = $response->getStatusCode();
-      $content = $response->getBody();
       return $this->sendResponse($response, 'Produtos retrieved successfully');
 
 
