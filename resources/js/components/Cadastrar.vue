@@ -807,24 +807,27 @@
                 val = val.replace(/\./g, '');
                 val = val.replace('-', '');
                 val = val.replace('/', '');
-                /*$.getJSON(`https://www.receitaws.com.br/v1/cnpj/${val}`, function(response) {
-                    console.log('check cnpj', response)
-                    if(response.status === 'ERROR'){
-                        this.cnpj_invalido = true
-                    } else {
-                        this.cnpj_invalido = false
-                    }
-                });*/
-                axios.get(`api/busca-cnpj`, {params: {cnpj: val}}).then(response => {
-                    console.log('check cnpj', response)
-                    if(response.status == 'ERROR'){
-                        this.cnpj_invalido = true
-                    } else {
-                        this.cnpj_invalido = false
-                    }
-                }).catch(erro => {
-                    console.log(erro)
-                })
+                if(val.length === 14){
+                    Swal.fire({
+                        title: 'Conferindo CNPJ..',
+                        html: '',
+                        showConfirmButton: false,
+                        onBeforeOpen: () => {
+                            Swal.showLoading()
+                        },
+                    });
+                    axios.get(`api/busca-cnpj`, {params: {cnpj: val}}).then(response => {
+                        Swal.close();
+                        console.log('check cnpj', response)
+                        if(response.data.data.status == 'ERROR'){
+                            this.cnpj_invalido = true
+                        } else {
+                            this.cnpj_invalido = false
+                        }
+                    }).catch(erro => {
+                        console.log(erro)
+                    })
+                } else this.cnpj_invalido = true
             },
             verificaCep(){
                 let val = this.cep;
