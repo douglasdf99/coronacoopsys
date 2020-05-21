@@ -81,9 +81,9 @@
                                                  @click="toogleicon(index)">
                                                 <div class="col s4 center-align" v-if="result.logo">
                                                     <img :src="url_redirect(result.logo)"
-                                                         width="140" height="140" class="hide-on-med-and-down">
+                                                         width="140"  class="hide-on-med-and-down">
                                                     <img :src="url_redirect(result.logo)"
-                                                         width="80" height="80" class="hide-on-large-only">
+                                                         width="80"  class="hide-on-large-only">
                                                 </div>
                                                 <div class="col s4 center-align" v-else>
                                                     <img :src="url_redirect('front/assets/images/avatar-ocb.png')"

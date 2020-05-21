@@ -114,7 +114,8 @@
                             <div class="form-group">
                               <div class="controls">
                                 <label>CNPJ</label>
-                                <input type="text" class="form-control" v-mask="'##.###.###/####-##'"  v-model="item1.cnpj" >
+                                <input type="text" class="form-control" v-mask="'##.###.###/####-##'"  v-model="item1.cnpj" @blur="verificaCnpj">
+                                <small v-if="cnpj_invalido" class="help text-danger">CNPJ inválido</small>
                               </div>
                             </div>
                             <div class="form-group">
@@ -228,7 +229,7 @@
                         <div class="form-group">
                           <div class="controls">
                             <label>Telefone</label>
-                            <input type="text" class="form-control"  v-model="item1.contato_telefone">
+                            <input type="text" class="form-control"  v-model="item1.contato_telefone" v-mask="'(##) #####-####'">
                           </div>
                         </div>
                         <div class="form-group">
@@ -241,7 +242,7 @@
                         <div class="form-group">
                           <div class="controls">
                             <label>cep</label>
-                            <input type="text" class="form-control" v-mask="'##.###-###'" required v-model="item1.cep">
+                            <input type="text" class="form-control" v-mask="'##.###-###'" required v-model="item1.cep" @blur="verificaCep">
                           </div>
                         </div>
                         <div class="form-group">
@@ -277,7 +278,7 @@
                         <div class="form-group">
                           <div class="controls">
                             <label>Bairro </label>
-                            <input type="text" class="form-control" required  v-model="item1.bairro">
+                            <input type="text" required class="form-control" required  v-model="item1.bairro">
                           </div>
                         </div>
                       </div>
@@ -509,7 +510,6 @@
           produtoExcluir: '',
           compartilhamento: '',
           ativo: '',
-
           estados: estados,
           estado: '',
           cidades: cidades,
@@ -552,6 +552,7 @@
           files: [],
           files2: [],
           images: [],
+          cnpj_invalido: false,
         }
       },
       created() {
@@ -628,6 +629,98 @@
         }
       },
         methods: {
+
+          selectedEstado(estado) {
+            let item2 = '';
+            this.estados.map(function (prod) {
+              if (prod.Sigla === estado){
+                item2 =  prod.ID
+              }
+            });
+            return item2;
+          },
+          selectedEstadoName(estado) {
+            let item2 = '';
+            this.estados.map(function (prod) {
+              if (prod.Sigla === estado){
+                item2 =  prod.Nome
+              }
+            });
+            return item2;
+          },
+          selectedCidade(cidade) {
+            let item2 = '';
+            this.cidades.forEach(item => {
+                if (item.Nome === cidade){
+                  item2 =  item.ID
+                }
+            });
+            return item2;
+          },
+          verificaCep(){
+            Swal.fire({
+              title: 'Buscando CEP..',
+              html: '',
+              showConfirmButton: false,
+              onBeforeOpen: () => {
+                Swal.showLoading()
+              },
+            });
+            let val = this.item1.cep;
+            let self = this;
+            val = val.replace(/\./g, '');
+            val = val.replace('-', '');
+            val = val.replace('/', '');
+            $.getJSON("https://viacep.com.br/ws/"+ val +"/json/?callback=?", function(dados) {
+              if (!("erro" in dados)) {
+                Swal.close()
+                console.log(dados);
+                //Atualiza os campos com os valores da consulta.
+
+                //$(".cidade").val(dados.localidade);
+                //$('.estado').val(dados.uf);
+                self.estado = self.selectedEstado(dados.uf);
+                self.cidade = self.selectedCidade(dados.localidade);
+                self.item1.estado = self.selectedEstadoName(dados.uf);
+                self.item1.cidade = dados.localidade;
+                self.item1.endereco = dados.logradouro;
+                self.item1.bairro = dados.bairro;
+                self.item1.complemento = dados.complemento;
+              } //end if.
+              else {
+                //CEP pesquisado não foi encontrado.
+                alert("CEP não encontrado.");
+              }
+              Swal.close()
+            });
+          },
+          verificaCnpj(){
+            let val = this.item1.cnpj
+            val = val.replace(/\./g, '');
+            val = val.replace('-', '');
+            val = val.replace('/', '');
+            if(val.length === 14){
+              Swal.fire({
+                title: 'Conferindo CNPJ..',
+                html: '',
+                showConfirmButton: false,
+                onBeforeOpen: () => {
+                  Swal.showLoading()
+                },
+              });
+              axios.get(`/api/busca-cnpj`, {params: {cnpj: val}}).then(response => {
+                Swal.close();
+                console.log('check cnpj', response)
+                if(response.data.data.status == 'ERROR'){
+                  this.cnpj_invalido = true
+                } else {
+                  this.cnpj_invalido = false
+                }
+              }).catch(erro => {
+                console.log(erro)
+              })
+            } else this.cnpj_invalido = true
+          },
           alterarcatalogo(){
             console.log('muda catalogo', this.item.catalogo );
             this.item.catalogo = '';
@@ -669,11 +762,10 @@
             this.$modal.show('usuario-excluir');
           },
           setCidade({id, text}){
-            this.item.cidade = text;
-
+            this.item1.cidade = text;
           },
           setEstado({id, text}){
-            this.item.estado = text;
+            this.item1.estado = text;
           },
             showEditarArea(areaEdit) {
                 this.areaEdit = areaEdit;
@@ -829,94 +921,106 @@
             },
           checkForm: function (e) {
             e.preventDefault();
-            const formData2 = new FormData();
-            Swal.fire({
-              title: 'Salvando..',
-              html: 'Aguarde enquanto a cooperativa é salva',
-              showConfirmButton: false,
-              onBeforeOpen: () => {
-                Swal.showLoading()
-              },
-            });
+            if (!this.cnpj_invalido){
+              const formData2 = new FormData();
+              Swal.fire({
+                title: 'Salvando..',
+                html: 'Aguarde enquanto a cooperativa é salva',
+                showConfirmButton: false,
+                onBeforeOpen: () => {
+                  Swal.showLoading()
+                },
+              });
 
-            this.files.forEach(file => {
-              formData2.append('logo', file, file.name);
-            });
-            this.files2.forEach(file => {
-              formData2.append('catalogo', file, file.name);
-            });
-            formData2.append('_method', 'PUT');
-            formData2.append('nome', this.item1.nome);
-            formData2.append('razao', this.item1.razao);
-            formData2.append('cnpj', this.item1.cnpj);
-            formData2.append('email', this.item1.email);
-            formData2.append('matriz', this.item1.matriz);
-            formData2.append('site', this.item1.site);
-            formData2.append('telefone', this.item1.telefone);
-            formData2.append('whatsapp', this.item1.whatsapp);
-            formData2.append('ramo_id', this.item1.ramo_id);
-            formData2.append('cep', this.item1.cep);
-            formData2.append('estado', this.item1.estado);
-            formData2.append('cidade', this.item1.cidade);
-            formData2.append('endereco', this.item1.endereco);
-            formData2.append('numero', this.item1.numero);
-            formData2.append('contato_nome', this.item1.contato_nome);
-            formData2.append('contato_telefone', this.item1.contato_telefone);
-            formData2.append('contato_email', this.item1.contato_email);
-            formData2.append('contato_cargo', this.item1.contato_cargo);
-            formData2.append('ajuda', this.item1.ajuda);
-            formData2.append('facebook', this.item1.facebook);
-            formData2.append('instagram', this.item1.instagram);
-            formData2.append('linkedin', this.item1.linkedin);
-            if (this.item1.compartilhamento){
-              formData2.append('compartilhamento', 1);
+              this.files.forEach(file => {
+                formData2.append('logo', file, file.name);
+              });
+              this.files2.forEach(file => {
+                formData2.append('catalogo', file, file.name);
+              });
+              formData2.append('_method', 'PUT');
+              formData2.append('nome', this.item1.nome);
+              formData2.append('razao', this.item1.razao);
+              formData2.append('cnpj', this.item1.cnpj);
+              formData2.append('email', this.item1.email);
+              formData2.append('matriz', this.item1.matriz);
+              formData2.append('site', this.item1.site);
+              formData2.append('telefone', this.item1.telefone);
+              formData2.append('whatsapp', this.item1.whatsapp);
+              formData2.append('ramo_id', this.item1.ramo_id);
+              formData2.append('cep', this.item1.cep);
+              formData2.append('estado', this.item1.estado);
+              formData2.append('cidade', this.item1.cidade);
+              formData2.append('endereco', this.item1.endereco);
+              formData2.append('numero', this.item1.numero);
+              formData2.append('contato_nome', this.item1.contato_nome);
+              formData2.append('contato_telefone', this.item1.contato_telefone);
+              formData2.append('contato_email', this.item1.contato_email);
+              formData2.append('contato_cargo', this.item1.contato_cargo);
+              formData2.append('ajuda', this.item1.ajuda);
+              formData2.append('facebook', this.item1.facebook);
+              formData2.append('instagram', this.item1.instagram);
+              formData2.append('linkedin', this.item1.linkedin);
+              if (this.item1.compartilhamento){
+                formData2.append('compartilhamento', 1);
 
-            }else{
-              formData2.append('compartilhamento', 0);
+              }else{
+                formData2.append('compartilhamento', 0);
 
-            }
-            if (this.item1.ativo){
-              formData2.append('ativo', 1);
+              }
+              if (this.item1.ativo){
+                formData2.append('ativo', 1);
 
-            }else{
-              formData2.append('ativo', 0);
+              }else{
+                formData2.append('ativo', 0);
 
-            }
-            formData2.append('complemento', this.item1.complemento);
-            formData2.append('bairro', this.item1.bairro);
-            console.log(formData2);
-            console.log(this.item);
-            axios.post(`/api/coops/${this.item1.id}`, formData2)
-              .then(response => {
-                this.error = 0;
-                console.log(response)
+              }
+              formData2.append('complemento', this.item1.complemento);
+              formData2.append('bairro', this.item1.bairro);
+              console.log(formData2);
+              console.log(this.item);
+              axios.post(`/api/coops/${this.item1.id}`, formData2)
+                .then(response => {
+                  this.error = 0;
+                  console.log(response)
+                  Swal.fire({
+                    title: 'Sucesso!',
+                    text: response.data.message,
+                    type: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                }).catch(errors => {
+                this.error = 1;
+                console.log('erros', errors.response.data.errors);
+                this.errors = errors.response.data.errors;
+                console.log(this.errors);
                 Swal.fire({
-                  title: 'Sucesso!',
-                  text: response.data.message,
-                  type: 'success',
+                  title: 'Algo deu errado!',
+                  text: '',
+                  type: 'error',
                   showConfirmButton: false,
                   timer: 1500
                 });
-              }).catch(errors => {
-              this.error = 1;
-              console.log('erros', errors.response.data.errors);
-              this.errors = errors.response.data.errors;
-              console.log(this.errors);
+              })
+                .finally(response => {
+                  console.log(response);
+                  if (this.error == 0) {
+                    this.fechar()
+                    this.$emit('paginate');
+                  }
+                });
+            }
+            else{
               Swal.fire({
-                title: 'Algo deu errado!',
+                title: 'CNPJ INVÁLIDO!',
                 text: '',
                 type: 'error',
                 showConfirmButton: false,
                 timer: 1500
               });
-            })
-              .finally(response => {
-                console.log(response);
-                if (this.error == 0) {
-                  this.fechar()
-                  this.$emit('paginate');
-                }
-              });
+            }
+
           },
         }
     }

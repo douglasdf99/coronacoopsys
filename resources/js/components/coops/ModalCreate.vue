@@ -41,6 +41,7 @@
                                     <div class="controls">
                                       <label>Cnpj</label>
                                       <input type="text" class="form-control" v-mask="'##.###.###/####-##'" required v-model="cnpj">
+                                      <small v-if="cnpj_invalido" class="help text-danger">CNPJ inválido</small>
                                     </div>
                                   </div>
                                   <div class="form-group">
@@ -98,6 +99,7 @@
                 role_id: null,
                 roles: [],
                 isDragging: false,
+                cnpj_invalido: false,
                 dragCount: 0,
                 stop: 1,
                 files: [],
@@ -144,6 +146,34 @@
       },
         methods:
           {
+
+            verificaCnpj(){
+              let val = this.cnpj
+              val = val.replace(/\./g, '');
+              val = val.replace('-', '');
+              val = val.replace('/', '');
+              if(val.length === 14){
+                Swal.fire({
+                  title: 'Conferindo CNPJ..',
+                  html: '',
+                  showConfirmButton: false,
+                  onBeforeOpen: () => {
+                    Swal.showLoading()
+                  },
+                });
+                axios.get(`/api/busca-cnpj`, {params: {cnpj: val}}).then(response => {
+                  Swal.close();
+                  console.log('check cnpj', response)
+                  if(response.data.data.status == 'ERROR'){
+                    this.cnpj_invalido = true
+                  } else {
+                    this.cnpj_invalido = false
+                  }
+                }).catch(erro => {
+                  console.log(erro)
+                })
+              } else this.cnpj_invalido = true
+            },
             getRamos() {
               axios.get('/api/ramos')
                 .then(response => {
@@ -210,6 +240,7 @@
             },
             checkForm(e) {
                 e.preventDefault();
+              if (!this.cnpj_invalido) {
                 const formData = new FormData();
                 Swal.fire({
                   title: 'Adicionando Cooperativa',
@@ -223,34 +254,43 @@
                 formData.append('cnpj', this.cnpj);
                 formData.append('email', this.email);
                 formData.append('ramo_id', this.ramo);
-                formData.append('ativo',1);
+                formData.append('ativo', 1);
 
                 axios.post('/api/coops', formData)
-                    .then(response => {
-                        this.error =0;
-                        console.log(response)
-                      window.location.href = window.location.protocol + '//' + window.location.host + '/admin/coops/' + response.data.data.id;
-                    })
+                  .then(response => {
+                    this.error = 0;
+                    console.log(response)
+                    window.location.href = window.location.protocol + '//' + window.location.host + '/admin/coops/' + response.data.data.id;
+                  })
                   .catch(errors => {
                     this.error = 1;
-                        console.log('erros',errors.response.data.errors);
-                        this.errors = errors.response.data.errors;
-                        console.log( this.errors);
-                      Swal.fire({
-                        title: 'Algo deu errado!',
-                        text: '',
-                        type: 'error',
-                        showConfirmButton: false,
-                        timer: 1500
-                      });
-                    })
-                    .finally(response => {
-                        console.log(response);
-                        if ( this.error == 0) {
-                            this.fechar()
-                            this.$emit('paginate');
-                        }
+                    console.log('erros', errors.response.data.errors);
+                    this.errors = errors.response.data.errors;
+                    console.log(this.errors);
+                    Swal.fire({
+                      title: 'Algo deu errado!',
+                      text: '',
+                      type: 'error',
+                      showConfirmButton: false,
+                      timer: 1500
                     });
+                  })
+                  .finally(response => {
+                    console.log(response);
+                    if (this.error == 0) {
+                      this.fechar()
+                      this.$emit('paginate');
+                    }
+                  });
+              }else{
+                Swal.fire({
+                  title: 'CNPJ INVÁLIDO!',
+                  text: '',
+                  type: 'error',
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+              }
             },
 
         }

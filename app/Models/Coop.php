@@ -62,6 +62,7 @@ class Coop extends Model
         'cidade',
         'numero',
         'complemento',
+        'endereco',
         'bairro',
         'compartilhamento',
         'sell',

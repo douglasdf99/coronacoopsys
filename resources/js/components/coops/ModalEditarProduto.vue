@@ -37,7 +37,7 @@
                                     </div>
                                   </div>
                                   <div class="form-group mb-3" >
-                                    <label>Produto/Serviço:</label>
+                                    <label>Categoria:</label>
                                     <Select2 v-model="item.produto_id" required :options="myOptions" @change="myChangeEvent($event)" @select="mySelectEvent($event)" />
                                   </div>
 
