@@ -122,6 +122,13 @@
                         </div>
                         <div class="row">
                             <div class="col s12">
+                                <label for="cep">CEP</label>
+                                <input id="cep" style="border-radius: 5px; margin-top: 1rem" v-model="cep" type="text"
+                                       class="validate white" v-mask="'##.###-###'" @blur="verificaCep">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
                                 <div class="div-select" style="margin: 0">
                                     <label for="estado" class="label">Estado *</label>
                                     <select v-model="estado" name="estado" id="estado"
@@ -146,13 +153,6 @@
                                         </option>
                                     </select>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12">
-                                <label for="cep">CEP</label>
-                                <input id="cep" style="border-radius: 5px; margin-top: 1rem" v-model="cep" type="text"
-                                       class="validate white" v-mask="'##.###-###'" @blur="verificaCep">
                             </div>
                         </div>
                         <div class="row">
@@ -774,14 +774,16 @@
                 console.log(this.catalogo)
 
             },
-            getCidades() {
+            getCidades(val = null) {
                 return new Promise((resolve, reject) => {
+                    let estado = val ? val : this.estado.ID
                     this.cidade = '';
                     this.cidadesFiltradas = [];
                     this.cidades.forEach(item => {
-                        if (item.Estado == this.estado.ID)
+                        if (item.Estado == estado)
                             this.cidadesFiltradas.push(item);
                     });
+                    resolve(this.cidadesFiltradas);
                     console.log(this.cidadesFiltradas);
                 })
             },
@@ -839,8 +841,12 @@
                     if (!("erro" in dados)) {
                         console.log(dados);
                         //Atualiza os campos com os valores da consulta.
-                        //$(".cidade").val(dados.localidade);
                         //$('.estado').val(dados.uf);
+                        //$(".cidade").val(dados.localidade);
+                        self.estado = self.selectedEstado(dados.uf);
+                        self.getCidades(self.estado.ID).then(result => {
+                            self.cidade = self.selectedCidade(dados.localidade);
+                        });
                         self.endereco = dados.logradouro;
                         self.bairro = dados.bairro;
                         self.complemento = dados.complemento;
@@ -848,9 +854,38 @@
                     else {
                         //CEP pesquisado não foi encontrado.
                         alert("CEP não encontrado.");
+                        document.getElementById('email').focus();
                     }
                 });
-            }
+            },
+            selectedEstado(estado) {
+                let item2 = '';
+                this.estados.map(function (prod) {
+                    if (prod.Sigla === estado){
+                        item2 = prod
+                    }
+                });
+                return item2;
+            },
+            selectedEstadoName(estado) {
+                let item2 = '';
+                this.estados.map(function (prod) {
+                    if (prod.Sigla === estado){
+                        item2 =  prod.Nome
+                    }
+                });
+                console.log(item2)
+                return item2;
+            },
+            selectedCidade(cidade) {
+                let item2 = '';
+                this.cidades.forEach(item => {
+                    if (item.Nome === cidade){
+                        item2 =  item.Nome
+                    }
+                });
+                return item2;
+            },
         }
     }
     $(document).ready(function () {

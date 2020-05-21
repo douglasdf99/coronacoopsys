@@ -81,9 +81,9 @@
                                                  @click="toogleicon(index)">
                                                 <div class="col s4 center-align" v-if="result.logo">
                                                     <img :src="url_redirect(result.logo)"
-                                                         width="140"  class="hide-on-med-and-down">
+                                                         width="140" class="hide-on-med-and-down">
                                                     <img :src="url_redirect(result.logo)"
-                                                         width="80"  class="hide-on-large-only">
+                                                         width="80" class="hide-on-large-only">
                                                 </div>
                                                 <div class="col s4 center-align" v-else>
                                                     <img :src="url_redirect('front/assets/images/avatar-ocb.png')"
@@ -136,13 +136,14 @@
                                                             <span>Local</span>
                                                         </label>
                                                     </div>
-                                                    <div class="div-local hide-on-med-and-down" v-if="result.areas.tipo == 'Local'">
+                                                    <div class="div-local hide-on-med-and-down"
+                                                         v-if="result.areas.tipo == 'Local'">
                                                         <p class="detalhe" v-if="result.areas.endereco_padrao">
-                                                          <b>Local :</b> {{result.endereco}}
+                                                            <b>Local :</b> {{result.endereco}}
                                                         </p>
                                                         <p class="detalhe" v-else>
-                                                          <span v-if="result.areas.endereco"><b>Local :</b> {{result.areas.endereco}} </span>
-                                                          <span v-else><b>Local :</b> {{result.endereco}} </span>
+                                                            <span v-if="result.areas.endereco"><b>Local :</b> {{result.areas.endereco}} </span>
+                                                            <span v-else><b>Local :</b> {{result.endereco}} </span>
                                                         </p>
                                                     </div>
                                                     <p class="area" v-if="search.produto != 'Todos'">
@@ -236,25 +237,49 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col s12 right-align">
-                            <p class="area mb-0 align-items-center" style="float: right">
-
-
-                                Compartilhar
-                                <a target="_blank" style="margin-left: 15px;"
-                                   href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.cooperabrasil.coop.br%2F&amp;src=sdkpreparse"
+                            <p class="area" v-if="result.facebook || result.linkedin || result.instagram">
+                                Redes Sociais
+                            </p>
+                            <div class="align-items-center"
+                                 v-if="result.facebook || result.linkedin || result.instagram">
+                                <a target="_blank" v-if="result.facebook"
+                                   :href="result.facebook"
                                    class="fb-xfbml-parse-ignore btn-floating"><i
                                         class="fa fa-facebook"></i></a>
                                 <a target="_blank" style="margin-left: 15px;"
-                                   href="https://api.whatsapp.com/send?text=Encontra sua cooperttiva"
+                                   :href="result.instagram" v-if="result.instagram"
                                    class="fb-xfbml-parse-ignore btn-floating"><i
-                                        class="fa fa-whatsapp"></i></a>
+                                        class="fa fa-instagram"></i></a>
                                 <a target="_blank" style="margin-left: 15px;"
-                                   href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.cooperabrasil.coop.br/&title=CooperaBrasil"
+                                   :href="result.linkedin" v-if="result.linkedin"
                                    class="fb-xfbml-parse-ignore btn-floating"><i
                                         class="fa fa-linkedin"></i></a>
-                            </p>
+                            </div>
+                        </div>
+                        <div class="col s12 right-align">
+                            <div class="area mb-0 align-items-center" style="float: right">
+                                Compartilhar
+                                <button class='dropdown-trigger btn btn-floating'
+                                        style="background: #6784C1; margin-left: 15px;"
+                                        :data-target='result.id'><i class="material-icons">share</i>
+                                </button>
+                                <!-- Dropdown Structure -->
+                                <ul :id='result.id' class='dropdown-content'>
+                                    <li class="li-share">
+                                        <a target="_blank"
+                                           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.cooperabrasil.coop.br%2F&amp;src=sdkpreparse">
+                                            <i class="fa fa-facebook"></i></a>
+                                    </li>
+                                    <li class="li-share"><a target="_blank"
+                                                            href="https://api.whatsapp.com/send?text=Encontra sua cooperttiva">
+                                        <i class="fa fa-whatsapp"></i></a>
+                                    </li>
+                                    <li class="li-share"><a target="_blank"
+                                                            href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.cooperabrasil.coop.br/&title=CooperaBrasil">
+                                        <i class="fa fa-linkedin"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     </li>
@@ -433,6 +458,7 @@
         data() {
             return {
                 show: [],
+                enviado: false,
                 estados: estados,
                 cidades: cidades,
                 ramos: [],
@@ -557,9 +583,6 @@
                 this.resultado = resultadoLocal;
             }*/
 
-        },
-        mounted() {
-            $('.dropdown-trigger').dropdown();
         },
         methods: {
             imagem_ramo(obj) {
@@ -700,6 +723,12 @@
                 }).finally(() => {
                     Swal.close();
                     $('.collapsible').collapsible();
+                    $(".dropdown-trigger").dropdown({
+                        hover: false,
+                        belowOrigin: true,
+                        constrain_width: false,
+                        alignment: 'right'
+                    });
                 })
             },
         },
@@ -710,15 +739,26 @@
                 data[item.descricao] = null
             });
             const dados = {...data}
-            /*$(document).ready(function () {
-                $('input.autocomplete').autocomplete({
-                    data: dados,
-                    onAutocomplete() {
-                        self.pesquisa.produto = $('#autocomplete-input').val();
-                        console.log(self.pesquisa.produto)
-                    }
-                });
-            });*/
         }
     }
 </script>
+<style scoped>
+    .li-share {
+        margin: 0;
+        border: none;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+    }
+
+    .li-share a {
+        color: #6784c1;
+        font-family: "Nunito", sans-serif;
+        text-align: center !important;
+    }
+
+    .li-share i {
+        width: 100%;
+        font-size: 1.5rem;
+    }
+</style>
