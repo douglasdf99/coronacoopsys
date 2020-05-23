@@ -652,6 +652,7 @@ input {
     margin-bottom: 1rem;
 }
 
+
 /* Mapa */
 
 #map {
@@ -808,6 +809,10 @@ input {
 
     .logo-ramo {
         width: 45px;
+    }
+
+    .div-checkbox span {
+        font-size: .8rem !important;
     }
 }
 

@@ -51,7 +51,7 @@
                         </div>
                         <div class="row">
                             <div class="col s12">
-                                <label for="nome">Nome Fantasia</label>
+                                <label for="nome">Nome Fantasia *</label>
                                 <input id="nome" style="border-radius: 5px; margin-top: 1rem" v-model="nome"
                                        type="text"
                                        class="validate white">
@@ -164,14 +164,14 @@
                         </div>
                         <div class="row">
                             <div class="col s12">
-                                <label for="bairro">Bairro</label>
+                                <label for="bairro">Bairro *</label>
                                 <input id="bairro" style="border-radius: 5px; margin-top: 1rem" v-model="bairro"
                                        type="text" class="validate white">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col s12">
-                                <label for="complemento">Complemento *</label>
+                                <label for="complemento">Complemento</label>
                                 <input id="complemento" style="border-radius: 5px; margin-top: 1rem"
                                        v-model="complemento" type="text" class="validate white">
                             </div>
@@ -689,29 +689,33 @@
                 let self = this;
                 //this.step = val + 1
                 if (val == 1) {
-                    if (this.cnpj === '' || this.cnpj.length != 17 || this.cnpj_invalido) {
+                    if (this.cnpj === '' || this.cnpj_invalido) {
                         erros.push('CNPJ')
                     }
-                    if (this.razao === '') {
+                    if (!this.razao) {
                         erros.push('Razão Social')
                     }
-                    if (this.telefone === '' || this.telefone.length < 14) {
+
+                    if (!this.nome) {
+                        erros.push('Nome Fantasia')
+                    }
+                    if (!this.telefone || this.telefone.length < 14) {
                         erros.push('Telefone')
                     }
-                    if (this.estado === '') {
+                    if (!this.estado) {
                         erros.push('Estado')
                     }
-                    if (this.cidade === '') {
+                    if (!this.cidade) {
                         erros.push('Cidade')
                     }
-                    if (this.endereco === '') {
+                    if (!this.endereco) {
                         erros.push('Endereco')
                     }
-                    if (this.numero === '') {
+                    if (!this.numero) {
                         erros.push('Número')
                     }
-                    if (this.complemento === '') {
-                        erros.push('Complemento')
+                    if (!this.bairro || null) {
+                        erros.push('Bairro')
                     }
 
                     if (erros.length > 0) {
@@ -726,16 +730,16 @@
                     }
                 }
                 if (val == 2) {
-                    if (this.contato_nome === '') {
+                    if (!this.contato_nome) {
                         erros.push('Nome Completo')
                     }
-                    if (this.contato_cargo === '') {
+                    if (!this.contato_cargo) {
                         erros.push('Cargo')
                     }
-                    if (this.contato_telefone === '' || this.contato_telefone.length < 14) {
+                    if (!this.contato_telefone || this.contato_telefone.length < 14) {
                         erros.push('Telefone')
                     }
-                    if (this.contato_email === '') {
+                    if (!this.contato_email) {
                         erros.push('E-mail')
                     }
 
@@ -847,9 +851,9 @@
                         self.getCidades(self.estado.ID).then(result => {
                             self.cidade = self.selectedCidade(dados.localidade);
                         });
-                        self.endereco = dados.logradouro;
-                        self.bairro = dados.bairro;
-                        self.complemento = dados.complemento;
+                        self.endereco = dados.logradouro || '';
+                        self.bairro = dados.bairro || '';
+                        self.complemento = dados.complemento || '';
                     } //end if.
                     else {
                         //CEP pesquisado não foi encontrado.
