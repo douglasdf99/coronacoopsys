@@ -67,7 +67,7 @@
                     </div>
                     <div class="row row-resultado">
                         <div class="col s12">
-                            <span class="span-resultado">Cooperativas encontradas  </span>
+                            <span class="span-resultado">Cooperativas encontradas</span>
                         </div>
                     </div>
                     <div class="row">

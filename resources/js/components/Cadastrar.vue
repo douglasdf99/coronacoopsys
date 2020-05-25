@@ -437,7 +437,7 @@
             </div>
         </div>
         <div v-if="enviado" class="div-sucesso">
-            <i class="material-icons close-btn-sidenav" style="float: right; cursor: pointer" @click="enviado = false">close</i>
+            <a href="/"><i class="material-icons close-btn-sidenav" style="float: right; cursor: pointer" @click="enviado = false">close</i></a>
             <div class="container relative">
                 <div class="row">
                     <div class="col l8 offset-l2 m12 s12 center-align">
@@ -705,7 +705,7 @@
                     if (!this.estado) {
                         erros.push('Estado')
                     }
-                    if (!this.cidade) {
+                    if (!this.cidade) {r
                         erros.push('Cidade')
                     }
                     if (!this.endereco) {

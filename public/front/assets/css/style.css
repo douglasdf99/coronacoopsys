@@ -774,6 +774,10 @@ input {
 }*/
 
 @media (max-width: 1366px) {
+    .container {
+        width: 85%;
+    }
+
     .menu {
         margin: 4.5rem 0 2rem;
     }
@@ -796,13 +800,7 @@ input {
     }
 }
 
-@media (max-width: 1180px) {
-    #map {
-        zoom: 70%
-    }
-}
-
-@media (max-width: 1024px) {
+@media (max-width: 1365px) {
     .container {
         width: 90%;
     }
@@ -813,6 +811,12 @@ input {
 
     .div-checkbox span {
         font-size: .8rem !important;
+    }
+}
+
+@media (max-width: 1180px) {
+    #map {
+        zoom: 70%
     }
 }
 
