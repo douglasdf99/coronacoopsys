@@ -73,7 +73,7 @@
                     <div class="row">
                         <div class="col s12">
                             <div class="row">
-                                <div class="col l8 m12 s12">
+                                <div class="col l8 m12 s12" style="padding: 0;">
                                     <ul class="div-produto collapsible" v-if="resultado.data.length > 0">
                                         <li v-for="(result, index) in resultado.data">
                                             <div class="row collapsible-header"
@@ -288,7 +288,7 @@
                         <h6 class="center"> Nenhum resultado encontrado</h6>
                     </div>
                     <div class="row">
-                        <ul class="pagination">
+                        <ul class="pagination" style="display: flex;">
                             <li class="waves-effect" v-if="pagination.current_page > 1">
                                 <a href="#" v-on:click.prevent="changePage(pagination.current_page - 1)"> <i
                                         class="material-icons">chevron_left</i></a>

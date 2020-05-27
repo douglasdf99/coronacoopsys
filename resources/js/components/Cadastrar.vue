@@ -659,6 +659,13 @@
                 }
             },
             changeArea(val) {
+                if(val != 'local'){
+                    console.log('entrou')
+                    this.need_endereco_atuacao_nao = false;
+                    this.need_endereco_atuacao_sim = false;
+                    this.endereco_atuacao = '';
+                }
+
                 switch (val) {
                     case 'nacional':
                         this.estadual = false;

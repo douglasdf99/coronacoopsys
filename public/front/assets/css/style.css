@@ -372,6 +372,7 @@ option {
     color: #6784C1;
     margin: 0 0 0.7rem;
     font-size: 1.2rem;
+    word-break: break-all;
 }
 
 .area {
@@ -534,6 +535,7 @@ option {
 .listagem-prod {
     list-style: none;
     border: unset !important;
+    word-break: break-word;
 }
 
 .listagem-prod:before {
