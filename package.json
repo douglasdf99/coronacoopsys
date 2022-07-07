@@ -26,7 +26,7 @@
         "rtlcss": "^2.4.0"
     },
     "dependencies": {
-        "moment": "^2.25.1",
+        "moment": "^2.29.4",
         "moment-locales-webpack-plugin": "^1.2.0",
         "v-mask": "^2.1.0",
         "v-select2-component": "^0.4.3",
